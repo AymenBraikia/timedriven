@@ -7,14 +7,16 @@ import MenuBurger from "./svg/menu_burger";
 import Search from "./svg/search";
 import Cart from "./svg/cart";
 import { ThemeToggle } from "./theme";
+import Info from "./svg/info";
 
 export default function Header() {
 	const [nav_state, set_nav_state] = useState<boolean>(false);
+	const [cart_state, set_cart_state] = useState<boolean>(false);
 	const [glassy, set_glassy] = useState<boolean>(false);
 	const [lang, set_lang] = useState<"EN" | "DE">("EN");
 	const [scroll_y, set_scroll_y] = useState<number>(0);
 
-		useEffect(() => {
+	useEffect(() => {
 		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
 	}, []);
 
@@ -24,8 +26,6 @@ export default function Header() {
 			else if (scroll_y < window.innerHeight && glassy) set_glassy(false);
 		}, 0);
 	}, [scroll_y, glassy]);
-
-
 
 	return (
 		<header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-50 p-8 transition-default ${glassy ? "h-30 text-primary" : "h-25 text-white"}`}>
@@ -47,9 +47,9 @@ export default function Header() {
 				<button className={`button2 ${glassy ? "" : "hover:text-primary"}`} onClick={() => set_lang(lang == "EN" ? "DE" : "EN")}>
 					{lang}
 				</button>
-				<Link href={"#"} className={`button2 ${glassy ? "" : "hover:text-primary"}`}>
+				<button onClick={() => set_cart_state(true)} className={`button2 ${glassy ? "" : "hover:text-primary"}`}>
 					<Cart s={25} clr="currentColor" />
-				</Link>
+				</button>
 				<ThemeToggle />
 			</div>
 
@@ -98,6 +98,37 @@ export default function Header() {
 					<Cross s={50} />
 				</button>
 			</nav>
+
+			<div className={`liquid-glass w-[30dvw] transition-default h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-16 p-16 font-secondary ${cart_state ? "translate-x-0" : "translate-x-full"}`}>
+				<div className="flex justify-between items-center w-full h-1/10">
+					<h3 className="title3">YOUR COLLECTION</h3>
+
+					<button className="button2 p-1" onClick={() => set_cart_state(false)}>
+						<Cross s={50} />
+					</button>
+				</div>
+
+				<div className="flex-center flex-col gap-4 w-full h-4/5 font-sans text-secondary">
+					<Info s={70} />
+					<h5 className="title5 flex-center">Your horological collection is empty.</h5>
+				</div>
+
+				<div className="flex flex-wrap justify-between items-center gap-4 w-full h-1/10">
+					<div className="flex justify-between items-center w-full">
+						<h5 className="title5">SUBTOTAL VALUE</h5>
+						<h5 className="title5">{format(0)}</h5>
+					</div>
+
+					<button className="button w-full flex-center title5">Proceed to secure settlement</button>
+				</div>
+			</div>
 		</header>
 	);
+}
+
+function format(n: number): string {
+	return new Intl.NumberFormat("de-DE", {
+		style: "currency",
+		currency: "EUR",
+	}).format(n);
 }
