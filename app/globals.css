@@ -39,7 +39,7 @@
 }
 
 @utility flex-center {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
 }
@@ -142,6 +142,9 @@
     transform: scale(0.95);
   }
 }
+
+
+
 
 @utility liquid-glass {
   backdrop-filter: url(#liquid-frosted) blur(4px);
