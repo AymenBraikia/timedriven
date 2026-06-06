@@ -16,6 +16,7 @@
   --border-glass: linear-gradient(45deg, #32323266, #19191966);
 
   --transition: .3s ease;
+  --transition-long: .8s ease-in-out;
 }
 
 @theme inline {
@@ -57,6 +58,10 @@
 
 @utility transition-default {
   transition: var(--transition);
+}
+
+@utility transition-long {
+  transition: var(--transition-long);
 }
 
 @utility title1 {

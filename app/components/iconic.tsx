@@ -39,8 +39,8 @@ export default function Iconic() {
 				<List display={3}>
 					{data.map((d, i) => (
 						<Link href={"#"} style={{ width: `calc(${100}% - 16px)` }} className="h-100 flex flex-col justify-start items-start relative" key={i}>
-							<div className="relative w-full h-full transition brightness-80 hover:brightness-100 overflow-hidden group">
-								<Image sizes="(maxWidth: 100dvw) 100vw, 100dvw" src={d.src} fill alt={d.name} className="object-cover object-center select-none transition scale-100 hover:scale-110" />
+							<div className="relative w-full h-full transition-long brightness-80 hover:brightness-100 overflow-hidden group">
+								<Image sizes="(maxWidth: 100dvw) 100vw, 100dvw" src={d.src} fill alt={d.name} className="object-cover object-center select-none transition-long scale-100 hover:scale-105" />
 								<div className="absolute bottom-0 left-0 translate-y-1/2 w-full h-20 blur-[25px] bg-black group-hover:opacity-0 opacity-100 transition-all duration-300 ease-in-out"></div>
 							</div>
 							<div className="absolute left-4 bottom-4 flex flex-col liquid-glass p-2 text-white">
