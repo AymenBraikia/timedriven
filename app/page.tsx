@@ -9,16 +9,18 @@ import Booking from "./components/booking";
 
 export default function Body() {
 	const [scroll_y, set_scroll_y] = useState<number>(0);
+	const [dvh, set_dvh] = useState<number>(0);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => set_scroll_y(scrollY));
+		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
+		setTimeout(() => set_dvh(window.innerHeight), 0);
 	}, []);
 	return (
 		<div className="flex-col flex-center w-full">
 			<Hero />
 			<div className="mt-[100dvh] flex-col flex-center w-full bg-background">
 				<New />
-				<div className={`flex-center h-50 gap-20 overflow-hidden relative ${scroll_y > innerHeight ? "fade-in" : "fade-out"}`}>
+				<div className={`flex-center h-50 gap-20 overflow-hidden relative ${scroll_y > dvh ? "fade-in" : "fade-out"}`}>
 					<p className="text-6xl min-w-fit">Get Inspired</p>
 					<div className="h-full w-0.5 bg-foreground min-w-fit"></div>
 					<div className="text-xl flex flex-col gap-8 min-w-fit">
