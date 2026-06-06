@@ -11,24 +11,12 @@ export default function Footer() {
 				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
 					<FooterLogo s={50} />
 					<ul className="flex flex-col justify-start items-start gap-2">
-						<li>
-							<p>Walther-von-Cronberg-Platz 18</p>
-						</li>
-						<li>
-							<p>60594 Frankfurt am Main</p>
-						</li>
-						<li>
-							<p>Germany</p>
-						</li>
-						<li>
-							<p>+49 152 5544 3810</p>
-						</li>
-						<li>
-							<p>+49 69 7958 0766</p>
-						</li>
-						<li>
-							<p>info@timedriven.de</p>
-						</li>
+						<li>Walther-von-Cronberg-Platz 18</li>
+						<li>60594 Frankfurt am Main</li>
+						<li>Germany</li>
+						<li>+49 152 5544 3810</li>
+						<li>+49 69 7958 0766</li>
+						<li>info@timedriven.de</li>
 					</ul>
 				</div>
 				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
