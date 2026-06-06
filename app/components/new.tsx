@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import List from "./scrollList";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const data = [
 	{ price: 22900, src: "/new/rolex_daytona.webp", name: "Rolex Daytona" },
@@ -16,19 +18,27 @@ const data = [
 ];
 
 export default function New() {
+	const [scroll_y, set_scroll_y] = useState<number>(0);
+	const [dvh, set_dvh] = useState<number>(0);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
+		setTimeout(() => set_dvh(window.innerHeight), 0);
+	}, []);
+
 	return (
 		<section className="flex-col justify-center items-start p-16 w-dvw">
-			<h1 className="text-5xl">
+			<h1 className={`text-5xl font-secondary tracking-wide ${scroll_y > 200 ? "fade-in" : "fade-out"}`}>
 				New <br />
 				Arrivals
 			</h1>
 			<br />
-			<p>Our curated collection of pre-owned and new watches is waiting for you.</p>
+			<p className={`${scroll_y > 200 ? "fade-in" : "fade-out"}`}>Our curated collection of pre-owned and new watches is waiting for you.</p>
 			<br />
-			<Link href={"#"} className="underline">
+			<Link href={"#"} className={`underline ${scroll_y > 200 ? "fade-in" : "fade-out"}`}>
 				View all watches
 			</Link>
-			<div className="my-5">
+			<div className={`my-5 ${scroll_y > dvh * 0.7 ? "fade-in" : "fade-out"}`}>
 				<List display={4}>
 					{data.map((d, i) => (
 						<Link href={"#"} className="h-150 w-110 flex flex-col justify-start items-start" key={i}>

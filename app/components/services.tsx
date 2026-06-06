@@ -1,12 +1,21 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import services_src from "../../public/polish.webp";
 import sell_src from "../../public/sell.webp";
 import spare_src from "../../public/spare.webp";
+import { useEffect, useState } from "react";
 
 export default function Services() {
+	const [scroll_y, set_scroll_y] = useState<number>(0);
+	const [dvh, set_dvh] = useState<number>(0);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
+		setTimeout(() => set_dvh(window.innerHeight), 0);
+	}, []);
 	return (
-		<div className="w-full h-fit py-20 flex-center gap-8">
+		<div className={`w-full h-fit py-20 flex-center gap-8 ${scroll_y > dvh * 2.7 ? "fade-in" : "fade-out"}`}>
 			<Link href={"#"} className="w-120 h-120 flex flex-col justify-start items-start relative">
 				<div className="relative w-full h-full transition brightness-100 overflow-hidden group">
 					<Image sizes="(maxWidth: 100dvw) 100vw, 100dvw" src={sell_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />

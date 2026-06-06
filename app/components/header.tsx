@@ -28,9 +28,9 @@ export default function Header() {
 
 
 	return (
-		<header className={`flex justify-between items-center h-25 w-dvw fixed top-0 left-0 z-50 p-8 ${glassy ? "text-primary" : "text-white"}`}>
-			{<div className={`w-full h-full transition ease-in-out absolute inset-0 -z-10 liquid-glass ${glassy ? "opacity-100" : "opacity-0"}`} />}
-			<div className={`w-1/3 flex justify-start items-center transition ${nav_state ? "opacity-0" : "opacity-100"}`}>
+		<header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-50 p-8 transition-default ${glassy ? "h-30 text-primary" : "h-25 text-white"}`}>
+			{<div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${glassy ? "opacity-100" : "opacity-0"}`} />}
+			<div className={`w-1/3 flex justify-start items-center transition-default ${nav_state ? "opacity-0" : "opacity-100"}`}>
 				<button className="button2 float-anim " onClick={() => set_nav_state(true)}>
 					<MenuBurger s={30} clr="currentColor" />
 				</button>

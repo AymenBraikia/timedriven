@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import List from "./scrollList";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const data = [
 	{ src: "/brands/Audemars Piguet.webp", name: "Audemars Piguet" },
@@ -14,19 +16,26 @@ const data = [
 ];
 
 export default function Iconic() {
+	const [scroll_y, set_scroll_y] = useState<number>(0);
+	const [dvh, set_dvh] = useState<number>(0);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
+		setTimeout(() => set_dvh(window.innerHeight), 0);
+	}, []);
 	return (
 		<section className="flex-col justify-center items-start p-16 w-dvw">
-			<h1 className="text-5xl">
+			<h1 className={`text-5xl font-secondary tracking-wide ${scroll_y > dvh * 1.6 ? "fade-in" : "fade-out"}`}>
 				Iconic <br />
 				Brands
 			</h1>
 			<br />
-			<p>
+			<p className={`${scroll_y > dvh * 1.6 ? "fade-in" : "fade-out"}`}>
 				Browse our collection of classic wrist watches from world-renowned <br />
 				watchmakers.
 			</p>
 
-			<div className="my-5 font-secondary">
+			<div className={`my-5 font-secondary ${scroll_y > dvh * 2 ? "fade-in" : "fade-out"}`}>
 				<List display={3}>
 					{data.map((d, i) => (
 						<Link href={"#"} style={{ width: `calc(${100}% - 16px)` }} className="h-100 flex flex-col justify-start items-start relative" key={i}>

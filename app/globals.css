@@ -155,20 +155,20 @@
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
-  animation: fade_in .5s ease 0s;
+  animation: fade_in .8s ease 0s;
 }
 
 @utility fade-out {
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(50px);
   filter: blur(50px);
-  animation: fade_out .5s ease 0s;
+  animation: fade_out .8s ease 0s;
 }
 
 @keyframes fade_in {
   from {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(50px);
     filter: blur(10px);
   }
 
@@ -188,7 +188,7 @@
 
   to {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(50px);
     filter: blur(10px);
   }
 

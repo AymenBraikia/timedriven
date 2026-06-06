@@ -7,9 +7,9 @@ export default function Hero() {
 				<source src="/hero_vid.mp4" type="video/mp4" />
 			</video>
 			<div className="flex-center flex-col font-secondary fade-in">
-				<h1 className="title1 tracking-widest">TIMEDRIVEN</h1>
-				<h5 className="title5">Your partner for high-end watches</h5>
-				<Link className="underline title6" href={"#"}>
+				<h1 className="title1 tracking-[0.8rem]">TIMEDRIVEN</h1>
+				<h5 className="title5 tracking-wider">Your partner for high-end watches</h5>
+				<Link className="underline title6 tracking-widest" href={"#"}>
 					Discover
 				</Link>
 			</div>
