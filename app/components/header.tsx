@@ -15,13 +15,13 @@ export default function Header() {
 	const [scroll_y, set_scroll_y] = useState<number>(0);
 
 		useEffect(() => {
-		window.addEventListener("scroll", () => set_scroll_y(scrollY));
+		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
 	}, []);
 
 	useEffect(() => {
-		const timeout = setTimeout(() => {
-			if (scroll_y >= innerHeight && !glassy) set_glassy(true);
-			else if (scroll_y < innerHeight && glassy) set_glassy(false);
+		setTimeout(() => {
+			if (scroll_y >= window.innerHeight && !glassy) set_glassy(true);
+			else if (scroll_y < window.innerHeight && glassy) set_glassy(false);
 		}, 0);
 	}, [scroll_y, glassy]);
 
