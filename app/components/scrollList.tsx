@@ -76,12 +76,12 @@ export default function List({ children, display }: { children: React.ReactNode;
 			</div>
 
 			<div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex-center gap-4">
-				<button type="button" className={`cursor-pointer rotate-180 p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handlePrev} disabled={!canLoop}>
+				<button aria-label="Previous" type="button" className={`cursor-pointer rotate-180 p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handlePrev} disabled={!canLoop}>
 					<Next classnames={"w-10"} clr="currentColor" />
 				</button>
 				{gen_dot(React.Children.count(children), index)}
 
-				<button type="button" className={`cursor-pointer p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handleNext} disabled={!canLoop}>
+				<button aria-label="Next" type="button" className={`cursor-pointer p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handleNext} disabled={!canLoop}>
 					<Next classnames={"w-10"} clr="currentColor" />
 				</button>
 			</div>

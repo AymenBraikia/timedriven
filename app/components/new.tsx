@@ -45,20 +45,20 @@ export default function New() {
 			<br />
 			<p className={`${scroll_y > 200 ? "fade-in" : "fade-out"}`}>Our curated collection of pre-owned and new watches is waiting for you.</p>
 			<br />
-			<Link href={"#"} className={`underline ${scroll_y > 200 ? "fade-in" : "fade-out"}`}>
+			<Link aria-label="view all watches" href={"#"} className={`underline ${scroll_y > 200 ? "fade-in" : "fade-out"}`}>
 				View all watches
 			</Link>
 			<div className={`my-5 w-[90dvw] translate-x-[-10dvw] sm:translate-x-0 sm-w-fit ${scroll_y > dvh * 0.7 ? "fade-in" : "fade-out"}`}>
 				<List display={dvw < 640 ? 1 : 4}>
 					{data.map((d) => (
-						<Link href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
+						<Link aria-label={`${d.name}`} href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
 							<div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">
 								<Image src={d.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={d.name} className="object-cover select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
 								<div className="sm:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
-									<button type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
+									<button aria-label={`quick view ${d.name}`} type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
 										QUICK VIEW
 									</button>
-									<button type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center">
+									<button aria-label="add to cart" type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center">
 										+
 									</button>
 								</div>
@@ -79,11 +79,11 @@ export default function New() {
 							<h1 className="sm:title1 sm:tracking-widest title4 tracking-wider">{view.name}</h1>
 							<h4 className="sm:title4 sm:tracking-wider title5 tracking-wide">{format(view.price)}</h4>
 							<p className="text-secondary leading-8 tracking-wider">An extreme execution of mechanical weight and modern aesthetic layout. Encased in polished lightweight titanium alloys, featuring our caliber 4101 proprietary hand assembly.</p>
-							<button type="button" className="button w-full">
+							<button aria-label="add to cart" type="button" className="button w-full">
 								ADD TO CART
 							</button>
 						</div>
-						<button type="button" className="button absolute top-5 right-5" onClick={() => set_view(null)}>
+						<button aria-label="close" type="button" className="button absolute top-5 right-5" onClick={() => set_view(null)}>
 							Close
 						</button>
 					</div>

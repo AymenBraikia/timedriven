@@ -22,7 +22,7 @@ export default function Booking() {
 			<Image src={booking_img} alt="booking.webp" sizes="(maxWidth: 100dvw) 100vw, 100dvw" className="object-cover object-center select-none brightness-30" fill></Image>
 			<p className="z-10 sm:text-5xl text-4xl tracking-wider">Book an Appointment</p>
 			<p className="z-10 sm:text-2xl text-xl tracking-wide leading-8">As experts, we give you our professional opinion on any matter you may have.</p>
-			<Link className="z-10 sm:text-3xl text-2xl underline" href={"#"}>
+			<Link aria-label="Book Now" className="z-10 sm:text-3xl text-2xl underline" href={"#"}>
 				Book now
 			</Link>
 		</div>

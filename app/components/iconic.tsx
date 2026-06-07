@@ -48,7 +48,7 @@ export default function Iconic() {
 			<div className={`my-5 font-secondary ${scroll_y > dvh * 2 ? "fade-in" : "fade-out"}`}>
 				<List display={dvw < 640 ? 1 : 3}>
 					{data.map((d) => (
-						<Link href={"#"} className={`h-100 sm:w-[calc(100%-16px)] w-full flex flex-col justify-start items-start relative`} key={d.id}>
+						<Link aria-label={`${d.name} watches`} href={"#"} className={`h-100 sm:w-[calc(100%-16px)] w-full flex flex-col justify-start items-start relative`} key={d.id}>
 							<div className="relative w-full h-full transition-long brightness-80 hover:brightness-100 overflow-hidden group">
 								<Image sizes="(maxWidth: 100dvw) 100vw, 100dvw" src={d.src} fill alt={d.name} className="object-cover object-center select-none transition-long scale-100 hover:scale-105" />
 								<div className="absolute bottom-0 left-0 translate-y-1/2 w-full h-20 blur-[25px] bg-black group-hover:opacity-0 opacity-100 transition-all duration-300 ease-in-out"></div>

@@ -30,7 +30,7 @@ export default function Body() {
 					<div className="sm:h-full sm:w-0.5 w-full h-1  bg-foreground"></div>
 					<div className="text-xl flex flex-col gap-8 h-1/2">
 						<p className="max-w-100 wrap-break-word tracking-wide leading-8">Your journey begins here. Take a minute to answer these questions, and we’ll help you figure out what your first step should be.</p>
-						<Link className="underline" href={"#"}>
+						<Link aria-label="Begin your journey" className="underline" href={"#"}>
 							Begin
 						</Link>
 					</div>

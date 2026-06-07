@@ -12,7 +12,7 @@ export default function Hero() {
 			<div className="flex-center flex-col font-secondary fade-in">
 				<h1 className="sm:title1 title2 tracking-[0.8rem] ">TIMEDRIVEN</h1>
 				<h5 className="sm:title5 title6 tracking-wider">Your partner for high-end watches</h5>
-				<Link className="underline sm:title6 text-[18px] tracking-widest" href={"#"}>
+				<Link aria-label="discover" className="underline sm:title6 text-[18px] tracking-widest" href={"#"}>
 					Discover
 				</Link>
 			</div>
