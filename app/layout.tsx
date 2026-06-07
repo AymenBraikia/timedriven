@@ -1,29 +1,22 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Open_Sans, Gelasio } from "next/font/google"; // [1] Swapped to native Google imports
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/ThemeProvider";
 
-const openSans = localFont({
-	src: [
-		{ path: "../public/Open_Sans/OpenSans-Light.ttf", weight: "300", style: "normal" },
-		{ path: "../public/Open_Sans/OpenSans-Regular.ttf", weight: "400", style: "normal" },
-		{ path: "../public/Open_Sans/OpenSans-Medium.ttf", weight: "500", style: "normal" },
-		{ path: "../public/Open_Sans/OpenSans-SemiBold.ttf", weight: "600", style: "normal" },
-		{ path: "../public/Open_Sans/OpenSans-Bold.ttf", weight: "700", style: "normal" },
-		{ path: "../public/Open_Sans/OpenSans-ExtraBold.ttf", weight: "800", style: "normal" },
-	],
+// [2] Automatically optimized, subsetted, and compressed to WOFF2 at build time
+const openSans = Open_Sans({
+	subsets: ["latin"],
 	variable: "--font-open-sans",
+	display: "swap", // Prevents invisible text blocks (FOIT)
 });
-const gelasio = localFont({
-	src: [
-		{ path: "../public/Gelasio/Gelasio-Regular.ttf", weight: "400", style: "normal" },
-		{ path: "../public/Gelasio/Gelasio-Medium.ttf", weight: "500", style: "normal" },
-		{ path: "../public/Gelasio/Gelasio-SemiBold.ttf", weight: "600", style: "normal" },
-		{ path: "../public/Gelasio/Gelasio-Bold.ttf", weight: "700", style: "normal" },
-	],
+
+const gelasio = Gelasio({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"], // Stripped out weights you don't use to save bytes
 	variable: "--font-gelasio",
+	display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +28,7 @@ export const metadata: Metadata = {
 	keywords: ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "TIMEDRIVEN"],
 	authors: [{ name: "TIMEDRIVEN" }],
 	creator: "TIMEDRIVEN",
-	metadataBase: new URL("https://timedriven.vercel.app/"), // Replace with your actual domain later
+	metadataBase: new URL("https://timedriven.vercel.app/"),
 	openGraph: {
 		title: "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
 		description: "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
@@ -43,7 +36,7 @@ export const metadata: Metadata = {
 		siteName: "TIMEDRIVEN",
 		images: [
 			{
-				url: "/new/rolex_daytona.webp", // Falls back to a premier watch image for social sharing links
+				url: "/new/rolex_daytona.webp",
 				width: 1200,
 				height: 630,
 				alt: "TIMEDRIVEN Luxury Watch Collection",
@@ -76,9 +69,7 @@ export default function RootLayout({
 					<svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
 						<filter id="liquid-frosted" x="0%" y="0%" width="100%" height="100%">
 							<feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="noise" />
-
 							<feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped" />
-
 							<feGaussianBlur in="warped" stdDeviation="2" />
 						</filter>
 					</svg>
@@ -86,12 +77,12 @@ export default function RootLayout({
 					<Header />
 					<div className="min-h-full flex flex-col max-w-dvw overflow-x-hidden">
 						<style>{`
-					.liquid-glass {
-						backdrop-filter: url(#liquid-frosted) blur(4px);
-						-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
-						background-color: var(--clr-glass);
-					}
-				`}</style>
+							.liquid-glass {
+								backdrop-filter: url(#liquid-frosted) blur(4px);
+								-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
+								background-color: var(--clr-glass);
+							}
+						`}</style>
 						{children}
 						<Footer />
 					</div>
