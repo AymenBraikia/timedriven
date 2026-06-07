@@ -28,8 +28,8 @@
   --color-primary: var(--clr-primary);
   --color-secondary: var(--clr-secondary);
 
-  --backgruond-primary: var(--bg-primary);
-  --backgruond-secondary: var(--bg-secondary);
+  --background-primary: var(--bg-primary);
+  --background-secondary: var(--bg-secondary);
 
   --color-glass: var(--clr-glass);
 }
@@ -100,7 +100,7 @@
 }
 
 @utility button {
-  color: var(--clr-parimary);
+  color: var(--clr-primary);
   background-color: var(--bg-primary);
   font-weight: 600;
   opacity: 1;
@@ -122,7 +122,7 @@
 }
 
 @utility button2 {
-  color: var(--clr-parimary);
+  color: var(--clr-primary);
   background-color: transparent;
   font-weight: 600;
   opacity: 1;
@@ -162,14 +162,12 @@
 
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
   animation: fade_in .8s ease 0s;
 }
 
 @utility fade-out {
   opacity: 0;
   transform: translateY(50px);
-  filter: blur(50px);
   animation: fade_out .8s ease 0s;
 }
 
@@ -177,13 +175,11 @@
   from {
     opacity: 0;
     transform: translateY(50px);
-    filter: blur(10px);
   }
 
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -191,13 +187,11 @@
   from {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 
   to {
     opacity: 0;
     transform: translateY(50px);
-    filter: blur(10px);
   }
 
 }
