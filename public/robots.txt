@@ -1,0 +1,11 @@
+# User-agent: * applies to all web crawlers
+User-agent: *
+Allow: /
+
+# Disallow crawling of Next.js internal system folders and API routes
+Disallow: /_next/
+Disallow: /api/
+
+# Host and Sitemap locations
+Host: https://timedriven.vercel.app/
+Sitemap: https://timedriven.vercel.app//sitemap.xml

@@ -35,11 +35,11 @@ export const metadata: Metadata = {
 	keywords: ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "TIMEDRIVEN"],
 	authors: [{ name: "TIMEDRIVEN" }],
 	creator: "TIMEDRIVEN",
-	metadataBase: new URL("https://timedriven.com"), // Replace with your actual domain later
+	metadataBase: new URL("https://timedriven.vercel.app/"), // Replace with your actual domain later
 	openGraph: {
 		title: "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
 		description: "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
-		url: "https://timedriven.com",
+		url: "https://timedriven.vercel.app/",
 		siteName: "TIMEDRIVEN",
 		images: [
 			{
