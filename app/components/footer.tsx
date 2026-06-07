@@ -1,16 +1,16 @@
 import Link from "next/link";
-import FooterLogo from "./svg/footer_logo";
 import Instagram from "./svg/instagram";
 import Watch from "./svg/watch";
 import Ebay from "./svg/ebay";
+import Logo from "./svg/logo";
 
 export default function Footer() {
 	return (
-		<footer className="w-full py-8 px-20 flex-center flex-col bg-background font-bold">
-			<section className="w-full flex justify-between items-center">
-				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
-					<FooterLogo s={50} />
-					<ul className="flex flex-col justify-start items-start gap-2">
+		<footer className="w-full py-8 sm:px-20 px-4 flex-center flex-col bg-background font-bold">
+			<section className="w-full sm:flex-row flex-col flex justify-between sm:items-center items-start">
+				<div className="flex flex-col justify-start items-start gap-4 my-5">
+					<Logo classnames={"sm:w-16 w-32"} />
+					<ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
 						<li>Walther-von-Cronberg-Platz 18</li>
 						<li>60594 Frankfurt am Main</li>
 						<li>Germany</li>
@@ -19,8 +19,8 @@ export default function Footer() {
 						<li>info@timedriven.de</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
-					<h5 className="title5">Shop</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5">
+					<h5 className="sm:title5 title4">Shop</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link href={"#"} className="underline">
@@ -44,8 +44,8 @@ export default function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
-					<h5 className="title5">Service</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5">
+					<h5 className="sm:title5 title4">Service</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link href={"#"} className="underline">
@@ -79,37 +79,37 @@ export default function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
-					<h5 className="title5">Other Platforms</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5">
+					<h5 className="sm:title5 title4">Other Platforms</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link href={"#"} className="underline flex justify-start items-center gap-4">
-								{<Watch s={24} />}
+								{<Watch classnames={"w-6"} />}
 								<p>Chrono 24</p>
 							</Link>
 						</li>
 						<li>
 							<Link href={"#"} className="underline flex justify-start items-center gap-4">
-								{<Ebay s={24} />}
+								{<Ebay classnames={"w-6"} />}
 								<p>Ebay</p>
 							</Link>
 						</li>
 						<li>
 							<Link href={"#"} className="underline flex justify-start items-center gap-4">
-								{<Ebay s={24} />}
+								{<Ebay classnames={"w-6"} />}
 								<p>Ebay Kleinanzeigen</p>
 							</Link>
 						</li>
 						<li>
 							<Link href={"#"} className="underline flex justify-start items-center gap-4">
-								{<Instagram s={24} />}
+								{<Instagram classnames={"w-6"} />}
 								<p>Instagram</p>
 							</Link>
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 min-h-75">
-					<h5 className="title5">Legal</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5">
+					<h5 className="sm:title5 title4">Legal</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link href={"#"} className="underline">
@@ -144,24 +144,24 @@ export default function Footer() {
 					</ul>
 				</div>
 			</section>
-			<section className="w-full flex justify-between items-center font-normal text-xs">
+			<section className="w-full sm:gap-0 gap-4 flex-col sm:flex-row flex justify-between items-center font-normal text-xs sm:tracking-normal tracking-wider">
 				<p className="">Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.</p>
 				<p className="">©2026 Timedriven. All Rights Reserved.</p>
-				<div className="flex-center gap-3">
+				<div className="flex-center flex-wrap gap-4 sm:gap-3">
 					<Link href={"#"} className="underline">
-						Cookie Policy
+						Imprint
 					</Link>
 					<Link href={"#"} className="underline">
-						Cookie Policy
+						Privacy Policy
 					</Link>
 					<Link href={"#"} className="underline">
-						Cookie Policy
+						Terms
 					</Link>
 					<Link href={"#"} className="underline">
-						Cookie Policy
+						Withdrawal
 					</Link>
 					<Link href={"#"} className="underline">
-						Cookie Policy
+						Disclaimer
 					</Link>
 					<Link href={"#"} className="underline">
 						Cookie Policy

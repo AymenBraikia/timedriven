@@ -11,13 +11,16 @@ export function ThemeToggle() {
 
 	useEffect(() => {
 		const timer = setTimeout(() => setMounted(true), 0);
+		return () => {
+			clearTimeout(timer);
+		};
 	}, []);
 
 	if (!mounted) return null;
 
 	return (
-		<button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="button2 p-2">
-			{theme === "dark" ? <Sun s={40} clr="currentColor"/> : <Moon s={40} clr="currentColor"/>}
+		<button type="button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="button2 p-2">
+			{theme === "dark" ? <Sun classnames="w-7 sm:w-10" clr="currentColor" /> : <Moon classnames="w-7 sm:w-10" clr="currentColor" />}
 		</button>
 	);
 }

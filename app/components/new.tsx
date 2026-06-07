@@ -4,25 +4,34 @@ import List from "./scrollList";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+let id = 0;
 const data = [
-	{ price: 22900, src: "/new/rolex_daytona.webp", name: "Rolex Daytona" },
-	{ price: 24990, src: "/new/Patek Philippe Calatrava.webp", name: "Patek Philippe Calatrava" },
-	{ price: 15990, src: "/new/Cartier Panthere.webp", name: "Cartier Panthere" },
-	{ price: 33900, src: "/new/Rolex Submariner Date 40.webp", name: "Rolex Submariner Date 40" },
-	{ price: 18990, src: "/new/Rolex Sky-Dweller.webp", name: "Rolex Sky-Dweller" },
-	{ price: 6290, src: "/new/Rolex Datejust 36.webp", name: "Rolex Datejust 36" },
-	{ price: 5990, src: "/new/Rolex Datejust.webp", name: "Rolex Datejust" },
-	{ price: 4990, src: "/new/Rolex Oyster Perpetual 26.webp", name: "Rolex Oyster Perpetual 26" },
+	{ id: id++, price: 22900, src: "/new/rolex_daytona.webp", name: "Rolex Daytona" },
+	{ id: id++, price: 24990, src: "/new/Patek Philippe Calatrava.webp", name: "Patek Philippe Calatrava" },
+	{ id: id++, price: 15990, src: "/new/Cartier Panthere.webp", name: "Cartier Panthere" },
+	{ id: id++, price: 33900, src: "/new/Rolex Submariner Date 40.webp", name: "Rolex Submariner Date 40" },
+	{ id: id++, price: 18990, src: "/new/Rolex Sky-Dweller.webp", name: "Rolex Sky-Dweller" },
+	{ id: id++, price: 6290, src: "/new/Rolex Datejust 36.webp", name: "Rolex Datejust 36" },
+	{ id: id++, price: 5990, src: "/new/Rolex Datejust.webp", name: "Rolex Datejust" },
+	{ id: id++, price: 4990, src: "/new/Rolex Oyster Perpetual 26.webp", name: "Rolex Oyster Perpetual 26" },
 ];
 
 export default function New() {
 	const [scroll_y, set_scroll_y] = useState<number>(0);
 	const [dvh, set_dvh] = useState<number>(0);
+	const [dvw, set_dvw] = useState<number>(0);
 	const [view, set_view] = useState<null | { price: number; src: string; name: string }>(null);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => set_scroll_y(window.scrollY));
-		setTimeout(() => set_dvh(window.innerHeight), 0);
+		const handlescroll = () => set_scroll_y(window.scrollY);
+		window.addEventListener("scroll", handlescroll, { passive: true });
+		const timer = setTimeout(() => set_dvh(window.innerHeight), 0);
+		const timer2 = setTimeout(() => set_dvw(window.innerWidth), 0);
+		return () => {
+			clearTimeout(timer);
+			clearTimeout(timer2);
+			removeEventListener("scroll", handlescroll);
+		};
 	}, []);
 
 	const bg = useRef<HTMLDivElement>(null);
@@ -39,17 +48,19 @@ export default function New() {
 			<Link href={"#"} className={`underline ${scroll_y > 200 ? "fade-in" : "fade-out"}`}>
 				View all watches
 			</Link>
-			<div className={`my-5 ${scroll_y > dvh * 0.7 ? "fade-in" : "fade-out"}`}>
-				<List display={4}>
-					{data.map((d, i) => (
-						<Link href={"#"} className="h-150 w-110 flex flex-col justify-start items-start transition-long group" key={i}>
-							<div className="relative w-full h-4/5 flex-center overflow-hidden">
+			<div className={`my-5 w-[90dvw] translate-x-[-10dvw] sm:translate-x-0 sm-w-fit ${scroll_y > dvh * 0.7 ? "fade-in" : "fade-out"}`}>
+				<List display={dvw < 640 ? 1 : 4}>
+					{data.map((d) => (
+						<Link href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
+							<div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">
 								<Image src={d.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={d.name} className="object-cover select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
-								<div className="relative w-full h-15 fade-out group-hover:fade-in transition-long flex-center gap-4 z-10">
-									<button className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
+								<div className="sm:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
+									<button type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
 										QUICK VIEW
 									</button>
-									<button className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center">+</button>
+									<button type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center">
+										+
+									</button>
 								</div>
 							</div>
 							<h5 className="title5">{d.name}</h5>
@@ -59,18 +70,20 @@ export default function New() {
 				</List>
 			</div>
 			{view && (
-				<div ref={bg} className={`fixed left-0 top-0 w-dvw h-dvh bg-black/50 ${view ? "fade-in flex-center z-10" : "fade-out hidden"}`} onClick={(e) => e.target == bg.current && set_view(null)}>
-					<div className="w-3/5 h-150 min-h-100 p-16 flex-center gap-16 font-secondary bg-background relative">
-						<div className="relative w-1/2 h-full ">
+				<div tabIndex={0} role="banner" ref={bg} className={`fixed left-0 top-0 w-dvw h-dvh bg-black/50 ${view ? "fade-in flex-center z-10" : "fade-out hidden"}`} onClick={(e) => e.target == bg.current && set_view(null)}>
+					<div className="w-full h-[calc(100%-100px)] translate-y-12.5 p-4 sm:translate-y-0 sm:w-3/5 sm:h-150 sm:min-h-100 sm:p-16 flex-center flex-col sm:flex-row gap-16 font-secondary bg-background relative">
+						<div className="relative w-full h-1/2 sm:w-1/2 sm:h-ful ">
 							<Image src={view.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={view.name} className="object-cover select-none" />
 						</div>
-						<div className="flex flex-col justify-between items-start w-1/2 min-h-full">
-							<h1 className="title1 tracking-widest">{view.name}</h1>
-							<h4 className="title4 tracking-wider">{format(view.price)}</h4>
+						<div className="flex flex-col justify-between items-start  w-full h-1/2 sm:w-1/2 sm:h-full">
+							<h1 className="sm:title1 sm:tracking-widest title4 tracking-wider">{view.name}</h1>
+							<h4 className="sm:title4 sm:tracking-wider title5 tracking-wide">{format(view.price)}</h4>
 							<p className="text-secondary leading-8 tracking-wider">An extreme execution of mechanical weight and modern aesthetic layout. Encased in polished lightweight titanium alloys, featuring our caliber 4101 proprietary hand assembly.</p>
-							<button className="button w-full">ADD TO CART</button>
+							<button type="button" className="button w-full">
+								ADD TO CART
+							</button>
 						</div>
-						<button className="button absolute top-5 right-5" onClick={() => set_view(null)}>
+						<button type="button" className="button absolute top-5 right-5" onClick={() => set_view(null)}>
 							Close
 						</button>
 					</div>
@@ -80,9 +93,10 @@ export default function New() {
 	);
 }
 
+const intl = new Intl.NumberFormat("de-DE", {
+	style: "currency",
+	currency: "EUR",
+});
 function format(n: number): string {
-	return new Intl.NumberFormat("de-DE", {
-		style: "currency",
-		currency: "EUR",
-	}).format(n);
+	return intl.format(n);
 }

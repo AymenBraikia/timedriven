@@ -1,6 +1,6 @@
-export default function Watch({ s, clr = "currentColor" }: { s: number; clr?: string }) {
+export default function Watch({ classnames = "w-6", clr = "currentColor" }: { classnames?: string; clr?: string }) {
 	return (
-		<svg height={s} width={s} version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+		<svg className={classnames} version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 			<g>
 				<path
 					fill={clr}

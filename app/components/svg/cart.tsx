@@ -1,6 +1,6 @@
-export default function Cart({ s, clr = "currentColor" }: { s: number; clr?: string }) {
+export default function Cart({ classnames = "w-6", clr = "currentColor" }: { classnames?: string; clr?: string }) {
 	return (
-		<svg width={s} height={s} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg className={classnames} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				fillRule="evenodd"
 				clipRule="evenodd"

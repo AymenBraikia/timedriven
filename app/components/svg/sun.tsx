@@ -2,9 +2,9 @@
 	/* <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  */
 }
 
-export default function Sun({ s, clr = "currentColor" }: { s: number; clr?: string }) {
+export default function Sun({ classnames = "w-6", clr = "currentColor" }: { classnames?: string; clr?: string }) {
 	return (
-		<svg fill={clr} height={s} width={s} version="1.1" id="XMLID_287_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+		<svg fill={clr} className={classnames} version="1.1" id="XMLID_287_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 			<g>
 				<circle fillRule="evenodd" clipRule="evenodd" fill={clr} cx="32.003" cy="32.005" r="16.001" />
 				<path
