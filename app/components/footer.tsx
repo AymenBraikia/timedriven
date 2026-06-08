@@ -2,14 +2,14 @@ import Link from "next/link";
 import Instagram from "./svg/instagram";
 import Watch from "./svg/watch";
 import Ebay from "./svg/ebay";
-import Logo from "./svg/logo";
+import HorizontalLogo from "./svg/logo_horizontal";
 
 export default function Footer() {
 	return (
 		<footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold">
 			<section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
 				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-					<Logo classnames={"lg:w-16 w-32"} />
+					<HorizontalLogo classnames={"w-64"} />
 					<ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
 						<li>Walther-von-Cronberg-Platz 18</li>
 						<li>60594 Frankfurt am Main</li>
