@@ -107,8 +107,6 @@ export default function Header() {
 				<ThemeToggle />
 			</div>
 
-			{/* {ui.isNavOpen && <Nav ui={ui} dispatch={dispatch} />}
-			{ui.isCartOpen && <CartDrawer ui={ui} dispatch={dispatch} />} */}
 			<Nav ui={ui} dispatch={dispatch} />
 			<CartDrawer ui={ui} dispatch={dispatch} />
 		</header>

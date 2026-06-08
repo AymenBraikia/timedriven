@@ -6,7 +6,7 @@ type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CAR
 export default function Cart_drawer({ dispatch, ui }: { dispatch: ActionDispatch<[action: UIAction]>; ui: { isCartOpen: boolean } }) {
 	return (
 		<div
-			className={`liquid-glass w-dvw md:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-16 p-16 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+			className={`liquid-glass w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-16 p-16 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
 			onClick={(e) => e.stopPropagation()}
 		>
 			<div className="flex justify-between items-center w-full h-1/10">
