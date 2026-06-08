@@ -57,7 +57,7 @@ export default function New() {
 						{data.map((d) => (
 							<Link aria-label={`${d.name}`} href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
 								<div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">
-									<Image src={d.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={d.name} className="object-contain select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
+									<Image src={d.src} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" fill alt={d.name} className="object-contain select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
 									<div className="sm:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
 										<button aria-label={`quick view ${d.name}`} type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
 											QUICK VIEW

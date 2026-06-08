@@ -27,7 +27,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
 						{cart.map((i) => (
 							<div className="flex-center w-full gap-4" key={i.name}>
 								<div className="relative w-1/4 aspect-square">
-									<Image src={i.src} alt={i.name} sizes="(maxWidth: 20dvw) 20vw, 20dvw" className="object-cover object-center select-none" fill></Image>
+									<Image src={i.src} alt={i.name} sizes="(max-width: 20dvw) 20vw, 20dvw" className="object-cover object-center select-none" fill></Image>
 								</div>
 								<div className="w-3/4 h-full">
 									<p>{i.name}</p>
