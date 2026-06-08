@@ -37,7 +37,7 @@ export default function Iconic() {
 			</div>
 			<div className={`my-5 font-secondary `}>
 				<FadeInObserver>
-					<List display={3}>
+					<List display={{ base: 1, sm: 2, md: 3, lg: 3 }}>
 						{data.map((d) => (
 							<Link aria-label={`${d.name} watches`} href={"#"} className={`h-100 sm:w-[calc(100%-16px)] w-full flex flex-col justify-start items-start relative`} key={d.id}>
 								<div className="relative w-full h-full transition-long brightness-80 hover:brightness-100 overflow-hidden group">

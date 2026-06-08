@@ -27,30 +27,35 @@ export default function New() {
 
 	return (
 		<section className="flex-col justify-center items-start p-16 w-dvw">
-			<FadeInObserver>
-				<h1 className={`text-5xl font-secondary tracking-wide`}>
-					New <br />
-					Arrivals
-				</h1>
-			</FadeInObserver>
+			<div className="w-fit flex justify-center items-start flex-col">
+				<FadeInObserver>
+					<h1 className={`text-5xl font-secondary tracking-wide`}>
+						New <br />
+						Arrivals
+					</h1>
+				</FadeInObserver>
+			</div>
 			<br />
-			<FadeInObserver>
-				<p>Our curated collection of pre-owned and new watches is waiting for you.</p>
-			</FadeInObserver>
+			<div className="w-fit flex justify-center items-start flex-col">
+				<FadeInObserver>
+					<p>Our curated collection of pre-owned and new watches is waiting for you.</p>
+				</FadeInObserver>
+			</div>
 			<br />
+			<div className="w-fit flex justify-center items-start flex-col">
+				<FadeInObserver>
+					<Link aria-label="view all watches" href={"#"} className={`underline`}>
+						View all watches
+					</Link>
+				</FadeInObserver>
+			</div>
 			<FadeInObserver>
-				<Link aria-label="view all watches" href={"#"} className={`underline`}>
-					View all watches
-				</Link>
-			</FadeInObserver>
-
-			<FadeInObserver>
-				<div className={`my-5 w-[90dvw] translate-x-[-10dvw] sm:translate-x-0 sm-w-fit`}>
-					<List display={4}>
+				<div className={`my-5 w-[95dvw] sm-w-fit`}>
+					<List display={{ base: 1, sm: 2, md: 3, lg: 4 }}>
 						{data.map((d) => (
 							<Link aria-label={`${d.name}`} href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
 								<div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">
-									<Image src={d.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={d.name} className="object-cover select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
+									<Image src={d.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={d.name} className="object-contain select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50" />
 									<div className="sm:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
 										<button aria-label={`quick view ${d.name}`} type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
 											QUICK VIEW
