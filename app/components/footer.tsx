@@ -6,10 +6,10 @@ import Logo from "./svg/logo";
 
 export default function Footer() {
 	return (
-		<footer className="w-full py-8 sm:px-20 px-4 flex-center flex-col bg-background font-bold">
-			<section className="w-full sm:flex-row flex-col flex justify-between sm:items-center items-start">
-				<div className="flex flex-col justify-start items-start gap-4 my-5">
-					<Logo classnames={"sm:w-16 w-32"} />
+		<footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold">
+			<section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
+				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
+					<Logo classnames={"lg:w-16 w-32"} />
 					<ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
 						<li>Walther-von-Cronberg-Platz 18</li>
 						<li>60594 Frankfurt am Main</li>
@@ -19,8 +19,8 @@ export default function Footer() {
 						<li>info@timedriven.de</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 my-5">
-					<h5 className="sm:title5 title4">Shop</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
+					<h5 className="lg:title5 title4">Shop</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link aria-label="watches" href={"#"} className="underline">
@@ -44,8 +44,8 @@ export default function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 my-5">
-					<h5 className="sm:title5 title4">Service</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
+					<h5 className="lg:title5 title4">Service</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link aria-label="store" href={"#"} className="underline">
@@ -79,8 +79,8 @@ export default function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 my-5">
-					<h5 className="sm:title5 title4">Other Platforms</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
+					<h5 className="lg:title5 title4">Other Platforms</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link aria-label="visit chrono 24" href={"#"} className="underline flex justify-start items-center gap-4">
@@ -108,8 +108,8 @@ export default function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col justify-start items-start gap-4 my-5">
-					<h5 className="sm:title5 title4">Legal</h5>
+				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
+					<h5 className="lg:title5 title4">Legal</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
 							<Link aria-label="imprint" href={"#"} className="underline">
@@ -144,10 +144,10 @@ export default function Footer() {
 					</ul>
 				</div>
 			</section>
-			<section className="w-full sm:gap-0 gap-4 flex-col sm:flex-row flex justify-between items-center font-normal text-xs sm:tracking-normal tracking-wider">
+			<section className="w-full lg:gap-0 gap-4 flex-col lg:flex-row flex justify-between items-center font-normal text-xs lg:tracking-normal tracking-wider">
 				<p className="">Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.</p>
 				<p className="">©2026 Timedriven. All Rights Reserved.</p>
-				<div className="flex-center flex-wrap gap-4 sm:gap-3">
+				<div className="flex-center flex-wrap gap-4 lg:gap-3">
 					<Link aria-label="imprint" href={"#"} className="underline">
 						Imprint
 					</Link>

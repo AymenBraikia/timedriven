@@ -51,7 +51,7 @@ export default function New() {
 			</div>
 			<FadeInObserver>
 				<div className={`my-5 w-[95dvw] sm-w-fit`}>
-					<List display={{ base: 1, sm: 2, md: 3, lg: 4 }}>
+					<List display={{ base: 1, sm: 2, md: 2, lg: 4 }}>
 						{data.map((d) => (
 							<Link aria-label={`${d.name}`} href={"#"} className="aspect-2/3 sm:aspect-auto sm:h-150 w-full flex flex-col justify-start items-start transition-long group" key={d.id} onClick={() => innerWidth < 640 && set_view(d)}>
 								<div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">

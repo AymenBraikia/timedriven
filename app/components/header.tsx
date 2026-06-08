@@ -77,7 +77,7 @@ export default function Header() {
 				<button aria-label="menu" type="button" className="button2 float-anim" onClick={() => dispatch({ type: "OPEN_NAV" })}>
 					<MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
 				</button>
-				<div className="flex-center sm:hidden! gap-2">
+				<div className="flex-center lg:hidden! gap-2">
 					<label htmlFor="searchWatches">
 						<Search classnames="w-7 sm:w-5" clr={"currentColor"} />
 					</label>
@@ -92,7 +92,7 @@ export default function Header() {
 			</div>
 
 			<div className="flex justify-end items-center gap-2 w-1/3">
-				<div className="hidden sm:flex-center gap-2">
+				<div className="hidden lg:flex-center gap-2">
 					<label htmlFor="searchWatches">
 						<Search classnames="w-7 sm:w-5" clr={"currentColor"} />
 					</label>
