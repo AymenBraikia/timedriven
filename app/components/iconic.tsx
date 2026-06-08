@@ -10,7 +10,7 @@ const data = [
 	{ id: id++, src: "/brands/cartier.webp", name: "Cartier" },
 	{ id: id++, src: "/brands/iwc.webp", name: "IWC" },
 	{ id: id++, src: "/brands/omega.webp", name: "Omega" },
-	{ id: id++, src: "/brands/patek phillip.webp", name: "Patek Phillip" },
+	{ id: id++, src: "/brands/Patek Philippe.webp", name: "Patek Philippe" },
 	{ id: id++, src: "/brands/Rolex Oyster Perpetual 26.webp", name: "Rolex" },
 	{ id: id++, src: "/brands/zenith.webp", name: "Zenith" },
 ];
