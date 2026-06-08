@@ -166,14 +166,14 @@
 }
 
 @utility fade-out {
-  opacity: 0;
+  opacity: 0.01;
   transform: translateY(50px);
   animation: fade_out .8s ease 0s;
 }
 
 @keyframes fade_in {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translateY(50px);
   }
 
@@ -190,7 +190,7 @@
   }
 
   to {
-    opacity: 0;
+    opacity: 0.01;
     transform: translateY(50px);
   }
 
