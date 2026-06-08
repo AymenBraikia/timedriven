@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 		siteName: "TIMEDRIVEN",
 		images: [
 			{
-				url: "/new/rolex_daytona.webp",
+				url: "/banner.webp",
 				width: 1200,
 				height: 630,
 				alt: "TIMEDRIVEN Luxury Watch Collection",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "TIMEDRIVEN | High-End Luxury Watches",
 		description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
-		images: ["/new/rolex_daytona.webp"],
+		images: ["//banner.webp"],
 	},
 	robots: {
 		index: true,
