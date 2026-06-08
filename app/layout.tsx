@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { CartProvider } from "./components/cartContext";
 
 // [2] Automatically optimized, subsetted, and compressed to WOFF2 at build time
 const openSans = Open_Sans({
@@ -74,18 +75,20 @@ export default function RootLayout({
 						</filter>
 					</svg>
 
-					<Header />
-					<div className="min-h-full flex flex-col max-w-dvw overflow-x-hidden">
-						<style>{`
+					<CartProvider>
+						<Header />
+						<div className="min-h-full flex flex-col max-w-dvw overflow-x-hidden">
+							<style>{`
 							.liquid-glass {
 								backdrop-filter: url(#liquid-frosted) blur(4px);
 								-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
 								background-color: var(--clr-glass);
-							}
-						`}</style>
-						{children}
-						<Footer />
-					</div>
+								}
+								`}</style>
+							{children}
+							<Footer />
+						</div>
+					</CartProvider>
 				</ThemeProvider>
 			</body>
 		</html>

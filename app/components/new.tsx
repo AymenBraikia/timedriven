@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import FadeInObserver from "./fade_wrapper";
 import dynamic from "next/dynamic";
+import { useCart } from "./cartContext";
 
 const QuickViewModal = dynamic(() => import("./quick_view"), {
 	ssr: false,
@@ -23,7 +24,8 @@ const data = [
 ];
 
 export default function New() {
-	const [view, set_view] = useState<null | { price: number; src: string; name: string }>(null);
+	const [view, set_view] = useState<null | { price: number; src: string; name: string; id: number }>(null);
+	const { addToCart } = useCart();
 
 	return (
 		<section className="flex-col justify-center items-start p-16 w-dvw">
@@ -60,7 +62,12 @@ export default function New() {
 										<button aria-label={`quick view ${d.name}`} type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full" onClick={() => set_view(d)}>
 											QUICK VIEW
 										</button>
-										<button aria-label="add to cart" type="button" className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center">
+										<button
+											onClick={() => addToCart(d)}
+											aria-label="add to cart"
+											type="button"
+											className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center"
+										>
 											+
 										</button>
 									</div>
