@@ -10,7 +10,7 @@ export default function Footer() {
 			<section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
 				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
 					<HorizontalLogo classnames={"w-64"} />
-					<ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
+					<ul className="flex flex-col justify-start items-start gap-2 mr-[0.05rem] tracking-wider">
 						<li>Walther-von-Cronberg-Platz 18</li>
 						<li>60594 Frankfurt am Main</li>
 						<li>Germany</li>
@@ -144,7 +144,7 @@ export default function Footer() {
 					</ul>
 				</div>
 			</section>
-			<section className="w-full lg:gap-0 gap-4 flex-col lg:flex-row flex justify-between items-center font-normal text-xs lg:tracking-normal tracking-wider">
+			<section className="w-full lg:gap-0 gap-4 flex-col lg:flex-row flex justify-between items-center font-normal text-xs lg:tracking-normal lg:mr-0 mr-[0.05rem] tracking-wider">
 				<p className="">Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.</p>
 				<p className="">©2026 Timedriven. All Rights Reserved.</p>
 				<div className="flex-center flex-wrap gap-4 lg:gap-3">

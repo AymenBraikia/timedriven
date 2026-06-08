@@ -8,9 +8,9 @@ export default function Hero() {
 				Your browser does not support the video tag.
 			</video>
 			<div className="flex-center flex-col font-secondary fade-in">
-				<h1 className="sm:title1 title3 tracking-[0.8rem] ">TIMEDRIVEN</h1>
-				<h5 className="sm:title5 title6 tracking-wider">Your partner for high-end watches</h5>
-				<Link aria-label="discover" className="underline sm:title6 text-[18px] tracking-widest" href={"#"}>
+				<h1 className="sm:title1 title3 tracking-[0.8rem] mr-[0.8rem]">TIMEDRIVEN</h1>
+				<h5 className="sm:title5 title6 mr-[0.05rem] tracking-wider">Your partner for high-end watches</h5>
+				<Link aria-label="discover" className="underline sm:title6 text-[18px] mr-[0.1rem]" href={"#"}>
 					Discover
 				</Link>
 			</div>

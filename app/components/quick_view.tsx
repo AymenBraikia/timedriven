@@ -19,9 +19,11 @@ export default function QuickViewModal({ view, onClose, format }: QuickViewProps
 					<Image src={view.src} sizes="(maxWidth: 100dvw) 100vw, 100dvw" fill alt={view.name} className="object-cover select-none" />
 				</div>
 				<div className="flex flex-col justify-between items-start w-full h-1/2 lg:w-1/2 lg:h-full">
-					<h1 className="lg:title1 lg:tracking-widest title4 tracking-wider">{view.name}</h1>
-					<h4 className="lg:title4 lg:tracking-wider title5 tracking-wide">{format(view.price)}</h4>
-					<p className="text-secondary leading-8 tracking-wider">An extreme execution of mechanical weight and modern aesthetic layout. Encased in polished lightweight titanium alloys, featuring our caliber 4101 proprietary hand assembly.</p>
+					<h1 className="lg:title1 lg:mr-[0.1rem] title4 mr-[0.05rem] tracking-wider">{view.name}</h1>
+					<h4 className="lg:title4 lg:mr-[0.05rem] lg:tracking-wider title5 mr-[0.025rem] tracking-wide">{format(view.price)}</h4>
+					<p className="text-secondary leading-8 mr-[0.05rem] tracking-wider">
+						An extreme execution of mechanical weight and modern aesthetic layout. Encased in polished lightweight titanium alloys, featuring our caliber 4101 proprietary hand assembly.
+					</p>
 					<button onClick={() => addToCart(view)} aria-label="add to cart" type="button" className="button w-full">
 						ADD TO CART
 					</button>

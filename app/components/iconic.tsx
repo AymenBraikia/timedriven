@@ -20,7 +20,7 @@ export default function Iconic() {
 		<section className="flex-col justify-center items-start sm:p-16 p-4 w-dvw">
 			<div className="w-fit">
 				<FadeInObserver>
-					<h1 className={`text-5xl font-secondary tracking-wide`}>
+					<h1 className={`text-5xl font-secondary mr-[0.025rem] tracking-wide`}>
 						Iconic <br />
 						Brands
 					</h1>

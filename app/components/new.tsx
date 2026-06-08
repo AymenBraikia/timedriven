@@ -31,7 +31,7 @@ export default function New() {
 		<section className="flex-col justify-center items-start p-16 w-dvw">
 			<div className="w-fit flex justify-center items-start flex-col">
 				<FadeInObserver>
-					<h1 className={`text-5xl font-secondary tracking-wide`}>
+					<h1 className={`text-5xl font-secondary mr-[0.025rem] tracking-wide`}>
 						New <br />
 						Arrivals
 					</h1>
