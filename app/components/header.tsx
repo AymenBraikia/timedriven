@@ -60,31 +60,41 @@ export default function Header() {
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScroll = window.scrollY;
-
-			// Handle liquid-glass transition trigger directly here without an extra loop
 			if (currentScroll >= window.innerHeight) {
 				if (!ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: true });
 			} else if (ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: false });
 		};
 
 		const onTouchStart = (e: TouchEvent) => {
-			e.preventDefault();
 			const cartEl = cartRef.current;
 			const navEl = navRef.current;
 			if (!cartEl || !navEl) return;
 
 			const startX = e.touches[0].clientX;
+			const startY = e.touches[0].clientY; // Track Y to distinguish from vertical scrolling
+
 			cartEl.style.transition = "50ms ease";
 			navEl.style.transition = "50ms ease";
 
 			const handleMove = (moveEvent: TouchEvent) => {
-				const deltaX = moveEvent.touches[0].clientX - startX;
+				const currentX = moveEvent.touches[0].clientX;
+				const currentY = moveEvent.touches[0].clientY;
+
+				const deltaX = currentX - startX;
+				const deltaY = currentY - startY;
+
+				if (Math.abs(deltaX) > Math.abs(deltaY)) {
+					if (moveEvent.cancelable) {
+						moveEvent.preventDefault();
+					}
+				}
 
 				if (ui.isCartOpen) {
 					if (deltaX > 0) cartEl.style.transform = `translateX(${Math.abs(deltaX)}px)`;
 				} else {
 					if (ui.isNavOpen) {
-						if (deltaX > 0) navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
+						if (deltaX < 0) navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
+						// else navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`
 					} else {
 						if (deltaX < 0) cartEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
 						else navEl.style.transform = `translateX(${Math.abs(deltaX)}px)`;
@@ -98,17 +108,11 @@ export default function Header() {
 
 				cartEl.style.transition = "";
 				cartEl.style.transform = "";
-				
+
 				navEl.style.transition = "";
 				navEl.style.transform = "";
 
-				const finalDeltaX = endEvent.changedTouches[0].clientX - startX; // positive = to left | negtive = to right
-
-				// if (ui.isCartOpen) {
-				// 	if (finalDeltaX >= 80) dispatch({ type: "CLOSE_CART" });
-				// } else {
-				// 	if (finalDeltaX < -80) dispatch({ type: "OPEN_CART" });
-				// }
+				const finalDeltaX = endEvent.changedTouches[0].clientX - startX;
 
 				if (ui.isCartOpen) {
 					if (finalDeltaX > 80) dispatch({ type: "CLOSE_CART" });
@@ -122,19 +126,18 @@ export default function Header() {
 				}
 			};
 
-			window.addEventListener("touchmove", handleMove, { passive: true });
+			window.addEventListener("touchmove", handleMove, { passive: false });
 			window.addEventListener("touchend", handleEnd);
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
-		window.addEventListener("touchstart", onTouchStart, { passive: false });
+		window.addEventListener("touchstart", onTouchStart, { passive: true });
 
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("touchstart", onTouchStart);
 		};
 	}, [ui.isCartOpen, ui.isGlassy, ui.isNavOpen]);
-
 	return (
 		<header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-50 p-8 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white"}`}>
 			<div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
