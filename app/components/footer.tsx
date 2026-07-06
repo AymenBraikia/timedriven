@@ -23,22 +23,22 @@ export default function Footer() {
 					<h5 className="lg:title5 title4">Shop</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
-							<Link aria-label="watches" href={"#"} className="underline">
+							<Link aria-label="watches" href={"/info/shop"} className="underline">
 								Watches
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="spare parts" href={"#"} className="underline">
+							<Link aria-label="spare parts" href={"/info/spare"} className="underline">
 								Spare Parts
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="favorites" href={"#"} className="underline">
+							<Link aria-label="favorites" href={"/info/favorites"} className="underline">
 								Favorites
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="about us" href={"#"} className="underline">
+							<Link aria-label="about us" href={"/info/about"} className="underline">
 								About Us
 							</Link>
 						</li>
@@ -48,32 +48,32 @@ export default function Footer() {
 					<h5 className="lg:title5 title4">Service</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
-							<Link aria-label="store" href={"#"} className="underline">
+							<Link aria-label="store" href={"/info/store"} className="underline">
 								Store
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="sell or consign" href={"#"} className="underline">
+							<Link aria-label="sell or consign" href={"/info/sell"} className="underline">
 								Sell / Consign
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="polishing and services" href={"#"} className="underline">
+							<Link aria-label="polishing and services" href={"/info/polishing"} className="underline">
 								Polishing and Services
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="shipping and payments" href={"#"} className="underline">
+							<Link aria-label="shipping and payments" href={"/info/payments"} className="underline">
 								Shipping & Payments
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="Frequently Asked Questions" href={"#"} className="underline">
+							<Link aria-label="Frequently Asked Questions" href={"/info/faq"} className="underline">
 								FAQ
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="Vacancies" href={"#"} className="underline">
+							<Link aria-label="Vacancies" href={"/info/vacancies"} className="underline">
 								Vacancies
 							</Link>
 						</li>
@@ -112,32 +112,32 @@ export default function Footer() {
 					<h5 className="lg:title5 title4">Legal</h5>
 					<ul className="flex flex-col justify-start items-start gap-2">
 						<li>
-							<Link aria-label="imprint" href={"#"} className="underline">
+							<Link aria-label="imprint" href={"/info/imprint"} className="underline">
 								Imprint
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="privacy policiy" href={"#"} className="underline">
+							<Link aria-label="privacy policiy" href={"/info/policy"} className="underline">
 								Privacy Policy
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="terms of use" href={"#"} className="underline">
+							<Link aria-label="terms of use" href={"/info/terms"} className="underline">
 								Terms
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="withdrawal" href={"#"} className="underline">
+							<Link aria-label="withdrawal" href={"/info/withdraw"} className="underline">
 								Withdrawal
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="disclaimer" href={"#"} className="underline">
+							<Link aria-label="disclaimer" href={"/info/disclaimer"} className="underline">
 								Disclaimer
 							</Link>
 						</li>
 						<li>
-							<Link aria-label="cookies policy" href={"#"} className="underline">
+							<Link aria-label="cookies policy" href={"/info/cookies"} className="underline">
 								Cookie Policy
 							</Link>
 						</li>
@@ -148,22 +148,22 @@ export default function Footer() {
 				<p className="">Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.</p>
 				<p className="">©2026 Timedriven. All Rights Reserved.</p>
 				<div className="flex-center flex-wrap gap-4 lg:gap-3">
-					<Link aria-label="imprint" href={"#"} className="underline">
+					<Link aria-label="imprint" href={"/info/imprint"} className="underline">
 						Imprint
 					</Link>
-					<Link aria-label="privacy policy" href={"#"} className="underline">
+					<Link aria-label="privacy policy" href={"/info/policy"} className="underline">
 						Privacy Policy
 					</Link>
-					<Link aria-label="terms of use" href={"#"} className="underline">
+					<Link aria-label="terms of use" href={"/info/terms"} className="underline">
 						Terms
 					</Link>
-					<Link aria-label="withdrawal" href={"#"} className="underline">
+					<Link aria-label="withdrawal" href={"/info/withdraw"} className="underline">
 						Withdrawal
 					</Link>
-					<Link aria-label="disclaimer" href={"#"} className="underline">
+					<Link aria-label="disclaimer" href={"/info/disclaimer"} className="underline">
 						Disclaimer
 					</Link>
-					<Link aria-label="cookies policy" href={"#"} className="underline">
+					<Link aria-label="cookies policy" href={"/info/cookies"} className="underline">
 						Cookie Policy
 					</Link>
 				</div>

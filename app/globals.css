@@ -1,252 +1,294 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --selection: #00000033;
+    --background: #ffffff;
+    --foreground: #171717;
+    --selection: #00000033;
 
-  --clr-primary: #000000;
-  --clr-secondary: #323232;
+    --clr-primary: #000000;
+    --clr-secondary: #323232;
 
-  --bg-primary: rgb(225, 225, 225);
-  --bg-secondary: rgb(200, 200, 200);
+    --bg-primary: rgb(225, 225, 225);
+    --bg-secondary: rgb(200, 200, 200);
 
-  /* --clr-glass: rgba(50, 50, 50, 0.1); */
-  --clr-glass: rgba(50, 50, 50, 0);
-  --border-glass: linear-gradient(45deg, #32323266, #19191966);
+    /* --clr-glass: rgba(50, 50, 50, 0.1); */
+    --clr-glass: rgba(50, 50, 50, 0);
+    --border-glass: linear-gradient(45deg, #32323266, #19191966);
 
-  --transition: .3s ease;
-  --transition-long: .8s ease-in-out;
+    --transition: 0.3s ease;
+    --transition-long: 0.8s ease-in-out;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-open-sans), sans-serif;
-  --font-secondary: var(--font-gelasio), sans-serif;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-open-sans), sans-serif;
+    --font-secondary: var(--font-gelasio), sans-serif;
 
-  --color-primary: var(--clr-primary);
-  --color-secondary: var(--clr-secondary);
+    --color-primary: var(--clr-primary);
+    --color-secondary: var(--clr-secondary);
 
-  --background-primary: var(--bg-primary);
-  --background-secondary: var(--bg-secondary);
+    --background-primary: var(--bg-primary);
+    --background-secondary: var(--bg-secondary);
 
-  --color-glass: var(--clr-glass);
+    --color-glass: var(--clr-glass);
 }
 
 @utility font-secondary {
-  font-family: var(--font-gelasio), sans-serif;
+    font-family: var(--font-gelasio), sans-serif;
 }
 
 @utility flex-center {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 @utility flex-start {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 @utility flex-end {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 @utility transition-default {
-  transition: var(--transition);
+    transition: var(--transition);
 }
 
 @utility transition-long {
-  transition: var(--transition-long);
+    transition: var(--transition-long);
 }
 
 @utility title1 {
-  font-size: 40px;
-  font-weight: 900;
+    font-size: 40px;
+    font-weight: 900;
 }
 
 @utility title2 {
-  font-size: 36px;
-  font-weight: 800;
+    font-size: 36px;
+    font-weight: 800;
 }
 
 @utility title3 {
-  font-size: 32px;
-  font-weight: 700;
+    font-size: 32px;
+    font-weight: 700;
 }
 
 @utility title4 {
-  font-size: 28px;
-  font-weight: 600;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 @utility title5 {
-  font-size: 24px;
-  font-weight: 500;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 @utility title6 {
-  font-size: 20px;
-  font-weight: 400;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 @utility disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@utility list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 14px;
+    list-style-position: inside;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 14px;
+    list-style-position: inside;
+}
+
+td,
+th {
+    border: 2px solid var(--foreground);
+    text-align: left;
+    padding: 8px;
+}
+table{
+    border-collapse: collapse;
+    background-color: var(--background);
 }
 
 @utility button {
-  color: var(--clr-primary);
-  background-color: var(--bg-primary);
-  font-weight: 600;
-  opacity: 1;
+    color: var(--clr-primary);
+    background-color: var(--bg-primary);
+    font-weight: 600;
+    opacity: 1;
 
-  width: fit-content;
-  padding: 16px;
+    width: fit-content;
+    padding: 16px;
 
-  user-select: none;
-  cursor: pointer;
-  transition: var(--transition);
+    user-select: none;
+    cursor: pointer;
+    transition: var(--transition);
 
-  &:hover {
-    background-color: var(--bg-secondary);
-  }
+    &:hover {
+        background-color: var(--bg-secondary);
+    }
 
-  &:active {
-    transform: scale(0.95);
-  }
+    &:active {
+        transform: scale(0.95);
+    }
 }
 
 @utility button2 {
-  color: var(--clr-primary);
-  background-color: transparent;
-  font-weight: 600;
-  opacity: 1;
+    color: var(--clr-primary);
+    background-color: transparent;
+    font-weight: 600;
+    opacity: 1;
 
-  width: fit-content;
-  padding: 16px;
+    width: fit-content;
+    padding: 16px;
 
-  user-select: none;
-  cursor: pointer;
-  transition: var(--transition);
+    user-select: none;
+    cursor: pointer;
+    transition: var(--transition);
 
-  &:hover {
-    background-color: var(--bg-primary);
-  }
+    &:hover {
+        background-color: var(--bg-primary);
+    }
 
-  &:active {
-    transform: scale(0.95);
-  }
+    &:active {
+        transform: scale(0.95);
+    }
 }
 
-
-
-
 @utility liquid-glass {
-  backdrop-filter: url(#liquid-frosted) blur(4px);
-  -webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
-  background-color: var(--clr-glass);
+    backdrop-filter: url(#liquid-frosted) blur(4px);
+    -webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
+    background-color: var(--clr-glass);
 }
 
 @utility frost {
-  background-color: var(--clr-glass);
-  backdrop-filter: blur(15px);
+    background-color: var(--clr-glass);
+    backdrop-filter: blur(15px);
 }
 
-
 @utility fade-in {
-
-  opacity: 1;
-  transform: translateY(0);
-  animation: fade_in .8s ease 0s;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fade_in 0.8s ease 0s;
 }
 
 @utility fade-out {
-  opacity: 0.01;
-  transform: translateY(50px);
-  animation: fade_out .8s ease 0s;
+    opacity: 0.01;
+    transform: translateY(50px);
+    animation: fade_out 0.8s ease 0s;
 }
 
 @keyframes fade_in {
-  from {
-    opacity: 0.01;
-    transform: translateY(50px);
-  }
+    from {
+        opacity: 0.01;
+        transform: translateY(50px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fade_out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-  to {
-    opacity: 0.01;
-    transform: translateY(50px);
-  }
-
+    to {
+        opacity: 0.01;
+        transform: translateY(50px);
+    }
 }
 
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 24px;
+}
+
+h6 {
+    font-size: 20px;
+}
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --selection: #ffffff33;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --selection: #ffffff33;
 
-  --clr-primary: white;
-  --clr-secondary: #c8c8c8;
+    --clr-primary: white;
+    --clr-secondary: #c8c8c8;
 
-  --bg-primary: rgb(25, 25, 25);
-  --bg-secondary: rgb(50, 50, 50);
+    --bg-primary: rgb(25, 25, 25);
+    --bg-secondary: rgb(50, 50, 50);
 
-  /* --clr-glass: rgba(200, 200, 200, 0.1); */
-  --clr-glass: rgba(200, 200, 200, 0);
-  --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
+    /* --clr-glass: rgba(200, 200, 200, 0.1); */
+    --clr-glass: rgba(200, 200, 200, 0);
+    --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-open-sans);
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-open-sans);
 
-  /* Prevents horizontal edge-swiping from triggering history back/forward graphics */
-  overscroll-behavior-x: none;
+    /* Prevents horizontal edge-swiping from triggering history back/forward graphics */
+    overscroll-behavior-x: none;
 
-  /* Tells the browser to only process vertical scrolling natively */
-  touch-action: pan-y;
+    /* Tells the browser to only process vertical scrolling natively */
+    touch-action: pan-y;
 }
 
 ::selection {
-  background-color: var(--selection);
+    background-color: var(--selection);
 }
 
 html,
 body,
 * {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
 }

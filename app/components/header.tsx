@@ -155,7 +155,7 @@ export default function Header() {
 			</div>
 
 			<div className="w-1/3 flex-center">
-				<Link aria-label="home page" href={"#"}>
+				<Link aria-label="home page" href={"/"}>
 					<Logo classnames="w-20 sm:w-25" />
 				</Link>
 			</div>
