@@ -1,38 +1,70 @@
-import Link from "next/link";
-
 export default function AboutPage() {
     return (
         <div className="flex justify-center items-start flex-col w-full gap-10 py-20">
-            <h1>About Us</h1>
-            <div className="flex justify-center items-start flex-col gap-6 text-[14px]">
-                <p>
-                    Our story began with a spark—an elegant timepiece worn by a legendary British agent that ignited a lifelong passion in our founder, Frederik Schlüter. This fascination with horology transformed Frederik from a young
-                    enthusiast into a distinguished dealer of high-end timepieces. In 2019, while pursuing his degree in mechanical engineering, he established the company originally known as FFSWATCHES, channeling his obsession into a
-                    thriving business dedicated to iconic wristwatches.
-                </p>
-                <p className="text-[16px] font-medium">
-                    At Timedriven, we are your trusted experts for exquisite timepieces both new and pre-owned. Our expertise is driven by passion: we offer only the finest timepieces, each one a piece we would proudly wear ourselves. Our
-                    in-house watchmaker meticulously inspects every watch to ensure its authenticity and optimal performance, providing you with confidence in your purchase.
-                </p>
-                <div>
-                    <p>Our team and in-house watch maker meticulously inspects every watch before selling it to guarantee its authenticity and performance.</p>
-                    <br />
-                    <p>Looking to add to your collection? We offer an impressive selection of prestigious brands.</p>
-                    <br />
-                    <p>Our brands: Rolex, Cartier, Audemars Piguet, Patek Philippe, Omega, Tudor, IWC, Glashütte, Breitling and more</p>
-                </div>
-                <p>
-                    Do you have a piece you’d like to sell? We are always on the lookout for exceptional watches. Whether you wish to sell outright or consign your timepiece, we offer seamless and trustworthy solutions tailored to your
-                    needs.
-                </p>
-                <div className="flex flex-col gap-4">
-                    <Link href="/sell" className="underline">
-                        Sell your watch
-                    </Link>
-                    <Link href="/consignment" className="underline">
-                        Consignment
-                    </Link>
-                </div>
+            <h1>Right of Withdrawal</h1>
+
+            <div className="flex justify-center items-start flex-col gap-6 text-[14px] w-full max-w-3xl">
+                <p>Right of withdrawal for customers of the online webshop www.timedriven.de.</p>
+
+                <h4 className="font-semibold">Right of withdrawal</h4>
+                <ol className="list-decimal list-inside ml-4">
+                    <li>If the customer is a consumer (as defined in our T&C) and has entered a distance agreement or an agreement as stated in section 3.2 BGB with Timedriven, Frederik Schlüter then holds:</li>
+                    <li>The consumer has 14 days from product receipt date to withdraw from the agreement without giving any reason.</li>
+                    <li>
+                        To exercise the right of withdrawal the consumer must inform us (Frederik Schlüter, Walther-von-Cronberg-Platz 18, 60594 Frankfurt am Main, info@timedriven.de, +49 (0) 152 5544 3810) in writing with a clear
+                        declaration of withdrawal by e‑mail or by sending us a letter to the above mentioned address. To meet the deadline it is sufficient to submit the clear declaration of withdrawal within the cancellation period.
+                    </li>
+                </ol>
+
+                <h4 className="font-semibold">Consequences of withdrawal</h4>
+                <ol className="list-decimal list-inside ml-4">
+                    <li>
+                        If you revoke this contract, we shall reimburse you for all payments we have received from you, including delivery costs (except additional costs resulting from choosing a type of delivery other than the least
+                        expensive standard delivery offered by us), without undue delay and in any event not later than fourteen days from the day on which we receive the notification of your withdrawal.
+                    </li>
+                    <li>
+                        You must return the goods to us immediately and in any event no later than fourteen days from the day on which you notify us of the withdrawal. You will only have to pay for any loss in value of the goods that is due
+                        to handling other than what is necessary to establish the nature, characteristics and functioning of the goods.
+                    </li>
+                </ol>
+
+                <h4 className="font-semibold">Withdrawal form</h4>
+                <p className="ml-4">(If you want to withdraw from the contract, please complete and return this form.)</p>
+
+                <form className="w-full mt-4 flex flex-col gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                        <div>
+                            <label className="block text-sm font-medium">Order number</label>
+                            <input required type="text" className="outline-none mt-1 block w-full border-b border-gray-300 px-3 py-2" name="orderNumber" />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium">Email</label>
+                            <input required type="email" className="outline-none mt-1 block w-full border-b border-gray-300 px-3 py-2" name="email" />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                        <div>
+                            <label className="block text-sm font-medium">First name</label>
+                            <input required type="text" className="outline-none mt-1 block w-full border-b border-gray-300 px-3 py-2" name="firstName" />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium">Last name</label>
+                            <input required type="text" className="outline-none mt-1 block w-full border-b border-gray-300 px-3 py-2" name="lastName" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium">Comment (optional)</label>
+                        <textarea className="outline-none mt-1 block w-full border border-gray-300 rounded px-3 py-2" rows={4} name="comment" />
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                        <button type="submit" className="button px-4 py-2 rounded cursor-pointer">
+                            Confirm withdrawal
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
