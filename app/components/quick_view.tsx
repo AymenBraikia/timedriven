@@ -16,7 +16,7 @@ export default function QuickViewModal({ view, onClose, format }: QuickViewProps
 		<div tabIndex={0} role="dialog" className="fixed left-0 top-0 w-dvw h-dvh bg-black/50 fade-in flex-center z-10" onClick={(e) => e.target === e.currentTarget && onClose()}>
 			<div className="w-full h-[calc(100%-100px)] translate-y-12.5 p-4 lg:translate-y-0 lg:w-3/5 lg:h-150 lg:min-h-100 lg:p-16 flex-center flex-col lg:flex-row gap-16 font-secondary bg-background relative">
 				<div className="relative w-full h-1/2 lg:w-1/2 lg:h-full">
-					<Image src={view.src} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" fill alt={view.name} className="object-cover select-none" />
+					<Image src={view.src} sizes="(max-width: 1200px) 100vw, 50vw" fill alt={view.name} className="object-cover select-none" />
 				</div>
 				<div className="flex flex-col justify-between items-start w-full h-1/2 lg:w-1/2 lg:h-full">
 					<h1 className="lg:title1 lg:mr-[0.1rem] title4 mr-[0.05rem] tracking-wider">{view.name}</h1>

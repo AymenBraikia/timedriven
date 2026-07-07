@@ -13,10 +13,9 @@ export default function Body() {
 		<div className="flex-col flex-center w-full">
 			<Hero />
 
-			<div className="mt-[100dvh] flex-col flex-center w-full bg-background">
+			<div className="mt-[100dvh] flex-col flex-center w-full bg-background z-10">
 				<New />
 
-				{/* The wrapper handles the visibility hook; the content inside is server-rendered */}
 				<FadeInObserver>
 					<div className="flex-center flex-col md:flex-row h-100 gap-5 md:h-50 md:gap-20 overflow-hidden text-center relative">
 						<p className="text-6xl mr-[0.05rem] tracking-wider">Get Inspired</p>
@@ -30,7 +29,6 @@ export default function Body() {
 					</div>
 				</FadeInObserver>
 
-				{/* You can wrap these components individually if they should fade in separately */}
 				<Iconic />
 				<Services />
 				<Booking />

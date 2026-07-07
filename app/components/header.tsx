@@ -71,7 +71,7 @@ export default function Header() {
 			if (!cartEl || !navEl) return;
 
 			const startX = e.touches[0].clientX;
-			const startY = e.touches[0].clientY; // Track Y to distinguish from vertical scrolling
+			const startY = e.touches[0].clientY; 
 
 			cartEl.style.transition = "50ms ease";
 			navEl.style.transition = "50ms ease";
@@ -94,7 +94,6 @@ export default function Header() {
 				} else {
 					if (ui.isNavOpen) {
 						if (deltaX < 0) navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
-						// else navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`
 					} else {
 						if (deltaX < 0) cartEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
 						else navEl.style.transform = `translateX(${Math.abs(deltaX)}px)`;
@@ -139,7 +138,7 @@ export default function Header() {
 		};
 	}, [ui.isCartOpen, ui.isGlassy, ui.isNavOpen]);
 	return (
-		<header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-50 p-8 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white"}`}>
+		<header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-40 p-8 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white backdrop-blur-md"}`}>
 			<div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
 
 			<div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"}`}>

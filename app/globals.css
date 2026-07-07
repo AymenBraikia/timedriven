@@ -125,6 +125,12 @@ table{
     background-color: var(--background);
 }
 
+img{
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+}
+
 @utility button {
     color: var(--clr-primary);
     background-color: var(--bg-primary);

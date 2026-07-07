@@ -6,7 +6,7 @@ import HorizontalLogo from "./svg/logo_horizontal";
 
 export default function Footer() {
 	return (
-		<footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold">
+		<footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold z-50">
 			<section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
 				<div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
 					<HorizontalLogo classnames={"w-64"} />

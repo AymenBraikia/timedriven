@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Arrow from "./svg/arrow";
 
-export default function Dropdown({ children, titles }: { children: React.ReactNode[] | React.ReactNode; titles: string[] }) {
+export default function Dropdown({ children, titles }: { children: React.ReactNode[] | React.ReactNode; titles: string | string[] }) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    return (
+    const [IsActive, setIsActive] = useState<boolean>(false);
+    
+
+    return Array.isArray(titles) ? (
         <div className="w-full bg-background">
             {titles.map((title, index) => (
                 <div key={title + index} className={`w-full flex flex-col gap-2 border-b-2 py-4`}>
@@ -15,6 +18,15 @@ export default function Dropdown({ children, titles }: { children: React.ReactNo
                     <div className={`w-full overflow-hidden ml-6 pr-6 max-h-250 ${activeIndex == index ? "flex" : "hidden"}`}>{Array.isArray(children) ? children[index] : children}</div>
                 </div>
             ))}
+        </div>
+    ) : (
+        <div className="w-full bg-background">
+            <div className={`w-full flex flex-col gap-2 border-b-2 py-4`}>
+                <div className="w-full flex justify-start items-center gap-2" onClick={() => setIsActive(!IsActive)}>
+                    <Title title={titles} active={IsActive} />
+                </div>
+                <div className={`w-full overflow-hidden max-h-250 ${IsActive ? "flex" : "hidden"}`}>{Array.isArray(children) ? <div className="w-full flex-center flex-col gap-4">{children}</div> : children}</div>
+            </div>
         </div>
     );
 }

@@ -11,7 +11,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
 	return (
 		<div
 			ref={ref}
-			className={`liquid-glass w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-16 md:p-16 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+			className={`liquid-glass z-50 backdrop-blur-xl w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-16 md:p-16 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
 			onClick={(e) => e.stopPropagation()}
 		>
 			<div className="flex justify-between items-center w-full h-1/10">
@@ -27,7 +27,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
 						{cart.map((i) => (
 							<div className="flex-center w-full gap-4" key={i.name}>
 								<div className="relative w-1/4 aspect-square">
-									<Image src={i.src} alt={i.name} sizes="(max-width: 20dvw) 20vw, 20dvw" className="object-cover object-center select-none" fill></Image>
+									<Image src={i.src} alt={i.name} sizes="(max-width: 20dvw) 20vw, 30dvw" className="object-cover object-center select-none" fill></Image>
 								</div>
 								<div className="w-3/4 h-full">
 									<p>{i.name}</p>
