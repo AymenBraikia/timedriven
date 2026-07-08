@@ -3,6 +3,7 @@ import Image from "next/image";
 import Dropdown from "../components/dropdown";
 import CheckBox from "../components/elements/checkbox";
 import { useState } from "react";
+import Watch_card from "../components/watch_card";
 
 const dummyWatches = [
     {
@@ -315,28 +316,18 @@ export default function ShopPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                             {filteredWatches.length > 0 ? (
                                 filteredWatches.map((watch) => (
-                                    <article key={watch.id} className="group overflow-hidden  border border-[#e9e9e9] bg-white shadow-sm transition-default hover:-translate-y-1">
-                                        <div className="aspect-4/3 bg-slate-100 flex items-center justify-center text-sm text-slate-500">[Watch Image]</div>
-                                        <div className="p-5">
-                                            <span className="text-xs uppercase tracking-[0.3em] text-slate-500">{watch.brand}</span>
-                                            <h3 className="mt-3 text-lg font-semibold text-foreground">{watch.name}</h3>
-                                            <p className="mt-2 text-sm leading-6 text-slate-600">{watch.description}</p>
-                                            <div className="mt-3 space-y-1 text-xs text-slate-500">
-                                                <p>
-                                                    Movement: {watch.movement} • Size: {watch.size}
-                                                </p>
-                                                <p>
-                                                    Material: {watch.material} • Condition: {watch.condition}
-                                                </p>
-                                            </div>
-                                            <div className="mt-5 flex items-center justify-between gap-4">
-                                                <span className="text-base font-semibold text-foreground">€{watch.price.toLocaleString()}</span>
-                                                <button type="button" className=" border  px-5 py-3 text-sm font-semibold transition-default hover:bg-slate-50">
-                                                    View
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </article>
+                                    <Watch_card
+                                        brand={watch.brand}
+                                        condition={watch.condition}
+                                        description={watch.description}
+                                        material={watch.material}
+                                        movement={watch.movement}
+                                        name={watch.name}
+                                        price={watch.price}
+                                        size={watch.size}
+                                        key={watch.id}
+                                        image_src="/new/rolex_daytona.webp"
+                                    />
                                 ))
                             ) : (
                                 <div className="col-span-full text-center py-12">
