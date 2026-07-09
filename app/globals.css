@@ -247,8 +247,8 @@ h6 {
 }
 
 .dark {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
     --selection: #ffffff33;
 
     --clr-primary: white;
