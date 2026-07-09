@@ -44,7 +44,7 @@ export default function New() {
 			</div>
 			<div className="w-fit flex justify-center items-start flex-col">
 				<FadeInObserver>
-					<Link aria-label="view all watches" href={"#"} className={`underline`}>
+					<Link aria-label="view all watches" href={"/shop"} className={`underline`}>
 						View all watches
 					</Link>
 				</FadeInObserver>

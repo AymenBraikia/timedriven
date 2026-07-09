@@ -4,6 +4,11 @@ import Dropdown from "../components/dropdown";
 import CheckBox from "../components/elements/checkbox";
 import { useState } from "react";
 import Watch_card from "../components/watch_card";
+import dynamic from "next/dynamic";
+
+const QuickViewModal = dynamic(() => import("../components/quick_view"), {
+    ssr: false,
+});
 
 const dummyWatches = [
     {
@@ -17,6 +22,7 @@ const dummyWatches = [
         size: "Medium",
         material: "Stainless Steel",
         color: "Black",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 2,
@@ -29,6 +35,7 @@ const dummyWatches = [
         size: "Medium",
         material: "Stainless Steel",
         color: "Blue",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 3,
@@ -41,6 +48,7 @@ const dummyWatches = [
         size: "Medium",
         material: "Stainless Steel",
         color: "White",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 4,
@@ -53,6 +61,7 @@ const dummyWatches = [
         size: "Small",
         material: "Gold",
         color: "White",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 5,
@@ -65,6 +74,7 @@ const dummyWatches = [
         size: "Large",
         material: "Stainless Steel",
         color: "Black",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 6,
@@ -77,6 +87,7 @@ const dummyWatches = [
         size: "Medium",
         material: "Stainless Steel",
         color: "Green",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 7,
@@ -89,6 +100,7 @@ const dummyWatches = [
         size: "Medium",
         material: "Platinum",
         color: "White",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 8,
@@ -101,6 +113,7 @@ const dummyWatches = [
         size: "Small",
         material: "Stainless Steel",
         color: "Black",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 9,
@@ -113,6 +126,7 @@ const dummyWatches = [
         size: "Large",
         material: "Titanium",
         color: "Black",
+        img_src: "/new/rolex_daytona.webp",
     },
     {
         id: 10,
@@ -125,10 +139,12 @@ const dummyWatches = [
         size: "Medium",
         material: "Stainless Steel",
         color: "Blue",
+        img_src: "/new/rolex_daytona.webp",
     },
 ];
 
 export default function ShopPage() {
+    const [view, set_view] = useState<null | { price: number; src: string; name: string; id: number }>(null);
     const [filters, set_filters] = useState({
         brands: {
             Rolex: false,
@@ -316,28 +332,38 @@ export default function ShopPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                             {filteredWatches.length > 0 ? (
                                 filteredWatches.map((watch) => (
-                                    <Watch_card
-                                        brand={watch.brand}
-                                        condition={watch.condition}
-                                        description={watch.description}
-                                        material={watch.material}
-                                        movement={watch.movement}
-                                        name={watch.name}
-                                        price={watch.price}
-                                        size={watch.size}
-                                        key={watch.id}
-                                        image_src="/new/rolex_daytona.webp"
-                                    />
+                                    <div key={watch.id} onClick={() => set_view({ price: watch.price, src: watch.img_src, id: watch.id, name: watch.name })}>
+                                        <Watch_card
+                                            brand={watch.brand}
+                                            condition={watch.condition}
+                                            description={watch.description}
+                                            material={watch.material}
+                                            movement={watch.movement}
+                                            name={watch.name}
+                                            price={watch.price}
+                                            size={watch.size}
+                                            image_src={watch.img_src}
+                                        />
+                                    </div>
                                 ))
                             ) : (
-                                <div className="col-span-full text-center py-12">
-                                    <p className="text-slate-500">No watches match your filters. Try adjusting your selection.</p>
+                                <div className="text-center py-12">
+                                    <p className="text-secondary">No watches match your filters. Try adjusting your selection.</p>
                                 </div>
                             )}
                         </div>
                     </main>
                 </div>
             </div>
+            {view && <QuickViewModal view={view} onClose={() => set_view(null)} format={format} />}
         </section>
     );
+}
+
+const intl = new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "EUR",
+});
+function format(n: number): string {
+    return intl.format(n);
 }
