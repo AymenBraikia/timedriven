@@ -34,7 +34,7 @@ export default function List({ children, display }: { children: React.ReactNode;
             setCurrentDisplay(computed);
         };
 
-        handleResize(); 
+        handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, [display]);
@@ -104,7 +104,7 @@ export default function List({ children, display }: { children: React.ReactNode;
         <div className="relative w-full h-full overflow-hidden flex items-start justify-center flex-col gap-4">
             <div
                 onTransitionEnd={handleTransitionEnd}
-                className={`flex gap-4 w-full ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
+                className={`flex gap-4 w-full h-full ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
                 style={{
                     transform: `translateX(-${swipe * (100 / currentDisplay)}%)`,
                 }}

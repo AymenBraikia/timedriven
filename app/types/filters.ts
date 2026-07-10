@@ -69,8 +69,8 @@ export default interface filters_type {
         White: boolean;
     };
     condition: {
-        new: boolean;
-        preOwned: boolean;
+        New: boolean;
+        "Pre-Owned": boolean;
     };
     caseSize: {
         min: number;

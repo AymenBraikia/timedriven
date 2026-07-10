@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Watch_card from "@/app/components/watch_card";
 import dynamic from "next/dynamic";
 
@@ -13,7 +13,7 @@ const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
 });
 
 export default function Watches_list({ watches }: { watches: Watch[] }) {
-    const [view, set_view] = useState<null | { price: number; src: string; name: string; id: number | string }>(null);
+    const [view, set_view] = useState<null | { price: number; src: string[]; name: string; id: number | string }>(null);
     const [filters, set_filters] = useState<filters_type>({
         brands: {
             "Audemars Piguet": false,
@@ -85,8 +85,8 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
             White: false,
         },
         condition: {
-            new: false,
-            preOwned: false,
+            New: false,
+            "Pre-Owned": false,
         },
         caseSize: {
             min: 30,
@@ -107,15 +107,41 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
             max: 1e5,
         },
     });
+    const [applyFilters, set_applyFilters] = useState<boolean>(false);
 
     const filteredWatches = watches.filter((watch) => {
-        return true;
+        for (const b in filters.brands) if (b == watch.brand) if (filters.brands[b as keyof typeof filters.brands]) return true;
+        for (const b in filters.movement) if (b == watch.movement) if (filters.movement[b as keyof typeof filters.movement]) return true;
+        for (const b in filters.condition) if (b == watch.condition) if (filters.condition[b as keyof typeof filters.condition]) return true;
+        for (const b in filters.material) if (b == watch.caseMaterial) if (filters.material[b as keyof typeof filters.material]) return true;
+        for (const b in filters.color) if (b == watch.dialColor) if (filters.color[b as keyof typeof filters.color]) return true;
+
+        return !applyFilters;
     });
 
     return (
         <>
             <div className="w-full h-fit flex justify-center items-start gap-32">
-                <Filters filters={filters} onFiltersChange={(f) => set_filters(f)} />
+                <Filters
+                    set_applyFilters={set_applyFilters}
+                    filters={filters}
+                    onFiltersChange={(newFilters) => {
+                        let apply = false;
+                        for (const f in newFilters)
+                            if (apply) break;
+                            else {
+                                const filter_type = newFilters[f as keyof typeof newFilters];
+                                for (const value in filter_type)
+                                    if (filter_type[value as keyof typeof filter_type] && typeof filter_type[value as keyof typeof filter_type] == "boolean") {
+                                        apply = true;
+                                        break;
+                                    }
+                            }
+
+                        set_applyFilters(apply);
+                        set_filters(newFilters);
+                    }}
+                />
                 <div className="flex-center flex-col">
                     <div className="w-full py-4 flex justify-between items-start">
                         <div className="w-fit flex justify-start items-start flex-col gap-4">
@@ -129,10 +155,18 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
                                 Sort
                             </label>
                             <select id="sort" className="outline-0 pr-4">
-                                <option className="text-gray-400" value="Newest">Newest</option>
-                                <option className="text-gray-400" value="Price low to high">Price low to high</option>
-                                <option className="text-gray-400" value="Price high to low">Price high to low</option>
-                                <option className="text-gray-400" value="Brand">Brand</option>
+                                <option className="text-gray-400" value="Newest">
+                                    Newest
+                                </option>
+                                <option className="text-gray-400" value="Price low to high">
+                                    Price low to high
+                                </option>
+                                <option className="text-gray-400" value="Price high to low">
+                                    Price high to low
+                                </option>
+                                <option className="text-gray-400" value="Brand">
+                                    Brand
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -140,11 +174,7 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
                     <div className="flex justify-center items-start gap-4 flex-wrap w-full bg-background">
                         {filteredWatches.length > 0 ? (
                             filteredWatches.map((watch) => (
-                                <div
-                                    key={watch.slug}
-                                    onClick={() => set_view({ price: watch.price, src: watch.images[0] || "/new/rolex_daytona.webp", id: watch.slug, name: watch.brand + " " + watch.model })}
-                                    className="cursor-pointer w-[calc(33%-8px)]"
-                                >
+                                <div key={watch.slug} onClick={() => set_view({ price: watch.price, src: watch.images, id: watch.slug, name: watch.brand + " " + watch.model })} className="cursor-pointer w-[calc(33%-8px)]">
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}
@@ -154,7 +184,7 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
                                         name={watch.brand + " " + watch.model}
                                         price={watch.price}
                                         size={watch.size}
-                                        image_src={watch.images[0] || "/new/rolex_daytona.webp"}
+                                        image_src={watch.images[0]}
                                     />
                                 </div>
                             ))
@@ -171,7 +201,7 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
     );
 }
 
-function Filters({ filters, onFiltersChange }: { filters: filters_type; onFiltersChange: (filters: filters_type) => void }) {
+function Filters({ filters, set_applyFilters, onFiltersChange }: { filters: filters_type; set_applyFilters: Dispatch<SetStateAction<boolean>>; onFiltersChange: (filters: filters_type) => void }) {
     const handleBrandChange = (brand: keyof typeof filters.brands) => {
         onFiltersChange({
             ...filters,
@@ -211,13 +241,11 @@ function Filters({ filters, onFiltersChange }: { filters: filters_type; onFilter
         <aside className="flex flex-col gap-6 w-fit min-w-50">
             <Dropdown
                 titles="Brands"
-                children={Object.keys(filters.brands)
-                    .slice(0, 7)
-                    .map((brand) => (
-                        <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={brand} onClick={() => handleBrandChange(brand as keyof typeof filters.brands)}>
-                            <CheckBox label={brand} active={filters.brands[brand as keyof typeof filters.brands]} />
-                        </div>
-                    ))}
+                children={Object.keys(filters.brands).map((brand) => (
+                    <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={brand} onClick={() => handleBrandChange(brand as keyof typeof filters.brands)}>
+                        <CheckBox label={brand} active={filters.brands[brand as keyof typeof filters.brands]} />
+                    </div>
+                ))}
             />
             <Dropdown
                 titles="Movement"
