@@ -12,7 +12,15 @@ const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,
 });
 
-export default function Watches_list({ watches }: { watches: Watch[] }) {
+export default function Watches_list({
+    cardsPerRow = 3,
+    watches,
+    filters_list,
+}: {
+    cardsPerRow?: number;
+    watches: Watch[];
+    filters_list?: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean };
+}) {
     const [view, set_view] = useState<null | { price: number; src: string[]; name: string; id: number | string }>(null);
     const [filters, set_filters] = useState<filters_type>({
         brands: {
@@ -122,26 +130,29 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
     return (
         <>
             <div className="w-full h-fit flex justify-center items-start gap-32">
-                <Filters
-                    set_applyFilters={set_applyFilters}
-                    filters={filters}
-                    onFiltersChange={(newFilters) => {
-                        let apply = false;
-                        for (const f in newFilters)
-                            if (apply) break;
-                            else {
-                                const filter_type = newFilters[f as keyof typeof newFilters];
-                                for (const value in filter_type)
-                                    if (filter_type[value as keyof typeof filter_type] && typeof filter_type[value as keyof typeof filter_type] == "boolean") {
-                                        apply = true;
-                                        break;
-                                    }
-                            }
+                {filters_list && (
+                    <Filters
+                        filters_list={filters_list}
+                        set_applyFilters={set_applyFilters}
+                        filters={filters}
+                        onFiltersChange={(newFilters) => {
+                            let apply = false;
+                            for (const f in newFilters)
+                                if (apply) break;
+                                else {
+                                    const filter_type = newFilters[f as keyof typeof newFilters];
+                                    for (const value in filter_type)
+                                        if (filter_type[value as keyof typeof filter_type] && typeof filter_type[value as keyof typeof filter_type] == "boolean") {
+                                            apply = true;
+                                            break;
+                                        }
+                                }
 
-                        set_applyFilters(apply);
-                        set_filters(newFilters);
-                    }}
-                />
+                            set_applyFilters(apply);
+                            set_filters(newFilters);
+                        }}
+                    />
+                )}
                 <div className="flex-center flex-col">
                     <div className="w-full py-4 flex justify-between items-start">
                         <div className="w-fit flex justify-start items-start flex-col gap-4">
@@ -174,7 +185,11 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
                     <div className="flex justify-center items-start gap-4 flex-wrap w-full bg-background">
                         {filteredWatches.length > 0 ? (
                             filteredWatches.map((watch) => (
-                                <div key={watch.slug} onClick={() => set_view({ price: watch.price, src: watch.images, id: watch.slug, name: watch.brand + " " + watch.model })} className="cursor-pointer w-[calc(33%-8px)]">
+                                <div
+                                    key={watch.slug}
+                                    onClick={() => set_view({ price: watch.price, src: watch.images, id: watch.slug, name: watch.brand + " " + watch.model })}
+                                    className={`cursor-pointer ${filters_list ? "w-[calc(33%-8px)]" : "w-[calc(25%-12px)]"}`}
+                                >
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}
@@ -201,7 +216,16 @@ export default function Watches_list({ watches }: { watches: Watch[] }) {
     );
 }
 
-function Filters({ filters, set_applyFilters, onFiltersChange }: { filters: filters_type; set_applyFilters: Dispatch<SetStateAction<boolean>>; onFiltersChange: (filters: filters_type) => void }) {
+function Filters({
+    filters_list,
+    filters,
+    onFiltersChange,
+}: {
+    filters_list: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean };
+    filters: filters_type;
+    set_applyFilters: Dispatch<SetStateAction<boolean>>;
+    onFiltersChange: (filters: filters_type) => void;
+}) {
     const handleBrandChange = (brand: keyof typeof filters.brands) => {
         onFiltersChange({
             ...filters,
@@ -239,50 +263,56 @@ function Filters({ filters, set_applyFilters, onFiltersChange }: { filters: filt
 
     return (
         <aside className="flex flex-col gap-6 w-fit min-w-50">
-            <Dropdown
-                titles="Brands"
-                children={Object.keys(filters.brands).map((brand) => (
-                    <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={brand} onClick={() => handleBrandChange(brand as keyof typeof filters.brands)}>
-                        <CheckBox label={brand} active={filters.brands[brand as keyof typeof filters.brands]} />
-                    </div>
-                ))}
-            />
-            <Dropdown
-                titles="Movement"
-                children={Object.keys(filters.movement).map((movement) => (
-                    <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={movement} onClick={() => handleMovementChange(movement as keyof typeof filters.movement)}>
-                        <CheckBox label={movement} active={filters.movement[movement as keyof typeof filters.movement]} />
-                    </div>
-                ))}
-            />
-            <Dropdown
-                titles="Condition"
-                children={Object.keys(filters.condition).map((condition) => (
-                    <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={condition} onClick={() => handleConditionChange(condition as keyof typeof filters.condition)}>
-                        <CheckBox label={condition} active={filters.condition[condition as keyof typeof filters.condition]} />
-                    </div>
-                ))}
-            />
-            <Dropdown
-                titles="Watch Material"
-                children={Object.keys(filters.material)
-                    .slice(0, 4)
-                    .map((material) => (
+            {filters_list?.brand && (
+                <Dropdown
+                    titles="Brands"
+                    children={Object.keys(filters.brands).map((brand) => (
+                        <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={brand} onClick={() => handleBrandChange(brand as keyof typeof filters.brands)}>
+                            <CheckBox label={brand} active={filters.brands[brand as keyof typeof filters.brands]} />
+                        </div>
+                    ))}
+                />
+            )}
+            {filters_list?.movement && (
+                <Dropdown
+                    titles="Movement"
+                    children={Object.keys(filters.movement).map((movement) => (
+                        <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={movement} onClick={() => handleMovementChange(movement as keyof typeof filters.movement)}>
+                            <CheckBox label={movement} active={filters.movement[movement as keyof typeof filters.movement]} />
+                        </div>
+                    ))}
+                />
+            )}
+            {filters_list?.condition && (
+                <Dropdown
+                    titles="Condition"
+                    children={Object.keys(filters.condition).map((condition) => (
+                        <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={condition} onClick={() => handleConditionChange(condition as keyof typeof filters.condition)}>
+                            <CheckBox label={condition} active={filters.condition[condition as keyof typeof filters.condition]} />
+                        </div>
+                    ))}
+                />
+            )}
+            {filters_list.material && (
+                <Dropdown
+                    titles="Watch Material"
+                    children={Object.keys(filters.material).map((material) => (
                         <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={material} onClick={() => handleMaterialChange(material as keyof typeof filters.material)}>
                             <CheckBox label={material} active={filters.material[material as keyof typeof filters.material]} />
                         </div>
                     ))}
-            />
-            <Dropdown
-                titles="Dial Color"
-                children={Object.keys(filters.color)
-                    .slice(0, 4)
-                    .map((color) => (
+                />
+            )}
+            {filters_list?.color && (
+                <Dropdown
+                    titles="Dial Color"
+                    children={Object.keys(filters.color).map((color) => (
                         <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={color} onClick={() => handleColorChange(color as keyof typeof filters.color)}>
                             <CheckBox label={color} active={filters.color[color as keyof typeof filters.color]} />
                         </div>
                     ))}
-            />
+                />
+            )}
         </aside>
     );
 }

@@ -21,8 +21,7 @@ export default async function ShopPage() {
                     </div>
                 </div>
 
-
-                <Watches_list watches={watches} />
+                <Watches_list watches={watches} filters_list={{ material: true, brand: true, condition: true, color: true, movement: true, price: true, size: true }} />
             </div>
         </section>
     );

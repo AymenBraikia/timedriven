@@ -23,25 +23,22 @@ export default function Watch_card({
     price: number;
     image_src: string;
 }) {
-
     return (
-        <div className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer">
+        <div className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer font-secondary">
             <div className="aspect-4/3 relative w-full">
                 <Image src={image_src} alt={image_src} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 40vw" className="group-hover:brightness-100 brightness-80 transition-default" />
             </div>
             <div className="py-4 flex flex-col justify-start items-start gap-3 min-h-50">
                 <span className="text-xs uppercase tracking-[0.3em] text-secondary">{brand}</span>
-                <h4 className="font-semibold">{name}</h4>
+                <h4 className="font-semibold capitalize">{name}</h4>
                 <p className="leading-6">{description}</p>
-                <div className="space-y-1 text-xs text-secondary">
-                    <p>
-                        Movement: {movement} • Size: {size}
-                    </p>
-                    <p>
-                        Material: {material} • Condition: {condition}
-                    </p>
+                <div className="space-y-1 text-sm text-secondary">
+                    <p>Movement: {movement}</p>
+                    <p>Size: {size}</p>
+                    <p>Material: {material}</p>
+                    <p>Condition: {condition}</p>
                 </div>
-                <span className="text-base font-semibold text-foreground">€{price.toLocaleString()}</span>
+                <span className="text-xl font-semibold text-foreground font-sans">€{price.toLocaleString()}</span>
             </div>
         </div>
     );
