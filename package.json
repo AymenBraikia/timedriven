@@ -8,6 +8,7 @@
         "build": "next build",
         "start": "next start",
         "insert": "npx tsx -r dotenv/config ./app/local/insert.ts",
+        "insert_spares": "npx tsx -r dotenv/config ./app/local/insert_spares.ts",
         "lint": "eslint"
     },
     "dependencies": {
