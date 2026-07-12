@@ -8,7 +8,7 @@ interface PageProps {
 }
 
 export default async function DynamicPage({ params }: PageProps) {
-    const brand = (await params).brand.replace("-", " ").toLowerCase().trim();
+    const brand = (await params).brand.replace("%20", " ").toLowerCase().trim();
     const data = await get_brand(brand);
 
     return (
@@ -424,7 +424,21 @@ function Description({ brand }: { brand: string }) {
                     </p>
                 </div>
             );
-
+        case "zenith":
+            return (
+                <div className={wrapperClass}>
+                    <h6 className="font-medium">The First Integrated Swiss Manufacture</h6>
+                    <p>
+                        Founded in 1865 by Georges Favre-Jacot in Le Locle, Switzerland, Zenith revolutionized the industry by bringing all watchmaking professions under one roof. This visionary approach created one of the very first true
+                        integrated watch manufactures in Swiss history, allowing for unprecedented quality control.
+                    </p>
+                    <h6 className="font-medium">The Legendary El Primero</h6>
+                    <p>
+                        In 1969, Zenith changed horology forever by introducing the El Primero, widely regarded as the world's first automatic chronograph movement. Beating at a high frequency of 36,000 vibrations per hour, it allowed for
+                        time measurement to the nearest 1/10th of a second and remains one of the most famous calibers ever made.
+                    </p>
+                </div>
+            );
         default:
             return <div></div>;
     }

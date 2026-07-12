@@ -11,7 +11,7 @@ type CheckBoxProps = {
 export default function CheckBox({ label, active = false, name, action }: CheckBoxProps) {
     return (
         <button type="button" className="cursor-pointer flex w-full items-center gap-3 text-left" aria-pressed={active} onClick={() => action && action(!active)}>
-            <input type="checkbox" name={name} id={name} hidden checked={active} />
+            <input type="checkbox" name={name} id={name} hidden defaultChecked={active} />
             <span className={`flex h-5 w-5 items-center justify-center rounded-sm border transition-all ${active ? "border-foreground bg-foreground text-background" : "border opacity-60 bg-transparent"}`}>
                 <svg
                     viewBox="0 0 24 24"
