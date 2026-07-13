@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Watch_card from "@/app/components/watch_card";
 import dynamic from "next/dynamic";
 
-import { Watch } from "@/app/types/watch";
-import Dropdown from "../components/dropdown";
-import CheckBox from "../components/elements/checkbox";
-import filters_type from "../types/filters";
+import { Watch } from "@/types/watch";
+import Dropdown from "@/app/components/dropdown";
+import CheckBox from "@/app/components/elements/checkbox";
+import filters_type from "@/types/filters";
 
 const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,

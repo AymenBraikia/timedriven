@@ -1,6 +1,6 @@
-import Banner from "../components/banner";
-import Watches_list from "../components/watches_list";
-import get_spare_parts from "./get_spare";
+import Banner from "@/app/components/banner";
+import Watches_list from "@/app/components/watches_list";
+import get_spare_parts from "@/app/server/get_spare";
 
 export default async function SparePage() {
     const parts = await get_spare_parts();

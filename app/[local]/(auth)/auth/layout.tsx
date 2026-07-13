@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans, Gelasio } from "next/font/google";
-import "./globals.css";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import { ThemeProvider } from "./components/ThemeProvider";
-import { CartProvider } from "./components/cartContext";
+import "../../globals.css";
+import { ThemeProvider } from "@/app/components/ThemeProvider";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -66,28 +63,7 @@ export default function RootLayout({
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
-                        <filter id="liquid-frosted" x="0%" y="0%" width="100%" height="100%">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="noise" />
-                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped" />
-                            <feGaussianBlur in="warped" stdDeviation="2" />
-                        </filter>
-                    </svg>
-
-                    <CartProvider>
-                        <Header />
-                        <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">
-                            <style>{`
-							.liquid-glass {
-								backdrop-filter: url(#liquid-frosted) blur(4px);
-								-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
-								background-color: var(--clr-glass);
-								}
-								`}</style>
-                            {children}
-                            <Footer />
-                        </div>
-                    </CartProvider>
+                    <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">{children}</div>
                 </ThemeProvider>
             </body>
         </html>

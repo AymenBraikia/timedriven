@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import services_src from "../../public/polish.webp";
-import sell_src from "../../public/sell.webp";
-import spare_src from "../../public/spare.webp";
+import services_src from "../../../public/polish.webp";
+import sell_src from "../../../public/sell.webp";
+import spare_src from "../../../public/spare.webp";
 import FadeInObserver from "./fade_wrapper";
 
 export default function Services() {

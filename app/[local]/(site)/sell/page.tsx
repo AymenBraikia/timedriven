@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Banner from "../components/banner";
+import Banner from "@/app/components/banner";
 import Form from "./form";
 
 export default async function SellPage() {

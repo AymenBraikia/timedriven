@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Input from "../components/elements/input";
-import CheckBox from "../components/elements/checkbox";
+import Input from "@/app/components/elements/input";
+import CheckBox from "@/app/components/elements/checkbox";
 import Submit from "./submit";
 
 const formSchema = z.object({
