@@ -140,7 +140,7 @@ export default function Form() {
 
                         <div className="w-full flex flex-col gap-4">
                             <p>Message</p>
-                            <textarea {...register("message")} className="w-full max-h-40 border border-secondary p-1" id="messages" placeholder="Anything else you would like to add?"></textarea>
+                            <textarea {...register("message")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder="Anything else you would like to add?"></textarea>
                         </div>
                     </div>
                 </div>
