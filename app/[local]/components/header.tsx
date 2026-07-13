@@ -28,7 +28,7 @@ type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CAR
 const initialUIState: UIState = {
 	isNavOpen: false,
 	isCartOpen: false,
-	isGlassy: false,
+	isGlassy: true,
 	lang: "EN",
 };
 
@@ -58,12 +58,12 @@ export default function Header() {
 	const navRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			const currentScroll = window.scrollY;
-			if (currentScroll >= window.innerHeight) {
-				if (!ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: true });
-			} else if (ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: false });
-		};
+		// const handleScroll = () => {
+		// 	const currentScroll = window.scrollY;
+		// 	if (currentScroll >= window.innerHeight) {
+		// 		if (!ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: true });
+		// 	} else if (ui.isGlassy) dispatch({ type: "SET_GLASSY", payload: false });
+		// };
 
 		const onTouchStart = (e: TouchEvent) => {
 			const cartEl = cartRef.current;
@@ -129,11 +129,11 @@ export default function Header() {
 			window.addEventListener("touchend", handleEnd);
 		};
 
-		window.addEventListener("scroll", handleScroll, { passive: true });
+		// window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("touchstart", onTouchStart, { passive: true });
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			// window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("touchstart", onTouchStart);
 		};
 	}, [ui.isCartOpen, ui.isGlassy, ui.isNavOpen]);
