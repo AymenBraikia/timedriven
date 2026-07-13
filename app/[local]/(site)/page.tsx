@@ -20,7 +20,7 @@ export default function Body() {
                     <div className="flex-center flex-col md:flex-row h-100 gap-5 md:h-50 md:gap-20 overflow-hidden text-center relative">
                         <p className="text-6xl mr-[0.05rem] tracking-wider">Get Inspired</p>
                         <div className="md:h-full md:w-0.5 w-full h-1 bg-foreground"></div>
-                        <div className="text-xl flex flex-col gap-8 h-1/2">
+                        <div className="text-xl flex flex-col gap-8 h-1/2 font-secondary">
                             <p className="max-w-100 wrap-break-word mr-[0.025rem] tracking-wide leading-8">Your journey begins here. Take a minute to answer these questions, and we’ll help you figure out what your first step should be.</p>
                             <Link aria-label="Begin your journey" className="underline" href={"#"}>
                                 Begin

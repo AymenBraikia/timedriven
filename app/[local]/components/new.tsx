@@ -87,8 +87,8 @@ export default function New() {
                                         </button>
                                     </div>
                                 </div>
-                                <h5 className="title5">{d.name}</h5>
-                                <h6 className="title6">{format(d.price)}</h6>
+                                <h5 className="title5 font-secondary">{d.name}</h5>
+                                <h6 className="title6 font-secondary">{format(d.price)}</h6>
                             </Link>
                         ))}
                     </List>
