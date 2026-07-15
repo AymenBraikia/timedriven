@@ -1,7 +1,7 @@
 import { ActionDispatch, RefObject } from "react";
 import Cross from "./svg/cross";
 import Info from "./svg/info";
-import { useCart } from "./cartContext";
+import { useCart } from "../(site)/context/cartContext";
 import Image from "next/image";
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 

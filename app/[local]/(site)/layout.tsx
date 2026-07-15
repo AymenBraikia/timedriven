@@ -3,8 +3,12 @@ import { Open_Sans, Gelasio } from "next/font/google";
 import "../globals.css";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
-import { ThemeProvider } from "@/app/components/ThemeProvider";
-import { CartProvider } from "@/app/components/cartContext";
+
+import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
+import { CartProvider } from "@/app/(site)/context/cartContext";
+import { AuthProvider } from "@/app/(site)/context/authContext";
+
+import { cookies } from "next/headers";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -57,11 +61,14 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const cookieStore = await cookies();
+    const session = { name: (cookieStore.get("name") as string | undefined) || null };
+
     return (
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
@@ -74,20 +81,22 @@ export default function RootLayout({
                         </filter>
                     </svg>
 
-                    <CartProvider>
-                        <Header />
-                        <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">
-                            <style>{`
+                    <AuthProvider initialSession={session}>
+                        <CartProvider>
+                            <Header />
+                            <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">
+                                <style>{`
 							.liquid-glass {
 								backdrop-filter: url(#liquid-frosted) blur(4px);
 								-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
 								background-color: var(--clr-glass);
 								}
 								`}</style>
-                            {children}
-                            <Footer />
-                        </div>
-                    </CartProvider>
+                                {children}
+                                <Footer />
+                            </div>
+                        </CartProvider>
+                    </AuthProvider>
                 </ThemeProvider>
             </body>
         </html>

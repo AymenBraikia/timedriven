@@ -28,8 +28,8 @@
     --color-primary: var(--clr-primary);
     --color-secondary: var(--clr-secondary);
 
-    --background-primary: var(--bg-primary);
-    --background-secondary: var(--bg-secondary);
+    --background-color-primary: var(--bg-primary);
+    --background-color-secondary: var(--bg-secondary);
 
     --color-glass: var(--clr-glass);
 }
@@ -120,12 +120,12 @@ th {
     text-align: left;
     padding: 8px;
 }
-table{
+table {
     border-collapse: collapse;
     background-color: var(--background);
 }
 
-img{
+img {
     object-fit: cover;
     object-position: center;
     user-select: none;
@@ -257,7 +257,6 @@ h6 {
     --bg-primary: rgb(25, 25, 25);
     --bg-secondary: rgb(50, 50, 50);
 
-    /* --clr-glass: rgba(200, 200, 200, 0.1); */
     --clr-glass: rgba(200, 200, 200, 0);
     --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
 }

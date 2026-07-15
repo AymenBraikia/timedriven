@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useCart } from "./cartContext";
+import { useCart } from "../(site)/context/cartContext";
 import List from "./scrollList";
 import { ZoomableImage } from "./elements/zoomableImage";
 

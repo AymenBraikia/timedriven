@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import FadeInObserver from "./fade_wrapper";
 import dynamic from "next/dynamic";
-import { useCart } from "./cartContext";
+import { useCart } from "../(site)/context/cartContext";
 
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,

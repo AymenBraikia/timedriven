@@ -10,17 +10,24 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { authRegex } from "../regex";
 
-export default async function Sign_up(data: FormData): Promise<{ success: boolean; error?: string }> {
+export default async function Sign_up(data: FormData): Promise<{ success: boolean; error?: string; redirect?: string | null }> {
     try {
+        const redirect = data.get("redirect") as string | null;
         const firstName = data.get("firstName") as string | null;
         const lastName = data.get("lastName") as string | null;
+
         const email = data.get("email") as string | null;
+
         const password = data.get("password") as string | null;
 
         if (!firstName || !lastName || !email || !password) return { success: false, error: "Make sure to enter all the required information." };
 
-        if (authRegex.email.test(email)) return { success: false, error: "Enter a valid email." };
-        if (authRegex.password.test(password)) return { success: false, error: "Password should include atleast 1 special character, 1 upper case letter, 1 number." };
+
+        console.log(password,authRegex.password.test(password))
+
+        if (!authRegex.email.test(email)) return { success: false, error: "Enter a valid email." };
+        if (!authRegex.password.test(password)) return { success: false, error: "Password should be atleast 8 characters long." };
+        // if (!authRegex.password.test(password)) return { success: false, error: "Password should include atleast 1 special character, 1 upper case letter, 1 number." };
 
         const exists = await users_collection.findOne({ email });
 
@@ -61,7 +68,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
 
         revalidatePath("/");
 
-        return operation.acknowledged ? { success: true } : { success: false, error: "There was an error while trying to sign you up." };
+        return operation.acknowledged ? { success: true, redirect } : { success: false, error: "There was an error while trying to sign you up." };
     } catch (err) {
         console.log("There was an error during a sign up attempt:");
         console.error(err);
