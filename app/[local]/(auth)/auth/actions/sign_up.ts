@@ -38,7 +38,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const user_document: User = { email, firstName, lastName, password: hashedPassword, cart: { watches: [], spares: [] } };
+        const user_document: User = { email, firstName, lastName, password: hashedPassword, cart: { watches: [], spares: [] }, wish_list: { watches: [], spares: [] } };
 
         const operation = await users_collection.insertOne(user_document);
 

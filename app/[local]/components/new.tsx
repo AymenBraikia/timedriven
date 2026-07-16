@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import FadeInObserver from "./fade_wrapper";
 import dynamic from "next/dynamic";
-import { useCart } from "../(site)/context/cartContext";
+import AtcBtn from "./buttons/addToCart";
 
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,
@@ -13,19 +13,18 @@ const QuickViewModal = dynamic(() => import("./quick_view"), {
 
 let id = 0;
 const data = [
-    { id: id++, price: 22900, src: ["/new/rolex_daytona.webp"], name: "Rolex Daytona" },
-    { id: id++, price: 24990, src: ["/new/Patek Philippe Calatrava.webp"], name: "Patek Philippe Calatrava" },
-    { id: id++, price: 15990, src: ["/new/Cartier Panthere.webp"], name: "Cartier Panthere" },
-    { id: id++, price: 33900, src: ["/new/Rolex Submariner Date 40.webp"], name: "Rolex Submariner Date 40" },
-    { id: id++, price: 18990, src: ["/new/Rolex Sky-Dweller.webp"], name: "Rolex Sky-Dweller" },
-    { id: id++, price: 6290, src: ["/new/Rolex Datejust 36.webp"], name: "Rolex Datejust 36" },
-    { id: id++, price: 5990, src: ["/new/Rolex Datejust.webp"], name: "Rolex Datejust" },
-    { id: id++, price: 4990, src: ["/new/Rolex Oyster Perpetual 26.webp"], name: "Rolex Oyster Perpetual 26" },
+    { reference: String(id), id: id++, price: 22900, src: ["/new/rolex_daytona.webp"], name: "Rolex Daytona" },
+    { reference: String(id), id: id++, price: 24990, src: ["/new/Patek Philippe Calatrava.webp"], name: "Patek Philippe Calatrava" },
+    { reference: String(id), id: id++, price: 15990, src: ["/new/Cartier Panthere.webp"], name: "Cartier Panthere" },
+    { reference: String(id), id: id++, price: 33900, src: ["/new/Rolex Submariner Date 40.webp"], name: "Rolex Submariner Date 40" },
+    { reference: String(id), id: id++, price: 18990, src: ["/new/Rolex Sky-Dweller.webp"], name: "Rolex Sky-Dweller" },
+    { reference: String(id), id: id++, price: 6290, src: ["/new/Rolex Datejust 36.webp"], name: "Rolex Datejust 36" },
+    { reference: String(id), id: id++, price: 5990, src: ["/new/Rolex Datejust.webp"], name: "Rolex Datejust" },
+    { reference: String(id), id: id++, price: 4990, src: ["/new/Rolex Oyster Perpetual 26.webp"], name: "Rolex Oyster Perpetual 26" },
 ];
 
 export default function New() {
-    const [view, set_view] = useState<null | { price: number; src: string[]; name: string; id: number }>(null);
-    const { addToCart } = useCart();
+    const [view, set_view] = useState<null | { price: number; src: string[]; name: string; id: number; reference: string }>(null);
 
     return (
         <section className="flex flex-col justify-center items-start p-16 w-dvw gap-6" id="new">
@@ -53,9 +52,8 @@ export default function New() {
                 <div className={`w-[95dvw] sm-w-fit`}>
                     <List display={{ base: 1, sm: 2, md: 2, lg: 4 }}>
                         {data.map((d) => (
-                            <Link
+                            <div
                                 aria-label={`${d.name}`}
-                                href={"#"}
                                 className="aspect-2/3 sm:aspect-auto sm:h-110 w-full flex flex-col justify-start items-start transition-long group"
                                 key={d.id}
                                 onClick={() => innerWidth < 640 && set_view(d)}
@@ -72,24 +70,19 @@ export default function New() {
                                         <button
                                             aria-label={`quick view ${d.name}`}
                                             type="button"
-                                            className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default h-full"
+                                            className="button cursor-pointer p-4 select-none transition-default h-full"
                                             onClick={() => set_view(d)}
                                         >
                                             QUICK VIEW
                                         </button>
-                                        <button
-                                            onClick={() => addToCart(d)}
-                                            aria-label="add to cart"
-                                            type="button"
-                                            className="cursor-pointer p-4 active:scale-95 select-none text-white bg-transparent hover:bg-black transition-default aspect-square h-full text-3xl flex-center"
-                                        >
-                                            +
-                                        </button>
+                                        <div className="w-fit text-white hover:text-foreground transition-default">
+                                            <AtcBtn reference={d.reference} />
+                                        </div>
                                     </div>
                                 </div>
                                 <h5 className="title5 font-secondary">{d.name}</h5>
                                 <h6 className="title6 font-secondary">{format(d.price)}</h6>
-                            </Link>
+                            </div>
                         ))}
                     </List>
                 </div>

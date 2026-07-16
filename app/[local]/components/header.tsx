@@ -159,9 +159,9 @@ export default function Header() {
                     <input type="text" className={`hidden sm:block ${ui.isGlassy ? "placeholder:text-primary" : "placeholder:text-white"} outline-0`} placeholder="Search watches" id="searchWatches" />
                 </div>
                 {!session?.name && (
-                    <button aria-label={`Register`} type="button" className={`button2 hidden sm:block hover:text-primary`} onClick={() => dispatch({ type: "TOGGLE_LANG" })}>
-                        <Link href={"/auth/sign_up"}>Register</Link>
-                    </button>
+                    <Link aria-label={`Register`} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
+                        Register
+                    </Link>
                 )}
                 <button aria-label={`${ui.lang} language`} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => dispatch({ type: "TOGGLE_LANG" })}>
                     {ui.lang}

@@ -3,6 +3,7 @@ import Cross from "./svg/cross";
 import Info from "./svg/info";
 import { useCart } from "../(site)/context/cartContext";
 import Image from "next/image";
+import Link from "next/link";
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
 export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTMLDivElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isCartOpen: boolean } }) {
@@ -11,13 +12,13 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
     return (
         <div
             ref={ref}
-            className={`liquid-glass z-50 backdrop-blur-xl w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-16 md:p-16 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+            className={`liquid-glass z-50 backdrop-blur-xl w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
             onClick={(e) => e.stopPropagation()}
         >
-            <div className="flex justify-between items-center w-full h-1/10">
+            <div className="flex justify-between items-center w-full h-fit">
                 <h3 className="title5 md:title3">YOUR COLLECTION</h3>
                 <button aria-label="close cart" type="button" className="button2 p-1" onClick={() => dispatch({ type: "CLOSE_CART" })}>
-                    <Cross classnames={"w-16"} />
+                    <Cross classnames={"w-14"} />
                 </button>
             </div>
 
@@ -38,13 +39,16 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                             </div>
                         ))}
                     </div>
-                    <div className="flex flex-wrap justify-between items-center gap-4 w-full h-2/10 md:h-1/10">
-                        <div className="flex justify-between items-center w-full">
-                            <h5 className="title6 md:title5">SUBTOTAL VALUE</h5>
-                            <h5 className="title6 md:title5">{format(subtotal)}</h5>
+                    <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
+                        <div className="flex justify-between items-center w-full font-sans">
+                            <h3>Subtotal value</h3>
+                            <h3>{format(subtotal)}</h3>
                         </div>
-                        <button aria-label="proceed to secure settlement" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title5">
-                            Proceed to secure settlement
+                        <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
+                            <Link className="w-full h" href="/cart">View all</Link>
+                        </button>
+                        <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
+                            <Link className="w-full h" href="/checkout">Proceed to checkout</Link>
                         </button>
                     </div>
                 </>

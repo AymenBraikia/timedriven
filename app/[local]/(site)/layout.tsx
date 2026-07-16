@@ -7,8 +7,7 @@ import Footer from "@/app/components/footer";
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
 import { CartProvider } from "@/app/(site)/context/cartContext";
 import { AuthProvider } from "@/app/(site)/context/authContext";
-
-import { cookies } from "next/headers";
+import getUser from "@/app/server/get_user";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -66,8 +65,7 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const cookieStore = await cookies();
-    const session = { name: (cookieStore.get("name") as string | undefined) || null };
+    const session = await getUser();
 
     return (
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
