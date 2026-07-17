@@ -20,4 +20,11 @@ export interface UserData {
 
 export type User_Cart = Cart_Item[];
 
-export type Cart_Item = Omit<Spare, "quantity"[number]> | Omit<Watch, "quantity"[number]>;
+export type Cart_Item = Watch_Item | Spare_Item;
+
+interface Watch_Item extends Watch {
+    quantity: number;
+}
+interface Spare_Item extends Spare {
+    quantity: number;
+}

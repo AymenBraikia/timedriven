@@ -10,7 +10,7 @@ type CartContextType = {
     totalItems: number;
 };
 
-const EMPTY_CART: User_Cart = { watches: [], spares: [] };
+const EMPTY_CART: User_Cart = [];
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -23,15 +23,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
             setCart(session.cart ?? EMPTY_CART);
             return;
         }
-
     }, [session]);
 
     const subtotal = useMemo(() => {
-        return [...cart.watches, ...cart.spares].reduce((total, item) => total + item.price * item.quantity, 0);
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
     }, [cart]);
 
     const totalItems = useMemo(() => {
-        return [...cart.watches, ...cart.spares].reduce((total, item) => total + item.quantity, 0);
+        return cart.reduce((total, item) => total + item.quantity, 0);
     }, [cart]);
 
     return (

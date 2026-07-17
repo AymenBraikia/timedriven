@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { users_collection } from "../db/collections";
 import get_item from "./get_item";
 import getUser from "./get_user";
@@ -12,32 +13,17 @@ export default async function addToCart(reference: string): Promise<boolean> {
         const item = await get_item(reference);
         if (!item) return false;
 
-        const operation = await users_collection.updateOne({ email: user.email }, [
-            {
-                $set: {
-                    cart: {
-                        $cond: [
-                            { $in: [reference, { $ifNull: ["$cart.reference", []] }] },
+        const newCart = user.cart.find((i) => i.reference == reference)
+            ? {
+                  $inc: {
+                      "$.cart.quanitity": 1,
+                  },
+              }
+            : { $push: { cart: { ...item, quantity: 1 } } };
 
-                            {
-                                $map: {
-                                    input: "$cart",
-                                    as: "c",
-                                    in: {
-                                        $cond: [{ $eq: ["$$c.reference", reference] }, { $mergeObjects: ["$$c", { quantity: { $add: ["$$c.quantity", 1] } }] }, "$$c"],
-                                    },
-                                },
-                            },
+        const operation = await users_collection.updateOne({ email: user.email }, newCart);
 
-                            {
-                                $concatArrays: [{ $ifNull: ["$cart", []] }, [{ ...item, quantity: 1 }]],
-                            },
-                        ],
-                    },
-                },
-            },
-        ]);
-
+        revalidatePath("/");
         return operation.acknowledged;
     } catch (error) {
         console.log("an error occured during adding item to cart: ");

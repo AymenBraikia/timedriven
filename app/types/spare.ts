@@ -8,4 +8,5 @@ export interface Spare extends Omit<Watch, "type"> {
     compatibleModels: string[];
     tags?: string[];
     type: "spare";
+    reference: string;
 }

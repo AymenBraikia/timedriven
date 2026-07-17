@@ -26,12 +26,12 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                 <>
                     <div className="flex flex-col justify-start items-center gap-4 w-full h-9/10 md:h-4/5 font-secondary text-primary overflow-y-auto">
                         {cart.map((i) => (
-                            <div className="flex-center w-full gap-4" key={i.name}>
+                            <div className="flex-center w-full gap-4" key={i.slug}>
                                 <div className="relative w-1/4 aspect-square">
-                                    <Image src={i.src[0]} alt={i.name} sizes="(max-width: 20dvw) 20vw, 30dvw" className="object-cover object-center select-none" fill></Image>
+                                    <Image src={i.images[0]} alt={i.slug} sizes="(max-width: 20dvw) 20vw, 30dvw" className="object-cover object-center select-none" fill></Image>
                                 </div>
                                 <div className="w-3/4 h-full">
-                                    <p>{i.name}</p>
+                                    <p>{i.brand + " " + i.model}</p>
                                     <p>
                                         {i.quantity} x {format(i.price)}
                                     </p>
@@ -45,10 +45,14 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                             <h3>{format(subtotal)}</h3>
                         </div>
                         <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
-                            <Link className="w-full h" href="/cart">View all</Link>
+                            <Link className="w-full h" href="/cart">
+                                View all
+                            </Link>
                         </button>
                         <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
-                            <Link className="w-full h" href="/checkout">Proceed to checkout</Link>
+                            <Link className="w-full h" href="/checkout">
+                                Proceed to checkout
+                            </Link>
                         </button>
                     </div>
                 </>
