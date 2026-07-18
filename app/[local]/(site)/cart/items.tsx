@@ -39,7 +39,7 @@ export default function Items() {
         <div className="w-full h-full flex justify-between items-start gap-12">
             {session!.cart.length ? (
                 <>
-                    <div className="w-4/5 h-full overflow-y-auto overflow-x-hidden flex-center flex-col gap-4">
+                    <div className="w-4/5 h-fit max-h-100 overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
                         {session!.cart.map((i) => (
                             <Item_Display key={i.slug} {...i} />
                         ))}
