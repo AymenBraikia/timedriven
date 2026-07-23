@@ -13,8 +13,8 @@ interface inputProps {
     onBlur?: FocusEventHandler<HTMLInputElement>;
     allowed?: boolean;
     checked?: boolean;
-    max?: number;
-    min?: number;
+    max?: number|string;
+    min?: number|string;
 }
 
 export default function Input({ placeholder, label, type, required = false, name, ref, def_value, value, onChange, onBlur, allowed = true, checked, max, min }: inputProps) {
@@ -36,10 +36,10 @@ export default function Input({ placeholder, label, type, required = false, name
                 {label + (required && type != "radio" ? "*" : "")}
             </label>
             <input
-                max={max}
-                maxLength={max}
-                min={min}
-                minLength={min}
+                max={Number(max)}
+                maxLength={Number(max)}
+                min={Number(min)}
+                minLength={Number(min)}
                 readOnly={!allowed}
                 ref={ref}
                 className={`w-full outline-none text-base border-b py-1 ${allowed ? "" : "cursor-not-allowed!"}`}
