@@ -49,14 +49,24 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
 
             return;
         }
-        const order = (await orders_collection.findOne({ id: orderID })) as Order | null;
+        let order = (await orders_collection.findOne({ id: orderID })) as Order | null;
 
         if (!order) return;
         if (order.email != payload.email) return;
         if (order.status == "Completed") return;
 
-        await orders_collection.updateOne({ id: orderID }, { $set: { status: "Completed", id: orderID } });
-
+        const paypal_addr = data.purchase_units[0].shipping?.address;
+        const newAddr = paypal_addr
+            ? {
+                  address1: paypal_addr.address_line_1,
+                  address2: paypal_addr.address_line_2,
+                  city: paypal_addr.admin_area_1,
+                  province: paypal_addr.admin_area_2,
+                  postCode: paypal_addr.postal_code,
+                  country: paypal_addr.country_code,
+              }
+            : undefined;
+        order = (await orders_collection.findOneAndUpdate({ id: orderID }, { $set: newAddr ? { status: "Completed", address: newAddr } : { status: "Completed" } }))!;
 
         const user = await users_collection.findOneAndUpdate(
             { email: order.email },
@@ -65,7 +75,7 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
                     cart: order.items,
                 },
                 $push: {
-                    ongoing_orders: order,
+                    ongoing_orders: newAddr ? { ...order, address: newAddr } : order,
                 },
             },
             { returnDocument: "after" },
@@ -73,7 +83,7 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
 
         if (!user) return;
 
-        revalidatePath("/")
+        revalidatePath("/");
 
         return { ...data, redirect: "/thank_you/" };
     } catch (error) {

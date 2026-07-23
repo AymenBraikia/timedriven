@@ -110,6 +110,23 @@ export async function create_order(): Promise<string> {
     });
 
     const order = await res.json();
+
+    const target_address = user.diff_address.active
+        ? {
+              country: user.diff_address.country!,
+              address1: user.diff_address.address1!,
+              address2: user.diff_address.address2,
+              city: user.diff_address.city!,
+              postCode: user.diff_address.postCode!,
+          }
+        : {
+              country: user.address.country!,
+              address1: user.address.address1!,
+              address2: user.address.address2,
+              city: user.address.city!,
+              postCode: user.address.postCode!,
+          };
+
     if (order.id) {
         await orders_collection.insertOne({
             id: order.id,
@@ -122,14 +139,7 @@ export async function create_order(): Promise<string> {
             created_at: new Date(),
             payment_method: "PayPal",
             shipping,
-            address: user.local_pickup
-                ? "Local Pickup"
-                : {
-                      address1: user.address.address1!,
-                      address2: user.address.address2!,
-                      city: user.address.city!,
-                      postCode: user.address.postCode!,
-                  },
+            address: user.local_pickup ? "Local Pickup" : target_address,
         });
 
         return order.id;

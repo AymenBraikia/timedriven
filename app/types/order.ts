@@ -24,6 +24,7 @@ export interface Order {
               address2?: string;
               city: string;
               postCode: string;
+              country: string;
           };
     total: number;
     discount_amount: number;

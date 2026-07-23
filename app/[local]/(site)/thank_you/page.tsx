@@ -21,13 +21,13 @@ export default async function thank_you_page() {
                     <div className={`flex-center flex-col w-full gap-2 mt-12 p-2 ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
                         {user.ongoing_orders.length ? (
                             <>
-                                <div className="flex justify-between items-center font-semibold w-full border-b">
-                                    <p className="w-full bg-primary">Order ID</p>
-                                    <p className="w-full bg-primary">Order Items</p>
-                                    <p className="w-full bg-primary">Order Date</p>
-                                    <p className="w-full bg-primary">Order Total</p>
-                                    <p className="w-full bg-primary">Payment Method</p>
-                                    <p className="w-full bg-primary">Shipping</p>
+                                <div className="flex justify-between items-center font-semibold w-full gap-10 border-b">
+                                    <p className="w-full max-w-50">Order ID</p>
+                                    <p className="w-full">Order Items</p>
+                                    <p className="w-full max-w-50">Order Date</p>
+                                    <p className="w-full max-w-40">Order Total</p>
+                                    <p className="w-full max-w-40">Payment Method</p>
+                                    <p className="w-full">Shipping</p>
                                 </div>
                                 {user.ongoing_orders.map((o, i) => (
                                     <Order_display key={o.id} last={user.ongoing_orders.length == i + 1} data={o} />

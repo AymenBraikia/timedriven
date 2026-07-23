@@ -15,8 +15,8 @@ export interface User {
 
     local_pickup: boolean;
 
-    address: { country: string; address1: string | undefined; address2: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
-    diff_address: { active: boolean; country: string; address1: string | undefined; address2: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
+    address: { country: string; province?: string; address1: string | undefined; address2?: string; postCode: string | undefined; city: string | undefined; phone: string | undefined };
+    diff_address: { active: boolean; country: string; province?: string; address1: string | undefined; address2?: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
 }
 
 export interface UserData {
@@ -28,8 +28,8 @@ export interface UserData {
     last_name: string;
     local_pickup: boolean;
     email: string;
-    address: { country: string; address1: string | undefined; address2: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
-    diff_address: { active: boolean; country: string; address1: string | undefined; address2: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
+    address: { country: string; province?: string; address1: string | undefined; address2?: string | undefined; postCode: string | undefined; city: string | undefined; phone: string | undefined };
+    diff_address: { active: boolean; country: string; province?: string; address1: string | undefined; address2?: string; postCode: string | undefined; city: string | undefined; phone: string | undefined };
 }
 
 export type User_Cart = Cart_Item[];

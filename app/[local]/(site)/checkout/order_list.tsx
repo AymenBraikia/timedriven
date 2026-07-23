@@ -172,7 +172,7 @@ export default function Order_list() {
                     </button>
                 </div>
                 {allowed_payment ? (
-                    <div className="flex justify-start items-center transition-default w-full bg-secondary py-8 px-12 capitalize gap-2 flex-wrap">
+                    <div className={`flex justify-start items-center transition-default w-full ${payment_method.name == "PayPal" ? "" : "bg-secondary py-8 px-12"} capitalize gap-2 flex-wrap`}>
                         {payment_method.name == "Bank Transfer" ? (
                             <div className="flex flex-col justify-start items-start gap-4">
                                 <p className="tracking-wider leading-6 text-sm">
@@ -220,7 +220,8 @@ export default function Order_list() {
                             </div>
                         ) : payment_method.name == "PayPal" ? (
                             <div className="w-full">
-                                <PayPal_Btn disabled={!allowed_payment} />
+                                <PayPal_Btn disabled={false} />
+                                <p className="text-sm w-full">Note: the watch/spare will be shipped to paypal's address</p>
                             </div>
                         ) : (
                             <>
@@ -240,6 +241,11 @@ export default function Order_list() {
                                 </button>
                             </>
                         )}
+                    </div>
+                ) : payment_method.name == "PayPal" ? (
+                    <div className="w-full">
+                        <PayPal_Btn disabled={false} />
+                        <p className="text-sm w-full">Note: the watch/spare will be shipped to paypal's address</p>
                     </div>
                 ) : (
                     <h3>Billing details is missing</h3>

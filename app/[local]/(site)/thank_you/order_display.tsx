@@ -5,12 +5,12 @@ import { useState } from "react";
 export default function Order_display({ data, last }: { data: Order; last: boolean }) {
     const [expand, set_expand] = useState<boolean>(false);
 
-    const address = typeof data.address == "string" ? data.address : data.address.address1;
+    const address = typeof data.address == "string" ? data.address : `${data.address.city}, ${data.address.address1 + (data.address.address2 ? `, ${data.address.address2}` : "")}`;
 
     const is_few = data.items.length < 3;
     return (
-        <div key={data.id} className={`flex justify-between items-start w-full ${last ? "" : "border-b"}  py-4 tracking-wide capitalize`}>
-            <p className="w-full">{data.id}</p>
+        <div key={data.id} className={`flex justify-between items-start w-full ${last ? "" : "border-b"}  py-4 tracking-wide capitalize gap-10`}>
+            <p className="w-full max-w-50">{data.id}</p>
             <div className="w-full min-w-0 flex flex-col justify-start items-start gap-2">
                 {is_few ? (
                     data.items.map((e) => <p key={e.slug}>{`${e.quantity}x ${e.brand} ${e.model}`}</p>)
@@ -30,9 +30,9 @@ export default function Order_display({ data, last }: { data: Order; last: boole
                     </>
                 )}
             </div>
-            <p className="w-full">{new Date(data.created_at).toDateString()}</p>
-            <p className="w-full">{format(data.amount_to_pay)}</p>
-            <p className="w-full">{data.payment_method}</p>
+            <p className="w-full max-w-50">{new Date(data.created_at).toDateString()}</p>
+            <p className="w-full max-w-40">{format(data.amount_to_pay)}</p>
+            <p className="w-full max-w-40">{data.payment_method}</p>
             <p className="w-full">{address}</p>
         </div>
     );
