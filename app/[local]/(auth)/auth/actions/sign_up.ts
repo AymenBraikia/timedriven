@@ -22,8 +22,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
 
         if (!firstName || !lastName || !email || !password) return { success: false, error: "Make sure to enter all the required information." };
 
-
-        console.log(password,authRegex.password.test(password))
+        console.log(password, authRegex.password.test(password));
 
         if (!authRegex.email.test(email)) return { success: false, error: "Enter a valid email." };
         if (!authRegex.password.test(password)) return { success: false, error: "Password should be atleast 8 characters long." };
@@ -38,7 +37,34 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const user_document: User = { email, firstName, lastName, password: hashedPassword, cart: [], wish_list: [] };
+        const user_document: User = {
+            email,
+            firstName,
+            lastName,
+            password: hashedPassword,
+            cart: [],
+            wish_list: [],
+            ongoing_orders: [],
+            fulfilled_orders: [],
+            local_pickup: false,
+            address: {
+                country: "Germany",
+                address1: undefined,
+                address2: undefined,
+                postCode: undefined,
+                city: undefined,
+                phone: undefined,
+            },
+            diff_address: {
+                country: "Germany",
+                address1: undefined,
+                address2: undefined,
+                postCode: undefined,
+                city: undefined,
+                phone: undefined,
+                active: false,
+            },
+        };
 
         const operation = await users_collection.insertOne(user_document);
 

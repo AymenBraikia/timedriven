@@ -13,15 +13,15 @@ export default function Select({ options, value, set_value, label }: SelectProps
     const [active, set_active] = useState<boolean>(false);
 
     return (
-        <div className="w-full flex justify-between items-center relative z-10 font-sans">
+        <div className="w-full flex justify-between items-center relative z-60 font-sans">
             <div onClick={() => set_active(!active)} className="font-semibold cursor-pointer flex justify-start items-center gap-2">
-                {label && <p className="text-sm font-normal">{label}</p>}
+                {label && <p className="font-normal">{label}</p>}
                 <p>{value}</p>
                 <Arrow />
             </div>
 
             <Activity mode={active ? "visible" : "hidden"}>
-                <div className="w-full absolute bottom-0 left-0 translate-y-full bg-primary min-w-fit max-h-100 overflow-x-hidden overflow-y-auto select-none">
+                <div className="w-full absolute -bottom-4 left-0 translate-y-full bg-primary min-w-fit max-h-100 overflow-x-hidden overflow-y-auto select-none">
                     {new Array(...new Set(options)).map((o) => (
                         <p
                             key={o}

@@ -44,16 +44,12 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                             <h3>Subtotal value</h3>
                             <h3>{format(subtotal)}</h3>
                         </div>
-                        <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
-                            <Link className="w-full h" href="/cart">
-                                View all
-                            </Link>
-                        </button>
-                        <button aria-label="Proceed to checkout" type="button" className="button px-2 py-4 md:p-auto w-full flex-center title6">
-                            <Link className="w-full h" href="/checkout">
-                                Proceed to checkout
-                            </Link>
-                        </button>
+                        <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
+                            View all
+                        </Link>
+                        <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/checkout">
+                            Proceed to checkout
+                        </Link>
                     </div>
                 </>
             ) : (

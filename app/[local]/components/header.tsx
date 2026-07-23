@@ -158,7 +158,7 @@ export default function Header() {
                     </label>
                     <input type="text" className={`hidden sm:block ${ui.isGlassy ? "placeholder:text-primary" : "placeholder:text-white"} outline-0`} placeholder="Search watches" id="searchWatches" />
                 </div>
-                {!session?.name && (
+                {!session?.email && (
                     <Link aria-label={`Register`} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
                         Register
                     </Link>
@@ -166,8 +166,9 @@ export default function Header() {
                 <button aria-label={`${ui.lang} language`} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => dispatch({ type: "TOGGLE_LANG" })}>
                     {ui.lang}
                 </button>
-                <button aria-label="cart" type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 ${ui.isGlassy ? "" : "hover:text-primary"}`}>
+                <button aria-label="cart" type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                     <Cart clr={"currentColor"} />
+                    {session && session.cart.length ? <p className="absolute left-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                 </button>
                 <ThemeToggle />
             </div>

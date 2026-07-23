@@ -19,7 +19,7 @@ export default function proxy(request: NextRequest) {
     if (isProtectedRoute) {
         const token = request.cookies.get("accessToken")?.value;
 
-        const loginPath = "/login";
+        const loginPath = "/auth/log_in";
         const loginUrl = new URL(loginPath, request.url);
         if (!token) {
             loginUrl.searchParams.set("redirect", pathname);

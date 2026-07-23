@@ -7,44 +7,42 @@ import shipping_data from "@/app/shipping.json";
 import CheckBox from "@/app/components/elements/checkbox";
 import Select from "@/app/components/elements/select";
 import Link from "next/link";
+import updateUser from "@/app/server/update_user";
 
-interface shipping_type {
-    country_name: string;
-    region: string;
-    currency: string;
-    shipping_cost: number;
-    estimated_delivery: string;
-    carrier: string;
-    insurance_included: boolean;
-    requires_signature: boolean;
-    special_notes: string;
-}
-
-const shipping_options: string[] = Object.keys(shipping_data);
+const shipping_options: string[] = Object.values(shipping_data).map((c) => c.country_name);
 
 export default function Items() {
     const { session } = useAuth();
 
-    const [total, set_total] = useState<number>(session?.cart.reduce((prev, current) => prev + current.price, 0) || 0);
-    const [shipping, set_shipping] = useState<shipping_type>(shipping_data.DE);
+    if (!session) return;
 
-    const [pickup, set_pickup] = useState<boolean>(false);
-    const [shipping_country, set_country] = useState<string>("DE");
+    const [total, set_total] = useState<number>(session.cart.reduce((prev, current) => prev + current.price * current.quantity, 0));
+
+    const [pickup, set_pickup] = useState<boolean>(session.local_pickup);
+
+    const [country, set_country] = useState<string>("Germany");
+    const [shipping_costs, set_shipping_costs] = useState<number>(shipping_data.DE.shipping_cost);
 
     useEffect(() => {
-        set_shipping(shipping_data[shipping_country as keyof typeof shipping_data]);
-    }, [shipping_country]);
+        set_total(session.cart.reduce((prev, current) => prev + current.price * current.quantity, 0) || 0);
+    }, [session]);
+    useEffect(() => {
+        set_shipping_costs(Object.values(shipping_data).find((c) => c.country_name == country)!.shipping_cost);
+    }, [country]);
+    useEffect(() => {
+        updateUser({ local_pickup: pickup });
+    }, [pickup]);
 
     return (
-        <div className="w-full h-full flex justify-between items-start gap-12">
+        <div className="w-full h-fit flex justify-between items-start gap-12">
             {session!.cart.length ? (
                 <>
-                    <div className="w-4/5 h-fit max-h-100 overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
+                    <div className="w-4/5 h-full max-h-[75dvh] overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
                         {session!.cart.map((i) => (
                             <Item_Display key={i.slug} {...i} />
                         ))}
                     </div>
-                    <div className="w-2/5 min-w-100 max-w-125 bg-primary font-secondary flex flex-col justify-start items-start p-4 gap-8">
+                    <div className="w-2/5 h-fit min-w-100 max-w-125 bg-background font-secondary flex flex-col justify-start items-start p-4 gap-8">
                         <h1 className="font-semibold">Summary</h1>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
@@ -56,20 +54,31 @@ export default function Items() {
                             <h4 className={`${pickup ? "line-through" : ""}`}>Shipping</h4>
                             <div className="flex justify-between items-center w-full">
                                 <div className="flex flex-col justify-start items-start gap-2">
-                                    <p>Shipping to {shipping.country_name}</p>
-                                    <Select options={shipping_options} set_value={set_country} value={shipping_country} label="Choose Shipping Country" />
+                                    <p>Shipping to {country}</p>
+                                    <Select options={shipping_options} set_value={set_country} value={country} label="Choose Shipping Country" />
                                 </div>
-                                <p className={`${pickup ? "line-through" : ""}`}>{format(shipping.shipping_cost)}</p>
+                                <p className={`${pickup ? "line-through" : ""}`}>{format(shipping_costs)}</p>
                             </div>
 
                             <CheckBox label="Local Pickup" active={pickup} action={set_pickup} />
 
-                            <p className="text-sm text-secondary">More about <Link href="/info/payments" className="underline text-foreground">Shipping</Link></p>
+                            <p className="text-sm text-secondary">
+                                More about{" "}
+                                <Link href="/info/payments" className="underline text-foreground">
+                                    Shipping
+                                </Link>
+                            </p>
                         </div>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h2>Total</h2>
-                            <h2>{format(total + (pickup ? 0 : shipping.shipping_cost))}</h2>
+                            <h2>{format(total + (pickup ? 0 : shipping_costs))}</h2>
+                        </div>
+
+                        <div className="flex justify-between items-center w-full py-1">
+                            <Link href={"/checkout"} className="button w-full flex-center text-xl">
+                                Checkout
+                            </Link>
                         </div>
                     </div>
                 </>

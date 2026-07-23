@@ -1,0 +1,137 @@
+"use server";
+
+import { cookies } from "next/headers";
+import { verifyJwt } from "@/app/(auth)/auth/jwt";
+import { getAccessToken } from "./paypal";
+import { orders_collection, users_collection } from "../db/collections";
+
+import shippin_data from "@/app/shipping.json";
+
+const shipping_values = Object.values(shippin_data);
+
+const TAX_RATE = 0.03;
+
+export async function create_order(): Promise<string> {
+    const token = await getAccessToken();
+
+    const cookieStore = await cookies();
+    const jwt_token = cookieStore.get("accessToken")?.value;
+
+    let payload = null;
+
+    if (!jwt_token) return "";
+    else {
+        payload = verifyJwt(jwt_token);
+
+        if (!payload) {
+            return "";
+        }
+    }
+    const user = await users_collection.findOne({ email: payload!.email });
+
+    if (!user) return "";
+
+    const shipping = !user.local_pickup && shipping_values.find((e) => e.country_name == user.address.country)!;
+
+    const cart = user.cart;
+
+    const items = cart.map((item) => {
+        return {
+            name: item.brand + item.model,
+            description: item.description,
+            quantity: item.quantity.toString(),
+            unit_amount: {
+                currency_code: "EUR",
+                value: item.price,
+            },
+        };
+    });
+
+    const ref_id = `ORDER-${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+
+    const shipping_amount_cents = shipping ? Math.round(shipping.shipping_cost * 100) : 0;
+    const shipping_amount = shipping_amount_cents / 100;
+
+    const total_amount_cents: number = Math.round(cart.reduce((prev: number, item: { price: number; quantity: number }) => prev + item.price * item.quantity, 0) * 100);
+    const total_amount: number = total_amount_cents / 100;
+
+    const tax_amount_cents: number = Math.round(total_amount * TAX_RATE * 100);
+    const tax_amount: number = tax_amount_cents / 100;
+
+    const discount_amount_cents: number = 0;
+    const discount_amount: number = discount_amount_cents / 100;
+
+    const amount_to_pay_cents = Math.round(total_amount_cents + shipping_amount_cents + tax_amount_cents - discount_amount_cents);
+    const amount_to_pay = amount_to_pay_cents / 100;
+
+    const res = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            intent: "CAPTURE",
+            purchase_units: [
+                {
+                    reference_id: ref_id,
+                    description: "Timedriven",
+                    // custom_id: ref_id,
+                    items,
+
+                    amount: {
+                        currency_code: "EUR",
+                        value: amount_to_pay,
+                        breakdown: {
+                            item_total: { currency_code: "EUR", value: total_amount },
+                            tax_total: { currency_code: "EUR", value: tax_amount },
+                            handling: { currency_code: "EUR", value: "0.00" },
+                            discount: { currency_code: "EUR", value: discount_amount },
+                            shipping: {
+                                currency_code: "EUR",
+                                value: shipping_amount,
+                            },
+                        },
+                    },
+
+                    application_context: {
+                        brand_name: "Timedriven",
+                        locale: "en-US",
+                        landing_page: "LOGIN",
+                        shipping_preference: "NO_SHIPPING",
+                        user_action: "PAY_NOW",
+
+                        return_url: "http://localhost:3000/thank_you/",
+                        cancel_url: "http://localhost:3000/cart/",
+                    },
+                },
+            ],
+        }),
+    });
+
+    const order = await res.json();
+    if (order.id) {
+        await orders_collection.insertOne({
+            id: order.id,
+            email: payload.email,
+            items: cart,
+            total: total_amount,
+            discount_amount,
+            amount_to_pay,
+            status: "Pending",
+            created_at: new Date(),
+            payment_method: "PayPal",
+            shipping,
+            address: user.local_pickup
+                ? "Local Pickup"
+                : {
+                      address1: user.address.address1!,
+                      address2: user.address.address2!,
+                      city: user.address.city!,
+                      postCode: user.address.postCode!,
+                  },
+        });
+
+        return order.id;
+    } else return "";
+}

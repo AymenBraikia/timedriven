@@ -18,12 +18,19 @@ export default async function getUser(): Promise<UserData | undefined> {
 
     if (!user) return;
 
-    return JSON.parse(
-        JSON.stringify({
-            cart: user.cart,
-            wish_list: user.wish_list,
-            name: user.firstName,
-            email: user.email,
-        }),
-    );
+    const data: UserData = {
+        cart: user.cart,
+        wish_list: user.wish_list,
+        ongoing_orders: user.ongoing_orders,
+        fulfilled_orders: user.fulfilled_orders,
+        first_name: user.firstName,
+        last_name: user.lastName,
+        email: user.email,
+        local_pickup: user.local_pickup,
+        address: user.address,
+
+        diff_address: user.diff_address,
+    };
+
+    return JSON.parse(JSON.stringify(data));
 }

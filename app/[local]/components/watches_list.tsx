@@ -7,6 +7,7 @@ import { Watch } from "@/types/watch";
 import Dropdown from "@/app/components/dropdown";
 import CheckBox from "@/app/components/elements/checkbox";
 import filters_type from "@/types/filters";
+import { Spare } from "@/types/spare";
 
 const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,
@@ -21,7 +22,7 @@ export default function Watches_list({
     watches: Watch[];
     filters_list?: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean };
 }) {
-    const [view, set_view] = useState<null | { price: number; src: string[]; name: string; id: number | string }>(null);
+    const [view, set_view] = useState<null | Watch|Spare>(null);
     const [filters, set_filters] = useState<filters_type>({
         brands: {
             "Audemars Piguet": false,
@@ -187,7 +188,7 @@ export default function Watches_list({
                             filteredWatches.map((watch) => (
                                 <div
                                     key={watch.slug}
-                                    onClick={() => set_view({ price: watch.price, src: watch.images, id: watch.slug, name: watch.brand + " " + watch.model })}
+                                    onClick={() => set_view(watch)}
                                     className={`cursor-pointer ${filters_list ? "w-[calc(33%-8px)]" : "w-[calc(25%-12px)]"}`}
                                 >
                                     <Watch_card
