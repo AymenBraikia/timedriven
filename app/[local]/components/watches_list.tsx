@@ -19,10 +19,10 @@ export default function Watches_list({
     filters_list,
 }: {
     cardsPerRow?: number;
-    watches: Watch[];
+    watches: Watch[] | Spare[];
     filters_list?: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean };
 }) {
-    const [view, set_view] = useState<null | Watch|Spare>(null);
+    const [view, set_view] = useState<null | Watch | Spare>(null);
     const [filters, set_filters] = useState<filters_type>({
         brands: {
             "Audemars Piguet": false,
@@ -186,11 +186,7 @@ export default function Watches_list({
                     <div className="flex justify-center items-start gap-4 flex-wrap w-full bg-background">
                         {filteredWatches.length > 0 ? (
                             filteredWatches.map((watch) => (
-                                <div
-                                    key={watch.slug}
-                                    onClick={() => set_view(watch)}
-                                    className={`cursor-pointer ${filters_list ? "w-[calc(33%-8px)]" : "w-[calc(25%-12px)]"}`}
-                                >
+                                <div key={watch.slug} onClick={() => set_view(watch)} className={`cursor-pointer ${filters_list ? "w-[calc(33%-8px)]" : "w-[calc(25%-12px)]"}`}>
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}
