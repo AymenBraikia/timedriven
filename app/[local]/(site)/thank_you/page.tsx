@@ -15,24 +15,25 @@ export default async function thank_you_page() {
                 </div>
             </Banner>
 
-            <div className="flex-center flex-col gap-4 w-full px-12">
+            <div className="flex-center flex-col gap-16 w-full px-12 font-sans">
                 <div className="w-full">
                     <h2>Ongoing Orders</h2>
-                    <div className={`flex-center flex-col w-full gap-2 mt-12 p-2 ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
+                    <div className={`flex-center flex-col w-full mt-12 ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
+                        <div className={`w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.ongoing_orders.length ? "flex justify-between items-center" : "hidden"}`}>
+                            <p className="w-45">Order ID</p>
+                            <p className="w-35">Order Date</p>
+                            <p className="w-25">Order Total</p>
+                            <p className="w-35">Payment Method</p>
+                            <p className="w-80">Shipping</p>
+                            <p className="w-25">Status</p>
+                        </div>
+
                         {user.ongoing_orders.length ? (
-                            <>
-                                <div className="flex justify-between items-center font-semibold w-full gap-10 border-b">
-                                    <p className="w-full max-w-50">Order ID</p>
-                                    <p className="w-full">Order Items</p>
-                                    <p className="w-full max-w-50">Order Date</p>
-                                    <p className="w-full max-w-40">Order Total</p>
-                                    <p className="w-full max-w-40">Payment Method</p>
-                                    <p className="w-full">Shipping</p>
-                                </div>
+                            <div className="overflow-x-hidden overflow-y-auto w-full h-150 flex flex-col justify-start items-start gap-4">
                                 {user.ongoing_orders.map((o, i) => (
                                     <Order_display key={o.id} last={user.ongoing_orders.length == i + 1} data={o} />
                                 ))}
-                            </>
+                            </div>
                         ) : (
                             <h3 className="capitalize">you don't have any ongoing orders</h3>
                         )}
@@ -40,23 +41,24 @@ export default async function thank_you_page() {
                 </div>
                 <div className="w-full">
                     <h2>Delivered Orders</h2>
-                    <div className={`flex-center flex-col w-full gap-2 mt-12 p-2 ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
-                        {user.ongoing_orders.length ? (
-                            <>
-                                <div className="flex justify-between items-center font-semibold w-full gap-10 border-b">
-                                    <p className="w-full max-w-50">Order ID</p>
-                                    <p className="w-full">Order Items</p>
-                                    <p className="w-full max-w-50">Order Date</p>
-                                    <p className="w-full max-w-40">Order Total</p>
-                                    <p className="w-full max-w-40">Payment Method</p>
-                                    <p className="w-full">Shipping</p>
-                                </div>
-                                {user.ongoing_orders.map((o, i) => (
-                                    <Order_display key={o.id} last={user.ongoing_orders.length == i + 1} data={o} />
+                    <div className={`flex-center flex-col w-full mt-12 ${user.fulfilled_orders.length ? "bg-primary" : ""}`}>
+                        <div className={`w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.fulfilled_orders.length ? "flex justify-between items-center" : "hidden"}`}>
+                            <p className="w-45">Order ID</p>
+                            <p className="w-35">Order Date</p>
+                            <p className="w-25">Order Total</p>
+                            <p className="w-35">Payment Method</p>
+                            <p className="w-80">Shipping</p>
+                            <p className="w-25">Status</p>
+                        </div>
+
+                        {user.fulfilled_orders.length ? (
+                            <div className="overflow-x-hidden overflow-y-auto w-full h-150 flex flex-col justify-start items-start gap-4">
+                                {user.fulfilled_orders.map((o, i) => (
+                                    <Order_display key={o.id} last={user.fulfilled_orders.length == i + 1} data={o} />
                                 ))}
-                            </>
+                            </div>
                         ) : (
-                            <h3 className="capitalize">you don't have any ongoing orders</h3>
+                            <h3 className="capitalize">you don't have any fulfilled orders</h3>
                         )}
                     </div>
                 </div>
