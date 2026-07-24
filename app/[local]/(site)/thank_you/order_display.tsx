@@ -11,7 +11,10 @@ export default function Order_display({ data, last }: { data: Order; last: boole
                 <p className="w-35">{new Date(data.created_at).toDateString()}</p>
                 <p className="w-25">{format(data.amount_to_pay)}</p>
                 <p className="w-35">{data.payment_method}</p>
-                <p className="w-80">{address}</p>
+                <span className="w-80">
+                    <p>{address}</p>
+                    {data.shipping && <p className="text-sm text-secondary"> {data.shipping.carrier}</p>}
+                </span>
                 <p className="w-25">{data.status}</p>
             </div>
 
@@ -22,8 +25,8 @@ export default function Order_display({ data, last }: { data: Order; last: boole
                             <Image fill src={item.images[0]} alt={item.slug} sizes="(max-width: 768px) 80vw, 300px" className="object-cover object-center" />
                         </div>
                         <div className="w-full h-full flex flex-col justify-between items-start tracking-wider">
-                            <h6 className="capitalize">{item.brand + " " + item.model}</h6>
-                            <p className="font-semibold text-xl">
+                            <h6 className="capitalize font-thin">{item.brand + " " + item.model}</h6>
+                            <p className="text-xl">
                                 {item.quantity}x · {format(item.price)}
                             </p>
                         </div>

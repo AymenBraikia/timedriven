@@ -15,22 +15,22 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                     <h5 className="title3">Shop</h5>
                     <ul className="gap-2!">
                         <li>
-                            <Link className="text-sm" aria-label="watches list" href={"#"}>
+                            <Link className="text-sm" aria-label="watches list" href="/shop">
                                 Watches
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="spare parts" href={"#"}>
+                            <Link className="text-sm" aria-label="spare parts" href="/spare">
                                 Spare Parts
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="favorites" href={"#"}>
+                            <Link className="text-sm" aria-label="favorites" href="/favorites">
                                 Favorites
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="about us" href={"#"}>
+                            <Link className="text-sm" aria-label="about us" href="/info/about">
                                 About Us
                             </Link>
                         </li>
@@ -40,32 +40,32 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                     <h5 className="title3">Service</h5>
                     <ul className="gap-2!">
                         <li>
-                            <Link className="text-sm" aria-label="Store" href={"#"}>
+                            <Link className="text-sm" aria-label="Store" href="/store">
                                 Store
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Sell / Consign" href={"#"}>
+                            <Link className="text-sm" aria-label="Sell / Consign" href="/sell">
                                 Sell / Consign
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Polishing and Service" href={"#"}>
+                            <Link className="text-sm" aria-label="Polishing and Service" href="/polish">
                                 Polishing and Service
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Shipping & Payments" href={"#"}>
+                            <Link className="text-sm" aria-label="Shipping & Payments" href="/info/payments">
                                 Shipping & Payments
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Frequently Asked Questions" href={"#"}>
+                            <Link className="text-sm" aria-label="Frequently Asked Questions" href="/info/faq">
                                 Frequently Asked Questions (FAQ)
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Vacancies" href={"#"}>
+                            <Link className="text-sm" aria-label="Vacancies" href="/info/vacancies">
                                 Vacancies
                             </Link>
                         </li>
@@ -75,7 +75,7 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
             <div className="md:h-3/10 h-3/10  w-full flex flex-col gap-4">
                 <h5 className="title5 mr-[0.05rem] tracking-wider">Book an Appointment</h5>
                 <p className="leading-6 mr-[0.025rem] tracking-wide text-sm">As experts, we give you our professional opinion on any matter you may have.</p>
-                <Link aria-label="Book now" className="title6 underline" href={"#"}>
+                <Link aria-label="Book now" className="title6 underline" href={"/booking"}>
                     Book now
                 </Link>
             </div>
