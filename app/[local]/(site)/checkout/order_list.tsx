@@ -98,24 +98,24 @@ export default function Order_list() {
 
     return (
         <div className="flex justify-start items-start flex-col gap-4 w-full h-fit font-secondary">
-            <div className="flex flex-col justify-start items-start w-full h-[50dvh]">
-                <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2">
-                    <p className="w-20">Image</p>
-                    <p className="w-100">name</p>
-                    <p className="w-30">quantity</p>
-                    <p className="w-25">price</p>
+            <div className="flex flex-col justify-start items-start w-full h-[50dvh] bg-secondary">
+                <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2 capitalize border-b bg-primary">
+                    <p className="min-w-30 w-full">Watch/Spare</p>
+                    <p className="min-w-10 max-w-10">Qty</p>
+                    <p className="min-w-25">price</p>
                 </div>
-                <div className="w-full h-full overflow-y-auto overflow-x-hidden p-2">
+                <div className="w-full h-full overflow-y-auto overflow-x-hidden sm:gap-4 flex flex-col justify-start items-start p-2">
                     {session.cart.map((i) => (
-                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 py-4 border-b h-fit sm:h-30 w-full">
-                            <div className="relative aspect-square sm:h-30 h-20">
+                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 py-4 border-b h-fit w-full">
+                            <div className="relative aspect-square sm:h-25 h-20">
                                 <Image src={i.images[0]} alt={i.slug} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                             </div>
-                            <div className="sm:h-30 h-20 text-sm flex-col flex justify-start items-start sm:w-100 w-[calc(100%-96px)] tracking-wider capitalize">
+                            <div className="sm:h-25 h-20 text-sm flex-col flex justify-center items-start sm:w-100 w-[calc(100%-96px)] tracking-wider capitalize">
                                 <h6>{i.brand}</h6>
                                 <p className="text-secondary">{i.model}</p>
                             </div>
-                            <p className="font-medium w-30">Qty: {i.quantity}</p>
+                            <p className="text-2xl text-center font-medium min-w-20 max-w-20 block sm:hidden!">Qty: {i.quantity}</p>
+                            <p className="text-2xl text-center font-medium min-w-10 max-w-10 hidden sm:flex-center">{i.quantity}</p>
                             <p className="font-medium w-25">{format(i.price * i.quantity)}</p>
                         </div>
                     ))}
