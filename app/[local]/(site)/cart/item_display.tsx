@@ -17,15 +17,15 @@ export default function Item_Display({ brand, model, slug, price, quantity, imag
                     <Image fill src={images[0]} alt={slug} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                 </div>
                 <div className="capitalize h-full sm:hidden flex flex-col justify-center items-start w-full sm:min-w-60">
-                    <h6 className="text-secondary">{brand}</h6>
-                    <p>{model}</p>
+                    <h6>{brand}</h6>
+                    <p className="text-secondary">{model}</p>
                 </div>
             </div>
 
             <div className="flex justify-between items-center flex-col sm:flex-row w-full gap-4 h-full">
                 <div className="capitalize h-full hidden sm:flex flex-col justify-center items-start w-full sm:min-w-60">
-                    <h4 className="text-secondary">{brand}</h4>
-                    <h6>{model}</h6>
+                    <h4>{brand}</h4>
+                    <h6 className="text-secondary">{model}</h6>
                 </div>
 
                 <div className="w-full h-full flex justify-between items-center">
