@@ -69,6 +69,8 @@ export default function Header() {
             const startX = e.touches[0].clientX;
             const startY = e.touches[0].clientY;
 
+            let gesture: "horizontal" | "vertical" | null = null;
+
             cartEl.style.transition = "50ms ease";
             navEl.style.transition = "50ms ease";
 
@@ -79,20 +81,39 @@ export default function Header() {
                 const deltaX = currentX - startX;
                 const deltaY = currentY - startY;
 
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    if (moveEvent.cancelable) {
-                        moveEvent.preventDefault();
+                // Wait until the user clearly starts moving
+                if (gesture === null) {
+                    if (Math.abs(deltaX) < 15 && Math.abs(deltaY) < 15) return;
+
+                    if (Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+                        gesture = "horizontal";
+                    } else {
+                        gesture = "vertical";
                     }
                 }
 
+                // Let vertical scrolling happen normally
+                if (gesture === "vertical") return;
+
+                if (moveEvent.cancelable) {
+                    moveEvent.preventDefault();
+                }
+
                 if (ui.isCartOpen) {
-                    if (deltaX > 0) cartEl.style.transform = `translateX(${Math.abs(deltaX)}px)`;
+                    if (deltaX > 0) {
+                        cartEl.style.transform = `translateX(${deltaX}px)`;
+                    }
                 } else {
                     if (ui.isNavOpen) {
-                        if (deltaX < 0) navEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
+                        if (deltaX < 0) {
+                            navEl.style.transform = `translateX(${deltaX}px)`;
+                        }
                     } else {
-                        if (deltaX < 0) cartEl.style.transform = `translateX(-${Math.abs(deltaX)}px)`;
-                        else navEl.style.transform = `translateX(${Math.abs(deltaX)}px)`;
+                        if (deltaX < 0) {
+                            cartEl.style.transform = `translateX(${deltaX}px)`;
+                        } else {
+                            navEl.style.transform = `translateX(${deltaX}px)`;
+                        }
                     }
                 }
             };
@@ -107,16 +128,23 @@ export default function Header() {
                 navEl.style.transition = "";
                 navEl.style.transform = "";
 
+                if (gesture !== "horizontal") return;
+
                 const finalDeltaX = endEvent.changedTouches[0].clientX - startX;
 
                 if (ui.isCartOpen) {
-                    if (finalDeltaX > 80) dispatch({ type: "CLOSE_CART" });
+                    if (finalDeltaX > 80) {
+                        dispatch({ type: "CLOSE_CART" });
+                    }
+                } else if (ui.isNavOpen) {
+                    if (finalDeltaX < -80) {
+                        dispatch({ type: "CLOSE_NAV" });
+                    }
                 } else {
-                    if (ui.isNavOpen) {
-                        if (finalDeltaX < -80) dispatch({ type: "CLOSE_NAV" });
-                    } else {
-                        if (finalDeltaX < -80) dispatch({ type: "OPEN_CART" });
-                        else if (finalDeltaX > 80) dispatch({ type: "OPEN_NAV" });
+                    if (finalDeltaX < -80) {
+                        dispatch({ type: "OPEN_CART" });
+                    } else if (finalDeltaX > 80) {
+                        dispatch({ type: "OPEN_NAV" });
                     }
                 }
             };
@@ -127,8 +155,10 @@ export default function Header() {
 
         window.addEventListener("touchstart", onTouchStart, { passive: true });
 
-        return () => window.removeEventListener("touchstart", onTouchStart);
-    }, [ui.isCartOpen, ui.isGlassy, ui.isNavOpen]);
+        return () => {
+            window.removeEventListener("touchstart", onTouchStart);
+        };
+    }, [ui.isCartOpen, ui.isNavOpen]);
     return (
         <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-40 p-8 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white backdrop-blur-md"}`}>
             <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />

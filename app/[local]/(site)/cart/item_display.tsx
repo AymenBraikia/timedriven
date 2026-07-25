@@ -7,30 +7,41 @@ import Image from "next/image";
 
 export default function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
     return (
-        <div className="flex justify-between items-center w-full gap-4 min-h-40 h-40 border-b-foreground border-b py-4 font-secondary">
-            <button type="button" className="button2 p-0" onClick={() => revmove_from_cart(reference)}>
+        <div className="flex flex-wrap sm:flex-nowrap justify-between items-center w-full gap-4 border-b-foreground border-b p-4 font-secondary">
+            <button type="button" className="hidden sm:flex button2 p-0" onClick={() => revmove_from_cart(reference)}>
                 <Cross classnames="w-8" />
             </button>
 
-            <div className="relative aspect-square h-full max-h-40 max-w-40">
-                <Image fill src={images[0]} alt={slug} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
+            <div className="flex-center gap-4 h-full w-full sm:w-fit">
+                <div className="relative aspect-square min-h-30 h-full">
+                    <Image fill src={images[0]} alt={slug} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
+                </div>
+                <div className="capitalize h-full sm:hidden flex flex-col justify-center items-start w-full sm:min-w-60">
+                    <h6 className="text-secondary">{brand}</h6>
+                    <p>{model}</p>
+                </div>
             </div>
 
-            <p className="capitalize w-100 h-full flex justify-start items-center text-sm">{brand + " " + model}</p>
+            <div className="flex justify-between items-center flex-col sm:flex-row w-full gap-4 h-full">
+                <div className="capitalize h-full hidden sm:flex flex-col justify-center items-start w-full sm:min-w-60">
+                    <h4 className="text-secondary">{brand}</h4>
+                    <h6>{model}</h6>
+                </div>
 
-            <p className="w-30 text-xl">{format(price)}</p>
+                <div className="w-full h-full flex justify-between items-center">
+                    <div className="flex-center">
+                        <button onClick={() => quantity < 10 && increase_cart(reference)} className={`button aspect-square w-10 p-0 h-fit font-bold text-xl ${quantity < 10 ? "" : "brightness-75 cursor-not-allowed"}`}>
+                            +
+                        </button>
+                        <p className="aspect-square w-10 flex-center text-xl font-medium cursor-default">{quantity}</p>
+                        <button onClick={() => quantity > 1 && decrease_cart(reference)} className={`button aspect-square w-10 p-0 h-fit font-bold text-xl ${quantity > 1 ? "" : "brightness-75 cursor-not-allowed"}`}>
+                            -
+                        </button>
+                    </div>
 
-            <div className="flex-center">
-                <button onClick={() => quantity < 10 && increase_cart(reference)} className={`button aspect-square w-10 p-0 h-fit font-bold text-xl ${quantity < 10 ? "" : "brightness-75 cursor-not-allowed"}`}>
-                    +
-                </button>
-                <p className="aspect-square w-10 flex-center text-xl font-medium cursor-default">{quantity}</p>
-                <button onClick={() => quantity > 1 && decrease_cart(reference)} className={`button aspect-square w-10 p-0 h-fit font-bold text-xl ${quantity > 1 ? "" : "brightness-75 cursor-not-allowed"}`}>
-                    -
-                </button>
+                    <p className="w-40 text-xl text-end">{format(price * quantity)}</p>
+                </div>
             </div>
-
-            <p className="w-40 text-xl">{format(price * quantity)}</p>
         </div>
     );
 }

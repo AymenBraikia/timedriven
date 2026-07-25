@@ -100,30 +100,55 @@ export default function List({ children, display }: { children: React.ReactNode;
         }
     }, [isTransitioning]);
 
+    const [gap, setGap] = useState(16);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setGap(0);
+            } else if (window.innerWidth < 768) {
+                setGap(12);
+            } else {
+                setGap(16);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (
-        <div className="relative w-full h-full overflow-hidden flex items-start justify-center flex-col gap-4">
+        <div className="relative w-full h-full overflow-hidden flex items-start justify-center flex-col sm:gap-4">
             <div
                 onTransitionEnd={handleTransitionEnd}
-                className={`flex gap-4 w-full h-full ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
+                className={`flex w-full h-full ${gap ? "transition-transform duration-300 ease-in-out" : ""} ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
                 style={{
-                    transform: `translateX(-${swipe * (100 / currentDisplay)}%)`,
+                    gap: `${gap}px`,
+                    transform: `translateX(calc(-${swipe * (100 / currentDisplay)}% - ${(swipe * gap) / currentDisplay}px))`,
                 }}
             >
                 {extendedItems.map((child, globalIndex) => (
-                    <div key={`carousel-item-${globalIndex}`} className="shrink-0" style={{ width: `calc(${100 / currentDisplay}% - 16px)` }}>
+                    <div
+                        key={globalIndex}
+                        className="shrink-0 min-w-0"
+                        style={{
+                            width: `calc(${100 / currentDisplay}% - ${(gap * (currentDisplay - 1)) / currentDisplay}px)`,
+                        }}
+                    >
                         {child}
                     </div>
                 ))}
             </div>
 
-            <div className="flex-center gap-4 w-full">
-                <button aria-label="Previous" type="button" className={`cursor-pointer button2 flex-center rotate-180 p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handlePrev} disabled={!canLoop}>
-                    <Next classnames={"w-10"} clr="currentColor" />
+            <div className="flex items-center justify-center gap-2 sm:gap-4 w-full mt-3 sm:mt-4 px-2">
+                <button aria-label="Previous" type="button" className={`button2 flex-center rotate-180 p-2 sm:p-3 ${!canLoop ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`} onClick={handlePrev} disabled={!canLoop}>
+                    <Next classnames="w-6 sm:w-8 lg:w-10" clr="currentColor" />
                 </button>
-                {gen_dot(N, index)}
 
-                <button aria-label="Next" type="button" className={`cursor-pointer button2 flex-center p-2 z-10 ${!canLoop ? "opacity-50 cursor-not-allowed" : ""}`} onClick={handleNext} disabled={!canLoop}>
-                    <Next classnames={"w-10"} clr="currentColor" />
+                <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">{gen_dot(N, index)}</div>
+
+                <button aria-label="Next" type="button" className={`button2 flex-center p-2 sm:p-3 ${!canLoop ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`} onClick={handleNext} disabled={!canLoop}>
+                    <Next classnames="w-6 sm:w-8 lg:w-10" clr="currentColor" />
                 </button>
             </div>
         </div>
@@ -131,9 +156,5 @@ export default function List({ children, display }: { children: React.ReactNode;
 }
 
 function gen_dot(n: number, index: number): React.ReactElement[] {
-    const elements: React.ReactElement[] = [];
-    for (let i = 0; i < n; i++) {
-        elements.push(<div key={i} className={`w-1.5 aspect-square bg-foreground rounded-full transition-all duration-200 ${index === i ? "opacity-100 scale-100" : "opacity-40 scale-75"}`} />);
-    }
-    return elements;
+    return Array.from({ length: n }, (_, i) => <div key={i} className={`rounded-full transition-all duration-200 bg-foreground ${index === i ? "w-2 h-2 opacity-100 scale-100" : "w-1.5 h-1.5 opacity-40 scale-75"}`} />);
 }

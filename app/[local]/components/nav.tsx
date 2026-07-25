@@ -73,8 +73,8 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                 </div>
             </div>
             <div className="md:h-3/10 h-3/10  w-full flex flex-col gap-4">
-                <h5 className="title5 mr-[0.05rem] tracking-wider">Book an Appointment</h5>
-                <p className="leading-6 mr-[0.025rem] tracking-wide text-sm">As experts, we give you our professional opinion on any matter you may have.</p>
+                <h5 className="title5 tracking-wider">Book an Appointment</h5>
+                <p className="leading-6 tracking-wide text-sm">As experts, we give you our professional opinion on any matter you may have.</p>
                 <Link aria-label="Book now" className="title6 underline" href={"/booking"}>
                     Book now
                 </Link>

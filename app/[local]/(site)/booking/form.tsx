@@ -54,25 +54,25 @@ export default function Form() {
         <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
             <div className={`w-full h-fit min-h-80 relative flex-center overflow-hidden`}>
                 <div className="w-full max-w-200 gap-4 flex-center flex-wrap">
-                    <div className="w-[calc(50%-8px)]">
+                    <div className="w-full sm:w-[calc(50%-8px)]">
                         <Input required {...register("firstName")} label={"First Name"} type={"text"} />
                         {errors.firstName && <p className="text-red-400 text-sm">{errors.firstName.message}</p>}
                     </div>
-                    <div className="w-[calc(50%-8px)]">
+                    <div className="w-full sm:w-[calc(50%-8px)]">
                         <Input required {...register("lastName")} label={"Last Name"} type={"text"} />
                         {errors.lastName && <p className="text-red-400 text-sm">{errors.lastName.message}</p>}
                     </div>
-                    <div className="w-[calc(50%-8px)]">
+                    <div className="w-full sm:w-[calc(50%-8px)]">
                         <Input required {...register("email")} label={"Email"} type={"email"} />
                         {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
                     </div>
-                    <div className="w-[calc(50%-8px)]">
+                    <div className="w-full sm:w-[calc(50%-8px)]">
                         <Input required {...register("phone")} label={"Phone"} type={"tel"} />
                         {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
                     </div>
                     <div className="w-full">
                         <textarea {...register("reason")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder="Reason"></textarea>
-                        {errors.lastName && <p className="text-red-400 text-sm">{errors.reason?.message}</p>}
+                        {errors.reason && <p className="text-red-400 text-sm">{errors.reason.message}</p>}
                     </div>
 
                     <div className="w-full flex flex-col gap-4">

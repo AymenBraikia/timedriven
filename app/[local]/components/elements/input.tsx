@@ -21,10 +21,12 @@ export default function Input({ placeholder, label, type, required = false, name
     const [val, set_val] = useState<string>(def_value || "");
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (value === undefined) {
+            set_val(e.target.value);
+        }
+
         if (onChange) {
             onChange(e);
-        } else {
-            set_val(e.target.value);
         }
     };
 

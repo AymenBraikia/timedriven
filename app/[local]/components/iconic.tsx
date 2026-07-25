@@ -5,22 +5,22 @@ import FadeInObserver from "./fade_wrapper";
 
 let id = 0;
 const data = [
-	{ id: id++, src: "/brands/Audemars Piguet.webp", name: "Audemars Piguet" },
-	{ id: id++, src: "/brands/breitling.webp", name: "breitling" },
-	{ id: id++, src: "/brands/cartier.webp", name: "Cartier" },
-	{ id: id++, src: "/brands/iwc.webp", name: "IWC" },
-	{ id: id++, src: "/brands/omega.webp", name: "Omega" },
-	{ id: id++, src: "/brands/Patek Philippe.webp", name: "Patek Philippe" },
-	{ id: id++, src: "/brands/Rolex Oyster Perpetual 26.webp", name: "Rolex" },
-	{ id: id++, src: "/brands/zenith.webp", name: "Zenith" },
+    { id: id++, src: "/brands/Audemars Piguet.webp", name: "Audemars Piguet" },
+    { id: id++, src: "/brands/breitling.webp", name: "breitling" },
+    { id: id++, src: "/brands/cartier.webp", name: "Cartier" },
+    { id: id++, src: "/brands/iwc.webp", name: "IWC" },
+    { id: id++, src: "/brands/omega.webp", name: "Omega" },
+    { id: id++, src: "/brands/Patek Philippe.webp", name: "Patek Philippe" },
+    { id: id++, src: "/brands/Rolex Oyster Perpetual 26.webp", name: "Rolex" },
+    { id: id++, src: "/brands/zenith.webp", name: "Zenith" },
 ];
 
 export default function Iconic() {
-	return (
+    return (
         <section className="flex-col justify-center items-start sm:p-16 p-4 w-dvw">
             <div className="w-fit">
                 <FadeInObserver>
-                    <h1 className={`text-5xl font-secondary mr-[0.025rem] tracking-wide`}>
+                    <h1 className={`text-5xl font-secondary tracking-wide`}>
                         Iconic <br />
                         Brands
                     </h1>

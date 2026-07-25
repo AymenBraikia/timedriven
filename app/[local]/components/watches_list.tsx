@@ -155,14 +155,14 @@ export default function Watches_list({
                     />
                 )}
                 <div className="flex-center flex-col">
-                    <div className="w-full py-4 flex justify-between items-start">
-                        <div className="w-fit flex justify-start items-start flex-col gap-4">
+                    <div className="w-full py-4 flex justify-between items-start flex-col sm:flex-row sm:gap-0 gap-4">
+                        <div className="sm:w-fit w-full flex justify-start items-start flex-col gap-4">
                             <label className="font-semibold" htmlFor="search">
                                 Search
                             </label>
-                            <input type="text" id="search" className="outline-none border-b w-100 py-2" placeholder="Search for watches..." />
+                            <input type="text" id="search" className="outline-none border-b sm:w-100 w-full py-2" placeholder="Search for watches..." />
                         </div>
-                        <div className="w-fit flex justify-start items-start flex-col gap-4">
+                        <div className="sm:w-fit w-full flex justify-start items-start flex-col gap-4">
                             <label className="font-semibold" htmlFor="sort">
                                 Sort
                             </label>
@@ -183,10 +183,10 @@ export default function Watches_list({
                         </div>
                     </div>
 
-                    <div className="flex justify-center items-start gap-4 flex-wrap w-full bg-background">
+                    <div className="flex justify-center items-start sm:flex-row flex-col gap-4 flex-wrap w-full bg-background">
                         {filteredWatches.length > 0 ? (
                             filteredWatches.map((watch) => (
-                                <div key={watch.slug} onClick={() => set_view(watch)} className={`cursor-pointer ${filters_list ? "w-[calc(33%-8px)]" : "w-[calc(25%-12px)]"}`}>
+                                <div key={watch.slug} onClick={() => set_view(watch)} className={`cursor-pointer w-full ${filters_list ? "sm:w-[calc(33%-8px)]" : "sm:w-[calc(25%-12px)]"}`}>
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}

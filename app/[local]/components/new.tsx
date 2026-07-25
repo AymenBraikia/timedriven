@@ -2,7 +2,7 @@
 import Link from "next/link";
 import List from "./scrollList";
 import Image from "next/image";
-import { use, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import FadeInObserver from "./fade_wrapper";
 import dynamic from "next/dynamic";
 import AtcBtn from "./buttons/addToCart";
@@ -25,10 +25,10 @@ export default function New() {
     }, []);
 
     return (
-        <section className="flex flex-col justify-center items-start p-16 w-dvw gap-6" id="new">
+        <section className="flex flex-col justify-center items-start sm:p-16 p-4 py-8 w-dvw gap-6" id="new">
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <h1 className={`text-5xl font-secondary mr-[0.025rem] tracking-wide`}>
+                    <h1 className={`text-5xl font-secondary tracking-wide`}>
                         New <br />
                         Arrivals
                     </h1>
@@ -47,7 +47,7 @@ export default function New() {
                 </FadeInObserver>
             </div>
             <FadeInObserver>
-                <div className={`w-[95dvw] sm-w-fit`}>
+                <div className={`w-full sm-w-fit`}>
                     <List display={{ base: 1, sm: 2, md: 2, lg: 4 }}>
                         {data.map((d) => (
                             <div

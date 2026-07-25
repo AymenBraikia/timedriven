@@ -34,15 +34,15 @@ export default function Items() {
     }, [pickup]);
 
     return (
-        <div className="w-full h-fit flex justify-between items-start gap-12">
+        <div className="w-full h-fit flex sm:flex-row flex-col justify-between items-start gap-12">
             {session!.cart.length ? (
                 <>
-                    <div className="w-4/5 h-full max-h-[75dvh] overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
+                    <div className="sm:w-4/5 w-full h-full max-h-[75dvh] overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
                         {session!.cart.map((i) => (
                             <Item_Display key={i.slug} {...i} />
                         ))}
                     </div>
-                    <div className="w-2/5 h-fit min-w-100 max-w-125 bg-background font-secondary flex flex-col justify-start items-start p-4 gap-8">
+                    <div className="sm:w-1/2 h-fit w-dvw sm:min-w-150 sm:max-w-175 bg-background font-secondary flex flex-col justify-start items-start p-4 gap-8">
                         <h1 className="font-semibold">Summary</h1>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
@@ -52,13 +52,15 @@ export default function Items() {
 
                         <div className="flex flex-col justify-center items-start w-full border-b gap-4 py-1">
                             <h4 className={`${pickup ? "line-through" : ""}`}>Shipping</h4>
-                            <div className="flex justify-between items-center w-full">
-                                <div className="flex flex-col justify-start items-start gap-2">
+                            <div className="flex justify-between items-center w-full gap-4">
+                                <div className="flex flex-col justify-start items-start gap-2 text-sm sm:text-base">
                                     <p>Shipping to {country}</p>
                                     <Select options={shipping_options} set_value={set_country} value={country} label="Choose Shipping Country" />
                                 </div>
-                                <p className={`${pickup ? "line-through" : ""}`}>{format(shipping_costs)}</p>
+                                <p className={`sm:flex hidden ${pickup ? "line-through" : ""}`}>{format(shipping_costs)}</p>
                             </div>
+
+                            <p className={`sm:hidden flex ${pickup ? "line-through" : ""}`}>Shipping Costs: {format(shipping_costs)}</p>
 
                             <CheckBox label="Local Pickup" active={pickup} action={set_pickup} />
 
