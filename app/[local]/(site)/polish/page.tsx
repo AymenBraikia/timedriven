@@ -1,6 +1,6 @@
 export default function polishPage() {
     return (
-        <div className="flex flex-col justify-start items-start gap-6 py-6 sm:px-20 px-6">
+        <div className="flex flex-col justify-start items-start gap-6 py-6 sm:px-20 px-6 mt-10">
             <h1 className="font-semibold font-secondary">Polishing and Service</h1>
             <p className="tracking-widest leading-6">
                 At Timedriven, we offer a first-class polishing and repair service for top-class brands such as Rolex, IWC, Tudor, Omega and Cartier. Our experienced watchmaker will get your watch in top shape – from precise polishing to

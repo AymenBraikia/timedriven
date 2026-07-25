@@ -10,8 +10,8 @@ export default async function ShopPage() {
             <div className="w-full max-w-dvw flex flex-col gap-10">
                 <Banner>
                     <span className="text-sm uppercase tracking-[0.4em] opacity-80 font-medium">Watches</span>
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-secondary tracking-wide">Find your next signature timepiece</h1>
-                    <p className="max-w-3xl text-sm sm:text-base leading-7 text-white/75">Our watch experts provide professional assistance for the purchase or sale of new/pre-owned luxury timepieces.</p>
+                    <h3 className="sm:text-5xl md:text-6xl font-secondary tracking-wide">Find your next signature timepiece</h3>
+                    <p className="max-w-3xl text-sm tracking-wide sm:text-base leading-7 text-white/75 hidden sm:block">Our watch experts provide professional assistance for the purchase or sale of new/pre-owned luxury timepieces.</p>
                 </Banner>
                 <Watches_list watches={watches} filters_list={{ material: true, brand: true, condition: true, color: true, movement: true, price: true, size: true }} />
             </div>

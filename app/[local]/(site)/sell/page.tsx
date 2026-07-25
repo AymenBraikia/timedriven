@@ -7,7 +7,7 @@ export default async function SellPage() {
         <section className="w-full flex flex-col items-center justify-start gap-12 py-20 px-4 sm:px-20">
             <div className="w-full max-w-dvw flex flex-col gap-10">
                 <Banner>
-                    <h1 className="tracking-wider font-secondary font-medium">Sell / Consign</h1>
+                    <h1 className="tracking-wider font-secondary font-medium">Sell/Consign</h1>
                 </Banner>
             </div>
 

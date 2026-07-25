@@ -64,20 +64,20 @@ export default function Form() {
     const onValid = (data: FormOutput) => Submit(data);
     return (
         <div className="flex-center flex-col gap-4" id="form">
-            <h3 className="font-medium">Consignment / Sell your Watch</h3>
+            <h3 className="font-medium font-secondary">Consignment / Sell your Watch</h3>
             <p>Timedriven's expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.</p>
 
             <div className="flex-center gap-4 mt-10">
-                <h6>Personal Information</h6>
-                <span className={`w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>Sale preference</h6>
-                <span className={`w-20 h-0.5 bg-foreground transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}>Watch Details</h6>
+                <h6 className="text-sm! text-center">Personal Information</h6>
+                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}></span>
+                <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>Sale preference</h6>
+                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}></span>
+                <h6 className={`text-sm! text-center transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}>Watch Details</h6>
             </div>
 
             <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
-                <div className={`w-full h-fit ${step >= 2 ? "min-h-200" : "min-h-50"} relative flex-center overflow-hidden`}>
-                    <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid-cols-2 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
+                <div className={`sm:w-full w-dvw h-fit ${step == 2 ? "sm:min-h-200 min-h-220" : step == 1 ? "sm:min-h-50 min-h-30" : "sm:min-h-50 min-h-100"} relative flex-center overflow-hidden`}>
+                    <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
                         <div>
                             <Input {...register("firstName")} label={"First Name"} type={"text"} />
                             {errors.firstName && <p className="text-red-400 text-sm">{errors.firstName.message}</p>}
@@ -96,15 +96,13 @@ export default function Form() {
                         </div>
                     </div>
 
-                    {/* Step 1: Sale preference */}
                     <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
                         <Input {...register("intent")} label={"Consignment"} type={"radio"} value="consign" />
                         <Input {...register("intent")} label={"Sell your watch"} type={"radio"} value="sell" />
                         {errors.intent && <p className="text-red-400 text-sm">{errors.intent.message}</p>}
                     </div>
 
-                    {/* Step 2: Watch Details */}
-                    <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
+                    <div className="w-full sm:max-w-200 max-w-[90dvw] absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
                         <Input {...register("brand")} label={"Brand"} type={"text"} />
                         {errors.brand && <p className="text-red-400 text-sm">{errors.brand.message}</p>}
 
@@ -124,7 +122,7 @@ export default function Form() {
 
                         <div className="w-full flex flex-wrap gap-4 justify-start items-start">
                             <p className="w-full">Condition</p>
-                            <div className="flex gap-20 w-full">
+                            <div className="flex gap-4 sm:gap-20 w-full">
                                 <Input {...register("condition")} label={"New"} type={"radio"} value="new" />
                                 <Input {...register("condition")} label={"Mint"} type={"radio"} value="mint" />
                                 <Input {...register("condition")} label={"Pre-owned"} type={"radio"} value="pre-owned" />
@@ -132,9 +130,9 @@ export default function Form() {
                             {errors.condition && <p className="text-red-400 text-sm">{errors.condition.message}</p>}
                         </div>
 
-                        <div className="w-full flex flex-col gap-4">
+                        <div className="max-w-full w-full sm:w-full flex flex-col gap-4">
                             <p>Attach Images</p>
-                            <input {...register("images")} type="file" id="images" multiple accept="image/*" className="button" />
+                            <input {...register("images")} type="file" id="images" multiple accept="image/*" className="button w-full" />
                             {errors.images && <p className="text-red-400 text-sm">{errors.images.message as string}</p>}
                         </div>
 

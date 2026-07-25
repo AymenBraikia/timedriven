@@ -106,7 +106,7 @@ export default function Order_list() {
                 </div>
                 <div className="w-full h-full overflow-y-auto overflow-x-hidden sm:gap-4 flex flex-col justify-start items-start p-2">
                     {session.cart.map((i) => (
-                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 py-4 border-b h-fit w-full">
+                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 py-4 sm:p-0 sm:pb-4 border-b h-fit w-full">
                             <div className="relative aspect-square sm:h-25 h-20">
                                 <Image src={i.images[0]} alt={i.slug} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                             </div>
@@ -116,7 +116,7 @@ export default function Order_list() {
                             </div>
                             <p className="text-2xl text-center font-medium min-w-20 max-w-20 block sm:hidden!">Qty: {i.quantity}</p>
                             <p className="text-2xl text-center font-medium min-w-10 max-w-10 hidden sm:flex-center">{i.quantity}</p>
-                            <p className="font-medium w-25">{format(i.price * i.quantity)}</p>
+                            <p className="text-2xl sm:text-base font-medium w-fit sm:w-25">{format(i.price * i.quantity)}</p>
                         </div>
                     ))}
                 </div>
@@ -175,7 +175,7 @@ export default function Order_list() {
                     </button>
                 </div>
                 {allowed_payment ? (
-                    <div className={`flex justify-start items-center transition-default w-full ${payment_method.name == "PayPal" ? "" : "bg-secondary py-8 px-12"} capitalize gap-2 flex-wrap`}>
+                    <div className={`flex justify-start items-center transition-default w-full ${payment_method.name == "PayPal" ? "" : "bg-secondary p-4 sm:p-0 sm:py-8 sm:px-12"} capitalize gap-2 flex-wrap`}>
                         {payment_method.name == "Bank Transfer" ? (
                             <div className="flex flex-col justify-start items-start gap-4">
                                 <p className="tracking-wider leading-6 text-sm">
@@ -228,18 +228,18 @@ export default function Order_list() {
                             </div>
                         ) : (
                             <>
-                                <div className="text-xl! tracking-wider w-full">
+                                <div className="sm:text-xl text-sm tracking-wider w-full">
                                     <Input label="card number" type="text" max={19} placeholder="1234 1234 1234 1234" onChange={validate_cc} value={card_number} />
                                 </div>
 
-                                <div className="text-xl! tracking-wider w-[calc(50%-4px)]">
+                                <div className="sm:text-xl text-sm tracking-wider w-[calc(50%-4px)]">
                                     <Input label="expiration date" type="text" max={19} placeholder="MM/YY" onChange={validate_exp} value={expire} />
                                 </div>
 
-                                <div className="text-xl! tracking-wider w-[calc(50%-4px)]">
+                                <div className="sm:text-xl text-sm tracking-wider w-[calc(50%-4px)]">
                                     <Input label="security code" type="text" max={3} placeholder="123" onChange={validate_sec} value={sec_code} />
                                 </div>
-                                <button type="button" className="button w-full mt-4">
+                                <button type="button" className="button w-full mt-4 sm:text-base text-sm">
                                     Place Order
                                 </button>
                             </>
