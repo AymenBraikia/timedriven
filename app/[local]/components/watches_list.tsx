@@ -269,7 +269,7 @@ function Filters({
     return (
         <>
             <aside
-                className={`frost flex flex-col justify-start items-end gap-6 sm:w-fit sm:h-fit min-w-50 sm:relative fixed w-full h-full z-50 top-0 left-0 p-4 sm:p-0 overflow-x-hidden overflow-y-auto ${active ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"} transition default`}
+                className={`frost flex flex-col justify-start items-end gap-6 sm:w-fit sm:h-fit min-w-50 sm:relative fixed w-full h-full z-50 top-0 left-0 p-4 sm:p-0 overflow-x-hidden overflow-y-auto ${active ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"} transition-default`}
             >
                 <button type="button" className="button sm:hidden" onClick={() => set_active(false)}>
                     Close
