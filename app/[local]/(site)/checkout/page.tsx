@@ -12,7 +12,7 @@ export default async function cartPage() {
                 <h1 className="font-bold font-secondary">Checkout</h1>
             </Banner>
             {!user!.cart.length ? (
-                <div className="flex-center w-dvw h-100 flex-col gap-4 font-secondary">
+                <div className="flex-center w-full h-100 flex-col gap-4 font-secondary text-center px-4">
                     <h1>Your cart is empty</h1>
                     <Link className="text-2xl underline" href={"/shop"}>
                         Continue Shopping

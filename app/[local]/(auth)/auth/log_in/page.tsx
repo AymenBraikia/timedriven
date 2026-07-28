@@ -37,7 +37,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ re
     }
 
     return (
-        <div className="relative flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-8 sm:p-10">
+        <div className="relative w-full max-w-md flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-6 sm:p-10">
             <div className="flex-center">
                 <Link aria-label="home page" href={"/"}>
                     <Logo classnames="w-20 sm:w-25" />

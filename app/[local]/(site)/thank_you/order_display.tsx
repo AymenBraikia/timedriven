@@ -5,7 +5,7 @@ export default function Order_display({ data, last }: { data: Order; last: boole
     const address = typeof data.address == "string" ? data.address : `${data.address.city}, ${data.address.address1 + (data.address.address2 ? `, ${data.address.address2}` : "")}`;
 
     return (
-        <div key={data.id} className={`flex-center flex-col w-full ${last ? "" : "border-b"}  tracking-wide capitalize gap-4`}>
+        <div key={data.id} className={`flex-center flex-col min-w-250 w-full ${last ? "" : "border-b"} tracking-wide capitalize gap-4`}>
             <div className="w-full flex justify-between items-center gap-2 bg-secondary p-2">
                 <p className="w-45">{data.id}</p>
                 <p className="w-35">{new Date(data.created_at).toDateString()}</p>

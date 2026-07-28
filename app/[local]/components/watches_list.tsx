@@ -1,19 +1,18 @@
 "use client";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useState } from "react";
 import Watch_card from "@/app/components/watch_card";
 import dynamic from "next/dynamic";
 
 import { Watch } from "@/types/watch";
-import Dropdown from "@/app/components/dropdown";
-import CheckBox from "@/app/components/elements/checkbox";
 import filters_type from "@/types/filters";
 import { Spare } from "@/types/spare";
+import WatchFilters, { WatchFiltersList } from "@/app/components/watch_filters";
 
 const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,
 });
 
-export default function Watches_list({ watches, filters_list }: { watches: Watch[] | Spare[]; filters_list?: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean } }) {
+export default function Watches_list({ watches, filters_list }: { watches: Watch[] | Spare[]; filters_list?: WatchFiltersList }) {
     const [view, set_view] = useState<null | Watch | Spare>(null);
     const [filters, set_filters] = useState<filters_type>({
         brands: {
@@ -108,61 +107,55 @@ export default function Watches_list({ watches, filters_list }: { watches: Watch
             max: 1e5,
         },
     });
-    const [applyFilters, set_applyFilters] = useState<boolean>(false);
-
     const [active, set_active] = useState<boolean>(false);
 
     const filteredWatches = watches.filter((watch) => {
-        for (const b in filters.brands) if (b == watch.brand) if (filters.brands[b as keyof typeof filters.brands]) return true;
-        for (const b in filters.movement) if (b == watch.movement) if (filters.movement[b as keyof typeof filters.movement]) return true;
-        for (const b in filters.condition) if (b == watch.condition) if (filters.condition[b as keyof typeof filters.condition]) return true;
-        for (const b in filters.material) if (b == watch.caseMaterial) if (filters.material[b as keyof typeof filters.material]) return true;
-        for (const b in filters.color) if (b == watch.dialColor) if (filters.color[b as keyof typeof filters.color]) return true;
+        const matches = (options: Record<string, boolean>, value: string) => {
+            const selected = Object.keys(options).filter((option) => options[option]);
+            return selected.length === 0 || selected.includes(value);
+        };
+        const usesCaseSize = filters.caseSize.min !== 30 || filters.caseSize.max !== 50;
+        const usesPrice = filters.price.min !== 0 || filters.price.max !== 1e5;
 
-        return !applyFilters;
+        return (
+            matches(filters.brands, watch.brand) &&
+            matches(filters.movement, watch.movement) &&
+            matches(filters.condition, watch.condition) &&
+            matches(filters.material, watch.caseMaterial) &&
+            matches(filters.color, watch.dialColor) &&
+            (!usesCaseSize || (watch.caseDiameterMm >= filters.caseSize.min && watch.caseDiameterMm <= filters.caseSize.max)) &&
+            (!usesPrice || (watch.price >= filters.price.min && watch.price <= filters.price.max))
+        );
     });
 
     return (
         <>
-            <div className="w-full h-fit flex justify-center items-start gap-32">
+            <div className="w-full min-w-0 flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-8 xl:gap-12">
                 {filters_list && (
-                    <Filters
-                        filters_list={filters_list}
-                        set_applyFilters={set_applyFilters}
+                    <WatchFilters
+                        filtersList={filters_list}
                         filters={filters}
                         onFiltersChange={(newFilters) => {
-                            let apply = false;
-                            for (const f in newFilters)
-                                if (apply) break;
-                                else {
-                                    const filter_type = newFilters[f as keyof typeof newFilters];
-                                    for (const value in filter_type)
-                                        if (filter_type[value as keyof typeof filter_type] && typeof filter_type[value as keyof typeof filter_type] == "boolean") {
-                                            apply = true;
-                                            break;
-                                        }
-                                }
-
-                            set_applyFilters(apply);
                             set_filters(newFilters);
                         }}
-                        handler={[active, set_active]}
+                        active={active}
+                        setActive={set_active}
                     />
                 )}
-                <div className="flex-center flex-col">
-                    <div className="w-full py-4 flex justify-between items-start flex-col sm:flex-row sm:gap-0 gap-4">
-                        <div className="sm:w-fit w-full flex justify-start items-start flex-col gap-4">
+                <div className="min-w-0 flex-1">
+                    <div className="flex w-full flex-col gap-5 py-4 sm:flex-row sm:items-end sm:justify-between">
+                        <div className="flex w-full max-w-xl flex-col gap-2">
                             <label className="font-semibold" htmlFor="search">
                                 Search
                             </label>
-                            <input type="text" id="search" className="outline-none border-b sm:w-100 w-full py-2" placeholder="Search for watches..." />
+                            <input type="text" id="search" className="w-full border-b py-2 outline-none" placeholder="Search for watches..." />
                         </div>
-                        <div className="sm:w-fit w-full flex justify-between items-center gap-4">
-                            <div className="flex flex-col gap-4">
+                        <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end">
+                            <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-none">
                                 <label className="font-semibold" htmlFor="sort">
                                     Sort
                                 </label>
-                                <select id="sort" className="outline-0 pr-4">
+                                <select id="sort" className="w-full min-w-0 bg-transparent pr-4 outline-0 sm:w-auto">
                                     <option className="text-gray-400" value="Newest">
                                         Newest
                                     </option>
@@ -177,16 +170,18 @@ export default function Watches_list({ watches, filters_list }: { watches: Watch
                                     </option>
                                 </select>
                             </div>
-                            <button type="button" className="button sm:hidden flex" onClick={() => set_active(true)}>
-                                Filters
-                            </button>
+                            {filters_list && (
+                                <button type="button" className="button flex shrink-0 lg:hidden" onClick={() => set_active(true)}>
+                                    Filters
+                                </button>
+                            )}
                         </div>
                     </div>
 
-                    <div className="flex justify-center items-start sm:flex-row flex-col gap-4 flex-wrap w-full bg-background">
+                    <div className={`grid w-full grid-cols-1 gap-x-4 gap-y-6 bg-background sm:grid-cols-2 ${filters_list ? "xl:grid-cols-3" : "lg:grid-cols-3 xl:grid-cols-4"}`}>
                         {filteredWatches.length > 0 ? (
                             filteredWatches.map((watch) => (
-                                <div key={watch.slug} onClick={() => set_view(watch)} className={`cursor-pointer w-full ${filters_list ? "sm:w-[calc(33%-8px)]" : "sm:w-[calc(25%-12px)]"}`}>
+                                <div key={watch.slug} onClick={() => set_view(watch)} className="min-w-0 cursor-pointer">
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}
@@ -213,126 +208,11 @@ export default function Watches_list({ watches, filters_list }: { watches: Watch
     );
 }
 
-function Filters({
-    filters_list,
-    filters,
-    onFiltersChange,
-    handler,
-}: {
-    filters_list: { material: boolean; brand: boolean; movement: boolean; condition: boolean; size: boolean; color: boolean; price: boolean };
-    filters: filters_type;
-    set_applyFilters: Dispatch<SetStateAction<boolean>>;
-    onFiltersChange: (filters: filters_type) => void;
-    handler: [boolean, Dispatch<SetStateAction<boolean>>];
-}) {
-    const handleBrandChange = (brand: keyof typeof filters.brands) => {
-        onFiltersChange({
-            ...filters,
-            brands: { ...filters.brands, [brand]: !filters.brands[brand] },
-        });
-    };
-
-    const handleMovementChange = (movement: keyof typeof filters.movement) => {
-        onFiltersChange({
-            ...filters,
-            movement: { ...filters.movement, [movement]: !filters.movement[movement] },
-        });
-    };
-
-    const handleConditionChange = (condition: keyof typeof filters.condition) => {
-        onFiltersChange({
-            ...filters,
-            condition: { ...filters.condition, [condition]: !filters.condition[condition] },
-        });
-    };
-
-    const handleColorChange = (color: keyof typeof filters.color) => {
-        onFiltersChange({
-            ...filters,
-            color: { ...filters.color, [color]: !filters.color[color] },
-        });
-    };
-
-    const handleMaterialChange = (material: keyof typeof filters.material) => {
-        onFiltersChange({
-            ...filters,
-            material: { ...filters.material, [material]: !filters.material[material] },
-        });
-    };
-
-    const [active, set_active] = handler;
-
-    useEffect(() => {
-        document.body.style.overflowY = active ? "clip" : "auto";
-    }, [active]);
-
-    return (
-        <>
-            <aside
-                className={`frost flex flex-col justify-start items-end gap-6 sm:w-fit sm:h-fit min-w-50 sm:relative fixed w-full h-full z-50 top-0 left-0 p-4 sm:p-0 overflow-x-hidden overflow-y-auto ${active ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"} transition-default`}
-            >
-                <button type="button" className="button sm:hidden" onClick={() => set_active(false)}>
-                    Close
-                </button>
-                {filters_list?.brand && (
-                    <Dropdown
-                        titles="Brands"
-                        children={Object.keys(filters.brands).map((brand) => (
-                            <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={brand} onClick={() => handleBrandChange(brand as keyof typeof filters.brands)}>
-                                <CheckBox label={brand} active={filters.brands[brand as keyof typeof filters.brands]} />
-                            </div>
-                        ))}
-                    />
-                )}
-                {filters_list?.movement && (
-                    <Dropdown
-                        titles="Movement"
-                        children={Object.keys(filters.movement).map((movement) => (
-                            <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={movement} onClick={() => handleMovementChange(movement as keyof typeof filters.movement)}>
-                                <CheckBox label={movement} active={filters.movement[movement as keyof typeof filters.movement]} />
-                            </div>
-                        ))}
-                    />
-                )}
-                {filters_list?.condition && (
-                    <Dropdown
-                        titles="Condition"
-                        children={Object.keys(filters.condition).map((condition) => (
-                            <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={condition} onClick={() => handleConditionChange(condition as keyof typeof filters.condition)}>
-                                <CheckBox label={condition} active={filters.condition[condition as keyof typeof filters.condition]} />
-                            </div>
-                        ))}
-                    />
-                )}
-                {filters_list.material && (
-                    <Dropdown
-                        titles="Watch Material"
-                        children={Object.keys(filters.material).map((material) => (
-                            <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={material} onClick={() => handleMaterialChange(material as keyof typeof filters.material)}>
-                                <CheckBox label={material} active={filters.material[material as keyof typeof filters.material]} />
-                            </div>
-                        ))}
-                    />
-                )}
-                {filters_list?.color && (
-                    <Dropdown
-                        titles="Dial Color"
-                        children={Object.keys(filters.color).map((color) => (
-                            <div className="w-full flex justify-between items-center cursor-pointer text-[14px]" key={color} onClick={() => handleColorChange(color as keyof typeof filters.color)}>
-                                <CheckBox label={color} active={filters.color[color as keyof typeof filters.color]} />
-                            </div>
-                        ))}
-                    />
-                )}
-            </aside>
-        </>
-    );
-}
-
 const intl = new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",
 });
+
 function format(n: number): string {
     return intl.format(n);
 }

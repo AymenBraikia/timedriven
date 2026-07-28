@@ -41,7 +41,7 @@ export default function SignUpPage({ searchParams }: { searchParams: Promise<{ r
     }
 
     return (
-        <div className="relative flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-8 sm:p-10">
+        <div className="relative w-full max-w-md flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-6 sm:p-10">
             <div className="flex-center">
                 <Link aria-label="home page" href={"/"}>
                     <Logo classnames="w-20 sm:w-25" />
@@ -54,7 +54,7 @@ export default function SignUpPage({ searchParams }: { searchParams: Promise<{ r
             <form onSubmit={handleSubmit} className="flex-center flex-col gap-6 w-full" noValidate>
                 <input type="hidden" name="recordId" value={params.redirect} />
 
-                <div className="w-full flex-center gap-6">
+                <div className="w-full flex flex-col sm:flex-row items-stretch gap-6">
                     <Input placeholder="Jordan" name="firstName" type="text" required label="First name" />
 
                     <Input placeholder="Blake" name="lastName" type="text" required label="Last name" />

@@ -12,11 +12,11 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
     return (
         <div
             ref={ref}
-            className={`liquid-glass z-50 backdrop-blur-xl w-dvw lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+            className={`liquid-glass z-50 backdrop-blur-xl w-dvw sm:min-w-100 lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
             onClick={(e) => e.stopPropagation()}
         >
             <div className="flex justify-between items-center w-full h-fit">
-                <h3 className="title5 md:title3">YOUR COLLECTION</h3>
+                <h4 className="title6 md:title5! lg:title4">YOUR COLLECTION</h4>
                 <button aria-label="close cart" type="button" className="button2 p-1" onClick={() => dispatch({ type: "CLOSE_CART" })}>
                     <Cross classnames={"w-14"} />
                 </button>
@@ -41,8 +41,8 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     </div>
                     <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
                         <div className="flex justify-between items-center w-full font-sans">
-                            <h3>Subtotal value</h3>
-                            <h3>{format(subtotal)}</h3>
+                            <p className ="sm:title5 title6">Subtotal value</p>
+                            <p className ="sm:title5 title6">{format(subtotal)}</p>
                         </div>
                         <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
                             View all

@@ -8,7 +8,7 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
     return (
         <nav
             ref={ref}
-            className={`liquid-glass w-dvw lg:w-[20dvw] transition-default max-h-dvh h-dvh fixed top-0 left-0 flex flex-col justify-between items-start gap-5 p-5 md:gap-8 md:px-16 md:py-8 ${ui.isNavOpen ? "translate-x-0" : "-translate-x-full"}`}
+            className={`liquid-glass w-dvw sm:min-w-100 lg:w-[20dvw] transition-default max-h-dvh h-dvh fixed top-0 left-0 flex flex-col justify-between items-start gap-5 p-5 md:gap-8 md:px-16 md:py-8 ${ui.isNavOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
             <div className="flex flex-col h-7/10 md:h-6/10 gap-6">
                 <div className="flex flex-col gap-2 md:gap-3">

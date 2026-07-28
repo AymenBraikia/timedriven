@@ -17,10 +17,10 @@ const data = [
 
 export default function Iconic() {
     return (
-        <section className="flex-col justify-center items-start sm:p-16 p-4 w-dvw">
+            <section className="flex-col justify-center items-start sm:p-16 p-4 w-full">
             <div className="w-fit">
                 <FadeInObserver>
-                    <h1 className={`text-5xl font-secondary tracking-wide`}>
+                    <h1 className={`text-4xl sm:text-5xl font-secondary tracking-wide`}>
                         Iconic <br />
                         Brands
                     </h1>

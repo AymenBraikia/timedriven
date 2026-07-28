@@ -8,6 +8,7 @@ interface Breakpoints {
     md?: number;
     lg?: number;
     xl?: number;
+    xxl?: number;
 }
 
 export default function List({ children, display }: { children: React.ReactNode; display: number | Breakpoints }) {
@@ -26,7 +27,8 @@ export default function List({ children, display }: { children: React.ReactNode;
             const width = window.innerWidth;
             let computed = display.base || 1;
 
-            if (width >= 1280 && display.xl) computed = display.xl;
+            if (width >= 1600 && display.xxl) computed = display.xxl;
+            else if (width >= 1280 && display.xl) computed = display.xl;
             else if (width >= 1024 && display.lg) computed = display.lg;
             else if (width >= 768 && display.md) computed = display.md;
             else if (width >= 640 && display.sm) computed = display.sm;

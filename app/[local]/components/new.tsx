@@ -18,10 +18,7 @@ export default function New() {
     const [data, set_data] = useState<Watch[]>([]);
 
     useEffect(() => {
-        get_new().then((results) => {
-            console.log(results);
-            set_data(results);
-        });
+        get_new().then((results) => set_data(results));
     }, []);
 
     return (
@@ -48,7 +45,7 @@ export default function New() {
             </div>
             <FadeInObserver>
                 <div className={`w-full sm-w-fit`}>
-                    <List display={{ base: 1, sm: 2, md: 2, lg: 4 }}>
+                    <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl:4 }}>
                         {data.map((d) => (
                             <div
                                 aria-label={`${d.brand + " " + d.model}`}
