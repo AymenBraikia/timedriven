@@ -7,23 +7,23 @@ import Image from "next/image";
 
 export default function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
     return (
-        <div className="flex flex-wrap sm:flex-nowrap justify-between items-center w-full gap-4 border-b-foreground border-b p-4 font-secondary">
-            <button type="button" className="hidden sm:flex button2 p-0" onClick={() => revmove_from_cart(reference)}>
+        <div className="flex flex-wrap md:flex-nowrap justify-between items-center w-full gap-4 border-b-foreground border-b p-4 font-secondary">
+            <button type="button" className="hidden md:flex button2 p-0" onClick={() => revmove_from_cart(reference)}>
                 <Cross classnames="w-8" />
             </button>
 
-            <div className="flex-center gap-4 h-full w-full sm:w-fit">
+            <div className="flex-center gap-4 h-full w-full md:w-fit">
                 <div className="relative aspect-square min-h-30 h-full">
                     <Image fill src={images[0]} alt={slug} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                 </div>
-                <div className="capitalize h-full sm:hidden flex flex-col justify-center items-start w-full sm:min-w-60">
+                <div className="capitalize h-full md:hidden flex flex-col justify-center items-start w-full md:min-w-60">
                     <h6>{brand}</h6>
                     <p className="text-secondary">{model}</p>
                 </div>
             </div>
 
-            <div className="flex justify-between items-center flex-col sm:flex-row w-full gap-4 h-full">
-                <div className="capitalize h-full hidden sm:flex flex-col justify-center items-start w-full sm:min-w-60">
+            <div className="flex justify-between items-center flex-col md:flex-row w-full gap-4 h-full">
+                <div className="capitalize h-full hidden md:flex flex-col justify-center items-start w-full md:min-w-60">
                     <h4>{brand}</h4>
                     <h6 className="text-secondary">{model}</h6>
                 </div>

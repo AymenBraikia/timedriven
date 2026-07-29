@@ -67,7 +67,7 @@ export default function Form() {
             <h3 className="font-medium font-secondary">Consignment / Sell your Watch</h3>
             <p>Timedriven's expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.</p>
 
-            <div className="flex-center gap-4 mt-10">
+            <div className="flex justify-between items-center w-full mt-10 gap-2">
                 <h6 className="text-sm! text-center">Personal Information</h6>
                 <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}></span>
                 <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>Sale preference</h6>
@@ -76,38 +76,38 @@ export default function Form() {
             </div>
 
             <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
-                <div className={`sm:w-full w-dvw h-fit ${step == 2 ? "sm:min-h-200 min-h-220" : step == 1 ? "sm:min-h-50 min-h-30" : "sm:min-h-50 min-h-100"} relative flex-center overflow-hidden`}>
-                    <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
-                        <div>
+                <div className={`sm:w-full w-dvw h-fit ${step == 2 ? "min-h-210" : step == 1 ? "sm:min-h-50 min-h-30" : "sm:min-h-50 min-h-100"} relative flex-center overflow-hidden`}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
+                        <div className="flex-center flex-col w-full">
                             <Input {...register("firstName")} label={"First Name"} type={"text"} />
-                            {errors.firstName && <p className="text-red-400 text-sm">{errors.firstName.message}</p>}
+                            {errors.firstName && <p className="text-red-400 text-sm w-full">{errors.firstName.message}</p>}
                         </div>
-                        <div>
+                        <div className="flex-center flex-col w-full">
                             <Input {...register("lastName")} label={"Last Name"} type={"text"} />
-                            {errors.lastName && <p className="text-red-400 text-sm">{errors.lastName.message}</p>}
+                            {errors.lastName && <p className="text-red-400 text-sm w-full">{errors.lastName.message}</p>}
                         </div>
-                        <div>
+                        <div className="flex-center flex-col w-full">
                             <Input {...register("email")} label={"Email"} type={"email"} />
-                            {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
+                            {errors.email && <p className="text-red-400 text-sm w-full">{errors.email.message}</p>}
                         </div>
-                        <div>
+                        <div className="flex-center flex-col w-full">
                             <Input {...register("phone")} label={"Phone"} type={"tel"} />
-                            {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
+                            {errors.phone && <p className="text-red-400 text-sm w-full">{errors.phone.message}</p>}
                         </div>
                     </div>
 
-                    <div className="w-full max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
                         <Input {...register("intent")} label={"Consignment"} type={"radio"} value="consign" />
                         <Input {...register("intent")} label={"Sell your watch"} type={"radio"} value="sell" />
-                        {errors.intent && <p className="text-red-400 text-sm">{errors.intent.message}</p>}
+                        {errors.intent && <p className="text-red-400 text-sm w-full">{errors.intent.message}</p>}
                     </div>
 
-                    <div className="w-full sm:max-w-200 max-w-[90dvw] absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 max-w-[90dvw] absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
                         <Input {...register("brand")} label={"Brand"} type={"text"} />
-                        {errors.brand && <p className="text-red-400 text-sm">{errors.brand.message}</p>}
+                        {errors.brand && <p className="text-red-400 text-sm w-full">{errors.brand.message}</p>}
 
                         <Input {...register("price")} label={"Asking Price"} type={"number"} />
-                        {errors.price && <p className="text-red-400 text-sm">{errors.price.message}</p>}
+                        {errors.price && <p className="text-red-400 text-sm w-full">{errors.price.message}</p>}
 
                         <Input {...register("model")} label={"Model"} type={"text"} />
                         <Input {...register("refNum")} label={"Reference Number"} type={"text"} />
@@ -127,13 +127,13 @@ export default function Form() {
                                 <Input {...register("condition")} label={"Mint"} type={"radio"} value="mint" />
                                 <Input {...register("condition")} label={"Pre-owned"} type={"radio"} value="pre-owned" />
                             </div>
-                            {errors.condition && <p className="text-red-400 text-sm">{errors.condition.message}</p>}
+                            {errors.condition && <p className="text-red-400 text-sm w-full">{errors.condition.message}</p>}
                         </div>
 
                         <div className="max-w-full w-full sm:w-full flex flex-col gap-4">
                             <p>Attach Images</p>
                             <input {...register("images")} type="file" id="images" multiple accept="image/*" className="button w-full" />
-                            {errors.images && <p className="text-red-400 text-sm">{errors.images.message as string}</p>}
+                            {errors.images && <p className="text-red-400 text-sm w-full">{errors.images.message as string}</p>}
                         </div>
 
                         <div className="w-full flex flex-col gap-4">

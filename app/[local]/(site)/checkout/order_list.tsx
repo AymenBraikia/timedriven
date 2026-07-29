@@ -98,15 +98,15 @@ export default function Order_list() {
 
     return (
         <div className="flex justify-start items-start flex-col gap-4 w-full h-fit font-secondary">
-            <div className="flex flex-col justify-start items-start w-full h-[50dvh] bg-secondary">
+            <div className="flex flex-col justify-start items-start w-full h-[50dvh] border-b">
                 <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2 capitalize border-b bg-primary">
                     <p className="min-w-30 w-full">Watch/Spare</p>
                     <p className="min-w-10 max-w-10">Qty</p>
                     <p className="min-w-25">price</p>
                 </div>
-                <div className="w-full h-full overflow-y-auto overflow-x-hidden sm:gap-4 flex flex-col justify-start items-start p-2">
+                <div className="w-full h-full overflow-y-auto overflow-x-hidden gap-2 flex flex-col justify-start items-start py-2">
                     {session.cart.map((i) => (
-                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 py-4 sm:p-0 sm:pb-4 border-b h-fit w-full">
+                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 h-fit w-full bg-secondary pr-4">
                             <div className="relative aspect-square sm:h-25 h-20">
                                 <Image src={i.images[0]} alt={i.slug} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                             </div>
@@ -125,7 +125,7 @@ export default function Order_list() {
                 <h5>Subtotal</h5>
                 <h5>{format(total)}</h5>
             </div>
-            <div className="w-full flex flex-col justify-center items-start gap-4 border-b tracking-wider">
+            <div className="w-full flex flex-col justify-center items-start gap-2 border-b tracking-wider">
                 <CheckBox label="Local Pickup" action={set_local_pickup} active={local_pickup} />
                 <div className={`w-full flex justify-between items-center ${local_pickup ? "line-through brightness-75" : ""}`}>
                     <p>Shipping to {session.address.country}</p>
@@ -248,7 +248,7 @@ export default function Order_list() {
                 ) : payment_method.name == "PayPal" ? (
                     <div className="w-full">
                         <PayPal_Btn disabled={false} />
-                        <p className="text-sm w-full">Note: the watch/spare will be shipped to paypal's address</p>
+                        <p className="text-sm w-full">Note: the watch/spare will be shipped to PayPal's address</p>
                     </div>
                 ) : (
                     <h3>Billing details is missing</h3>

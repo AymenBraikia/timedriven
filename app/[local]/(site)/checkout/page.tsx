@@ -19,13 +19,13 @@ export default async function cartPage() {
                     </Link>
                 </div>
             ) : (
-                <div className="flex sm:flex-row flex-col justify-center items-start gap-20 w-full">
+                <div className="flex xl:flex-row flex-col justify-center items-start gap-4 xl:gap-20 w-full">
                     <div className="w-full flex flex-col justify-start items-start gap-8 p-4">
                         <h2>Billing Details</h2>
                         <Form />
                     </div>
 
-                    <div className="sm:w-2/5 w-full flex flex-col justify-start items-start bg-primary gap-8 p-4">
+                    <div className="xl:w-2/5 w-full flex flex-col justify-start items-start bg-primary gap-8 p-4">
                         <h2>Your Order</h2>
                         <div className="w-full h-[fit]">
                             <Order_list />

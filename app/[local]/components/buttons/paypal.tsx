@@ -2,10 +2,13 @@
 import { capture_order } from "@/app/paypal/capture_order";
 import { create_order } from "@/app/paypal/create_order";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
 export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
     const router = useRouter();
+    const { theme } = useTheme();
+
     return (
         <PayPalScriptProvider
             options={{
@@ -16,9 +19,10 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
             <PayPalButtons
                 disabled={disabled}
                 fundingSource="paypal"
+                forceReRender={[theme]}
                 style={{
                     layout: "vertical", // 'vertical' or 'horizontal'
-                    color: "black", // 'gold', 'blue', 'silver', 'white', 'black'
+                    color: theme == "dark" ? "black" : "white", // 'gold', 'blue', 'silver', 'white', 'black'
                     shape: "sharp",
                     label: "checkout",
                     height: 45,
@@ -35,8 +39,4 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
     );
 }
 
-function handle_error(error: Record<string, unknown>) {
-    // console.clear();
-    console.log("and you got an error :/ ", error);
-    // console.error(error);
-}
+function handle_error(error: Record<string, unknown>) {}

@@ -20,6 +20,5 @@ export interface Watch {
     description: string;
     inStock: boolean;
     featured: boolean;
-    size: "small" | "medium" | "large";
     type: "watch";
 }

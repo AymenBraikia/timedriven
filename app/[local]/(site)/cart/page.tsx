@@ -3,7 +3,7 @@ import Items from "./items";
 
 export default async function cartPage() {
     return (
-        <div className="flex-center flex-col w-full gap-12 sm:px-20 py-5">
+        <div className="flex-center flex-col w-full gap-12 xl:px-20 py-5">
             <Banner>
                 <h1 className="font-bold font-secondary">Cart</h1>
             </Banner>
