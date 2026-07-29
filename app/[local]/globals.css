@@ -11,7 +11,7 @@
     --bg-primary: rgb(225, 225, 225);
     --bg-secondary: rgb(200, 200, 200);
 
-    --clr-glass: rgba(255, 255, 255, 0.5);
+    --clr-glass: rgba(255, 255, 255, 0.6);
     --border-glass: linear-gradient(45deg, #32323266, #19191966);
 
     --transition: 0.3s ease;
@@ -90,6 +90,10 @@
 
 @utility title6 {
     font-size: 20px;
+    font-weight: 400;
+}
+@utility title-base {
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -257,7 +261,7 @@ h6 {
     --bg-primary: rgb(25, 25, 25);
     --bg-secondary: rgb(50, 50, 50);
 
-    --clr-glass: rgba(0, 0, 0, 0.5);
+    --clr-glass: rgba(0, 0, 0, 0.6);
     --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
 }
 

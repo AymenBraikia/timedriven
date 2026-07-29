@@ -12,13 +12,13 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
     return (
         <div
             ref={ref}
-            className={`liquid-glass z-50 backdrop-blur-xl w-dvw sm:min-w-100 lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+            className={`liquid-glass z-50 backdrop-blur-xl w-dvw sm:min-w-100 sm:w-[70dvw] md:w-1/2 lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
             onClick={(e) => e.stopPropagation()}
         >
             <div className="flex justify-between items-center w-full h-fit">
                 <h4 className="title6 md:title5! lg:title4">YOUR COLLECTION</h4>
                 <button aria-label="close cart" type="button" className="button2 p-1" onClick={() => dispatch({ type: "CLOSE_CART" })}>
-                    <Cross classnames={"w-14"} />
+                    <Cross classnames={"w-10 lg:w-14"} />
                 </button>
             </div>
 
@@ -30,9 +30,12 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                                 <div className="relative w-1/4 aspect-square">
                                     <Image src={i.images[0]} alt={i.slug} sizes="(max-width: 20dvw) 20vw, 30dvw" className="object-cover object-center select-none" fill></Image>
                                 </div>
-                                <div className="w-3/4 h-full">
-                                    <p>{i.brand + " " + i.model}</p>
-                                    <p>
+                                <div className="w-3/4 h-full flex flex-col justify-between">
+                                    <div>
+                                        <p className="title4 sm:title5 capitalize">{i.brand}</p>
+                                        <p className="text-secondary text-sm sm:title6 md:title-base capitalize">{i.model}</p>
+                                    </div>
+                                    <p className="title6 sm:title5 md:title-base lg:title6">
                                         {i.quantity} x {format(i.price)}
                                     </p>
                                 </div>
@@ -41,8 +44,8 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     </div>
                     <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
                         <div className="flex justify-between items-center w-full font-sans">
-                            <p className ="sm:title5 title6">Subtotal value</p>
-                            <p className ="sm:title5 title6">{format(subtotal)}</p>
+                            <p className="sm:title5 title6">Subtotal value</p>
+                            <p className="sm:title5 title6">{format(subtotal)}</p>
                         </div>
                         <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
                             View all
