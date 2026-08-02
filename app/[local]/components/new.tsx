@@ -45,15 +45,17 @@ export default function New() {
             </div>
             <FadeInObserver>
                 <div className={`w-full sm-w-fit`}>
-                    <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl:4 }}>
+                    <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
                         {data.map((d) => (
                             <div
                                 aria-label={`${d.brand + " " + d.model}`}
-                                className="aspect-2/3 sm:aspect-auto sm:h-110 w-full flex flex-col justify-start items-start transition-long group"
+                                className="aspect-2/3 sm:aspect-auto sm:h-110 w-full flex flex-col justify-start items-start gap-4 transition-long group"
                                 key={d.slug}
-                                onClick={() => innerWidth < 640 && set_view(d)}
+                                onClick={() => {
+                                    innerWidth < 1536 && set_view(d);
+                                }}
                             >
-                                <div className="relative w-full h-9/10 sm:h-4/5 flex-center overflow-hidden">
+                                <div className="relative w-full h-9/10 sm:h-fit flex-center overflow-hidden sm:aspect-square">
                                     <Image
                                         src={d.images[0]}
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 50vw"
@@ -61,7 +63,7 @@ export default function New() {
                                         alt={d.brand + " " + d.model}
                                         className="object-contain select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50"
                                     />
-                                    <div className="sm:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
+                                    <div className="2xl:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
                                         <button aria-label={`quick view ${d.brand + " " + d.model}`} type="button" className="button cursor-pointer p-4 select-none transition-default h-full" onClick={() => set_view(d)}>
                                             QUICK VIEW
                                         </button>
@@ -70,8 +72,11 @@ export default function New() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
+
                                 <h5 className="title5 font-secondary">{d.brand + " " + d.model}</h5>
                                 <h6 className="title6 font-secondary">{format(d.price)}</h6>
+                                </div>
                             </div>
                         ))}
                     </List>

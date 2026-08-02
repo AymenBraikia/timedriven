@@ -42,7 +42,7 @@ export default function Items() {
                             <Item_Display key={i.slug} {...i} />
                         ))}
                     </div>
-                    <div className="xl:max-w-125 min-w-100 h-fit w-full bg-background font-secondary flex flex-col justify-start items-start p-4 gap-8">
+                    <div className="xl:max-w-125 min-w-100 h-fit w-full bg-background font-secondary flex flex-col justify-start items-start px-4 gap-8">
                         <h1 className="font-semibold">Summary</h1>
 
                         <div className="flex justify-between items-center w-full border-b py-1">

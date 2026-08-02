@@ -20,6 +20,9 @@ export default function Item_Display({ brand, model, slug, price, quantity, imag
                     <h6>{brand}</h6>
                     <p className="text-secondary">{model}</p>
                 </div>
+                <button type="button" className="md:hidden button2 p-0" onClick={() => revmove_from_cart(reference)}>
+                    <Cross classnames="w-8" />
+                </button>
             </div>
 
             <div className="flex justify-between items-center flex-col md:flex-row w-full gap-4 h-full">
