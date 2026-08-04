@@ -7,14 +7,14 @@ import { Spare } from "@/types/spare";
 import Cross from "./svg/cross";
 
 interface QuickViewProps {
-    view: Watch | Spare;
+    view: Watch | Spare | null;
     onClose: () => void;
     format: (n: number) => string;
 }
 
 export default function QuickViewModal({ view, onClose, format }: QuickViewProps) {
-    return (
-        <div className="fixed w-dvw h-dvh left-0 top-0 z-50 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    return view ? (
+        <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-50 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
                 tabIndex={-1}
                 role="dialog"
@@ -62,5 +62,7 @@ export default function QuickViewModal({ view, onClose, format }: QuickViewProps
                 </div>
             </div>
         </div>
+    ) : (
+        <></>
     );
 }

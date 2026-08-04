@@ -82,7 +82,7 @@ export default function New() {
                     </List>
                 </div>
             </FadeInObserver>
-            {view && <QuickViewModal view={view} onClose={() => set_view(null)} format={format} />}
+            {<QuickViewModal view={view} onClose={() => set_view(null)} format={format} />}
         </section>
     );
 }
