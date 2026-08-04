@@ -15,7 +15,7 @@ export default function Gallery() {
     }, [index]);
 
     return (
-        <div className="w-[calc(50%-20px)] h-fit relative aspect-16/12">
+        <div className="w-full xl:w-[calc(50%-20px)] h-fit relative aspect-16/12">
             {sources.map((s, i) => (
                 <div key={s} className={`w-full h-full absolute left-0 top-0 transition-long ${i == index ? "opacity-100" : "opacity-0"}`}>
                     <div className="relative w-full h-full">

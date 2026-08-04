@@ -3,7 +3,6 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --selection: #00000033;
 
     --clr-primary: #000000;
     --clr-secondary: #323232;
@@ -253,7 +252,6 @@ h6 {
 .dark {
     --background: #000000;
     --foreground: #ffffff;
-    --selection: #ffffff33;
 
     --clr-primary: white;
     --clr-secondary: #c8c8c8;
@@ -278,7 +276,8 @@ body {
 }
 
 ::selection {
-    background-color: var(--selection);
+    background-color: var(--foreground);
+    color: var(--background);
 }
 
 html,

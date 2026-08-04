@@ -4,11 +4,11 @@ import Gallery from "./gallery";
 
 export default function SellPage() {
     return (
-        <div className="flex justify-start items-start flex-wrap w-full gap-10 py-20 px-20">
+        <div className="flex justify-start items-start flex-wrap w-full gap-10 py-20 px-5 md:px-10 xl:px-20">
             <h1>Timedriven Store Frankfurt</h1>
 
-            <div className="w-full flex justify-between items-start">
-                <div className="w-[calc(50%-20px)]">
+            <div className="w-full flex justify-between items-start flex-col-reverse lg:flex-col xl:flex-row gap-10 xl:gap-0">
+                <div className="w-full xl:w-[calc(50%-20px)]">
                     <div className="flex justify-center items-start flex-col gap-6 text-sm">
                         <Link className="title6 underline" href={"/booking"}>
                             Book an appointment
@@ -17,8 +17,8 @@ export default function SellPage() {
                         <p>Please make an appointment to ensure the watch you are looking for is available at your time of visit.</p>
                         <p>Additionally, note that for watches above 15.000€ an appointment is required.</p>
                     </div>
-                    <div className="flex w-full mt-10 tracking-wider flex-wrap gap-10">
-                        <div className="flex flex-col w-[calc(50%-30px)] gap-10 text-sm">
+                    <div className="flex flex-col lg:flex-row lg:flex-wrap w-full mt-10 tracking-wider gap-10">
+                        <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10 text-sm">
                             <h5>Address</h5>
                             <div className="flex flex-col gap-5">
                                 <p>Walther-von-Cronberg-Platz 18 60594 Frankfurt am Main Germany</p>
@@ -36,7 +36,7 @@ export default function SellPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex flex-col w-[calc(50%-30px)] gap-10">
+                        <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10">
                             <h5>Opening Hours</h5>
                             <div className="flex justify-between items-center flex-col text-sm">
                                 <div className="w-full flex justify-between items-center gap-4">
@@ -70,7 +70,7 @@ export default function SellPage() {
                             </div>
                         </div>
 
-                        <div className="flex flex-col w-[calc(50%-30px)] gap-10">
+                        <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10">
                             <h5>Contact</h5>
                             <div className="flex justify-between items-start flex-col text-sm">
                                 <p>+49 152 5544 3810</p>
