@@ -17,7 +17,7 @@ export default function Watch_card({
     name: string;
     description: string;
     movement: string;
-    size: string;
+    size: number;
     material: string;
     condition: string;
     price: number;
@@ -34,7 +34,7 @@ export default function Watch_card({
                 <p className="leading-6">{description}</p>
                 <div className="space-y-1 text-sm text-secondary">
                     <p>Movement: {movement}</p>
-                    <p>Size: {size}</p>
+                    <p>Size: {size} mm</p>
                     <p>Material: {material}</p>
                     <p>Condition: {condition}</p>
                 </div>

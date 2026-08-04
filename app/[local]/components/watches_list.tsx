@@ -190,7 +190,7 @@ export default function Watches_list({ watches, filters_list }: { watches: Watch
                                         movement={watch.movement}
                                         name={watch.brand + " " + watch.model}
                                         price={watch.price}
-                                        size={watch.size}
+                                        size={watch.caseDiameterMm}
                                         image_src={watch.images[0]}
                                     />
                                 </div>
