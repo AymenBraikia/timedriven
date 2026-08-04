@@ -9,7 +9,7 @@ export default function SellPage() {
 
             <div className="w-full flex justify-between items-start">
                 <div className="w-[calc(50%-20px)]">
-                    <div className="flex justify-center items-start flex-col gap-6 text-[14px]">
+                    <div className="flex justify-center items-start flex-col gap-6 text-sm">
                         <Link className="title6 underline" href={"/booking"}>
                             Book an appointment
                         </Link>
@@ -17,7 +17,7 @@ export default function SellPage() {
                         <p>Please make an appointment to ensure the watch you are looking for is available at your time of visit.</p>
                         <p>Additionally, note that for watches above 15.000€ an appointment is required.</p>
                     </div>
-                    <div className="flex w-full mt-10 tracking-wider flex-wrap gap-15">
+                    <div className="flex w-full mt-10 tracking-wider flex-wrap gap-10">
                         <div className="flex flex-col w-[calc(50%-30px)] gap-10 text-sm">
                             <h5>Address</h5>
                             <div className="flex flex-col gap-5">
