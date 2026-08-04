@@ -74,7 +74,7 @@ export default function New() {
                                 </div>
                                 <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
 
-                                <h5 className="title5 font-secondary">{d.brand + " " + d.model}</h5>
+                                <h5 className="title5 font-secondary capitalize">{d.brand + " " + d.model}</h5>
                                 <h6 className="title6 font-secondary">{format(d.price)}</h6>
                                 </div>
                             </div>

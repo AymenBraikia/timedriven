@@ -29,7 +29,7 @@ export default function AboutPage() {
                     <Link href="/sell" className="underline">
                         Sell your watch
                     </Link>
-                    <Link href="/consignment" className="underline">
+                    <Link href="/sell" className="underline">
                         Consignment
                     </Link>
                 </div>

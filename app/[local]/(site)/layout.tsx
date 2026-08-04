@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "TIMEDRIVEN | High-End Luxury Watches",
         description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
-        images: ["//banner.webp"],
+        images: ["/banner.webp"],
     },
     robots: {
         index: true,

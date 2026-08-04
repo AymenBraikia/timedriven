@@ -9,7 +9,7 @@ export interface Watch {
     currency: "EUR" | "USD";
     condition: "Pre-Owned" | "New";
     gender: "Men" | "Women";
-    movement: "Automatic" | "Manual" | "Hybrid";
+    movement: "Automatic" | "Manual" | "Quartz";
     caseMaterial: string;
     caseDiameterMm: number;
     braceletMaterial: string;
