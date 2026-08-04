@@ -10,7 +10,7 @@
     --bg-primary: rgb(245, 245, 245);
     --bg-secondary: rgb(235, 235, 235);
 
-    --clr-glass: rgba(255, 255, 255, 0.6);
+    --clr-glass: rgba(255, 255, 255, 0.7);
     --border-glass: linear-gradient(45deg, #32323266, #19191966);
 
     --transition: 0.3s ease;

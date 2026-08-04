@@ -10,7 +10,7 @@ export default function Banner({ children }: { children: React.ReactNode }) {
 
             <div className="relative min-h-65 sm:min-h-80">
                 <div className={`absolute inset-0 ${theme == "dark" ? "bg-black/60" : "hidden"} `} />
-                <div className="relative z-10 h-full min-h-65 sm:min-h-80 flex flex-col items-start justify-center gap-5 p-8 sm:p-12 text-primary">{children} </div>
+                <div className="relative z-10 h-full min-h-65 sm:min-h-80 flex flex-col items-start justify-center gap-5 p-8 sm:p-12 text-primary">{theme == "dark" ? children : <div className="p-4 bg-white/80">{children}</div>}</div>
             </div>
         </div>
     );

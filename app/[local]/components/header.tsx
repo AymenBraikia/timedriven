@@ -36,16 +36,16 @@ const initialUIState: UIState = {
 function headerReducer(state: UIState, action: UIAction): UIState {
     switch (action.type) {
         case "OPEN_NAV":
-            document.body.style.overflowY = "clip"
+            window.innerWidth < 640 &&(document.body.style.overflowY = "clip")
             return { ...state, isNavOpen: true, isCartOpen: false };
             case "CLOSE_NAV":
-            document.body.style.overflowY = "auto"
+            window.innerWidth < 640 &&(document.body.style.overflowY = "auto")
             return { ...state, isNavOpen: false };
         case "OPEN_CART":
-            document.body.style.overflowY = "clip"
+            window.innerWidth < 640 &&(document.body.style.overflowY = "clip")
             return { ...state, isCartOpen: true, isNavOpen: false };
             case "CLOSE_CART":
-            document.body.style.overflowY = "auto"
+            window.innerWidth < 640 &&(document.body.style.overflowY = "auto")
             return { ...state, isCartOpen: false };
         case "TOGGLE_LANG":
             return { ...state, lang: state.lang === "EN" ? "DE" : "EN" };
