@@ -4,6 +4,7 @@ import increase_cart from "@/app/server/cart_increase";
 import revmove_from_cart from "@/app/server/remove_cart";
 import { Cart_Item } from "@/types/user";
 import Image from "next/image";
+import { format_price } from "../lib/price_format";
 
 export default function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
     return (
@@ -42,17 +43,10 @@ export default function Item_Display({ brand, model, slug, price, quantity, imag
                         </button>
                     </div>
 
-                    <p className="w-40 text-xl text-end">{format(price * quantity)}</p>
+                    <p className="w-40 text-xl text-end">{format_price(price * quantity)}</p>
                 </div>
             </div>
         </div>
     );
 }
 
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
-}

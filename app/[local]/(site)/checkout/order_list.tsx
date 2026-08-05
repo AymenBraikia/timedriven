@@ -8,6 +8,7 @@ import CheckBox from "@/app/components/elements/checkbox";
 import updateUser from "@/app/server/update_user";
 import Input from "@/app/components/elements/input";
 import PayPal_Btn from "@/app/components/buttons/paypal";
+import { format_price } from "../lib/price_format";
 
 const shipping_data = Object.values(shipping_info);
 
@@ -116,33 +117,33 @@ export default function Order_list() {
                             </div>
                             <p className="text-2xl text-center font-medium min-w-20 max-w-20 block sm:hidden!">Qty: {i.quantity}</p>
                             <p className="text-2xl text-center font-medium min-w-10 max-w-10 hidden sm:flex-center">{i.quantity}</p>
-                            <p className="text-2xl sm:text-base font-medium w-fit sm:w-25">{format(i.price * i.quantity)}</p>
+                            <p className="text-2xl sm:text-base font-medium w-fit sm:w-25">{format_price(i.price * i.quantity)}</p>
                         </div>
                     ))}
                 </div>
             </div>
             <div className="w-full flex justify-between items-center mt-2 border-b">
                 <h5>Subtotal</h5>
-                <h5>{format(total)}</h5>
+                <h5>{format_price(total)}</h5>
             </div>
             <div className="w-full flex flex-col justify-center items-start gap-2 border-b tracking-wider">
                 <CheckBox label="Local Pickup" action={set_local_pickup} active={local_pickup} />
                 <div className={`w-full flex justify-between items-center ${local_pickup ? "line-through brightness-75" : ""}`}>
                     <p>Shipping to {session.address.country}</p>
-                    <p>{format(shipping.shipping_cost)}</p>
+                    <p>{format_price(shipping.shipping_cost)}</p>
                 </div>
                 <div className="w-full flex justify-between items-center">
                     <p>Taxes</p>
-                    <p>{format(0)}</p>
+                    <p>{format_price(0)}</p>
                 </div>
                 <div className="w-full flex justify-between items-center">
                     <p>{payment_method.name} Fee</p>
-                    <p>{format(payment_method.fee * total)}</p>
+                    <p>{format_price(payment_method.fee * total)}</p>
                 </div>
 
                 <div className="w-full flex justify-between items-center">
                     <h5>Total</h5>
-                    <h5>{format(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</h5>
+                    <h5>{format_price(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</h5>
                 </div>
             </div>
 
@@ -195,7 +196,7 @@ export default function Order_list() {
                                         </div>
                                         <div className="w-full flex justify-between items-center">
                                             <p>order total:</p>
-                                            <p>{format(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</p>
+                                            <p>{format_price(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</p>
                                         </div>
                                         <div className="w-full flex justify-between items-center">
                                             <p>payment method:</p>
@@ -258,10 +259,3 @@ export default function Order_list() {
     );
 }
 
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
-}

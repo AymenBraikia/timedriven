@@ -5,18 +5,18 @@ import addToCart from "@/app/server/add_to_cart";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function AtcBtn({ reference, children }: { reference: string; children?: React.ReactNode }) {
+export default function AtcBtn({ slug, children }: { slug: string; children?: React.ReactNode }) {
     const router = useRouter();
     const { session } = useAuth();
 
     const [inserting, set_insert] = useState<boolean>(false);
-    const [is_in_cart, set_is_in_cart] = useState<boolean>(session?.cart.find((i) => i.reference == reference) ? true : false);
+    const [is_in_cart, set_is_in_cart] = useState<boolean>(session?.cart.find((i) => i.slug == slug) ? true : false);
 
     async function handleClick() {
         if (session) {
             set_insert(true);
 
-            const success = await addToCart(reference);
+            const success = await addToCart(slug);
 
             set_insert(false);
             success && set_is_in_cart(true);

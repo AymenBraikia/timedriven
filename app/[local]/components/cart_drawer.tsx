@@ -4,6 +4,7 @@ import Info from "./svg/info";
 import { useCart } from "../(site)/context/cartContext";
 import Image from "next/image";
 import Link from "next/link";
+import { format_price } from "../(site)/lib/price_format";
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
 export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTMLDivElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isCartOpen: boolean } }) {
@@ -36,7 +37,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                                         <p className="text-secondary text-sm sm:title6 md:title-base capitalize">{i.model}</p>
                                     </div>
                                     <p className="title6 sm:title5 md:title-base lg:title6">
-                                        {i.quantity} x {format(i.price)}
+                                        {i.quantity} x {format_price(i.price)}
                                     </p>
                                 </div>
                             </div>
@@ -45,7 +46,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
                         <div className="flex justify-between items-center w-full font-sans">
                             <p className="sm:title5 title6">Subtotal value</p>
-                            <p className="sm:title5 title6">{format(subtotal)}</p>
+                            <p className="sm:title5 title6">{format_price(subtotal)}</p>
                         </div>
                         <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
                             View all
@@ -63,11 +64,4 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
             )}
         </div>
     );
-}
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
 }

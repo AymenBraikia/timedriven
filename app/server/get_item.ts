@@ -6,8 +6,8 @@ import type { Spare } from "../types/spare";
 
 const options = { projection: { _id: 0 } };
 
-export default async function get_item(reference: string): Promise<Spare | Watch> {
-    const data = (await watches_collection.findOne({ reference }, options)) || (await spares_collection.findOne({ reference }, options));
+export default async function get_item(slug: string): Promise<Spare | Watch> {
+    const data = (await watches_collection.findOne({ slug }, options)) || (await spares_collection.findOne({ slug }, options));
 
     return JSON.parse(JSON.stringify(data));
 }

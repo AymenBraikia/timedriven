@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { format_price } from "../(site)/lib/price_format";
 
 export default function Watch_card({
     brand,
@@ -38,17 +39,10 @@ export default function Watch_card({
                     <p>Material: {material}</p>
                     <p>Condition: {condition}</p>
                 </div>
-                <span className="text-xl font-semibold text-foreground font-sans">{format(price)}</span>
+                <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
             </div>
         </div>
     );
 }
 
 
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
-}

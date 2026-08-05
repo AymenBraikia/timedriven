@@ -203,16 +203,7 @@ export default function Watches_list({ watches, filters_list }: { watches: Watch
                     </div>
                 </div>
             </div>
-            {view && <QuickViewModal view={view} onClose={() => set_view(null)} format={format} />}
+            {view && <QuickViewModal view={view} onClose={() => set_view(null)}/>}
         </>
     );
-}
-
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-
-function format(n: number): string {
-    return intl.format(n);
 }

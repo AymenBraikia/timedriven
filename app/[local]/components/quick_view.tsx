@@ -5,14 +5,14 @@ import AtcBtn from "./buttons/addToCart";
 import { Watch } from "@/types/watch";
 import { Spare } from "@/types/spare";
 import Cross from "./svg/cross";
+import { format_price } from "../(site)/lib/price_format";
 
 interface QuickViewProps {
     view: Watch | Spare | null;
     onClose: () => void;
-    format: (n: number) => string;
 }
 
-export default function QuickViewModal({ view, onClose, format }: QuickViewProps) {
+export default function QuickViewModal({ view, onClose }: QuickViewProps) {
     return view ? (
         <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-50 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
@@ -40,7 +40,7 @@ export default function QuickViewModal({ view, onClose, format }: QuickViewProps
                     <div className="flex flex-col gap-1 md:gap-2">
                         <p className="font-semibold tracking-tight capitalize text-2xl sm:text-3xl lg:text-4xl">{view.brand}</p>
                         <p className="tracking-wide capitalize text-secondary text-lg sm:text-xl lg:text-2xl">{view.model}</p>
-                        <p className="font-medium tracking-wide text-xl sm:text-2xl">{format(view.price)}</p>
+                        <p className="font-medium tracking-wide text-xl sm:text-2xl">{format_price(view.price)}</p>
 
                         <div className="hidden md:flex flex-col gap-2 leading-relaxed tracking-wide text-sm text-secondary">
                             <p>Movement: {view.movement}</p>
@@ -57,7 +57,7 @@ export default function QuickViewModal({ view, onClose, format }: QuickViewProps
                     </div>
 
                     <div className="w-full pt-2">
-                        <AtcBtn reference={view.reference} />
+                        <AtcBtn slug={view.slug} />
                     </div>
                 </div>
             </div>

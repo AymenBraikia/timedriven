@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import AtcBtn from "./buttons/addToCart";
 import get_new from "@/app/server/get_new";
 import { Watch } from "@/types/watch";
+import { format_price } from "../(site)/lib/price_format";
 
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,
@@ -68,29 +69,21 @@ export default function New() {
                                             QUICK VIEW
                                         </button>
                                         <div className="w-fit text-white hover:text-foreground transition-default">
-                                            <AtcBtn reference={d.reference} />
+                                            <AtcBtn slug={d.slug} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
 
                                 <h5 className="title5 font-secondary capitalize">{d.brand + " " + d.model}</h5>
-                                <h6 className="title6 font-secondary">{format(d.price)}</h6>
+                                <h6 className="title6 font-secondary">{format_price(d.price)}</h6>
                                 </div>
                             </div>
                         ))}
                     </List>
                 </div>
             </FadeInObserver>
-            {<QuickViewModal view={view} onClose={() => set_view(null)} format={format} />}
+            {<QuickViewModal view={view} onClose={() => set_view(null)} />}
         </section>
     );
-}
-
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
 }

@@ -9,6 +9,9 @@ import Search from "./svg/search";
 import Cart from "./svg/cart";
 import { ThemeToggle } from "./theme";
 import { useAuth } from "../(site)/context/authContext";
+import Search_input from "./elements/search_input";
+import { Watch } from "@/types/watch";
+import Image from "next/image";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -36,16 +39,16 @@ const initialUIState: UIState = {
 function headerReducer(state: UIState, action: UIAction): UIState {
     switch (action.type) {
         case "OPEN_NAV":
-            window.innerWidth < 640 &&(document.body.style.overflowY = "clip")
+            window.innerWidth < 640 && (document.body.style.overflowY = "clip");
             return { ...state, isNavOpen: true, isCartOpen: false };
-            case "CLOSE_NAV":
-            window.innerWidth < 640 &&(document.body.style.overflowY = "auto")
+        case "CLOSE_NAV":
+            window.innerWidth < 640 && (document.body.style.overflowY = "auto");
             return { ...state, isNavOpen: false };
         case "OPEN_CART":
-            window.innerWidth < 640 &&(document.body.style.overflowY = "clip")
+            window.innerWidth < 640 && (document.body.style.overflowY = "clip");
             return { ...state, isCartOpen: true, isNavOpen: false };
-            case "CLOSE_CART":
-            window.innerWidth < 640 &&(document.body.style.overflowY = "auto")
+        case "CLOSE_CART":
+            window.innerWidth < 640 && (document.body.style.overflowY = "auto");
             return { ...state, isCartOpen: false };
         case "TOGGLE_LANG":
             return { ...state, lang: state.lang === "EN" ? "DE" : "EN" };
@@ -171,12 +174,6 @@ export default function Header() {
                 <button aria-label="menu" type="button" className="button2 float-anim" onClick={() => dispatch({ type: "OPEN_NAV" })}>
                     <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
                 </button>
-                <div className="flex-center lg:hidden! gap-2">
-                    <label htmlFor="searchWatches">
-                        <Search classnames="w-7 sm:w-5" clr={"currentColor"} />
-                    </label>
-                    <input type="text" className={`hidden sm:block ${ui.isGlassy ? "placeholder:text-primary" : "placeholder:text-white"} outline-0`} placeholder="Search watches" id="searchWatches" />
-                </div>
             </div>
 
             <div className="w-1/3 flex-center">
@@ -186,12 +183,10 @@ export default function Header() {
             </div>
 
             <div className="flex justify-end items-center gap-2 w-1/3">
-                <div className="hidden lg:flex-center gap-2">
-                    <label htmlFor="searchWatches">
-                        <Search classnames="w-7 sm:w-5" clr={"currentColor"} />
-                    </label>
-                    <input type="text" className={`hidden sm:block ${ui.isGlassy ? "placeholder:text-primary" : "placeholder:text-white"} outline-0`} placeholder="Search watches" id="searchWatches" />
+                <div className="md:block hidden">
+                    <Search_input route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
                 </div>
+
                 {!session?.email && (
                     <Link aria-label={`Register`} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
                         Register
@@ -210,5 +205,16 @@ export default function Header() {
             <Nav ref={navRef} ui={ui} dispatch={dispatch} />
             <CartDrawer ref={cartRef} ui={ui} dispatch={dispatch} />
         </header>
+    );
+}
+
+function SearchChildComponent({ item }: { item: Watch }) {
+    return (
+        <Link href={"/product/" + item.slug} className="flex justify-between items-center w-full h-full text-sm capitalize gap-2 bg-transparent hover:bg-primary cursor-pointer transition-default p-2">
+            <div className="relative min-w-15 aspect-square">
+                <Image src={item.images[0]} alt={item.brand + " " + item.model} fill sizes="(max-width: 768px) 150px, 100px" />
+            </div>
+            <p className="w-full">{item.brand + " " + item.model + " " + item.year + " Ref. " + item.reference}</p>
+        </Link>
     );
 }

@@ -8,6 +8,7 @@ import CheckBox from "@/app/components/elements/checkbox";
 import Select from "@/app/components/elements/select";
 import Link from "next/link";
 import updateUser from "@/app/server/update_user";
+import { format_price } from "../lib/price_format";
 
 const shipping_options: string[] = Object.values(shipping_data).map((c) => c.country_name);
 
@@ -47,7 +48,7 @@ export default function Items() {
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h4>Subtotal</h4>
-                            <h4>{format(total)}</h4>
+                            <h4>{format_price(total)}</h4>
                         </div>
 
                         <div className="flex flex-col justify-center items-start w-full border-b gap-4 py-1">
@@ -57,10 +58,10 @@ export default function Items() {
                                     <p>Shipping to {country}</p>
                                     <Select options={shipping_options} set_value={set_country} value={country} label="Choose Shipping Country" />
                                 </div>
-                                <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format(shipping_costs)}</p>
+                                <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format_price(shipping_costs)}</p>
                             </div>
 
-                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>Shipping Costs: {format(shipping_costs)}</p>
+                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>Shipping Costs: {format_price(shipping_costs)}</p>
 
                             <CheckBox label="Local Pickup" active={pickup} action={set_pickup} />
 
@@ -74,7 +75,7 @@ export default function Items() {
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h2>Total</h2>
-                            <h2>{format(total + (pickup ? 0 : shipping_costs))}</h2>
+                            <h2>{format_price(total + (pickup ? 0 : shipping_costs))}</h2>
                         </div>
 
                         <div className="flex justify-between items-center w-full py-1">
@@ -91,10 +92,4 @@ export default function Items() {
     );
 }
 
-const intl = new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: "EUR",
-});
-function format(n: number): string {
-    return intl.format(n);
-}
+
