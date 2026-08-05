@@ -5,7 +5,6 @@ import { useEffect, useReducer, useRef } from "react";
 import Logo from "./svg/logo";
 import Link from "next/link";
 import MenuBurger from "./svg/menu_burger";
-import Search from "./svg/search";
 import Cart from "./svg/cart";
 import { ThemeToggle } from "./theme";
 import { useAuth } from "../(site)/context/authContext";
@@ -167,23 +166,26 @@ export default function Header() {
         };
     }, [ui.isCartOpen, ui.isNavOpen]);
     return (
-        <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-4000 p-8 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white backdrop-blur-md"}`}>
+        <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-4000 sm:px-8 py-8 px-2 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white backdrop-blur-md"}`}>
             <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
 
-            <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"}`}>
-                <button aria-label="menu" type="button" className="button2 float-anim" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+            <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
+                <button aria-label="menu" type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
                     <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
                 </button>
+                <div className="xl:hidden block">
+                    <Search_input route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                </div>
             </div>
 
             <div className="w-1/3 flex-center">
                 <Link aria-label="home page" href={"/"}>
-                    <Logo classnames="w-20 sm:w-25" />
+                    <Logo classnames="w-18 sm:w-25" />
                 </Link>
             </div>
 
             <div className="flex justify-end items-center gap-2 w-1/3">
-                <div className="md:block hidden">
+                <div className="xl:block hidden">
                     <Search_input route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
                 </div>
 
@@ -210,7 +212,7 @@ export default function Header() {
 
 function SearchChildComponent({ item }: { item: Watch }) {
     return (
-        <Link href={"/product/" + item.slug} className="flex justify-between items-center w-full h-full text-sm capitalize gap-2 bg-transparent hover:bg-primary cursor-pointer transition-default p-2">
+        <Link href={"/product/" + item.slug} className="flex justify-between items-center w-full h-full text-sm capitalize gap-2 bg-transparent hover:bg-primary border-b sm:border-0 cursor-pointer transition-default p-2">
             <div className="relative min-w-15 aspect-square">
                 <Image src={item.images[0]} alt={item.brand + " " + item.model} fill sizes="(max-width: 768px) 150px, 100px" />
             </div>
