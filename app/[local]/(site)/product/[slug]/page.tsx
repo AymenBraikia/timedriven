@@ -17,7 +17,7 @@ export default async function DynamicPage({ params }: PageProps) {
 
     
     return (
-        <div className="h-fit w-dvw py-4 sm:px-16 px-4 flex items-start justify-start flex-col lg:flex-row mt-10 gap-8 tracking-wider">
+        <div className="h-fit w-dvw py-4 xl:px-16 px-4 flex items-start justify-start flex-col lg:flex-row mt-10 gap-8 tracking-wider">
             <div className="flex-center w-full lg:w-2/5">
                 <Images_list data={data} />
             </div>
