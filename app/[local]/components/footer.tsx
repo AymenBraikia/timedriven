@@ -83,25 +83,25 @@ export default function Footer() {
                     <h5 className="lg:title5 title4">Other Platforms</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
-                            <Link aria-label="visit chrono 24" href={"#"} className="underline flex justify-start items-center gap-4">
+                            <Link aria-label="visit chrono 24" href={"https://www.chrono24.de/dealer/timedriven/index.htm"} className="underline flex justify-start items-center gap-4">
                                 {<Watch classnames={"w-6"} />}
                                 <p>Chrono 24</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="ebay store" href={"#"} className="underline flex justify-start items-center gap-4">
+                            <Link aria-label="ebay store" href={"https://www.ebay.de/usr/timedriven*de"} className="underline flex justify-start items-center gap-4">
                                 {<Ebay classnames={"w-6"} />}
                                 <p>Ebay</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="ebay store" href={"#"} className="underline flex justify-start items-center gap-4">
+                            <Link aria-label="ebay store" href={"https://www.ebay-kleinanzeigen.de/pro/timedriven/"} className="underline flex justify-start items-center gap-4">
                                 {<Ebay classnames={"w-6"} />}
                                 <p>Ebay Kleinanzeigen</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="instagram page" href={"#"} className="underline flex justify-start items-center gap-4">
+                            <Link aria-label="instagram page" href={"https://www.instagram.com/timedriven.de/"} className="underline flex justify-start items-center gap-4">
                                 {<Instagram classnames={"w-6"} />}
                                 <p>Instagram</p>
                             </Link>

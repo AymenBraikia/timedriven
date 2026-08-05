@@ -33,52 +33,52 @@ function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
             const included = `${watch.boxPapers.papers ? "Original papers, " : ""} ${watch.boxPapers.box ? "Box, " : ""} ${watch.boxPapers.firstInvoice ? "first invoice, " : ""} ${watch.boxPapers.serviceInvoice ? "service invoice, " : ""}`.trim();
             return (
                 <div className="w-full flex flex-col gap-2 py-4">
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">brand</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">brand</p>
                         <p>{watch.brand}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">model</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">model</p>
                         <p>{watch.model}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">reference</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">reference</p>
                         <p>{watch.reference}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">year</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">year</p>
                         <p>{watch.year}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">case</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">case</p>
                         <p>{watch.caseDiameterMm} mm</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">movement</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">movement</p>
                         <p>{watch.movement}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">bracele</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">bracele</p>
                         <p>{watch.braceletMaterial}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">case material</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">case material</p>
                         <p>{watch.caseMaterial}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">dial</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">dial</p>
                         <p>{watch.dialColor}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">condition</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">condition</p>
                         <p>{watch.condition}</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">Water Resistance</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">Water Resistance</p>
                         <p>{watch.waterResistanceM} m</p>
                     </div>
-                    <div className="border-b border-b-secondary flex justify-start items-center py-2">
-                        <p className="w-50 lg:w-100">Scope of delivery</p>
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                        <p className="w-fit md:w-100">Scope of delivery</p>
                         <p>{included.endsWith(",") ? included.slice(0, -1) + "." : included}</p>
                     </div>
                 </div>
@@ -108,12 +108,12 @@ function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
                         <tbody>
                             <tr>
                                 <td className="border-b border-secondary p-3 text-sm">National Bank Wire</td>
-                                <td className="border-b border-secondary p-3 text-sm">1–2 business days</td>
+                                <td className="border-b border-secondary p-3 text-sm">1-2 business days</td>
                                 <td className="border-b border-secondary p-3 text-sm">0%</td>
                             </tr>
                             <tr>
                                 <td className="border-b border-secondary p-3 text-sm">International Bank Wire</td>
-                                <td className="border-b border-secondary p-3 text-sm">2–3 business days</td>
+                                <td className="border-b border-secondary p-3 text-sm">2-3 business days</td>
                                 <td className="border-b border-secondary p-3 text-sm">0%</td>
                             </tr>
                             <tr>

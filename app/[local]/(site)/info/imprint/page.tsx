@@ -17,7 +17,7 @@ export default function AboutPage() {
                     <p className="font-bold">E-mail:</p> info@timedriven.de
                 </div>
                 <div className="flex-center gap-2">
-                    <p className="font-bold">Sales tax identification number:</p> DE815913469
+                    <p className="font-bold">Sales tax identification number:</p> DE123456789
                 </div>
                 <div className="flex-center gap-2">
                     <p className="font-bold">Authorized representatives:</p> Frederik Schlüter

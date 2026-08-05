@@ -17,11 +17,11 @@ export default async function DynamicPage({ params }: PageProps) {
 
     
     return (
-        <div className="h-fit w-dvw py-4 sm:px-16 px-4 flex items-start justify-start mt-10 gap-8 tracking-wider">
-            <div className="flex-center flex-col w-2/5">
+        <div className="h-fit w-dvw py-4 sm:px-16 px-4 flex items-start justify-start flex-col lg:flex-row mt-10 gap-8 tracking-wider">
+            <div className="flex-center w-full lg:w-2/5">
                 <Images_list data={data} />
             </div>
-            <div className="w-3/5 flex flex-col justify-start items-start font-secondary capitalize gap-6">
+            <div className="w-full lg:w-3/5 flex flex-col justify-start items-start font-secondary capitalize gap-6">
                 <h1>{data.brand + " " + data.model}</h1>
                 <p>{data.description}</p>
                 <h3>Ref. {data.reference}</h3>
