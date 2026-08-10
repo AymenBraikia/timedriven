@@ -1,15 +1,17 @@
 "use client";
+import { memo } from "react";
 
 import Image from "next/image";
 import { format_price } from "../(site)/lib/price_format";
 
-export default function Watch_card({
+export default memo(function Watch_card({
     brand,
     name,
     description,
     movement,
     size,
-    material,
+    braceletMaterial,
+    caseMaterial,
     condition,
     price,
     image_src,
@@ -19,7 +21,8 @@ export default function Watch_card({
     description: string;
     movement: string;
     size: number;
-    material: string;
+    braceletMaterial: string;
+    caseMaterial: string;
     condition: string;
     price: number;
     image_src: string;
@@ -36,13 +39,14 @@ export default function Watch_card({
                 <div className="space-y-1 text-sm text-secondary">
                     <p>Movement: {movement}</p>
                     <p>Size: {size} mm</p>
-                    <p>Material: {material}</p>
+                    <p>Bracelet Material: {braceletMaterial}</p>
+                    <p>Case Material: {caseMaterial}</p>
                     <p>Condition: {condition}</p>
                 </div>
                 <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
             </div>
         </div>
     );
-}
+})
 
 

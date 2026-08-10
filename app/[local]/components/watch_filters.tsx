@@ -1,47 +1,21 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Dropdown from "@/app/components/dropdown";
 import CheckBox from "@/app/components/elements/checkbox";
 import filters_type from "@/types/filters";
-
-export type WatchFiltersList = {
-    material: boolean;
-    brand: boolean;
-    movement: boolean;
-    condition: boolean;
-    size: boolean;
-    color: boolean;
-    price: boolean;
-};
+import Range from "./elements/range";
 
 interface WatchFiltersProps {
-    filtersList: WatchFiltersList;
     filters: filters_type;
-    onFiltersChange: (filters: filters_type) => void;
+    set_Filters: (filters: filters_type) => void;
     active: boolean;
     setActive: Dispatch<SetStateAction<boolean>>;
+    setApply: Dispatch<SetStateAction<Map<string, number>>>;
 }
 
-export default function WatchFilters({ filtersList, filters, onFiltersChange, active, setActive }: WatchFiltersProps) {
-    const toggleFilter = <T extends keyof filters_type>(category: T, value: keyof filters_type[T]) => {
-        const values = filters[category];
-
-        onFiltersChange({
-            ...filters,
-            [category]: { ...values, [value]: !values[value] },
-        });
-    };
-
-    const updateRange = (category: "caseSize" | "price", bound: "min" | "max", value: number) => {
-        const range = filters[category];
-        const nextValue = Number.isFinite(value) ? Math.max(0, value) : range[bound];
-
-        onFiltersChange({
-            ...filters,
-            [category]: bound === "min" ? { min: Math.min(nextValue, range.max), max: range.max } : { min: range.min, max: Math.max(nextValue, range.min) },
-        });
-    };
+export default function WatchFilters({ filters, set_Filters, active, setActive, setApply }: WatchFiltersProps) {
+    const categories = Object.keys(filters) as (keyof filters_type)[];
 
     useEffect(() => {
         if (!active) return;
@@ -54,100 +28,107 @@ export default function WatchFilters({ filtersList, filters, onFiltersChange, ac
         };
     }, [active]);
 
-    const filterGroups = [
-        { enabled: filtersList.brand, title: "Brands", category: "brands" },
-        { enabled: filtersList.movement, title: "Movement", category: "movement" },
-        { enabled: filtersList.condition, title: "Condition", category: "condition" },
-        { enabled: filtersList.material, title: "Watch Material", category: "material" },
-        { enabled: filtersList.color, title: "Dial Color", category: "color" },
-    ] as const;
+    const [caseDiameter, set_caseDiameter] = useState<[number, number]>([filters.caseDiameterMm.min, filters.caseDiameterMm.max]);
+    const [price, set_price] = useState<[number, number]>([filters.price.min, filters.price.max]);
+    const [year, set_year] = useState<[number, number]>([filters.year.min, filters.year.max]);
+    const [waterResistance, set_waterResistance] = useState<[number, number]>([filters.waterResistance.min, filters.waterResistance.max]);
+
+    function renderRange(category: keyof filters_type) {
+        switch (category) {
+            case "price":
+                return <Range max={price[1]} min={price[0]} set_value={set_price} />;
+
+            case "year":
+                return <Range max={year[1]} min={year[0]} set_value={set_year} />;
+
+            case "caseDiameterMm":
+                return <Range max={caseDiameter[1]} min={caseDiameter[0]} set_value={set_caseDiameter} />;
+
+            case "waterResistance":
+                return <Range max={waterResistance[1]} min={waterResistance[0]} set_value={set_waterResistance} />;
+
+            default:
+                return null;
+        }
+    }
+    useEffect(() => {
+        set_Filters({
+            ...filters,
+            ["price"]: {
+                min: price[0],
+                max: price[1],
+            },
+            ["year"]: {
+                min: year[0],
+                max: year[1],
+            },
+            ["caseDiameterMm"]: {
+                min: caseDiameter[0],
+                max: caseDiameter[1],
+            },
+            ["waterResistance"]: {
+                min: waterResistance[0],
+                max: waterResistance[1],
+            },
+        });
+    }, [price, year, caseDiameter, waterResistance]);
 
     return (
         <>
             {active && <button type="button" aria-label="Close filters" className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setActive(false)} />}
+
             <aside
                 aria-label="Watch filters"
-                className={`frost fixed inset-y-0 left-0 z-50 flex w-[min(22rem,calc(100vw-1rem))] flex-col items-stretch gap-6 overflow-x-hidden overflow-y-auto p-4 shadow-2xl transition-transform duration-300 lg:sticky lg:top-4 lg:z-auto lg:h-[calc(100vh-2rem)] lg:w-60 lg:shrink-0 lg:translate-x-0 lg:p-0 lg:shadow-none ${active ? "translate-x-0" : "-translate-x-full"}`}
+                className={`frost fixed left-0 z-50 flex sm:w-80 w-full flex-col gap-6 sm:overflow-y-visible overflow-y-auto p-4 transition-default lg:sticky lg:top-4 lg:h-fit lg:translate-x-0 lg:p-0 ${
+                    active ? "translate-x-0" : "-translate-x-full"
+                }`}
             >
                 <button type="button" className="button self-end lg:hidden" onClick={() => setActive(false)}>
                     Close
                 </button>
-                {filterGroups.map(({ enabled, title, category }) => {
-                    if (!enabled) return null;
 
+                {categories.map((category) => {
                     const options = filters[category];
+
                     return (
-                        <Dropdown
-                            key={category}
-                            titles={title}
-                        >
-                            {Object.keys(options).map((option) => {
-                                const key = option as keyof typeof options;
-                                return (
-                                    <div className="flex w-full cursor-pointer items-center justify-between text-[14px]" key={option} onClick={() => toggleFilter(category, key)}>
-                                        <CheckBox label={option} active={Boolean(options[key])} />
-                                    </div>
-                                );
-                            })}
+                        <Dropdown key={category} titles={category}>
+                            {!["price", "year", "caseDiameterMm", "waterResistance"].includes(category)
+                                ? Object.keys(options).map((option) => {
+                                      const key = option as keyof typeof options;
+                                      if (["price", "year", "caseDiameterMm", "waterResistance"].includes(category)) return <></>;
+
+                                      return (
+                                          <div
+                                              className="flex w-full cursor-pointer items-center justify-between text-[14px]"
+                                              key={option}
+                                              onClick={() => {
+                                                  setApply((prev) => {
+                                                      const next = new Map(prev);
+
+                                                      const currentVal = next.get(category) ?? 0;
+
+                                                      next.set(category, currentVal + (options[key] ? -1 : 1));
+
+                                                      return next;
+                                                  });
+
+                                                  set_Filters({
+                                                      ...filters,
+                                                      [category]: {
+                                                          ...options,
+                                                          [key]: !options[key],
+                                                      },
+                                                  });
+                                              }}
+                                          >
+                                              <CheckBox label={option} active={options[key]} />
+                                          </div>
+                                      );
+                                  })
+                                : renderRange(category)}
                         </Dropdown>
                     );
                 })}
-                {filtersList.size && (
-                    <Dropdown titles="Case Size (mm)">
-                        <div className="flex w-full gap-3 px-1">
-                            <label className="flex min-w-0 flex-1 flex-col gap-1 text-sm">
-                                Min
-                                <input
-                                    aria-label="Minimum case size"
-                                    className="w-full border-b bg-transparent py-1 outline-none"
-                                    min={0}
-                                    type="number"
-                                    value={filters.caseSize.min}
-                                    onChange={(event) => updateRange("caseSize", "min", event.target.valueAsNumber)}
-                                />
-                            </label>
-                            <label className="flex min-w-0 flex-1 flex-col gap-1 text-sm">
-                                Max
-                                <input
-                                    aria-label="Maximum case size"
-                                    className="w-full border-b bg-transparent py-1 outline-none"
-                                    min={filters.caseSize.min}
-                                    type="number"
-                                    value={filters.caseSize.max}
-                                    onChange={(event) => updateRange("caseSize", "max", event.target.valueAsNumber)}
-                                />
-                            </label>
-                        </div>
-                    </Dropdown>
-                )}
-                {filtersList.price && (
-                    <Dropdown titles="Price">
-                        <div className="flex w-full gap-3 px-1">
-                            <label className="flex min-w-0 flex-1 flex-col gap-1 text-sm">
-                                Min
-                                <input
-                                    aria-label="Minimum price"
-                                    className="w-full border-b bg-transparent py-1 outline-none"
-                                    min={0}
-                                    type="number"
-                                    value={filters.price.min}
-                                    onChange={(event) => updateRange("price", "min", event.target.valueAsNumber)}
-                                />
-                            </label>
-                            <label className="flex min-w-0 flex-1 flex-col gap-1 text-sm">
-                                Max
-                                <input
-                                    aria-label="Maximum price"
-                                    className="w-full border-b bg-transparent py-1 outline-none"
-                                    min={filters.price.min}
-                                    type="number"
-                                    value={filters.price.max}
-                                    onChange={(event) => updateRange("price", "max", event.target.valueAsNumber)}
-                                />
-                            </label>
-                        </div>
-                    </Dropdown>
-                )}
             </aside>
         </>
     );
