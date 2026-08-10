@@ -6,6 +6,10 @@ import { Watch } from "@/types/watch";
 import { Spare } from "@/types/spare";
 import Cross from "./svg/cross";
 import { format_price } from "../(site)/lib/price_format";
+import { useEffect, useState } from "react";
+import increase_relevance_score from "@/app/server/increase_relevance_score";
+import score_rewards from "../(site)/lib/relevance_score";
+import Link from "next/link";
 
 interface QuickViewProps {
     view: Watch | Spare | null;
@@ -13,6 +17,14 @@ interface QuickViewProps {
 }
 
 export default function QuickViewModal({ view, onClose }: QuickViewProps) {
+    const [increased, set_increased] = useState(false);
+    useEffect(() => {
+        if (!increased && view) {
+            increase_relevance_score(view.slug, score_rewards.quick_view);
+            set_increased(true);
+        }
+    }, [view]);
+
     return view ? (
         <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-50 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
@@ -56,8 +68,13 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                         <p className="text-secondary md:text-primary leading-relaxed tracking-wide text-xs sm:text-sm md:text-base">{view.description}</p>
                     </div>
 
-                    <div className="w-full pt-2">
-                        <AtcBtn slug={view.slug} />
+                    <div className="w-full flex-center gap-4">
+                        <div className="w-full">
+                            <AtcBtn slug={view.slug} />
+                        </div>
+                        <Link href={"/product/" + view.slug} className="w-full button2 flex-center ">
+                            View Details
+                        </Link>
                     </div>
                 </div>
             </div>

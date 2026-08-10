@@ -4,18 +4,24 @@ import get_product from "./get_product";
 import Images_list from "./images";
 import Link from "next/link";
 import InfoTable from "./info_table";
+import increase_relevance_score from "@/app/server/increase_relevance_score";
+import score_rewards from "../../lib/relevance_score";
 
 interface PageProps {
     params: Promise<{
         slug: string;
     }>;
 }
-
+let increased = false;
 export default async function DynamicPage({ params }: PageProps) {
     const slug = (await params).slug;
     const data = await get_product(slug);
 
-    
+    if (!increased) {
+        increased = true;
+        increase_relevance_score(slug, score_rewards.view_details);
+    }
+
     return (
         <div className="h-fit w-dvw py-4 xl:px-16 px-4 flex items-start justify-start flex-col lg:flex-row mt-10 gap-8 tracking-wider">
             <div className="flex-center w-full lg:w-2/5">
@@ -38,8 +44,7 @@ export default async function DynamicPage({ params }: PageProps) {
                         Book appointment
                     </Link>
                 </div>
-                <InfoTable watch={data}/>
-                
+                <InfoTable watch={data} />
             </div>
         </div>
     );

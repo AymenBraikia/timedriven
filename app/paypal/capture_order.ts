@@ -5,6 +5,8 @@ import { getAccessToken } from "./paypal";
 import { orders_collection, users_collection } from "../db/collections";
 import { capture_result, Order } from "@/types/order";
 import { revalidatePath } from "next/cache";
+import score_rewards from "@/app/(site)/lib/relevance_score";
+import increase_relevance_score from "../server/increase_relevance_score";
 
 export async function capture_order({ orderID }: { orderID: string }): Promise<void | capture_result> {
     const cookieStore = await cookies();
@@ -82,6 +84,8 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
         );
 
         if (!user) return;
+
+        order.items.forEach(async (i) => await increase_relevance_score(i.slug, score_rewards.purchase));
 
         revalidatePath("/");
 

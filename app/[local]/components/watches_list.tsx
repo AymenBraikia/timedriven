@@ -24,9 +24,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
     const [applyFilters, set_applyFilters] = useState<Map<string, number>>(new Map(Object.keys(filters).map((f) => [f, 0])));
 
-
     const filteredWatches = useMemo(() => {
-
         return watches.filter((watch) => {
             let match = true;
 
@@ -82,6 +80,23 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
     const [sort, set_sort] = useState<"Newest" | "Price low to high" | "Price hight to low" | "Brand" | "Relevance" | string>("Newest");
 
+    const sorted_watches = filteredWatches.sort((a, b) => {
+        switch (sort) {
+            case "Newest":
+                return new Date(b.date_added).getTime() - new Date(a.date_added).getTime();
+            case "Price low to high":
+                return a.price - b.price;
+            case "Price hight to low":
+                return b.price - a.price;
+            case "Brand":
+                return a.brand.localeCompare(b.brand);
+            case "Relevance":
+                return b.relevance_score - a.relevance_score;
+            default:
+                return 1;
+        }
+    });
+
     return (
         <>
             <div className="w-full min-w-0 flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-8 xl:gap-12">
@@ -117,8 +132,8 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                     </div>
 
                     <div className={`grid w-full grid-cols-1 gap-x-4 gap-y-6 bg-background sm:grid-cols-2 ${"xl:grid-cols-3"}`}>
-                        {filteredWatches.length > 0 ? (
-                            filteredWatches.map((watch) => (
+                        {sorted_watches.length > 0 ? (
+                            sorted_watches.map((watch) => (
                                 <div key={watch.slug} onClick={() => set_view(watch)} className="min-w-0 cursor-pointer">
                                     <Watch_card
                                         brand={watch.brand}

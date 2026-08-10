@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { users_collection } from "../db/collections";
 import get_item from "./get_item";
 import getUser from "./get_user";
+import increase_relevance_score from "./increase_relevance_score";
+import score_rewards from "@/app/(site)/lib/relevance_score";
 
 export default async function addToCart(slug: string): Promise<boolean> {
     try {
@@ -12,6 +14,8 @@ export default async function addToCart(slug: string): Promise<boolean> {
 
         const item = await get_item(slug);
         if (!item) return false;
+
+        increase_relevance_score(slug,score_rewards.add_to_cart)
 
         const newCart = user.cart.find((i) => i.slug == slug)
             ? {
