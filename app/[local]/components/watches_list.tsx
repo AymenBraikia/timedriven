@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Watch_card from "@/app/components/watch_card";
 import dynamic from "next/dynamic";
 
@@ -9,6 +9,7 @@ import { Spare } from "@/types/spare";
 import WatchFilters from "@/app/components/watch_filters";
 import Select from "./elements/select";
 import generate_filters from "../(site)/lib/generate_filters";
+import Input from "./elements/input";
 
 const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,
@@ -24,9 +25,22 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
     const [applyFilters, set_applyFilters] = useState<Map<string, number>>(new Map(Object.keys(filters).map((f) => [f, 0])));
 
+    const [query, set_query] = useState<string>("");
+
+    const [load_limit, set_load_limit] = useState<number>(30);
+
     const filteredWatches = useMemo(() => {
+        let approved = 0;
         return watches.filter((watch) => {
+            if (load_limit < approved) return false;
             let match = true;
+
+            if (query) {
+                const searchTerms = query.toLowerCase().trim().split(/\s+/);
+                const watchData = [watch.brand, watch.model, watch.reference, watch.caseMaterial, watch.dialColor, watch.year?.toString() ?? ""].join(" ").toLowerCase();
+
+                if (!searchTerms.every((term) => watchData.includes(term))) return false;
+            }
 
             if (applyFilters.get("brands")) {
                 if (!filters.brands[watch.brand as keyof typeof filters.brands]) return false;
@@ -74,9 +88,10 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
             if (filters.price.min > watch.price || filters.price.max < watch.price) return false;
 
+            if (match) approved++;
             return match;
         });
-    }, [watches, filters, applyFilters]);
+    }, [watches, filters, applyFilters, query, load_limit]);
 
     const [sort, set_sort] = useState<"Newest" | "Price low to high" | "Price hight to low" | "Brand" | "Relevance" | string>("Newest");
 
@@ -97,6 +112,31 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
         }
     });
 
+    const observed_target = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        const target = observed_target.current;
+        if (!target || load_limit >= watches.length) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+
+                set_load_limit((prev) => {
+                    if (prev >= watches.length) {
+                        observer.disconnect();
+                        return prev;
+                    }
+                    return Math.min(prev + 30, watches.length);
+                });
+            },
+            { threshold: 0.1, rootMargin: "200px" },
+        );
+
+        observer.observe(target);
+
+        return () => observer.disconnect();
+    }, [watches.length]);
+
     return (
         <>
             <div className="w-full min-w-0 flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-8 xl:gap-12">
@@ -114,10 +154,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                 <div className="min-w-0 flex-1">
                     <div className="flex w-full flex-col gap-5 py-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex w-full max-w-xl flex-col gap-2">
-                            <label className="font-semibold" htmlFor="search">
-                                Search
-                            </label>
-                            <input type="text" id="search" className="w-full border-b py-2 outline-none" placeholder="Search for watches..." />
+                            <Input label="Search" type="text" placeholder="Search for watches..." value={query} onChange={(e) => set_query(e.target.value)} />
                         </div>
                         <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end">
                             <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-none">
@@ -133,8 +170,8 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
                     <div className={`grid w-full grid-cols-1 gap-x-4 gap-y-6 bg-background sm:grid-cols-2 ${"xl:grid-cols-3"}`}>
                         {sorted_watches.length > 0 ? (
-                            sorted_watches.map((watch) => (
-                                <div key={watch.slug} onClick={() => set_view(watch)} className="min-w-0 cursor-pointer">
+                            sorted_watches.map((watch, i) => (
+                                <div ref={i == sorted_watches.length - 1 ? observed_target : undefined} key={watch.slug} onClick={() => set_view(watch)} className="min-w-0 cursor-pointer">
                                     <Watch_card
                                         brand={watch.brand}
                                         condition={watch.condition}

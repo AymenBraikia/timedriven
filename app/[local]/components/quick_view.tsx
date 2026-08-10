@@ -26,7 +26,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
     }, [view]);
 
     return view ? (
-        <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-50 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
+        <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-70 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
                 tabIndex={-1}
                 role="dialog"
