@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "TIMEDRIVEN | High-End Luxury Watches",
         description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
-        images: ["//banner.webp"],
+        images: ["/banner.webp"],
     },
     robots: {
         index: true,
@@ -63,7 +63,7 @@ export default function RootLayout({
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">{children}</div>
+                    <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden p-4">{children}</div>
                 </ThemeProvider>
             </body>
         </html>
