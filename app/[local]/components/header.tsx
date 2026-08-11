@@ -11,6 +11,8 @@ import { useAuth } from "../(site)/context/authContext";
 import Search_input from "./elements/search_input";
 import { Watch } from "@/types/watch";
 import Image from "next/image";
+import increase_relevance_score from "@/app/server/increase_relevance_score";
+import score_rewards from "../(site)/lib/relevance_score";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -212,7 +214,11 @@ export default function Header() {
 
 function SearchChildComponent({ item }: { item: Watch }) {
     return (
-        <Link href={"/product/" + item.slug} className="flex justify-between items-center w-full h-full text-sm capitalize gap-2 bg-transparent hover:bg-primary border-b sm:border-0 cursor-pointer transition-default p-2">
+        <Link
+            href={"/product/" + item.slug}
+            onClick={async () => await increase_relevance_score(item.slug, score_rewards.search)}
+            className="flex justify-between items-center w-full h-full text-sm capitalize gap-2 bg-transparent hover:bg-primary border-b sm:border-0 cursor-pointer transition-default p-2"
+        >
             <div className="relative min-w-15 aspect-square">
                 <Image src={item.images[0]} alt={item.brand + " " + item.model} fill sizes="(max-width: 768px) 150px, 100px" />
             </div>

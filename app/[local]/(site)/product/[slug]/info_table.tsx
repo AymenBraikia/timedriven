@@ -7,18 +7,34 @@ export default function InfoTable({ watch }: { watch: Watch }) {
     const [tab, set_tab] = useState<0 | 1 | 2 | 3>(0);
 
     return (
-        <div className="w-full flex-col flex mt-2">
+        <div className="w-full flex-col flex mt-2 font-sans">
             <div className="w-full flex-center flex-wrap sm:flex-nowrap">
-                <button type="button" className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 0 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`} onClick={() => set_tab(0)}>
+                <button
+                    type="button"
+                    className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 0 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
+                    onClick={() => set_tab(0)}
+                >
                     Details
                 </button>
-                <button type="button" className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 1 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`} onClick={() => set_tab(1)}>
+                <button
+                    type="button"
+                    className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 1 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
+                    onClick={() => set_tab(1)}
+                >
                     Shipping
                 </button>
-                <button type="button" className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 2 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`} onClick={() => set_tab(2)}>
+                <button
+                    type="button"
+                    className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 2 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
+                    onClick={() => set_tab(2)}
+                >
                     Payments
                 </button>
-                <button type="button" className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 3 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`} onClick={() => set_tab(3)}>
+                <button
+                    type="button"
+                    className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 3 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
+                    onClick={() => set_tab(3)}
+                >
                     Consignment
                 </button>
             </div>
@@ -33,7 +49,7 @@ function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
             const included = `${watch.boxPapers.papers ? "Original papers, " : ""} ${watch.boxPapers.box ? "Box, " : ""} ${watch.boxPapers.firstInvoice ? "first invoice, " : ""} ${watch.boxPapers.serviceInvoice ? "service invoice, " : ""}`.trim();
             return (
                 <div className="w-full flex flex-col gap-2 py-4">
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2 ">
                         <p className="w-fit md:w-100">brand</p>
                         <p>{watch.brand}</p>
                     </div>
@@ -51,14 +67,14 @@ function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
                         <p className="w-fit md:w-100">case</p>
-                        <p>{watch.caseDiameterMm} mm</p>
+                        <p className="lowercase">{watch.caseDiameterMm} mm</p>
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
                         <p className="w-fit md:w-100">movement</p>
                         <p>{watch.movement}</p>
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">bracele</p>
+                        <p className="w-fit md:w-100">bracelet</p>
                         <p>{watch.braceletMaterial}</p>
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
@@ -75,7 +91,7 @@ function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
                         <p className="w-fit md:w-100">Water Resistance</p>
-                        <p>{watch.waterResistanceM} m</p>
+                        <p className="lowercase">{watch.waterResistanceM} m</p>
                     </div>
                     <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
                         <p className="w-fit md:w-100">Scope of delivery</p>
