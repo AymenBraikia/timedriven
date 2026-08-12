@@ -845,6 +845,7 @@
     "cart": {
         "_note": "Not directly crawlable (client-only route, blocked from automated fetch) — verify these against CartContext/cart components before shipping.",
         "heading": "Warenkorb",
+        "summary": "Zusammenfassung",
         "empty": "Ihr Warenkorb ist leer.",
         "emptyCta": "Weiter einkaufen",
         "itemLabel": "Artikel",
@@ -853,7 +854,13 @@
         "subtotal": "Zwischensumme",
         "total": "Gesamt",
         "removeItem": "Entfernen",
-        "checkoutCta": "Zur Kasse",
+        "checkoutCta": "Zur Kasse",    
+        "choose_shipping_country": "Versandland auswählen",
+        "shipping_to": "Versand nach {country}",
+        "shipping_costs": "Versandkosten",
+        "shipping": "Versand",
+        "localPickup": "Abholung vor Ort",
+        "moreAbout": "Mehr zum",
         "continueShopping": "Weiter einkaufen"
     },
     "favorites": {

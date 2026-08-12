@@ -845,6 +845,7 @@
     "cart": {
         "_note": "Not directly crawlable (client-only route, blocked from automated fetch) — verify these against CartContext/cart components before shipping.",
         "heading": "Shopping Cart",
+        "summary": "Summary",
         "empty": "Your cart is empty.",
         "emptyCta": "Continue shopping",
         "itemLabel": "Item",
@@ -854,6 +855,12 @@
         "total": "Total",
         "removeItem": "Remove",
         "checkoutCta": "Proceed to checkout",
+        "choose_shipping_country": "Choose shipping country",
+        "shipping_to": "Shipping to {country}",
+        "shipping_costs": "Shipping costs",
+        "shipping": "Shipping",
+        "localPickup": "Local pickup",
+        "moreAbout": "More about",
         "continueShopping": "Continue shopping"
     },
     "favorites": {

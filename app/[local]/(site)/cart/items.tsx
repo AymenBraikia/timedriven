@@ -16,7 +16,6 @@ const shipping_options: string[] = Object.values(shipping_data).map((c) => c.cou
 export default function Items() {
     const { session } = useAuth();
     const t = useTranslations("cart");
-    const ui = useTranslations("ui");
 
     if (!session) return;
 
@@ -47,7 +46,7 @@ export default function Items() {
                         ))}
                     </div>
                     <div className="xl:max-w-125 min-w-100 h-fit w-full bg-background font-secondary flex flex-col justify-start items-start px-4 gap-8">
-                        <h1 className="font-semibold">{ui("summary")}</h1>
+                        <h1 className="font-semibold">{t("summary")}</h1>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h4>{t("subtotal")}</h4>
@@ -58,18 +57,18 @@ export default function Items() {
                             <h4 className={`${pickup ? "line-through" : ""}`}>{t("shipping")}</h4>
                             <div className="flex justify-between items-center w-full gap-4">
                                 <div className="flex flex-col justify-start items-start gap-2 text-sm xl:text-base">
-                                    <p>{ui("shipping_to", { country })}</p>
-                                    <Select options={shipping_options} set_value={set_country} value={country} label={ui("choose_shipping_country")} />
+                                    <p>{t("shipping_to", { country })}</p>
+                                    <Select options={shipping_options} set_value={set_country} value={country} label={t("choose_shipping_country")} />
                                 </div>
                                 <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format_price(shipping_costs)}</p>
                             </div>
 
-                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>{ui("shipping_costs", { cost: format_price(shipping_costs) })}</p>
+                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>{t("shipping_costs", { cost: format_price(shipping_costs) })}</p>
 
-                            <CheckBox label={ui("local_pickup")} active={pickup} action={set_pickup} />
+                            <CheckBox label={t("localPickup")} active={pickup} action={set_pickup} />
 
                             <p className="text-sm text-secondary">
-                                {ui("more_about")} {" "}
+                                {t("moreAbout")}{" "}
                                 <Link href="/info/payments" className="underline text-foreground">
                                     {t("shipping")}
                                 </Link>
@@ -83,13 +82,13 @@ export default function Items() {
 
                         <div className="flex justify-between items-center w-full py-1">
                             <Link href={"/checkout"} className="button w-full flex-center text-xl">
-                                {t("checkout")}
+                                {t("checkoutCta")}
                             </Link>
                         </div>
                     </div>
                 </>
             ) : (
-                <h1>{t("empty.title")}</h1>
+                <h1>{t("empty")}</h1>
             )}
         </div>
     );
