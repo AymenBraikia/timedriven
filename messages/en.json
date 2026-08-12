@@ -81,6 +81,8 @@
             "from": "From",
             "to": "To",
             "searchPlaceholder": "Search...",
+            "searching": "Searching...",
+            "noSearchResults": "Sorry, but nothing matched your search terms.",
             "sort": "Sort",
             "newest": "Newest",
             "relevance": "Relevance",

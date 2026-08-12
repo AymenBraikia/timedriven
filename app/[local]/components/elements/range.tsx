@@ -2,6 +2,7 @@
 
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import Input from "./input";
+import { useTranslations } from "next-intl";
 
 interface RangeProps {
     label?: string;
@@ -11,6 +12,7 @@ interface RangeProps {
 }
 
 export default function Range({ min, max, set_value, label }: RangeProps) {
+    const t = useTranslations("common.filters");
     const tracker = useRef<HTMLDivElement>(null);
 
     const bounds: [number, number] = useMemo(() => [min, max], []);
@@ -63,7 +65,7 @@ export default function Range({ min, max, set_value, label }: RangeProps) {
             ) : (
                 <div className="flex-start w-full">
                     <Input
-                        label="From"
+                        label={t("from")}
                         value={String(min)}
                         min={bounds[0]}
                         max={max}
@@ -76,7 +78,7 @@ export default function Range({ min, max, set_value, label }: RangeProps) {
                         }
                     />
                     <Input
-                        label="To"
+                        label={t("to")}
                         value={String(max)}
                         min={min + 1}
                         max={bounds[1]}

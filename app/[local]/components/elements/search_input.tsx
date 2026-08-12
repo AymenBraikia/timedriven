@@ -2,6 +2,7 @@
 import React, { Activity, useState } from "react";
 import Search from "../svg/search";
 import Cross from "../svg/cross";
+import { useTranslations } from "next-intl";
 
 interface searchProps {
     SearchChildComponent: React.ComponentType<{ item: any }>;
@@ -10,6 +11,8 @@ interface searchProps {
 }
 
 export default function Search_input({ route, SearchChildComponent, placeholder }: searchProps) {
+    const t = useTranslations("common.filters");
+
     const [data, set_data] = useState<any[]>([]);
     const [fetching, set_fetching] = useState<boolean>(false);
     const [active, set_active] = useState<boolean>(false);
@@ -51,9 +54,7 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                         ))}
                     </div>
                 ) : value ? (
-                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto frost font-secondary py-2">
-                        {fetching ? "Searching..." : "Sorry, but nothing matched your search terms."}
-                    </div>
+                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto frost font-secondary py-2">{fetching ? t("searching") : t("noSearchResults")}</div>
                 ) : (
                     <></>
                 )}

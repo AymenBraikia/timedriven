@@ -81,6 +81,8 @@
             "from": "Von",
             "to": "Bis",
             "searchPlaceholder": "Suchen...",
+            "searching": "Suche...",
+            "noSearchResults": "Leider wurden keine Treffer für Ihre Suchbegriffe gefunden.",
             "sort": "Sortieren",
             "newest": "Neueste",
             "relevance": "Relevanz",

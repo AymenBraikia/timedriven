@@ -5,6 +5,7 @@ import Dropdown from "@/app/components/dropdown";
 import CheckBox from "@/app/components/elements/checkbox";
 import filters_type from "@/types/filters";
 import Range from "./elements/range";
+import { useTranslations } from "next-intl";
 
 interface WatchFiltersProps {
     filters: filters_type;
@@ -16,6 +17,35 @@ interface WatchFiltersProps {
 
 export default function WatchFilters({ filters, set_Filters, active, setActive, setApply }: WatchFiltersProps) {
     const categories = Object.keys(filters) as (keyof filters_type)[];
+    const t = useTranslations("common.filters");
+
+    function translateOption(category: keyof filters_type, option: string) {
+        switch (category) {
+            case "condition":
+                if (option === "New") return t("conditionNew");
+                if (option === "Pre-Owned") return t("conditionPreOwned");
+                break;
+
+            case "movement":
+                if (option === "Manual") return t("movementManual");
+                if (option === "Automatic") return t("movementAutomatic");
+                if (option === "Quartz") return t("movementQuartz");
+                break;
+
+            case "includes":
+                if (option === "box") return t("includesBox");
+                if (option === "papers") return t("includesPapers");
+                if (option === "firstInvoice") return t("includesFirstInvoice");
+                if (option === "serviceInvoice") return t("includesServiceInvoice");
+                break;
+
+            case "availability":
+                if (option === "inStock") return t("inStock");
+                break;
+        }
+
+        return option;
+    }
 
     useEffect(() => {
         if (!active) return;
@@ -91,7 +121,8 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
                     const options = filters[category];
 
                     return (
-                        <Dropdown key={category} titles={category}>
+                        <Dropdown key={category} titles={t(category)}>
+                            {" "}
                             {!["price", "year", "caseDiameterMm", "waterResistance"].includes(category)
                                 ? Object.keys(options).map((option) => {
                                       const key = option as keyof typeof options;
@@ -121,7 +152,7 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
                                                   });
                                               }}
                                           >
-                                              <CheckBox label={option} active={options[key]} />
+                                              <CheckBox label={translateOption(category, option)} active={options[key]} />{" "}
                                           </div>
                                       );
                                   })
