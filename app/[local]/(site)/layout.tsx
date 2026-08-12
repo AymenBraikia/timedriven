@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
 import { CartProvider } from "@/app/(site)/context/cartContext";
 import { AuthProvider } from "@/app/(site)/context/authContext";
 import getUser from "@/app/server/get_user";
+import { NextIntlClientProvider } from "next-intl";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -70,6 +71,7 @@ export default async function RootLayout({
     return (
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
+                <NextIntlClientProvider>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
                         <filter id="liquid-frosted" x="0%" y="0%" width="100%" height="100%">
@@ -96,6 +98,7 @@ export default async function RootLayout({
                         </CartProvider>
                     </AuthProvider>
                 </ThemeProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

@@ -5,6 +5,7 @@ import Dropdown from "@/app/components/dropdown";
 import CheckBox from "@/app/components/elements/checkbox";
 import filters_type from "@/types/filters";
 import Range from "./elements/range";
+import { useTranslations } from "next-intl";
 
 interface WatchFiltersProps {
     filters: filters_type;
@@ -15,6 +16,7 @@ interface WatchFiltersProps {
 }
 
 export default function WatchFilters({ filters, set_Filters, active, setActive, setApply }: WatchFiltersProps) {
+    const t = useTranslations("shop");
     const categories = Object.keys(filters) as (keyof filters_type)[];
 
     useEffect(() => {
@@ -75,7 +77,7 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
 
     return (
         <>
-            {active && <button type="button" aria-label="Close filters" className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setActive(false)} />}
+            {active && <button type="button" aria-label={t("clear_filters")} className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setActive(false)} />}
 
             <aside
                 aria-label="Watch filters"
@@ -84,7 +86,7 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
                 }`}
             >
                 <button type="button" className="button self-end lg:hidden" onClick={() => setActive(false)}>
-                    Close
+                    {t("clear_filters")}
                 </button>
 
                 {categories.map((category) => {

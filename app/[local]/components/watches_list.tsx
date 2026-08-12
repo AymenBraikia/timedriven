@@ -10,12 +10,15 @@ import WatchFilters from "@/app/components/watch_filters";
 import Select from "./elements/select";
 import generate_filters from "../(site)/lib/generate_filters";
 import Input from "./elements/input";
+import { useTranslations } from "next-intl";
 
 const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
     ssr: false,
 });
 
 export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }) {
+    const t = useTranslations("shop");
+    const filtersT = useTranslations("filters");
     const [view, set_view] = useState<null | Watch | Spare>(null);
 
     const [active, set_active] = useState<boolean>(false);
@@ -154,15 +157,15 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                 <div className="min-w-0 flex-1">
                     <div className="flex w-full flex-col gap-5 py-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex w-full max-w-xl flex-col gap-2">
-                            <Input label="Search" type="text" placeholder="Search for watches..." value={query} onChange={(e) => set_query(e.target.value)} />
+                            <Input label={t("search")} type="text" placeholder={t("search")} value={query} onChange={(e) => set_query(e.target.value)} />
                         </div>
                         <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end">
                             <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-none">
-                                <Select set_value={set_sort} value={sort} label="Sort by: " options={["Newest", "Relevance", "Price low to high", "Price hight to low", "Brand"]} />
+                                <Select set_value={set_sort} value={sort} label={t("sort.label")} options={["Newest", "Relevance", "Price low to high", "Price hight to low", "Brand"]} />
                             </div>
                             {
                                 <button type="button" className="button flex shrink-0 lg:hidden" onClick={() => set_active(true)}>
-                                    Filters
+                                    {t("filters")}
                                 </button>
                             }
                         </div>
@@ -188,7 +191,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                             ))
                         ) : (
                             <div className="text-center py-12 col-span-full">
-                                <p className="text-secondary">No watches match your filters. Try adjusting your selection.</p>
+                                <p className="text-secondary">{t("no_results")}</p>
                             </div>
                         )}
                     </div>

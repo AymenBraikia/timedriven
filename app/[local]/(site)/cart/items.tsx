@@ -9,11 +9,14 @@ import Select from "@/app/components/elements/select";
 import Link from "next/link";
 import updateUser from "@/app/server/update_user";
 import { format_price } from "../lib/price_format";
+import { useTranslations } from "next-intl";
 
 const shipping_options: string[] = Object.values(shipping_data).map((c) => c.country_name);
 
 export default function Items() {
     const { session } = useAuth();
+    const t = useTranslations("cart");
+    const ui = useTranslations("ui");
 
     if (!session) return;
 
@@ -44,49 +47,49 @@ export default function Items() {
                         ))}
                     </div>
                     <div className="xl:max-w-125 min-w-100 h-fit w-full bg-background font-secondary flex flex-col justify-start items-start px-4 gap-8">
-                        <h1 className="font-semibold">Summary</h1>
+                        <h1 className="font-semibold">{ui("summary")}</h1>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
-                            <h4>Subtotal</h4>
+                            <h4>{t("subtotal")}</h4>
                             <h4>{format_price(total)}</h4>
                         </div>
 
                         <div className="flex flex-col justify-center items-start w-full border-b gap-4 py-1">
-                            <h4 className={`${pickup ? "line-through" : ""}`}>Shipping</h4>
+                            <h4 className={`${pickup ? "line-through" : ""}`}>{t("shipping")}</h4>
                             <div className="flex justify-between items-center w-full gap-4">
                                 <div className="flex flex-col justify-start items-start gap-2 text-sm xl:text-base">
-                                    <p>Shipping to {country}</p>
-                                    <Select options={shipping_options} set_value={set_country} value={country} label="Choose Shipping Country" />
+                                    <p>{ui("shipping_to", { country })}</p>
+                                    <Select options={shipping_options} set_value={set_country} value={country} label={ui("choose_shipping_country")} />
                                 </div>
                                 <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format_price(shipping_costs)}</p>
                             </div>
 
-                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>Shipping Costs: {format_price(shipping_costs)}</p>
+                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>{ui("shipping_costs", { cost: format_price(shipping_costs) })}</p>
 
-                            <CheckBox label="Local Pickup" active={pickup} action={set_pickup} />
+                            <CheckBox label={ui("local_pickup")} active={pickup} action={set_pickup} />
 
                             <p className="text-sm text-secondary">
-                                More about{" "}
+                                {ui("more_about")} {" "}
                                 <Link href="/info/payments" className="underline text-foreground">
-                                    Shipping
+                                    {t("shipping")}
                                 </Link>
                             </p>
                         </div>
 
                         <div className="flex justify-between items-center w-full border-b py-1">
-                            <h2>Total</h2>
+                            <h2>{t("total")}</h2>
                             <h2>{format_price(total + (pickup ? 0 : shipping_costs))}</h2>
                         </div>
 
                         <div className="flex justify-between items-center w-full py-1">
                             <Link href={"/checkout"} className="button w-full flex-center text-xl">
-                                Checkout
+                                {t("checkout")}
                             </Link>
                         </div>
                     </div>
                 </>
             ) : (
-                <h1>Your cart is empty</h1>
+                <h1>{t("empty.title")}</h1>
             )}
         </div>
     );

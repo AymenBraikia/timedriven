@@ -1,0 +1,323 @@
+{
+    "brand": {
+        "name": "TIMEDRIVEN",
+        "tagline": "Ihr Partner für hochwertige Uhren"
+    },
+    "nav": {
+        "home": "Startseite",
+        "shop": "Uhren",
+        "spare_parts": "Ersatzteile",
+        "favorites": "Favoriten",
+        "about": "Über uns",
+        "store": "Geschäft",
+        "sell_consign": "Verkaufen / Kommission",
+        "polishing_services": "Polieren & Services",
+        "shipping_payments": "Versand & Zahlung",
+        "faq": "FAQ",
+        "vacancies": "Stellenangebote",
+        "menu": "Menü",
+        "search": "Suche",
+        "search_watches": "Uhren suchen",
+        "language": "Sprache",
+        "cart": "Warenkorb",
+        "account": "Konto",
+        "close": "Schließen"
+    },
+    "home": {
+        "hero": {
+            "title": "TIMEDRIVEN",
+            "subtitle": "Ihr Partner für hochwertige Uhren",
+            "cta": "Entdecken"
+        },
+        "new": {
+            "title": "Neu eingetroffen",
+            "description": "Unsere sorgfältig ausgewählte Kollektion aus gebrauchten und neuen Uhren wartet auf Sie.",
+            "cta": "Alle Uhren ansehen"
+        },
+        "inspired": {
+            "title": "Inspiration finden",
+            "description": "Ihre Reise beginnt hier. Nehmen Sie sich eine Minute Zeit, um diese Fragen zu beantworten. Wir helfen Ihnen herauszufinden, was der richtige erste Schritt für Sie ist.",
+            "cta": "Beginnen"
+        },
+        "iconic": {
+            "title": "Ikonische Marken",
+            "description": "Entdecken Sie unsere Kollektion klassischer Armbanduhren weltbekannter Uhrenhersteller."
+        },
+        "brand": {
+            "view_all": "Alle Uhren ansehen"
+        },
+        "services": {
+            "sell": "Verkaufen / Kommission",
+            "sell_cta": "Mehr erfahren",
+            "spare_parts": "Ersatzteile",
+            "spare_parts_cta": "Zum Shop",
+            "polishing": "Polieren & Services",
+            "polishing_cta": "Mehr erfahren"
+        },
+        "booking": {
+            "title": "Termin buchen",
+            "description": "Als Experten beraten wir Sie professionell in allen Fragen rund um Ihre Uhr.",
+            "cta": "Jetzt buchen"
+        }
+    },
+    "shop": {
+        "title": "Uhren",
+        "search": "Suchen...",
+        "sort": {
+            "label": "Sortieren",
+            "relevance": "Relevanz",
+            "price_low": "Preis: Aufsteigend",
+            "price_high": "Preis: Absteigend",
+            "newest": "Neueste"
+        },
+        "filters": "Filter",
+        "reset_filters": "Filter zurücksetzen",
+        "apply_filters": "Filter anwenden",
+        "clear_filters": "Filter löschen",
+        "results": "{count} Uhren",
+        "no_results": "Keine Uhren gefunden.",
+        "loading": "Wird geladen...",
+        "view": "Ansehen",
+        "view_all": "Alle Uhren ansehen"
+    },
+    "filters": {
+        "brands": "Marken",
+        "movement": "Uhrwerk",
+        "watch_material": "Uhrenmaterial",
+        "dial_color": "Zifferblattfarbe",
+        "condition": "Zustand",
+        "price": "Preis",
+        "year": "Jahr",
+        "gender": "Geschlecht",
+        "case_size": "Gehäusegröße",
+        "water_resistance": "Wasserdichtigkeit",
+        "availability": "Verfügbarkeit"
+    },
+    "movement": {
+        "automatic": "Automatik",
+        "manual": "Handaufzug",
+        "quartz": "Quarz",
+        "solar": "Solar"
+    },
+    "condition": {
+        "new": "Neu",
+        "unworn": "Ungetragen",
+        "pre_owned": "Gebraucht",
+        "used": "Getragen"
+    },
+    "availability": {
+        "in_stock": "Auf Lager",
+        "sold": "Verkauft",
+        "reserved": "Reserviert"
+    },
+    "product": {
+        "add_to_cart": "In den Warenkorb",
+        "adding_to_cart": "Wird in den Warenkorb gelegt...",
+        "buy_now": "Jetzt kaufen",
+        "contact": "Kontakt",
+        "reserve": "Reservieren",
+        "reserved": "Reserviert",
+        "sold": "Verkauft",
+        "available": "Verfügbar",
+        "in_stock": "Auf Lager",
+        "out_of_stock": "Nicht auf Lager",
+        "add_to_favorites": "Zu Favoriten hinzufügen",
+        "remove_from_favorites": "Aus Favoriten entfernen",
+        "share": "Teilen",
+        "details": "Details",
+        "description": "Beschreibung",
+        "specifications": "Spezifikationen",
+        "brand": "Marke",
+        "model": "Modell",
+        "reference": "Referenz",
+        "movement": "Uhrwerk",
+        "material": "Material",
+        "dial": "Zifferblatt",
+        "case": "Gehäuse",
+        "case_size": "Gehäusegröße",
+        "bracelet": "Armband",
+        "strap": "Band",
+        "water_resistance": "Wasserdichtigkeit",
+        "year": "Jahr",
+        "condition": "Zustand",
+        "caliber": "Kaliber",
+        "power_reserve": "Gangreserve",
+        "gender": "Geschlecht",
+        "original_box": "Originalverpackung",
+        "original_papers": "Originalpapiere",
+        "service_history": "Servicehistorie",
+        "price_on_request": "Preis auf Anfrage",
+        "view_details": "Details ansehen",
+        "back_to_shop": "Zurück zu den Uhren"
+    },
+    "quick_view": {
+        "title": "Schnellansicht",
+        "details": "Details ansehen",
+        "add_to_cart": "In den Warenkorb",
+        "close": "Schließen"
+    },
+    "cart": {
+        "title": "Warenkorb",
+        "empty": {
+            "title": "Ihr Warenkorb ist leer.",
+            "description": "Legen Sie eine Uhr in den Warenkorb, um fortzufahren."
+        },
+        "continue_shopping": "Weiter einkaufen",
+        "remove": "Entfernen",
+        "quantity": "Menge",
+        "subtotal": "Zwischensumme",
+        "shipping": "Versand",
+        "total": "Gesamt",
+        "checkout": "Zur Kasse",
+        "item": "Artikel",
+        "items": "Artikel"
+    },
+    "checkout": {
+        "title": "Kasse",
+        "contact_information": "Kontaktinformationen",
+        "shipping_address": "Lieferadresse",
+        "billing_address": "Rechnungsadresse",
+        "payment": "Zahlung",
+        "order_summary": "Bestellübersicht",
+        "place_order": "Bestellung aufgeben",
+        "pay_now": "Jetzt bezahlen",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "address": "Adresse",
+        "city": "Stadt",
+        "postal_code": "Postleitzahl",
+        "country": "Land",
+        "company": "Unternehmen",
+        "optional": "Optional",
+        "required": "Erforderlich",
+        "back": "Zurück",
+        "continue": "Weiter",
+        "confirm": "Bestellung bestätigen",
+        "order_success": "Ihre Bestellung wurde erfolgreich aufgegeben.",
+        "order_error": "Ihre Bestellung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
+        "payment_failed": "Die Zahlung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "booking": {
+        "title": "Termin buchen",
+        "subtitle": "Wir beraten Sie gerne persönlich.",
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "date": "Datum",
+        "time": "Uhrzeit",
+        "message": "Nachricht",
+        "submit": "Jetzt buchen",
+        "success": "Ihre Terminanfrage wurde erfolgreich gesendet.",
+        "error": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    },
+    "sell": {
+        "title": "Verkaufen / Kommission",
+        "description": "Teilen Sie uns mit, welche Uhr Sie verkaufen oder in Kommission geben möchten.",
+        "brand": "Marke",
+        "model": "Modell",
+        "reference": "Referenz",
+        "year": "Jahr",
+        "condition": "Zustand",
+        "price": "Preisvorstellung",
+        "message": "Zusätzliche Informationen",
+        "submit": "Anfrage senden",
+        "success": "Ihre Anfrage wurde erfolgreich gesendet.",
+        "error": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    },
+    "spare": {
+        "title": "Ersatzteile",
+        "description": "Entdecken Sie verfügbare Ersatzteile und Zubehör.",
+        "add_to_cart": "In den Warenkorb",
+        "view_details": "Details ansehen",
+        "no_results": "Keine Ersatzteile gefunden."
+    },
+    "polish": {
+        "title": "Polieren & Services",
+        "description": "Professionelle Pflege und Services für Ihre Uhr.",
+        "learn_more": "Mehr erfahren",
+        "request_service": "Service anfragen",
+        "submit": "Anfrage senden",
+        "success": "Ihre Anfrage wurde erfolgreich gesendet.",
+        "error": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    },
+    "auth": {
+        "login": "Anmelden",
+        "register": "Registrieren",
+        "logout": "Abmelden",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "confirm_password": "Passwort bestätigen",
+        "forgot_password": "Passwort vergessen?",
+        "reset_password": "Passwort zurücksetzen",
+        "no_account": "Noch kein Konto?",
+        "have_account": "Sie haben bereits ein Konto?",
+        "create_account": "Konto erstellen",
+        "sign_in": "Anmelden",
+        "sign_up": "Registrieren",
+        "passwords_mismatch": "Die Passwörter stimmen nicht überein.",
+        "invalid_credentials": "Ungültige E-Mail-Adresse oder ungültiges Passwort."
+    },
+    "favorites": {
+        "title": "Favoriten",
+        "empty": "Sie haben noch keine Lieblingsuhren.",
+        "add": "Zu Favoriten hinzufügen",
+        "remove": "Aus Favoriten entfernen",
+        "sign_in_required": "Bitte melden Sie sich an, um Ihre Favoriten zu verwalten."
+    },
+    "search": {
+        "title": "Suche",
+        "placeholder": "Uhren suchen...",
+        "no_results": "Keine Ergebnisse gefunden.",
+        "results": "Suchergebnisse für „{query}“",
+        "clear": "Suche löschen"
+    },
+    "status": {
+        "success": "Erfolg",
+        "error": "Fehler",
+        "warning": "Warnung",
+        "info": "Information"
+    },
+    "validation": {
+        "required": "Dieses Feld ist erforderlich.",
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "invalid": "Bitte geben Sie einen gültigen Wert ein.",
+        "network": "Ein Netzwerkfehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "footer": {
+        "shop": "Shop",
+        "service": "Service",
+        "other_platforms": "Weitere Plattformen",
+        "legal": "Rechtliches",
+        "imprint": "Impressum",
+        "privacy": "Datenschutzerklärung",
+        "terms": "AGB",
+        "withdrawal": "Widerruf",
+        "disclaimer": "Haftungsausschluss",
+        "cookies": "Cookie-Richtlinie",
+        "all_rights_reserved": "Alle Rechte vorbehalten.",
+        "independent_dealer": "Timedriven ist ein unabhängiger Händler und weder mit anderen Marken verbunden noch ein autorisierter Wiederverkäufer."
+    },
+    "ui": {
+        "summary": "Zusammenfassung",
+        "local_pickup": "Abholung vor Ort",
+        "shipping_to": "Versand nach {country}",
+        "choose_shipping_country": "Versandland auswählen",
+        "shipping_costs": "Versandkosten: {cost}",
+        "more_about": "Mehr über",
+        "billing_details": "Rechnungsdetails",
+        "your_order": "Ihre Bestellung",
+        "find_in_store": "Im Geschäft finden",
+        "book_appointment": "Termin buchen",
+        "reference": "Ref. {reference}",
+        "stock": "Bestand: {status}",
+        "available": "Verfügbar",
+        "not_available": "Nicht verfügbar"
+    },
+    "language": {
+        "english": "English",
+        "german": "Deutsch",
+        "switch": "Sprache wechseln"
+    }
+}

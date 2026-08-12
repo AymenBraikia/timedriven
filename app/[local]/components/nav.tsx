@@ -1,10 +1,15 @@
+"use client";
 import Link from "next/link";
 import { ActionDispatch, RefObject } from "react";
 import Cross from "./svg/cross";
+import { useTranslations } from "next-intl";
 
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
 export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isNavOpen: boolean } }) {
+    const nav = useTranslations("nav");
+    const footer = useTranslations("footer");
+    const booking = useTranslations("home.booking");
     return (
         <nav
             ref={ref}
@@ -12,74 +17,74 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
         >
             <div className="flex flex-col h-7/10 md:h-6/10 gap-6">
                 <div className="flex flex-col gap-2 md:gap-3">
-                    <h5 className="title3">Shop</h5>
+                    <h5 className="title3">{footer("shop")}</h5>
                     <ul className="gap-2!">
                         <li>
                             <Link className="text-sm" aria-label="watches list" href="/shop">
-                                Watches
+                                {nav("shop")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="spare parts" href="/spare">
-                                Spare Parts
+                                {nav("spare_parts")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="favorites" href="/favorites">
-                                Favorites
+                                {nav("favorites")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="about us" href="/info/about">
-                                About Us
+                                {nav("about")}
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col gap-2 md:gap-3">
-                    <h5 className="title3">Service</h5>
+                    <h5 className="title3">{footer("service")}</h5>
                     <ul className="gap-2!">
                         <li>
                             <Link className="text-sm" aria-label="Store" href="/store">
-                                Store
+                                {nav("store")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="Sell / Consign" href="/sell">
-                                Sell / Consign
+                                {nav("sell_consign")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="Polishing and Service" href="/polish">
-                                Polishing and Service
+                                {nav("polishing_services")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="Shipping & Payments" href="/info/payments">
-                                Shipping & Payments
+                                {nav("shipping_payments")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="Frequently Asked Questions" href="/info/faq">
-                                Frequently Asked Questions (FAQ)
+                                {nav("faq")}
                             </Link>
                         </li>
                         <li>
                             <Link className="text-sm" aria-label="Vacancies" href="/info/vacancies">
-                                Vacancies
+                                {nav("vacancies")}
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
             <div className="md:h-3/10 h-3/10  w-full flex flex-col gap-4">
-                <h5 className="title5 tracking-wider">Book an Appointment</h5>
-                <p className="leading-6 tracking-wide text-sm">As experts, we give you our professional opinion on any matter you may have.</p>
-                <Link aria-label="Book now" className="title6 underline" href={"/booking"}>
-                    Book now
+                <h5 className="title5 tracking-wider">{booking("title")}</h5>
+                <p className="leading-6 tracking-wide text-sm">{booking("description")}</p>
+                <Link aria-label={booking("cta")} className="title6 underline" href={"/booking"}>
+                    {booking("cta")}
                 </Link>
             </div>
-            <button aria-label="close navbar" type="button" className="absolute top-4 right-4 p-0 cursor-pointer" onClick={() => dispatch({ type: "CLOSE_NAV" })}>
+            <button aria-label={nav("close")} type="button" className="absolute top-4 right-4 p-0 cursor-pointer" onClick={() => dispatch({ type: "CLOSE_NAV" })}>
                 <Cross classnames={"w-16"} />
             </button>
         </nav>

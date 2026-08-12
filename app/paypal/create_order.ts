@@ -101,8 +101,8 @@ export async function create_order(): Promise<string> {
                         shipping_preference: "NO_SHIPPING",
                         user_action: "PAY_NOW",
 
-                        return_url: "http://localhost:3000/thank_you/",
-                        cancel_url: "http://localhost:3000/cart/",
+                        return_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://timedriven.vercel.app") + "/thank_you/",
+                        cancel_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://timedriven.vercel.app") + "/cart/",
                     },
                 },
             ],

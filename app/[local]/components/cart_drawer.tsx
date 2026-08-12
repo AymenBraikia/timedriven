@@ -1,3 +1,4 @@
+"use client";
 import { ActionDispatch, RefObject } from "react";
 import Cross from "./svg/cross";
 import Info from "./svg/info";
@@ -5,10 +6,13 @@ import { useCart } from "../(site)/context/cartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { format_price } from "../(site)/lib/price_format";
+import { useTranslations } from "next-intl";
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
 export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTMLDivElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isCartOpen: boolean } }) {
     const { cart, subtotal } = useCart();
+    const t = useTranslations("cart");
+    const nav = useTranslations("nav");
 
     return (
         <div
@@ -17,8 +21,8 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
             onClick={(e) => e.stopPropagation()}
         >
             <div className="flex justify-between items-center w-full h-fit">
-                <h4 className="title6 md:title5! lg:title4">YOUR COLLECTION</h4>
-                <button aria-label="close cart" type="button" className="button2 p-1" onClick={() => dispatch({ type: "CLOSE_CART" })}>
+                <h4 className="title6 md:title5! lg:title4">{t("title")}</h4>
+                <button aria-label={nav("close")} type="button" className="button2 p-1" onClick={() => dispatch({ type: "CLOSE_CART" })}>
                     <Cross classnames={"w-10 lg:w-14"} />
                 </button>
             </div>
@@ -45,21 +49,21 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     </div>
                     <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
                         <div className="flex justify-between items-center w-full font-sans">
-                            <p className="sm:title5 title6">Subtotal value</p>
+                            <p className="sm:title5 title6">{t("subtotal")}</p>
                             <p className="sm:title5 title6">{format_price(subtotal)}</p>
                         </div>
-                        <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
-                            View all
+                        <Link aria-label={t("continue_shopping")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
+                            {t("continue_shopping")}
                         </Link>
-                        <Link aria-label="Proceed to checkout" onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/checkout">
-                            Proceed to checkout
+                        <Link aria-label={t("checkout")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/checkout">
+                            {t("checkout")}
                         </Link>
                     </div>
                 </>
             ) : (
                 <div className="flex-center flex-col gap-4 w-full h-9/10 md:h-4/5 font-sans text-secondary">
                     <Info classnames={"w-18"} />
-                    <h5 className="title5 flex-center text-center">Your cart is empty.</h5>
+                    <h5 className="title5 flex-center text-center">{t("empty.title")}</h5>
                 </div>
             )}
         </div>

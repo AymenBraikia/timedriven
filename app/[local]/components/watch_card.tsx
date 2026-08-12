@@ -3,6 +3,7 @@ import { memo } from "react";
 
 import Image from "next/image";
 import { format_price } from "../(site)/lib/price_format";
+import { useTranslations } from "next-intl";
 
 export default memo(function Watch_card({
     brand,
@@ -27,6 +28,7 @@ export default memo(function Watch_card({
     price: number;
     image_src: string;
 }) {
+    const t = useTranslations("product");
     return (
         <div className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer font-secondary sm:px-0 px-4 w-full">
             <div className="sm:aspect-4/3 aspect-4/3 relative w-full">
@@ -37,11 +39,11 @@ export default memo(function Watch_card({
                 <h4 className="font-semibold capitalize">{name}</h4>
                 <p className="leading-6">{description}</p>
                 <div className="space-y-1 text-sm text-secondary">
-                    <p>Movement: {movement}</p>
-                    <p>Size: {size} mm</p>
-                    <p>Bracelet Material: {braceletMaterial}</p>
-                    <p>Case Material: {caseMaterial}</p>
-                    <p>Condition: {condition}</p>
+                    <p>{t("movement")}: {movement}</p>
+                    <p>{t("case_size")}: {size} mm</p>
+                    <p>{t("bracelet")}: {braceletMaterial}</p>
+                    <p>{t("material")}: {caseMaterial}</p>
+                    <p>{t("condition")}: {condition}</p>
                 </div>
                 <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
             </div>

@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface QuickViewProps {
     view: Watch | Spare | null;
@@ -17,6 +18,8 @@ interface QuickViewProps {
 }
 
 export default function QuickViewModal({ view, onClose }: QuickViewProps) {
+    const t = useTranslations("product");
+    const quick = useTranslations("quick_view");
     const [increased, set_increased] = useState(false);
     useEffect(() => {
         if (!increased && view) {
@@ -34,7 +37,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                 aria-label={`${view.brand} ${view.model} quick view`}
                 className="relative p-4 sm:pt-30 pt-25 flex w-full h-full flex-col md:flex-row bg-background font-secondary outline-none flex-center"
             >
-                <button aria-label="Close quick view" type="button" className="button absolute top-34 right-4 z-20 p-0" onClick={onClose}>
+                <button aria-label={quick("close")} type="button" className="button absolute top-34 right-4 z-20 p-0" onClick={onClose}>
                     <Cross classnames="w-10" />
                 </button>
 
@@ -55,14 +58,14 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                         <p className="font-medium tracking-wide text-xl sm:text-2xl">{format_price(view.price)}</p>
 
                         <div className="hidden md:flex flex-col gap-2 leading-relaxed tracking-wide text-sm text-secondary">
-                            <p>Movement: {view.movement}</p>
-                            <p>Case Material: {view.caseMaterial}</p>
-                            <p>Bracelet Material: {view.braceletMaterial}</p>
-                            <p>Condition: {view.condition}</p>
-                            <p>Color: {view.dialColor}</p>
-                            <p>Case Diameter: {view.caseDiameterMm}mm</p>
-                            <p>Year: {view.year}</p>
-                            <p>Water Resistence: {view.waterResistanceM}m</p>
+                            <p>{t("movement")}: {view.movement}</p>
+                            <p>{t("material")}: {view.caseMaterial}</p>
+                            <p>{t("bracelet")}: {view.braceletMaterial}</p>
+                            <p>{t("condition")}: {view.condition}</p>
+                            <p>{t("dial")}: {view.dialColor}</p>
+                            <p>{t("case_size")}: {view.caseDiameterMm}mm</p>
+                            <p>{t("year")}: {view.year}</p>
+                            <p>{t("water_resistance")}: {view.waterResistanceM}m</p>
                         </div>
 
                         <p className="text-secondary md:text-primary leading-relaxed tracking-wide text-xs sm:text-sm md:text-base">{view.description}</p>
@@ -73,7 +76,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                             <AtcBtn slug={view.slug} />
                         </div>
                         <Link href={"/product/" + view.slug} className="w-full button2 flex-center ">
-                            View Details
+                            {quick("details")}
                         </Link>
                     </div>
                 </div>

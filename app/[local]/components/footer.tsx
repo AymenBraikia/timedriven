@@ -1,10 +1,14 @@
+"use client";
 import Link from "next/link";
 import Instagram from "./svg/instagram";
 import Watch from "./svg/watch";
 import Ebay from "./svg/ebay";
 import HorizontalLogo from "./svg/logo_horizontal";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+    const t = useTranslations("footer");
+    const nav = useTranslations("nav");
     return (
         <footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold z-30">
             <section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
@@ -20,67 +24,67 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-                    <h5 className="lg:title5 title4">Shop</h5>
+                    <h5 className="lg:title5 title4">{t("shop")}</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
                             <Link aria-label="watches" href={"/shop"} className="underline">
-                                Watches
+                                {nav("shop")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="spare parts" href={"/spare"} className="underline">
-                                Spare Parts
+                                {nav("spare_parts")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="favorites" href={"/favorites"} className="underline">
-                                Favorites
+                                {nav("favorites")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="about us" href={"/info/about"} className="underline">
-                                About Us
+                                {nav("about")}
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-                    <h5 className="lg:title5 title4">Service</h5>
+                    <h5 className="lg:title5 title4">{t("service")}</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
                             <Link aria-label="store" href={"/store"} className="underline">
-                                Store
+                                {nav("store")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="sell or consign" href={"/sell"} className="underline">
-                                Sell / Consign
+                                {nav("sell_consign")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="polishing and services" href={"/polish"} className="underline">
-                                Polishing and Services
+                                {nav("polishing_services")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="shipping and payments" href={"/info/payments"} className="underline">
-                                Shipping & Payments
+                                {nav("shipping_payments")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="Frequently Asked Questions" href={"/info/faq"} className="underline">
-                                FAQ
+                                {nav("faq")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="Vacancies" href={"/info/vacancies"} className="underline">
-                                Vacancies
+                                {nav("vacancies")}
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-                    <h5 className="lg:title5 title4">Other Platforms</h5>
+                    <h5 className="lg:title5 title4">{t("other_platforms")}</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
                             <Link aria-label="visit chrono 24" href={"https://www.chrono24.de/dealer/timedriven/index.htm"} className="underline flex justify-start items-center gap-4">
@@ -109,36 +113,36 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-                    <h5 className="lg:title5 title4">Legal</h5>
+                    <h5 className="lg:title5 title4">{t("legal")}</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
                             <Link aria-label="imprint" href={"/info/imprint"} className="underline">
-                                Imprint
+                                {t("imprint")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="privacy policiy" href={"/info/policy"} className="underline">
-                                Privacy Policy
+                                {t("privacy")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="terms of use" href={"/info/terms"} className="underline">
-                                Terms
+                                {t("terms")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="withdrawal" href={"/info/withdraw"} className="underline">
-                                Withdrawal
+                                {t("withdrawal")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="disclaimer" href={"/info/disclaimer"} className="underline">
-                                Disclaimer
+                                {t("disclaimer")}
                             </Link>
                         </li>
                         <li>
                             <Link aria-label="cookies policy" href={"/info/cookies"} className="underline">
-                                Cookie Policy
+                                {t("cookies")}
                             </Link>
                         </li>
                     </ul>

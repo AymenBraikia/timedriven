@@ -3,30 +3,33 @@ import Form from "./form";
 import Order_list from "./order_list";
 import getUser from "@/app/server/get_user";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 export default async function cartPage() {
     const user = await getUser();
+    const t = await getTranslations("checkout");
+    const cart = await getTranslations("cart");
     return (
         <div className="flex-center flex-col w-full gap-12 sm:px-20 py-5">
             <Banner>
-                <h1 className="font-bold font-secondary">Checkout</h1>
+                <h1 className="font-bold font-secondary">{t("title")}</h1>
             </Banner>
             {!user!.cart.length ? (
                 <div className="flex-center w-full h-100 flex-col gap-4 font-secondary text-center px-4">
-                    <h1>Your cart is empty</h1>
+                    <h1>{cart("empty.title")}</h1>
                     <Link className="text-2xl underline" href={"/shop"}>
-                        Continue Shopping
+                        {cart("continue_shopping")}
                     </Link>
                 </div>
             ) : (
                 <div className="flex xl:flex-row flex-col justify-center items-start gap-4 xl:gap-20 w-full">
                     <div className="w-full flex flex-col justify-start items-start gap-8 p-4">
-                        <h2>Billing Details</h2>
+                        <h2>{t("billing_address")}</h2>
                         <Form />
                     </div>
 
                     <div className="xl:w-2/5 w-full flex flex-col justify-start items-start bg-primary gap-8 p-4">
-                        <h2>Your Order</h2>
+                        <h2>{t("order_summary")}</h2>
                         <div className="w-full h-[fit]">
                             <Order_list />
                         </div>

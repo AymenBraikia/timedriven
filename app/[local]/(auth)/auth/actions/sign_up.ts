@@ -22,8 +22,6 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
 
         if (!firstName || !lastName || !email || !password) return { success: false, error: "Make sure to enter all the required information." };
 
-        console.log(password, authRegex.password.test(password));
-
         if (!authRegex.email.test(email)) return { success: false, error: "Enter a valid email." };
         if (!authRegex.password.test(password)) return { success: false, error: "Password should be atleast 8 characters long." };
         // if (!authRegex.password.test(password)) return { success: false, error: "Password should include atleast 1 special character, 1 upper case letter, 1 number." };

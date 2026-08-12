@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import List from "./scrollList";
 import Image from "next/image";
 import FadeInObserver from "./fade_wrapper";
+import { useTranslations } from "next-intl";
 
 let id = 0;
 const data = [
@@ -16,13 +18,14 @@ const data = [
 ];
 
 export default function Iconic() {
+    const t = useTranslations("home.iconic");
+    const brand = useTranslations("home.brand");
     return (
             <section className="flex-col justify-center items-start sm:p-16 p-4 w-full">
             <div className="w-fit">
                 <FadeInObserver>
                     <h1 className={`text-4xl sm:text-5xl font-secondary tracking-wide`}>
-                        Iconic <br />
-                        Brands
+                        {t("title")}
                     </h1>
                 </FadeInObserver>
             </div>
@@ -30,8 +33,7 @@ export default function Iconic() {
             <div className="w-fit">
                 <FadeInObserver>
                     <p className="font-secondary text-xl">
-                        Browse our collection of classic wrist watches from world-renowned <br className="sm:block hidden" />
-                        watchmakers.
+                        {t("description")}
                     </p>
                 </FadeInObserver>
             </div>
@@ -46,7 +48,7 @@ export default function Iconic() {
                                 </div>
                                 <div className="absolute left-4 bottom-4 flex flex-col p-2 text-white">
                                     <h4 className="title4">{d.name}</h4>
-                                    <h5 className="underline title5">View all watches</h5>
+                                    <h5 className="underline title5">{brand("view_all")}</h5>
                                 </div>
                             </Link>
                         ))}

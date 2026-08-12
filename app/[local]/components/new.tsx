@@ -9,12 +9,15 @@ import AtcBtn from "./buttons/addToCart";
 import get_new from "@/app/server/get_new";
 import { Watch } from "@/types/watch";
 import { format_price } from "../(site)/lib/price_format";
+import { useTranslations } from "next-intl";
 
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,
 });
 
 export default function New() {
+    const t = useTranslations("home.new");
+    const quickView = useTranslations("quick_view");
     const [view, set_view] = useState<null | Watch>(null);
     const [data, set_data] = useState<Watch[]>([]);
 
@@ -27,20 +30,19 @@ export default function New() {
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
                     <h1 className={`text-5xl font-secondary tracking-wide`}>
-                        New <br />
-                        Arrivals
+                        {t("title")}
                     </h1>
                 </FadeInObserver>
             </div>
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <p>Our curated collection of pre-owned and new watches is waiting for you.</p>
+                    <p>{t("description")}</p>
                 </FadeInObserver>
             </div>
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <Link aria-label="view all watches" href={"/shop"} className={`underline`}>
-                        View all watches
+                    <Link aria-label={t("cta")} href={"/shop"} className={`underline`}>
+                        {t("cta")}
                     </Link>
                 </FadeInObserver>
             </div>
@@ -66,7 +68,7 @@ export default function New() {
                                     />
                                     <div className="2xl:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
                                         <button aria-label={`quick view ${d.brand + " " + d.model}`} type="button" className="button cursor-pointer p-4 select-none transition-default h-full" onClick={() => set_view(d)}>
-                                            QUICK VIEW
+                                            {quickView("title")}
                                         </button>
                                         <div className="w-fit text-white hover:text-foreground transition-default">
                                             <AtcBtn slug={d.slug} />

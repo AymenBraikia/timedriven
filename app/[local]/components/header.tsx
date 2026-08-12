@@ -13,6 +13,8 @@ import { Watch } from "@/types/watch";
 import Image from "next/image";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -63,8 +65,13 @@ function headerReducer(state: UIState, action: UIAction): UIState {
 
 export default function Header() {
     const { session } = useAuth();
+    const locale = useLocale();
+    const t = useTranslations("nav");
+    const auth = useTranslations("auth");
+    const pathname = usePathname();
+    const router = useRouter();
 
-    const [ui, dispatch] = useReducer(headerReducer, initialUIState);
+    const [ui, dispatch] = useReducer(headerReducer, { ...initialUIState, lang: locale.toUpperCase() as "EN" | "DE" });
     const cartRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLElement>(null);
 
@@ -172,7 +179,7 @@ export default function Header() {
             <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
 
             <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
-                <button aria-label="menu" type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+                <button aria-label={t("menu")} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
                     <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
                 </button>
                 <div className="xl:hidden block">
@@ -181,7 +188,7 @@ export default function Header() {
             </div>
 
             <div className="w-1/3 flex-center">
-                <Link aria-label="home page" href={"/"}>
+                <Link aria-label={t("home")} href={"/"}>
                     <Logo classnames="w-18 sm:w-25" />
                 </Link>
             </div>
@@ -192,14 +199,18 @@ export default function Header() {
                 </div>
 
                 {!session?.email && (
-                    <Link aria-label={`Register`} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
-                        Register
+                    <Link aria-label={auth("register")} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
+                        {auth("register")}
                     </Link>
                 )}
-                <button aria-label={`${ui.lang} language`} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => dispatch({ type: "TOGGLE_LANG" })}>
+                <button aria-label={t("language")} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => {
+                    const nextLocale = locale === "en" ? "de" : "en";
+                    dispatch({ type: "TOGGLE_LANG" });
+                    router.replace(pathname, { locale: nextLocale });
+                }}>
                     {ui.lang}
                 </button>
-                <button aria-label="cart" type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
+                <button aria-label={t("cart")} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                     <Cart clr={"currentColor"} />
                     {session && session.cart.length ? <p className="absolute left-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                 </button>

@@ -1,0 +1,323 @@
+{
+    "brand": {
+        "name": "TIMEDRIVEN",
+        "tagline": "Your partner for high-end watches"
+    },
+    "nav": {
+        "home": "Home",
+        "shop": "Watches",
+        "spare_parts": "Spare Parts",
+        "favorites": "Favorites",
+        "about": "About Us",
+        "store": "Store",
+        "sell_consign": "Sell / Consign",
+        "polishing_services": "Polishing & Services",
+        "shipping_payments": "Shipping & Payments",
+        "faq": "FAQ",
+        "vacancies": "Vacancies",
+        "menu": "Menu",
+        "search": "Search",
+        "search_watches": "Search watches",
+        "language": "Language",
+        "cart": "Cart",
+        "account": "Account",
+        "close": "Close"
+    },
+    "home": {
+        "hero": {
+            "title": "TIMEDRIVEN",
+            "subtitle": "Your partner for high-end watches",
+            "cta": "Discover"
+        },
+        "new": {
+            "title": "New Arrivals",
+            "description": "Our curated collection of pre-owned and new watches is waiting for you.",
+            "cta": "View all watches"
+        },
+        "inspired": {
+            "title": "Get Inspired",
+            "description": "Your journey begins here. Take a minute to answer these questions, and we’ll help you figure out what your first step should be.",
+            "cta": "Begin"
+        },
+        "iconic": {
+            "title": "Iconic Brands",
+            "description": "Browse our collection of classic wrist watches from world-renowned watchmakers."
+        },
+        "brand": {
+            "view_all": "View all watches"
+        },
+        "services": {
+            "sell": "Sell / Consign",
+            "sell_cta": "Learn more",
+            "spare_parts": "Spare Parts",
+            "spare_parts_cta": "Go to shop",
+            "polishing": "Polishing & Services",
+            "polishing_cta": "Learn more"
+        },
+        "booking": {
+            "title": "Book an Appointment",
+            "description": "As experts, we give you our professional opinion on any matter you may have.",
+            "cta": "Book now"
+        }
+    },
+    "shop": {
+        "title": "Watches",
+        "search": "Search...",
+        "sort": {
+            "label": "Sort",
+            "relevance": "Relevance",
+            "price_low": "Price: Low to High",
+            "price_high": "Price: High to Low",
+            "newest": "Newest"
+        },
+        "filters": "Filters",
+        "reset_filters": "Reset filters",
+        "apply_filters": "Apply filters",
+        "clear_filters": "Clear filters",
+        "results": "{count} watches",
+        "no_results": "No watches found.",
+        "loading": "Loading...",
+        "view": "View",
+        "view_all": "View all watches"
+    },
+    "filters": {
+        "brands": "Brands",
+        "movement": "Movement",
+        "watch_material": "Watch Material",
+        "dial_color": "Color Dial",
+        "condition": "Condition",
+        "price": "Price",
+        "year": "Year",
+        "gender": "Gender",
+        "case_size": "Case Size",
+        "water_resistance": "Water Resistance",
+        "availability": "Availability"
+    },
+    "movement": {
+        "automatic": "Automatic",
+        "manual": "Manual",
+        "quartz": "Quartz",
+        "solar": "Solar"
+    },
+    "condition": {
+        "new": "New",
+        "unworn": "Unworn",
+        "pre_owned": "Pre-Owned",
+        "used": "Used"
+    },
+    "availability": {
+        "in_stock": "In stock",
+        "sold": "Sold",
+        "reserved": "Reserved"
+    },
+    "product": {
+        "add_to_cart": "Add to cart",
+        "adding_to_cart": "Adding to cart...",
+        "buy_now": "Buy now",
+        "contact": "Contact us",
+        "reserve": "Reserve",
+        "reserved": "Reserved",
+        "sold": "Sold",
+        "available": "Available",
+        "in_stock": "In stock",
+        "out_of_stock": "Out of stock",
+        "add_to_favorites": "Add to favorites",
+        "remove_from_favorites": "Remove from favorites",
+        "share": "Share",
+        "details": "Details",
+        "description": "Description",
+        "specifications": "Specifications",
+        "brand": "Brand",
+        "model": "Model",
+        "reference": "Reference",
+        "movement": "Movement",
+        "material": "Material",
+        "dial": "Dial",
+        "case": "Case",
+        "case_size": "Case size",
+        "bracelet": "Bracelet",
+        "strap": "Strap",
+        "water_resistance": "Water resistance",
+        "year": "Year",
+        "condition": "Condition",
+        "caliber": "Caliber",
+        "power_reserve": "Power reserve",
+        "gender": "Gender",
+        "original_box": "Original box",
+        "original_papers": "Original papers",
+        "service_history": "Service history",
+        "price_on_request": "Price on request",
+        "view_details": "View details",
+        "back_to_shop": "Back to watches"
+    },
+    "quick_view": {
+        "title": "Quick view",
+        "details": "View details",
+        "add_to_cart": "Add to cart",
+        "close": "Close"
+    },
+    "cart": {
+        "title": "Cart",
+        "empty": {
+            "title": "Your cart is empty.",
+            "description": "Add a watch to your cart to continue."
+        },
+        "continue_shopping": "Continue shopping",
+        "remove": "Remove",
+        "quantity": "Quantity",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "checkout": "Checkout",
+        "item": "Item",
+        "items": "Items"
+    },
+    "checkout": {
+        "title": "Checkout",
+        "contact_information": "Contact information",
+        "shipping_address": "Shipping address",
+        "billing_address": "Billing address",
+        "payment": "Payment",
+        "order_summary": "Order summary",
+        "place_order": "Place order",
+        "pay_now": "Pay now",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "City",
+        "postal_code": "Postal code",
+        "country": "Country",
+        "company": "Company",
+        "optional": "Optional",
+        "required": "Required",
+        "back": "Back",
+        "continue": "Continue",
+        "confirm": "Confirm order",
+        "order_success": "Your order has been placed successfully.",
+        "order_error": "We could not complete your order. Please try again.",
+        "payment_failed": "Payment failed. Please try again."
+    },
+    "booking": {
+        "title": "Book an Appointment",
+        "subtitle": "We are happy to advise you personally.",
+        "name": "Name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "date": "Date",
+        "time": "Time",
+        "message": "Message",
+        "submit": "Book now",
+        "success": "Your appointment request has been sent successfully.",
+        "error": "We could not send your request. Please try again."
+    },
+    "sell": {
+        "title": "Sell / Consign",
+        "description": "Let us know which watch you would like to sell or consign.",
+        "brand": "Brand",
+        "model": "Model",
+        "reference": "Reference",
+        "year": "Year",
+        "condition": "Condition",
+        "price": "Expected price",
+        "message": "Additional information",
+        "submit": "Send request",
+        "success": "Your request has been sent successfully.",
+        "error": "We could not send your request. Please try again."
+    },
+    "spare": {
+        "title": "Spare Parts",
+        "description": "Browse available spare parts and accessories.",
+        "add_to_cart": "Add to cart",
+        "view_details": "View details",
+        "no_results": "No spare parts found."
+    },
+    "polish": {
+        "title": "Polishing & Services",
+        "description": "Professional care and services for your watch.",
+        "learn_more": "Learn more",
+        "request_service": "Request a service",
+        "submit": "Send request",
+        "success": "Your request has been sent successfully.",
+        "error": "We could not send your request. Please try again."
+    },
+    "auth": {
+        "login": "Log in",
+        "register": "Register",
+        "logout": "Log out",
+        "email": "E-mail",
+        "password": "Password",
+        "confirm_password": "Confirm password",
+        "forgot_password": "Forgot password?",
+        "reset_password": "Reset password",
+        "no_account": "Don’t have an account yet?",
+        "have_account": "Already have an account?",
+        "create_account": "Create account",
+        "sign_in": "Sign in",
+        "sign_up": "Sign up",
+        "passwords_mismatch": "Passwords do not match.",
+        "invalid_credentials": "Invalid e-mail or password."
+    },
+    "favorites": {
+        "title": "Favorites",
+        "empty": "You have no favorite watches yet.",
+        "add": "Add to favorites",
+        "remove": "Remove from favorites",
+        "sign_in_required": "Please sign in to manage your favorites."
+    },
+    "search": {
+        "title": "Search",
+        "placeholder": "Search watches...",
+        "no_results": "No results found.",
+        "results": "Search results for “{query}”",
+        "clear": "Clear search"
+    },
+    "status": {
+        "success": "Success",
+        "error": "Error",
+        "warning": "Warning",
+        "info": "Information"
+    },
+    "validation": {
+        "required": "This field is required.",
+        "email": "Please enter a valid e-mail address.",
+        "invalid": "Please enter a valid value.",
+        "network": "A network error occurred. Please try again."
+    },
+    "footer": {
+        "shop": "Shop",
+        "service": "Service",
+        "other_platforms": "Other Platforms",
+        "legal": "Legal",
+        "imprint": "Imprint",
+        "privacy": "Privacy Policy",
+        "terms": "Terms",
+        "withdrawal": "Withdrawal",
+        "disclaimer": "Disclaimer",
+        "cookies": "Cookie Policy",
+        "all_rights_reserved": "All Rights Reserved.",
+        "independent_dealer": "Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller."
+    },
+    "ui": {
+        "summary": "Summary",
+        "local_pickup": "Local pickup",
+        "shipping_to": "Shipping to {country}",
+        "choose_shipping_country": "Choose shipping country",
+        "shipping_costs": "Shipping costs: {cost}",
+        "more_about": "More about",
+        "billing_details": "Billing details",
+        "your_order": "Your order",
+        "find_in_store": "Find in store",
+        "book_appointment": "Book an appointment",
+        "reference": "Ref. {reference}",
+        "stock": "Stock: {status}",
+        "available": "Available",
+        "not_available": "Not available"
+    },
+    "language": {
+        "english": "English",
+        "german": "Deutsch",
+        "switch": "Switch language"
+    }
+}
