@@ -6,9 +6,10 @@ import Cross from "../svg/cross";
 interface searchProps {
     SearchChildComponent: React.ComponentType<{ item: any }>;
     route: string;
+    placeholder: string;
 }
 
-export default function Search_input({ route, SearchChildComponent }: searchProps) {
+export default function Search_input({ route, SearchChildComponent, placeholder }: searchProps) {
     const [data, set_data] = useState<any[]>([]);
     const [fetching, set_fetching] = useState<boolean>(false);
     const [active, set_active] = useState<boolean>(false);
@@ -42,7 +43,7 @@ export default function Search_input({ route, SearchChildComponent }: searchProp
                     <Search classnames="sm:w-8 w-6" clr={"currentColor"} />
                 </button>
 
-                <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:block hidden`} placeholder="Search watches" id="searchWatches" />
+                <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:block hidden`} placeholder={placeholder} id="searchWatches" />
                 {data.length ? (
                     <div className="absolute hidden md:flex top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto flex-col frost font-secondary py-2">
                         {data.map((e, idx) => (
@@ -62,7 +63,7 @@ export default function Search_input({ route, SearchChildComponent }: searchProp
                     <button aria-label="close search" type="button" className="absolute top-4 right-4 p-0 cursor-pointer" onClick={() => set_active(false)}>
                         <Cross classnames={"w-10"} />
                     </button>
-                    <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:hidden block w-[calc(100%-40px)] h-fit border-b`} placeholder="Search watches" id="searchWatches" />
+                    <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:hidden block w-[calc(100%-40px)] h-fit border-b`} placeholder={placeholder} id="searchWatches" />
 
                     {data.length ? (
                         <div className="flex md:hidden top-[calc(100%+8px)] w-full h-full flex-col font-secondary py-2 overflow-y-auto">

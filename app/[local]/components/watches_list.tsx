@@ -17,8 +17,7 @@ const QuickViewModal = dynamic(() => import("@/app/components/quick_view"), {
 });
 
 export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }) {
-    const t = useTranslations("shop");
-    const filtersT = useTranslations("filters");
+    const t = useTranslations("common.filters");
     const [view, set_view] = useState<null | Watch | Spare>(null);
 
     const [active, set_active] = useState<boolean>(false);
@@ -96,19 +95,19 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
         });
     }, [watches, filters, applyFilters, query, load_limit]);
 
-    const [sort, set_sort] = useState<"Newest" | "Price low to high" | "Price hight to low" | "Brand" | "Relevance" | string>("Newest");
+    const [sort, set_sort] = useState<string>(t("newest"));
 
     const sorted_watches = filteredWatches.sort((a, b) => {
         switch (sort) {
-            case "Newest":
+            case t("newest"):
                 return new Date(b.date_added).getTime() - new Date(a.date_added).getTime();
-            case "Price low to high":
+            case t("priceLowToHight"):
                 return a.price - b.price;
-            case "Price hight to low":
+            case t("priceHightToLow"):
                 return b.price - a.price;
-            case "Brand":
+            case t("brand"):
                 return a.brand.localeCompare(b.brand);
-            case "Relevance":
+            case t("relevance"):
                 return b.relevance_score - a.relevance_score;
             default:
                 return 1;
@@ -157,15 +156,15 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                 <div className="min-w-0 flex-1">
                     <div className="flex w-full flex-col gap-5 py-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex w-full max-w-xl flex-col gap-2">
-                            <Input label={t("search")} type="text" placeholder={t("search")} value={query} onChange={(e) => set_query(e.target.value)} />
+                            <Input label={t("searchPlaceholder")} type="text" placeholder={t("searchPlaceholder")} value={query} onChange={(e) => set_query(e.target.value)} />
                         </div>
                         <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end">
                             <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-none">
-                                <Select set_value={set_sort} value={sort} label={t("sort.label")} options={["Newest", "Relevance", "Price low to high", "Price hight to low", "Brand"]} />
+                                <Select set_value={set_sort} value={sort} label={t("sort")} options={[t("newest"), t("relevance"), t("priceHightToLow"), t("priceLowToHight"), t("brand")]} />
                             </div>
                             {
                                 <button type="button" className="button flex shrink-0 lg:hidden" onClick={() => set_active(true)}>
-                                    {t("filters")}
+                                    {t("filtersLabel")}
                                 </button>
                             }
                         </div>
@@ -191,7 +190,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                             ))
                         ) : (
                             <div className="text-center py-12 col-span-full">
-                                <p className="text-secondary">{t("no_results")}</p>
+                                <p className="text-secondary">{t("noResults")}</p>
                             </div>
                         )}
                     </div>

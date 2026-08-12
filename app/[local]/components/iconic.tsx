@@ -18,23 +18,19 @@ const data = [
 ];
 
 export default function Iconic() {
-    const t = useTranslations("home.iconic");
-    const brand = useTranslations("home.brand");
+    const t = useTranslations("home");
+    const t_btn = useTranslations("common.buttons");
     return (
-            <section className="flex-col justify-center items-start sm:p-16 p-4 w-full">
+        <section className="flex-col justify-center items-start sm:p-16 p-4 w-full">
             <div className="w-fit">
                 <FadeInObserver>
-                    <h1 className={`text-4xl sm:text-5xl font-secondary tracking-wide`}>
-                        {t("title")}
-                    </h1>
+                    <h1 className={`text-4xl sm:text-5xl font-secondary tracking-wide`}>{t("brandsHeading")}</h1>
                 </FadeInObserver>
             </div>
             <br />
             <div className="w-fit">
                 <FadeInObserver>
-                    <p className="font-secondary text-xl">
-                        {t("description")}
-                    </p>
+                    <p className="font-secondary text-xl">{t("brandsSubtext")}</p>
                 </FadeInObserver>
             </div>
             <div className={`my-5 font-secondary `}>
@@ -44,11 +40,11 @@ export default function Iconic() {
                             <Link aria-label={`${d.name} watches`} href={"/brand/" + d.name} className={`h-100 sm:w-[calc(100%-16px)] w-full flex flex-col justify-start items-start relative`} key={d.id}>
                                 <div className="relative w-full h-full transition-long brightness-80 hover:brightness-100 overflow-hidden group">
                                     <Image sizes="(max-width: 768px) 100vw, 60vw" src={d.src} fill alt={d.name} className="object-cover object-center select-none transition-long scale-100 hover:scale-105" />
-                                    <div className="absolute bottom-0 left-0 translate-y-1/2 w-full h-20 blur-[25px] bg-black group-hover:opacity-0 opacity-100 transition-all duration-300 ease-in-out"></div>
+                                    <div className="absolute bottom-0 left-0 translate-y-1/2 w-full h-20 blur-[25px] bg-black group-hover:opacity-0 opacity-100 transition-default"></div>
                                 </div>
                                 <div className="absolute left-4 bottom-4 flex flex-col p-2 text-white">
                                     <h4 className="title4">{d.name}</h4>
-                                    <h5 className="underline title5">{brand("view_all")}</h5>
+                                    <h5 className="underline title5">{t_btn("viewAllWatches")}</h5>
                                 </div>
                             </Link>
                         ))}

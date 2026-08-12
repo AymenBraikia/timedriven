@@ -28,7 +28,7 @@ export default memo(function Watch_card({
     price: number;
     image_src: string;
 }) {
-    const t = useTranslations("product");
+    const t = useTranslations("common.productCard");
     return (
         <div className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer font-secondary sm:px-0 px-4 w-full">
             <div className="sm:aspect-4/3 aspect-4/3 relative w-full">
@@ -40,7 +40,7 @@ export default memo(function Watch_card({
                 <p className="leading-6">{description}</p>
                 <div className="space-y-1 text-sm text-secondary">
                     <p>{t("movement")}: {movement}</p>
-                    <p>{t("case_size")}: {size} mm</p>
+                    <p>{t("caseSize")}: {size} mm</p>
                     <p>{t("bracelet")}: {braceletMaterial}</p>
                     <p>{t("material")}: {caseMaterial}</p>
                     <p>{t("condition")}: {condition}</p>

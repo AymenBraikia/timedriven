@@ -11,7 +11,7 @@ export default async function ShopPage() {
         <section className="w-full flex flex-col items-center justify-start gap-12 py-20 px-4 sm:px-8">
             <div className="w-full max-w-dvw flex flex-col gap-10">
                 <Banner>
-                    <span className="text-sm uppercase tracking-[0.4em] opacity-80 font-medium">{t("title")}</span>
+                    <span className="text-sm uppercase tracking-[0.4em] opacity-80 font-medium title2">{t("title")}</span>
                 </Banner>
                 <Watches_list watches={watches} />
             </div>

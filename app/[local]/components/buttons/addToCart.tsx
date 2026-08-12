@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 export default function AtcBtn({ slug, children }: { slug: string; children?: React.ReactNode }) {
-    const t = useTranslations("product");
+    const t = useTranslations("common.buttons");
     const router = useRouter();
     const { session } = useAuth();
 

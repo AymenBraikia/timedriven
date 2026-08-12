@@ -16,8 +16,8 @@ const QuickViewModal = dynamic(() => import("./quick_view"), {
 });
 
 export default function New() {
-    const t = useTranslations("home.new");
-    const quickView = useTranslations("quick_view");
+    const t = useTranslations("home");
+    const t_btn = useTranslations("common.buttons");
     const [view, set_view] = useState<null | Watch>(null);
     const [data, set_data] = useState<Watch[]>([]);
 
@@ -29,20 +29,18 @@ export default function New() {
         <section className="flex flex-col justify-center items-start sm:p-16 p-4 py-8 w-dvw gap-6" id="new">
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <h1 className={`text-5xl font-secondary tracking-wide`}>
-                        {t("title")}
-                    </h1>
+                    <h1 className={`text-5xl font-secondary tracking-wide`}>{t("newArrivalsHeading")}</h1>
                 </FadeInObserver>
             </div>
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <p>{t("description")}</p>
+                    <p>{t("newArrivalsSubtext")}</p>
                 </FadeInObserver>
             </div>
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
-                    <Link aria-label={t("cta")} href={"/shop"} className={`underline`}>
-                        {t("cta")}
+                    <Link aria-label={t_btn("viewAllWatches")} href={"/shop"} className={`underline`}>
+                        {t_btn("viewAllWatches")}
                     </Link>
                 </FadeInObserver>
             </div>
@@ -68,7 +66,7 @@ export default function New() {
                                     />
                                     <div className="2xl:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
                                         <button aria-label={`quick view ${d.brand + " " + d.model}`} type="button" className="button cursor-pointer p-4 select-none transition-default h-full" onClick={() => set_view(d)}>
-                                            {quickView("title")}
+                                            {t_btn("quick_view")}
                                         </button>
                                         <div className="w-fit text-white hover:text-foreground transition-default">
                                             <AtcBtn slug={d.slug} />
@@ -76,9 +74,8 @@ export default function New() {
                                     </div>
                                 </div>
                                 <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
-
-                                <h5 className="title5 font-secondary capitalize">{d.brand + " " + d.model}</h5>
-                                <h6 className="title6 font-secondary">{format_price(d.price)}</h6>
+                                    <h5 className="title5 font-secondary capitalize">{d.brand + " " + d.model}</h5>
+                                    <h6 className="title6 font-secondary">{format_price(d.price)}</h6>
                                 </div>
                             </div>
                         ))}

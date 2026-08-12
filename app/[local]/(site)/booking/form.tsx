@@ -5,33 +5,36 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Input from "@/app/components/elements/input";
 import Submit from "./submit";
-
-const formSchema = z.object({
-    firstName: z.string().min(1, "First name is required").max(30),
-    lastName: z.string().min(1, "Last name is required").max(30),
-    email: z.string().email("Enter a valid email"),
-    phone: z.string().min(1, "Phone number is required"),
-    reason: z.string().optional(),
-    date: z.coerce
-        .date({
-            error: "Appointment date is required",
-        })
-        .refine(
-            (val) => {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                return val >= today;
-            },
-            {
-                message: "Date cannot be in the past",
-            },
-        ),
-});
-
-type FormInput = z.input<typeof formSchema>;
-type FormOutput = z.output<typeof formSchema>;
+import { useTranslations } from "next-intl";
 
 export default function Form() {
+    const t = useTranslations("booking");
+
+    const formSchema = z.object({
+        firstName: z.string().min(1, t("validation.first_name_required")).max(30),
+        lastName: z.string().min(1, t("validation.last_name_required")).max(30),
+        email: z.string().email(t("validation.email")),
+        phone: z.string().min(1, t("validation.phone_required")),
+        reason: z.string().optional(),
+        date: z.coerce
+            .date({
+                error: t("validation.date_required"),
+            })
+            .refine(
+                (val) => {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    return val >= today;
+                },
+                {
+                    message: t("validation.date_past"),
+                },
+            ),
+    });
+
+    type FormInput = z.input<typeof formSchema>;
+    type FormOutput = z.output<typeof formSchema>;
+
     const {
         register,
         handleSubmit,

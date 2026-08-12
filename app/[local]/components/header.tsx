@@ -66,8 +66,7 @@ function headerReducer(state: UIState, action: UIAction): UIState {
 export default function Header() {
     const { session } = useAuth();
     const locale = useLocale();
-    const t = useTranslations("nav");
-    const auth = useTranslations("auth");
+    const t = useTranslations("common");
     const pathname = usePathname();
     const router = useRouter();
 
@@ -179,38 +178,38 @@ export default function Header() {
             <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
 
             <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
-                <button aria-label={t("menu")} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+                <button aria-label={"menu"} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
                     <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
                 </button>
                 <div className="xl:hidden block">
-                    <Search_input route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                    <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
                 </div>
             </div>
 
             <div className="w-1/3 flex-center">
-                <Link aria-label={t("home")} href={"/"}>
+                <Link aria-label={"home"} href={"/"}>
                     <Logo classnames="w-18 sm:w-25" />
                 </Link>
             </div>
 
             <div className="flex justify-end items-center gap-2 w-1/3">
                 <div className="xl:block hidden">
-                    <Search_input route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                    <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
                 </div>
 
                 {!session?.email && (
-                    <Link aria-label={auth("register")} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
-                        {auth("register")}
+                    <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
+                        {t("buttons.register")}
                     </Link>
                 )}
-                <button aria-label={t("language")} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => {
+                <button aria-label={"change language"} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => {
                     const nextLocale = locale === "en" ? "de" : "en";
                     dispatch({ type: "TOGGLE_LANG" });
                     router.replace(pathname, { locale: nextLocale });
                 }}>
                     {ui.lang}
                 </button>
-                <button aria-label={t("cart")} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
+                <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                     <Cart clr={"currentColor"} />
                     {session && session.cart.length ? <p className="absolute left-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                 </button>
