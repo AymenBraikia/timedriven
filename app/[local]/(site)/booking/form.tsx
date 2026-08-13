@@ -8,17 +8,18 @@ import Submit from "./submit";
 import { useTranslations } from "next-intl";
 
 export default function Form() {
-    const t = useTranslations("booking");
+    const t = useTranslations("booking.fields");
+    const t_validation = useTranslations("common.formFields");
 
     const formSchema = z.object({
-        firstName: z.string().min(1, t("validation.first_name_required")).max(30),
-        lastName: z.string().min(1, t("validation.last_name_required")).max(30),
-        email: z.string().email(t("validation.email")),
-        phone: z.string().min(1, t("validation.phone_required")),
+        firstName: z.string().min(1, t_validation("required")).max(30),
+        lastName: z.string().min(1, t_validation("required")).max(30),
+        email: z.string().email(t_validation("required")),
+        phone: z.string().min(1, t_validation("required")),
         reason: z.string().optional(),
         date: z.coerce
             .date({
-                error: t("validation.date_required"),
+                error: t_validation("required"),
             })
             .refine(
                 (val) => {
@@ -27,7 +28,7 @@ export default function Form() {
                     return val >= today;
                 },
                 {
-                    message: t("validation.date_past"),
+                    message: t_validation("required"),
                 },
             ),
     });
@@ -58,29 +59,29 @@ export default function Form() {
             <div className={`w-full h-fit min-h-80 relative flex-center overflow-hidden`}>
                 <div className="w-full max-w-200 gap-4 flex-center flex-wrap">
                     <div className="w-full sm:w-[calc(50%-8px)]">
-                        <Input required {...register("firstName")} label={"First Name"} type={"text"} />
+                        <Input required {...register("firstName")} label={t("firstName")} type={"text"} />
                         {errors.firstName && <p className="text-red-400 text-sm">{errors.firstName.message}</p>}
                     </div>
                     <div className="w-full sm:w-[calc(50%-8px)]">
-                        <Input required {...register("lastName")} label={"Last Name"} type={"text"} />
+                        <Input required {...register("lastName")} label={t("lastName")} type={"text"} />
                         {errors.lastName && <p className="text-red-400 text-sm">{errors.lastName.message}</p>}
                     </div>
                     <div className="w-full sm:w-[calc(50%-8px)]">
-                        <Input required {...register("email")} label={"Email"} type={"email"} />
+                        <Input required {...register("email")} label={t("email")} type={"email"} />
                         {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
                     </div>
                     <div className="w-full sm:w-[calc(50%-8px)]">
-                        <Input required {...register("phone")} label={"Phone"} type={"tel"} />
+                        <Input required {...register("phone")} label={t("phone")} type={"tel"} />
                         {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
                     </div>
                     <div className="w-full">
-                        <textarea {...register("reason")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder="Reason"></textarea>
+                        <textarea {...register("reason")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder={t("reason")}></textarea>
                         {errors.reason && <p className="text-red-400 text-sm">{errors.reason.message}</p>}
                     </div>
 
                     <div className="w-full flex flex-col gap-4">
                         <label htmlFor="date" className="text-gray-300">
-                            Appointment Date*
+                            {t("appointmentDate")}*
                         </label>
                         <input
                             type="date"
@@ -95,7 +96,7 @@ export default function Form() {
             </div>
 
             <button type="submit" className="button px-4 py-2">
-                Submit
+                {t("submit")}
             </button>
         </form>
     );

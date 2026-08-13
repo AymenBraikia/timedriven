@@ -23,7 +23,7 @@
             "vacancies": "Stellenangebote"
         },
         "footer": {
-            "shopHeading": "Shop",
+            "shopHeading": "Geschäft",
             "serviceHeading": "Service",
             "otherPlatformsHeading": "Weitere Plattformen",
             "legalHeading": "Rechtliches",
@@ -164,7 +164,7 @@
         "title": "Ersatzteile"
     },
     "store": {
-        "heading": "Timedriven Store Frankfurt",
+        "heading": "Timedriven Speichern Frankfurt",
         "cta": "Termin buchen",
         "welcomeText": "Wir freuen uns darauf, Sie bald in unserem Geschäft begrüßen zu dürfen.",
         "appointmentNote": "Bitte vereinbaren Sie einen Termin, damit sichergestellt ist, dass die von Ihnen gesuchte Uhr zum Zeitpunkt Ihres Besuchs verfügbar ist.",
@@ -259,6 +259,7 @@
                 "boxPapersQuestion": "Haben Sie die Originalbox und die Originalpapiere? Bitte wählen Sie alles Zutreffende aus.",
                 "box": "Box",
                 "paper": "Papiere",
+                "messagePlaceholder": "Gibt es sonst noch etwas, das Sie hinzufügen möchten?",
                 "condition": "Zustand",
                 "conditionNew": "Neu",
                 "conditionMint": "Neuwertig",
@@ -300,13 +301,14 @@
         "heading": "Termin buchen",
         "intro": "Wir freuen uns darauf, Sie bald in unserem Geschäft begrüßen zu dürfen. Bitte vereinbaren Sie einen Termin, damit sichergestellt ist, dass die von Ihnen gesuchte Uhr zum Zeitpunkt Ihres Besuchs verfügbar ist. Bitte beachten Sie außerdem, dass für Uhren über 15.000 € ein Termin erforderlich ist.",
         "fields": {
-            "firstName": "Vorname*",
-            "lastName": "Nachname*",
-            "email": "E-Mail*",
-            "phone": "Telefon*",
-            "appointmentDate": "Wunschtermin*"
-        },
-        "submit": "Absenden"
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "reason": "Grund",
+            "submit": "Absenden",
+            "appointmentDate": "Wunschtermin"
+        }
     },
     "about": {
         "heading": "Über uns",

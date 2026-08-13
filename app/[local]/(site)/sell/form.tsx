@@ -7,6 +7,7 @@ import { z } from "zod";
 import Input from "@/app/components/elements/input";
 import CheckBox from "@/app/components/elements/checkbox";
 import Submit from "./submit";
+import { useTranslations } from "next-intl";
 
 const formSchema = z.object({
     firstName: z.string().min(1, "First name is required"),
@@ -34,13 +35,17 @@ const formSchema = z.object({
 type FormInput = z.input<typeof formSchema>;
 type FormOutput = z.output<typeof formSchema>;
 
-const stepFields: Record<number, (keyof FormInput)[]> = {
-    0: ["firstName", "lastName", "email", "phone"],
-    1: ["intent"],
-    2: ["brand", "price", "model", "refNum", "condition", "images", "message"],
-};
-
 export default function Form() {
+    const t = useTranslations("sell.form")
+    const t_fields = useTranslations("common.formFields")
+    const t_btns = useTranslations("common.buttons")
+
+    const stepFields: Record<number, (keyof FormInput)[]> = {
+        0: ["firstName", "lastName", "email", "phone"],
+        1: ["intent"],
+        2: ["brand", "price", "model", "refNum", "condition", "images", "message"],
+    };
+
     const [step, set_step] = useState<number>(0);
 
     const {
@@ -64,96 +69,96 @@ export default function Form() {
     const onValid = (data: FormOutput) => Submit(data);
     return (
         <div className="flex-center flex-col gap-4" id="form">
-            <h3 className="font-medium font-secondary">Consignment / Sell your Watch</h3>
-            <p>Timedriven's expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.</p>
+            <h3 className="font-medium font-secondary">{t("heading")}</h3>
+            <p>{t("intro")}</p>
 
             <div className="flex justify-between items-center w-full mt-10 gap-2">
-                <h6 className="text-sm! text-center">Personal Information</h6>
+                <h6 className="text-sm! text-center">{t("sections.personalInformation")}</h6>
                 <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>Sale preference</h6>
+                <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>{t("sections.salePreference")}</h6>
                 <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`text-sm! text-center transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}>Watch Details</h6>
+                <h6 className={`text-sm! text-center transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}>{t("sections.watchDetails")}</h6>
             </div>
 
             <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
                 <div className={`sm:w-full w-dvw h-fit ${step == 2 ? "min-h-210" : step == 1 ? "sm:min-h-50 min-h-30" : "sm:min-h-50 min-h-100"} relative flex-center overflow-hidden`}>
                     <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
                         <div className="flex-center flex-col w-full">
-                            <Input {...register("firstName")} label={"First Name"} type={"text"} />
+                            <Input {...register("firstName")} label={t_fields("firstName")} type={"text"} />
                             {errors.firstName && <p className="text-red-400 text-sm w-full">{errors.firstName.message}</p>}
                         </div>
                         <div className="flex-center flex-col w-full">
-                            <Input {...register("lastName")} label={"Last Name"} type={"text"} />
+                            <Input {...register("lastName")} label={t_fields("lastName")} type={"text"} />
                             {errors.lastName && <p className="text-red-400 text-sm w-full">{errors.lastName.message}</p>}
                         </div>
                         <div className="flex-center flex-col w-full">
-                            <Input {...register("email")} label={"Email"} type={"email"} />
+                            <Input {...register("email")} label={t_fields("email")} type={"email"} />
                             {errors.email && <p className="text-red-400 text-sm w-full">{errors.email.message}</p>}
                         </div>
                         <div className="flex-center flex-col w-full">
-                            <Input {...register("phone")} label={"Phone"} type={"tel"} />
+                            <Input {...register("phone")} label={t_fields("phone")} type={"tel"} />
                             {errors.phone && <p className="text-red-400 text-sm w-full">{errors.phone.message}</p>}
                         </div>
                     </div>
 
                     <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
-                        <Input {...register("intent")} label={"Consignment"} type={"radio"} value="consign" />
-                        <Input {...register("intent")} label={"Sell your watch"} type={"radio"} value="sell" />
+                        <Input {...register("intent")} label={t("salePreferenceOptions.consignment")} type={"radio"} value="consign" />
+                        <Input {...register("intent")} label={t("salePreferenceOptions.sell")} type={"radio"} value="sell" />
                         {errors.intent && <p className="text-red-400 text-sm w-full">{errors.intent.message}</p>}
                     </div>
 
                     <div className="w-full px-4 sm:px-0 sm:max-w-200 max-w-[90dvw] absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
-                        <Input {...register("brand")} label={"Brand"} type={"text"} />
+                        <Input {...register("brand")} label={t("fields.brand")} type={"text"} />
                         {errors.brand && <p className="text-red-400 text-sm w-full">{errors.brand.message}</p>}
 
-                        <Input {...register("price")} label={"Asking Price"} type={"number"} />
+                        <Input {...register("price")} label={t("fields.askingPrice")} type={"number"} />
                         {errors.price && <p className="text-red-400 text-sm w-full">{errors.price.message}</p>}
 
-                        <Input {...register("model")} label={"Model"} type={"text"} />
-                        <Input {...register("refNum")} label={"Reference Number"} type={"text"} />
+                        <Input {...register("model")} label={t("fields.model")} type={"text"} />
+                        <Input {...register("refNum")} label={t("fields.referenceNumber")} type={"text"} />
 
                         <div className="w-full flex flex-wrap gap-4 justify-start items-start">
-                            <p className="w-full">Do you have the original box and papers? Please check all that apply.</p>
+                            <p className="w-full">{t("fields.boxPapersQuestion")}</p>
                             <div className="flex gap-20">
-                                <Controller name="box" control={control} render={({ field }) => <CheckBox label="Box" active={!!field.value} action={field.onChange} name="box" />} />
-                                <Controller name="papers" control={control} render={({ field }) => <CheckBox label="Paper" active={!!field.value} action={field.onChange} name="papers" />} />
+                                <Controller name="box" control={control} render={({ field }) => <CheckBox label={t("fields.box")} active={!!field.value} action={field.onChange} name="box" />} />
+                                <Controller name="papers" control={control} render={({ field }) => <CheckBox label={t("fields.paper")} active={!!field.value} action={field.onChange} name="papers" />} />
                             </div>
                         </div>
 
                         <div className="w-full flex flex-wrap gap-4 justify-start items-start">
-                            <p className="w-full">Condition</p>
+                            <p className="w-full">{t("fields.condition")}</p>
                             <div className="flex gap-4 sm:gap-20 w-full">
-                                <Input {...register("condition")} label={"New"} type={"radio"} value="new" />
-                                <Input {...register("condition")} label={"Mint"} type={"radio"} value="mint" />
-                                <Input {...register("condition")} label={"Pre-owned"} type={"radio"} value="pre-owned" />
+                                <Input {...register("condition")} label={t("fields.conditionNew")} type={"radio"} value="new" />
+                                <Input {...register("condition")} label={t("fields.conditionMint")} type={"radio"} value="mint" />
+                                <Input {...register("condition")} label={t("fields.conditionPreOwned")} type={"radio"} value="pre-owned" />
                             </div>
                             {errors.condition && <p className="text-red-400 text-sm w-full">{errors.condition.message}</p>}
                         </div>
 
                         <div className="max-w-full w-full sm:w-full flex flex-col gap-4">
-                            <p>Attach Images</p>
+                            <p>{t_fields("attachImages")}</p>
                             <input {...register("images")} type="file" id="images" multiple accept="image/*" className="button w-full" />
                             {errors.images && <p className="text-red-400 text-sm w-full">{errors.images.message as string}</p>}
                         </div>
 
                         <div className="w-full flex flex-col gap-4">
-                            <p>Message</p>
-                            <textarea {...register("message")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder="Anything else you would like to add?"></textarea>
+                            <p>{t_fields("message")}</p>
+                            <textarea {...register("message")} className="w-full min-h-10 max-h-40 border-b outline-0 border-secondary p-1" id="messages" placeholder={t("fields.messagePlaceholder")}></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex-center gap-4">
                     <button type="button" className={`button2 px-4 py-2 ${step == 0 ? "opacity-20 cursor-not-allowed!" : "opacity-100"}`} onClick={prevStep}>
-                        Previous
+                        {t_btns("previous")}
                     </button>
                     {step == 2 ? (
                         <button type="submit" className="button px-4 py-2">
-                            Submit
+                            {t_btns("submit")}
                         </button>
                     ) : (
                         <button type="button" className="button px-4 py-2" onClick={nextStep}>
-                            Next
+                            {t_btns("next")}
                         </button>
                     )}
                 </div>

@@ -252,13 +252,13 @@
                 "sell": "Sell your watch"
             },
             "fields": {
-                "brand": "Brand",
                 "askingPrice": "Asking Price",
                 "model": "Model",
                 "referenceNumber": "Reference Number",
                 "boxPapersQuestion": "Do you have the original box and papers? Please check all that apply.",
                 "box": "Box",
                 "paper": "Paper",
+                "messagePlaceholder": "Anything else you would like to add?",
                 "condition": "Condition",
                 "conditionNew": "New",
                 "conditionMint": "Mint",
@@ -300,13 +300,14 @@
         "heading": "Book an Appointment",
         "intro": "We look forward to welcoming you to our store soon. Please make an appointment to ensure the watch you are looking for is available at the time of your visit. Additionally, note that for watches above 15.000€ an appointment is required.",
         "fields": {
-            "firstName": "First Name*",
-            "lastName": "Last Name*",
-            "email": "Email*",
-            "phone": "Phone*",
-            "appointmentDate": "Appointment Date*"
-        },
-        "submit": "Submit"
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "phone": "Phone",
+            "reason": "Reason",
+            "submit": "Submit",
+            "appointmentDate": "Appointment Date"
+        }
     },
     "about": {
         "heading": "About Us",

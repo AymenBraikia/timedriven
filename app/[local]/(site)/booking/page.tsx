@@ -7,9 +7,9 @@ export default async function BookingPage() {
 
     return (
         <div className="w-full max-w-5xl flex-center flex-col gap-6 py-8 sm:px-20 px-6">
-            <h1 className="font-semibold font-secondary">{t("title")}</h1>
+            <h1 className="font-semibold font-secondary">{t("heading")}</h1>
 
-            <p className="tracking-widest leading-6">{t("description")}</p>
+            <p className="tracking-widest leading-6">{t("intro")}</p>
 
             <Form />
         </div>
