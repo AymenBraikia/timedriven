@@ -3,7 +3,16 @@
         "siteName": "TIMEDRIVEN",
         "titleDefault": "TIMEDRIVEN | Exklusive Luxusuhren & professionelle Beratung",
         "description": "Entdecken Sie unsere kuratierte Auswahl an neuwertigen gebrauchten und neuen Luxusuhren, darunter Rolex, Patek Philippe und Cartier. Buchen Sie noch heute eine professionelle Beratung mit unseren Uhrenexperten.",
-        "keywords": ["Luxusuhren", "gebrauchte Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "Luxusuhren kaufen", "Uhrenberatung", "TIMEDRIVEN"],
+        "keywords": [
+            "Luxusuhren",
+            "gebrauchte Rolex",
+            "Patek Philippe Calatrava",
+            "Cartier Panthere",
+            "Rolex Daytona",
+            "Luxusuhren kaufen",
+            "Uhrenberatung",
+            "TIMEDRIVEN"
+        ],
         "ogDescription": "Unsere kuratierte Auswahl an gebrauchten und neuen Luxusuhren wartet auf Sie. Vertrauen Sie bei Ihren hochwertigen Uhrenwünschen auf unsere Experten.",
         "ogImageAlt": "TIMEDRIVEN Luxusuhren-Kollektion",
         "twitterDescription": "Ihr Partner für hochwertige Luxusuhren. Entdecken Sie Rolex, Patek Philippe und Cartier und buchen Sie einen Termin mit unseren Experten."
@@ -274,7 +283,10 @@
         "polishing": {
             "heading": "Politur & Aufarbeitung:",
             "intro": "Wir entfernen Kratzer und leichte Gebrauchsspuren und verleihen Ihrer Uhr ihren ursprünglichen Glanz zurück:",
-            "items": ["Politur & Aufarbeitung ab 175 €", "Politur inklusive Materialauftrag & Aufarbeitung ab 249 €"]
+            "items": [
+                "Politur & Aufarbeitung ab 175 €",
+                "Politur inklusive Materialauftrag & Aufarbeitung ab 249 €"
+            ]
         },
         "maintenance": {
             "heading": "Wartung & Reparatur:",
@@ -328,12 +340,32 @@
         "paymentsHeading": "Zahlungen",
         "paymentsSubtext": "Schnelle und sichere Online-Zahlungen",
         "paymentsTable": {
-            "headers": ["Zahlungsmethode", "Dauer", "Gebühren"],
+            "headers": [
+                "Zahlungsmethode",
+                "Dauer",
+                "Gebühren"
+            ],
             "rows": [
-                ["Nationale Banküberweisung", "1–2 Werktage", "0%"],
-                ["Internationale Banküberweisung", "2–3 Werktage", "0%"],
-                ["PayPal", "sofort", "3%"],
-                ["Kredit-/Debitkartenzahlung", "sofort", "1,4%"]
+                [
+                    "Nationale Banküberweisung",
+                    "1–2 Werktage",
+                    "0%"
+                ],
+                [
+                    "Internationale Banküberweisung",
+                    "2–3 Werktage",
+                    "0%"
+                ],
+                [
+                    "PayPal",
+                    "sofort",
+                    "3%"
+                ],
+                [
+                    "Kredit-/Debitkartenzahlung",
+                    "sofort",
+                    "1,4%"
+                ]
             ]
         },
         "shippingHeading": "Versand",
@@ -341,39 +373,123 @@
             "heading": "Deutschland",
             "text": "Lieferung innerhalb Deutschlands: 1–2 Werktage.",
             "rows": [
-                ["DHL", "Bis 500 €", "6 €"],
-                ["UPS", "500 € – 10.000 €", "20 €"],
-                ["UPS", "10.000 € – 15.000 €", "50 €"],
-                ["UPS", "15.000 € – 25.000 €", "80 €"],
-                ["Prosegur", "25.000 € – 50.000 €", "150 €"],
-                ["Prosegur", "50.000 € – 250.000 €", "250 €"],
-                ["Prosegur", "250.000 € und mehr", "Auf Anfrage"]
+                [
+                    "DHL",
+                    "Bis 500 €",
+                    "6 €"
+                ],
+                [
+                    "UPS",
+                    "500 € – 10.000 €",
+                    "20 €"
+                ],
+                [
+                    "UPS",
+                    "10.000 € – 15.000 €",
+                    "50 €"
+                ],
+                [
+                    "UPS",
+                    "15.000 € – 25.000 €",
+                    "80 €"
+                ],
+                [
+                    "Prosegur",
+                    "25.000 € – 50.000 €",
+                    "150 €"
+                ],
+                [
+                    "Prosegur",
+                    "50.000 € – 250.000 €",
+                    "250 €"
+                ],
+                [
+                    "Prosegur",
+                    "250.000 € und mehr",
+                    "Auf Anfrage"
+                ]
             ]
         },
         "eu": {
             "heading": "Europäische Union",
             "text": "Lieferung innerhalb der Europäischen Union: 1–2 Werktage.",
             "rows": [
-                ["DHL", "Bis 500 €", "15 €"],
-                ["UPS", "500 € – 10.000 €", "50 €"],
-                ["UPS", "10.000 € – 15.000 €", "150 €"],
-                ["UPS", "15.000 € – 25.000 €", "300 €"],
-                ["Prosegur", "25.000 € – 50.000 €", "400 €"],
-                ["Prosegur", "50.000 € – 250.000 €", "500 €"],
-                ["Prosegur", "250.000 € und mehr", "Auf Anfrage"]
+                [
+                    "DHL",
+                    "Bis 500 €",
+                    "15 €"
+                ],
+                [
+                    "UPS",
+                    "500 € – 10.000 €",
+                    "50 €"
+                ],
+                [
+                    "UPS",
+                    "10.000 € – 15.000 €",
+                    "150 €"
+                ],
+                [
+                    "UPS",
+                    "15.000 € – 25.000 €",
+                    "300 €"
+                ],
+                [
+                    "Prosegur",
+                    "25.000 € – 50.000 €",
+                    "400 €"
+                ],
+                [
+                    "Prosegur",
+                    "50.000 € – 250.000 €",
+                    "500 €"
+                ],
+                [
+                    "Prosegur",
+                    "250.000 € und mehr",
+                    "Auf Anfrage"
+                ]
             ]
         },
         "worldwide": {
             "heading": "Weltweit",
             "text": "Weltweiter Versand: 3–10 Werktage.",
             "rows": [
-                ["DHL", "Bis 500 €", "25 €"],
-                ["DHL Express", "500 € – 10.000 €", "100 €"],
-                ["UPS", "10.000 € – 15.000 €", "150 €"],
-                ["UPS", "15.000 € – 25.000 €", "400 €"],
-                ["Prosegur", "25.000 € – 50.000 €", "750 €"],
-                ["Prosegur", "50.000 € – 250.000 €", "1.000 €"],
-                ["Prosegur", "250.000 € und mehr", "Auf Anfrage"]
+                [
+                    "DHL",
+                    "Bis 500 €",
+                    "25 €"
+                ],
+                [
+                    "DHL Express",
+                    "500 € – 10.000 €",
+                    "100 €"
+                ],
+                [
+                    "UPS",
+                    "10.000 € – 15.000 €",
+                    "150 €"
+                ],
+                [
+                    "UPS",
+                    "15.000 € – 25.000 €",
+                    "400 €"
+                ],
+                [
+                    "Prosegur",
+                    "25.000 € – 50.000 €",
+                    "750 €"
+                ],
+                [
+                    "Prosegur",
+                    "50.000 € – 250.000 €",
+                    "1.000 €"
+                ],
+                [
+                    "Prosegur",
+                    "250.000 € und mehr",
+                    "Auf Anfrage"
+                ]
             ]
         }
     },
@@ -493,7 +609,11 @@
                 "Die folgende Datenschutzerklärung informiert Sie insbesondere über Art, Umfang, Zweck, Dauer und Rechtsgrundlage der Verarbeitung solcher Daten, sei es unter unserer eigenen Kontrolle oder gemeinsam mit anderen. Außerdem informieren wir Sie über die von uns eingesetzten Komponenten Dritter zur Optimierung unserer Website und Verbesserung der Benutzererfahrung, durch die gegebenenfalls auch diese Dritten von ihnen erhobene und kontrollierte Daten verarbeiten.",
                 "Unsere Datenschutzerklärung ist wie folgt aufgebaut:"
             ],
-            "structureList": ["Informationen über uns als Verantwortliche", "Rechte der Nutzer und betroffenen Personen", "Informationen zur Datenverarbeitung"],
+            "structureList": [
+                "Informationen über uns als Verantwortliche",
+                "Rechte der Nutzer und betroffenen Personen",
+                "Informationen zur Datenverarbeitung"
+            ],
             "sections": {
                 "controller": {
                     "heading": "Informationen über uns als Verantwortliche",
@@ -681,7 +801,10 @@
                         },
                         {
                             "heading": "7.2 Für Unternehmer",
-                            "items": ["Bei einem Mangel der gekauften Ware entscheidet der Verkäufer über das weitere Vorgehen.", "Ansprüche hinsichtlich der Funktion einer gebrauchten Ware sind grundsätzlich ausgeschlossen."]
+                            "items": [
+                                "Bei einem Mangel der gekauften Ware entscheidet der Verkäufer über das weitere Vorgehen.",
+                                "Ansprüche hinsichtlich der Funktion einer gebrauchten Ware sind grundsätzlich ausgeschlossen."
+                            ]
                         }
                     ]
                 },
@@ -734,7 +857,11 @@
                     "number": "14",
                     "heading": "Informationspflicht nach dem deutschen Batteriegesetz (BattG)",
                     "text": "Entladene Batterien sind Sondermüll und dürfen nicht über den Hausmüll entsorgt werden. Jeder Kunde kann uns alte Batterien zusenden und wir entsorgen diese fachgerecht. Schadstoffhaltige Batterien, die giftige Stoffe enthalten, sind mit folgenden Kennzeichnungen und Grenzwerten versehen:",
-                    "items": ["\"Cd\" Batterie enthält mehr als 0,002 % Cadmium", "\"Hg\" Batterie enthält mehr als 0,0005 % Quecksilber", "\"Pb\" Batterie enthält mehr als 0,004 % Blei"]
+                    "items": [
+                        "\"Cd\" Batterie enthält mehr als 0,002 % Cadmium",
+                        "\"Hg\" Batterie enthält mehr als 0,0005 % Quecksilber",
+                        "\"Pb\" Batterie enthält mehr als 0,004 % Blei"
+                    ]
                 }
             ]
         },
@@ -911,5 +1038,333 @@
         "expirationDate": "Verfallsdatum",
         "securityCode": "Sicherheitscode",
         "orderNumber": "Bestellnummer"
+    },
+    "product": {
+        "reference": "Referenz",
+        "stock": "Verfügbarkeit",
+        "available": "Verfügbar",
+        "notAvailable": "Nicht verfügbar",
+        "scopeOfDelivery": "Lieferumfang",
+        "shippingText": "Profitieren Sie von einem kontaktlosen und risikofreien Versand mit unseren langjährigen Partnern DHL, UPS, DHL Express und Prosegur.",
+        "learnMoreShipping": "Erfahren Sie mehr über Versandkosten und Lieferzeiten",
+        "model": "Modell",
+        "dial": "Zifferblatt",
+        "here": "hier",
+        "consignmentBeforeLink": "Möchten Sie eine Ihrer Uhren in Zahlung geben? Kontaktieren Sie uns über die",
+        "consignmentAfterLink": "Seite mit den Angaben zu Ihrer Uhr und wir unterbreiten Ihnen ein Angebot."
+    },
+    "brands": {
+        "rolex": {
+            "sections": [
+                {
+                    "heading": "Gründung und frühe Jahre",
+                    "text": "Rolex, der renommierte Schweizer Luxusuhrenhersteller, wurde 1905 von Hans Wilsdorf und Alfred Davis in London gegründet. Das Unternehmen hieß zunächst „Wilsdorf and Davis“ und konzentrierte sich auf den Vertrieb von Zeitmessern. Wilsdorf wollte Armbanduhren entwickeln, die präzise und elegant zugleich waren – eine große Herausforderung in einer Zeit, in der Taschenuhren vorherrschten."
+                },
+                {
+                    "heading": "Der Umzug in die Schweiz und die Entstehung der Marke Rolex",
+                    "text": "1908 wurde die Marke Rolex eingetragen und der Firmenname offiziell in Rolex geändert. Wilsdorf wählte den Namen, weil er kurz war, sich in jeder Sprache leicht aussprechen ließ und gut auf ein Zifferblatt passte. Um den Ruf von Rolex für Präzision weiter zu stärken, zog das Unternehmen 1919 nach Genf in die Schweiz."
+                }
+            ]
+        },
+        "audemars_piguet": {
+            "sections": [
+                {
+                    "heading": "Ursprünge im Vallée de Joux",
+                    "text": "Audemars Piguet wurde 1875 von Jules Louis Audemars und Edward Auguste Piguet im Schweizer Ort Le Brassus gegründet. Die Marke etablierte sich schnell als Meister komplexer Uhrmechanik und spezialisierte sich auf Minutenrepetitionen, ewige Kalender und Chronographen."
+                },
+                {
+                    "heading": "Die Revolution der Royal Oak",
+                    "text": "1972 veränderte Audemars Piguet die Branche mit der Royal Oak. Das von Gérald Genta entworfene Modell war die erste luxuriöse Sportuhr aus Edelstahl und verfügte über eine markante achteckige Lünette mit sichtbaren Schrauben."
+                }
+            ]
+        },
+        "blancpain": {
+            "sections": [
+                {
+                    "heading": "Die älteste Uhrenmarke",
+                    "text": "Blancpain wurde 1735 von Jehan-Jacques Blancpain in Villeret, Schweiz, gegründet und gilt als die älteste eingetragene Uhrenmarke der Welt. Seit Jahrhunderten hält das Unternehmen konsequent an traditioneller mechanischer Uhrmacherei fest und betont, niemals eine Quarzuhr hergestellt zu haben."
+                },
+                {
+                    "heading": "Die Fifty Fathoms",
+                    "text": "1953 brachte Blancpain die Fifty Fathoms heraus, die weithin als eine der ersten modernen Taucheruhren gilt. Sie entstand in Zusammenarbeit mit den französischen Kampftauchern und prägte mit ihrer einseitig drehbaren Lünette und hohen Wasserdichtigkeit den Stil moderner Taucheruhren."
+                }
+            ]
+        },
+        "breitling": {
+            "sections": [
+                {
+                    "heading": "Pioniere des Chronographen",
+                    "text": "Breitling wurde 1884 von Léon Breitling in Saint-Imier, Schweiz, gegründet und konzentrierte sich zunächst auf präzise Chronographen für Sport, Wissenschaft und Industrie. 1915 entwickelte die Marke den ersten unabhängigen Chronographendrücker, eine wichtige Innovation der modernen Uhrmacherei."
+                },
+                {
+                    "heading": "Tradition in der Luftfahrt",
+                    "text": "Breitling ist eng mit der Luftfahrt verbunden. 1952 stellte die Marke die Navitimer vor, deren komplexe kreisförmige Rechenschieberlünette Piloten bei wichtigen Berechnungen während des Fluges unterstützte."
+                }
+            ]
+        },
+        "cartier": {
+            "sections": [
+                {
+                    "heading": "Der Juwelier der Könige",
+                    "text": "Cartier wurde 1847 von Louis-François Cartier in Paris gegründet und erlangte zunächst mit exquisitem Schmuck für den Adel seinen Ruf. Schon bald übertrug Cartier sein unverwechselbares Designverständnis auf die Uhrmacherei und verband Eleganz mit Funktionalität."
+                },
+                {
+                    "heading": "Die Entstehung der Herrenuhr",
+                    "text": "1904 entwarf Louis Cartier für den Luftfahrtpionier Alberto Santos-Dumont eine flache Armbanduhr mit markanter quadratischer Lünette. Die „Santos“ gilt weithin als erste speziell entwickelte Herrenar­mbanduhr und ging ikonischen Modellen wie der Tank von 1917 voraus."
+                }
+            ]
+        },
+        "chopard": {
+            "sections": [
+                {
+                    "heading": "Schweizer Präzision trifft Haute Joaillerie",
+                    "text": "Chopard wurde 1860 von Louis-Ulysse Chopard in Sonvilier, Schweiz, gegründet und begann mit der Herstellung hochpräziser Taschenuhren und Chronometer. Schon bald wurde die Marke für Zeitmesser für die Schweizer Eisenbahn und Zar Nikolaus II. von Russland bekannt."
+                },
+                {
+                    "heading": "Happy Diamonds und L.U.C",
+                    "text": "Nach der Übernahme durch die Familie Scheufele im Jahr 1963 erweiterte Chopard sein Geschäft um hochwertigen Schmuck und brachte die berühmte Kollektion „Happy Diamonds“ auf den Markt. 1996 kehrte die Marke mit der Chopard Manufacture und den L.U.C-Werken zu ihren Haute-Horlogerie-Wurzeln zurück."
+                }
+            ]
+        },
+        "chronoswiss": {
+            "sections": [
+                {
+                    "heading": "Eine moderne Renaissance",
+                    "text": "Chronoswiss wurde 1983 von Gerd-Rüdiger Lang in München gegründet und später nach Luzern verlegt. Die Marke entstand auf dem Höhepunkt der Quarzkrise mit dem Ziel, zur handwerklichen Kunst der mechanischen Uhrmacherei zurückzukehren."
+                },
+                {
+                    "heading": "Die Regulator-Ästhetik",
+                    "text": "Chronoswiss ist besonders für die Wiederbelebung des Regulator-Zifferblattlayouts bekannt, bei dem Stunden, Minuten und Sekunden auf getrennten Anzeigen erscheinen. Charakteristisch sind Zwiebelkronen, Münzrändelungen und aufwendig guillochierte Zifferblätter."
+                }
+            ]
+        },
+        "corum": {
+            "sections": [
+                {
+                    "heading": "Avantgardistisches Design in La Chaux-de-Fonds",
+                    "text": "Corum wurde 1955 von Gaston Ries und René Bannwart gegründet und erlangte schnell einen Ruf für kreative und unkonventionelle Uhrendesigns. Das aufrecht stehende Schlüsselsymbol steht für den Anspruch der Marke, neue uhrmacherische Geheimnisse zu erschließen."
+                },
+                {
+                    "heading": "Ikonische Kollektionen",
+                    "text": "Corum ist vor allem für die 1980 vorgestellte Golden Bridge mit ihrem spektakulären linearen Werk in einem transparenten Saphirgehäuse bekannt. Berühmt ist auch die Admiral's Cup mit zwölfeckigem Gehäuse und nautischen Wimpeln auf dem Zifferblatt."
+                }
+            ]
+        },
+        "frank_muller": {
+            "sections": [
+                {
+                    "heading": "Der Meister der Komplikationen",
+                    "text": "Franck Muller wurde 1991 in Genf vom Uhrmacher Franck Muller und dem Gehäusemacher Vartan Sirmakes gegründet und erlangte schnell Bekanntheit. Mullers außergewöhnliches Talent für komplexe Werke brachte ihm den Titel „Master of Complications“ und zahlreiche technische Weltpremieren ein."
+                },
+                {
+                    "heading": "Die Cintrée Curvex",
+                    "text": "Neben der komplexen Mechanik prägt das ikonische Cintrée-Curvex-Gehäuse die Marke – eine markante tonneauförmige Form mit starken Rundungen. Zusammen mit übergroßen, stilisierten Ziffern entsteht eine mutige und sofort erkennbare Ästhetik."
+                }
+            ]
+        },
+        "girard_perregaux": {
+            "sections": [
+                {
+                    "heading": "Jahrhunderte der Innovation",
+                    "text": "Girard-Perregaux geht auf den Uhrmacher Jean-François Bautte im Jahr 1791 zurück und wurde 1852 von Constant Girard offiziell gegründet. Die Marke gehört zu den ältesten echten Manufakturen der Schweiz und entwickelt ihre Werke seit jeher weitgehend im eigenen Haus."
+                },
+                {
+                    "heading": "Das Tourbillon mit drei Goldbrücken",
+                    "text": "Die legendärste Schöpfung der Marke ist das Tourbillon mit drei Goldbrücken. Das in den 1860er-Jahren als Taschenuhr eingeführte Meisterwerk gewann 1889 eine Goldmedaille bei der Pariser Weltausstellung und machte die Brücken des Uhrwerks zu einem gefeierten Designelement."
+                }
+            ]
+        },
+        "glashütte_original": {
+            "sections": [
+                {
+                    "heading": "Deutsche Uhrmachertradition",
+                    "text": "Glashütte Original steht für traditionelle deutsche Uhrmacherei und hat seine Wurzeln im sächsischen Glashütte, wo 1845 die industrielle Uhrmacherei begann. Nach dem Zweiten Weltkrieg und der deutschen Teilung wurden die örtlichen Uhrenbetriebe im staatlichen Unternehmen GUB zusammengeführt."
+                },
+                {
+                    "heading": "Neuanfang und feine Veredelung",
+                    "text": "Nach der deutschen Wiedervereinigung 1990 wurde das Unternehmen privatisiert und als Glashütte Original neu positioniert. Heute ist die Marke für eigene Fertigung, robuste Designs und traditionelle sächsische Finissierungen wie Dreiviertelplatine, Schwanenhals-Feinregulierung und Glashütter Streifenschliff bekannt."
+                }
+            ]
+        },
+        "grand_seiko": {
+            "sections": [
+                {
+                    "heading": "Die Suche nach der idealen Uhr",
+                    "text": "Grand Seiko wurde 1960 von einem engagierten Seiko-Team mit dem Ziel entwickelt, die „ideale“ Uhr zu schaffen – präzise, robust und schön. In den späten 1960er-Jahren stellte die Marke die Dominanz der Schweizer Chronometrie durch Erfolge bei renommierten Observatoriumsprüfungen infrage."
+                },
+                {
+                    "heading": "Spring Drive und von der Natur inspirierte Zifferblätter",
+                    "text": "Grand Seiko ist für die Zaratsu-Politur bekannt, die verzerrungsfreie Spiegeloberflächen erzeugt. Die Marke entwickelte zudem Spring Drive, das mechanische Energie mit einer elektromagnetischen Bremse verbindet und häufig mit von der japanischen Landschaft inspirierten Zifferblättern kombiniert wird."
+                }
+            ]
+        },
+        "hublot": {
+            "sections": [
+                {
+                    "heading": "The Art of Fusion",
+                    "text": "Hublot wurde 1980 vom Italiener Carlo Crocco gegründet und überraschte die traditionelle Uhrenwelt als erste Marke, die ein Edelmetallgehäuse aus Gold mit einem Naturkautschukband kombinierte. Daraus entstand die zentrale Philosophie der Marke: „The Art of Fusion“."
+                },
+                {
+                    "heading": "Die Big-Bang-Ära",
+                    "text": "Unter Jean-Claude Biver lancierte Hublot 2005 die Big Bang, einen äußerst erfolgreichen Chronographen, der das Fusionskonzept auf die Spitze trieb. Die Marke entwickelt weiterhin eigene Materialien wie Magic Gold und farbenreiche Saphire."
+                }
+            ]
+        },
+        "iwc": {
+            "sections": [
+                {
+                    "heading": "Amerikanische Ingenieurskunst, Schweizer Handwerk",
+                    "text": "Die International Watch Company (IWC) wurde 1868 in Schaffhausen vom amerikanischen Ingenieur Florentine Ariosto Jones gegründet. Sein Ziel war es, fortschrittliche amerikanische Fertigungstechniken mit der außergewöhnlichen Arbeit Schweizer Uhrmacher zu verbinden und hochwertige Taschenuhrwerke herzustellen."
+                },
+                {
+                    "heading": "Meister des Himmels und der Meere",
+                    "text": "IWC ist weltweit für robuste Toolwatches bekannt. Die seit den 1930er-Jahren bestehende Pilot's-Watches-Linie prägte die Luftfahrtästhetik, während Portugieser und Aquatimer die Verbindung aus anspruchsvollen Komplikationen und widerstandsfähiger Technik zeigen."
+                }
+            ]
+        },
+        "jaeger_lecoultre": {
+            "sections": [
+                {
+                    "heading": "Die Uhrmacher der Uhrmacher",
+                    "text": "Jaeger-LeCoultre wurde 1833 von Antoine LeCoultre im Vallée de Joux gegründet und wird häufig als „Uhrmacher der Uhrmacher“ bezeichnet. Im Laufe seiner Geschichte entwickelte die Manufaktur mehr als 1.200 Kaliber und lieferte Werke an Marken wie Patek Philippe, Audemars Piguet und Vacheron Constantin."
+                },
+                {
+                    "heading": "Die ikonische Reverso",
+                    "text": "1931 stellte die Marke die Reverso vor. Sie entstand auf Wunsch britischer Offiziere in Indien, die eine Uhr für Polospiele benötigten. Das wendbare Gehäuse schützte das Glas und wurde zu einem dauerhaften Symbol des Art-déco-Designs."
+                }
+            ]
+        },
+        "junghans": {
+            "sections": [
+                {
+                    "heading": "Der Riese aus dem Schwarzwald",
+                    "text": "Junghans wurde 1861 von Erhard Junghans in Schramberg gegründet und entwickelte sich bis zum Beginn des 20. Jahrhunderts zum weltweit größten Uhrenhersteller. Die Marke blickt auf eine lange Tradition zugänglicher und hochwertiger Zeitmesser zurück."
+                },
+                {
+                    "heading": "Bauhaus und Funksteuerung",
+                    "text": "Junghans steht für minimalistisches Bauhaus-Design, stark geprägt von der Zusammenarbeit mit dem Künstler und Architekten Max Bill in den 1950er-Jahren. 1990 brachte die Marke mit der Mega 1 zudem die weltweit erste funkgesteuerte Armbanduhr auf den Markt."
+                }
+            ]
+        },
+        "nomos": {
+            "sections": [
+                {
+                    "heading": "Moderner Glashütter Minimalismus",
+                    "text": "NOMOS Glashütte wurde 1990 von Roland Schwertner, nur wenige Monate nach dem Fall der Berliner Mauer, gegründet und brachte eine moderne Perspektive in die traditionsreiche deutsche Uhrenstadt. Die Marke widmet sich konsequent der mechanischen Uhrmacherei und fertigt ihre Kaliber selbst."
+                },
+                {
+                    "heading": "Inspiration durch das Bauhaus",
+                    "text": "NOMOS ist für seine preisgekrönte, minimalistische Ästhetik bekannt, die stark vom Bauhaus und dem Deutschen Werkbund beeinflusst ist. Modelle wie Tangente und Orion sind moderne Klassiker mit klarer Typografie, schlanken Zeigern und flachen Gehäusen."
+                }
+            ]
+        },
+        "omega": {
+            "sections": [
+                {
+                    "heading": "Ein Vermächtnis der Präzision",
+                    "text": "Omega wurde 1848 von Louis Brandt in La Chaux-de-Fonds gegründet und steht seit über einem Jahrhundert an der Spitze präziser Uhrmacherei. Seit 1932 ist Omega offizieller Zeitnehmer der Olympischen Spiele und prägte mit der Co-Axial-Hemmung die moderne mechanische Uhrmacherei."
+                },
+                {
+                    "heading": "Zum Mond und in die Tiefsee",
+                    "text": "Die historische Bedeutung von Omega ist außergewöhnlich. Die Speedmaster Professional war 1969 die erste Uhr auf dem Mond. Die Seamaster wurde zum bevorzugten Zeitmesser für Tiefseeforscher, Militärtaucher und berühmtlich auch für James Bond."
+                }
+            ]
+        },
+        "panerai": {
+            "sections": [
+                {
+                    "heading": "Florentinische Wurzeln und Marinegeschichte",
+                    "text": "Panerai wurde 1860 von Giovanni Panerai in Florenz gegründet und begann als Uhrenladen und Schule. Später wurde das Unternehmen offizieller Lieferant präziser Instrumente für die italienische Marine und spezialisierte sich auf gut ablesbare, wasserdichte Uhren für Kampftaucher."
+                },
+                {
+                    "heading": "Radiomir und Luminor",
+                    "text": "Panerai ist für übergroße Kissengehäuse und markante Kronenschutzbügel bekannt. Radiomir und später Luminor prägten mit ihren Leuchtstoffen und dem robusten, taktischen Design die Identität der Marke und gewannen in den 1990er-Jahren eine große Fangemeinde."
+                }
+            ]
+        },
+        "patek_philippe": {
+            "sections": [
+                {
+                    "heading": "Die Spitze der Haute Horlogerie",
+                    "text": "Patek Philippe wurde 1839 in Genf von Antoine Norbert de Patek und François Czapek gegründet, später ergänzt durch Jean Adrien Philippe. Die familiengeführte Manufaktur steht für die Spitze traditioneller Schweizer Uhrmacherei und gilt als Teil der renommierten „Holy Trinity“ der Uhrenmarken."
+                },
+                {
+                    "heading": "Unvergleichliche Eleganz und Komplexität",
+                    "text": "Von der eleganten Calatrava bis zur sportlichen Nautilus von Gérald Genta sind die Zeitmesser von Patek Philippe begehrt. Die Marke ist für einige der kompliziertesten mechanischen Uhren der Welt bekannt und verkörpert den Anspruch, eine Patek Philippe nur für die nächste Generation zu bewahren."
+                }
+            ]
+        },
+        "piaget": {
+            "sections": [
+                {
+                    "heading": "Meister der Ultrathin-Uhrmacherei",
+                    "text": "Piaget wurde 1874 von Georges Edouard Piaget in La Côte-aux-Fées gegründet. Das Unternehmen konzentrierte sich zunächst auf die Entwicklung und Fertigung hochpräziser Taschenuhrwerke für andere renommierte Marken, bevor es 1943 seinen eigenen Namen eintragen ließ."
+                },
+                {
+                    "heading": "Das Erbe der Altiplano",
+                    "text": "Piaget ist weltweit für seine Meisterschaft bei ultraflachen Uhren bekannt. 1957 stellte die Marke das legendäre Handaufzugswerk Calibre 9P mit nur 2 mm Bauhöhe vor und legte damit den Grundstein für die Altiplano-Kollektion."
+                }
+            ]
+        },
+        "sinn": {
+            "sections": [
+                {
+                    "heading": "Zweckorientierte Toolwatches",
+                    "text": "Sinn Spezialuhren wurde 1961 vom Fluglehrer und Piloten Helmut Sinn in Frankfurt gegründet und begann mit Navigationsuhren und Fliegerchronographen. Die Marke stellt Funktionalität, extreme Robustheit und hervorragende Ablesbarkeit über dekorative Elemente."
+                },
+                {
+                    "heading": "Materialinnovation",
+                    "text": "Sinn genießt bei Profis hohes Ansehen für technische Innovation. Dazu gehören Gehäuse aus deutschem U-Boot-Stahl, die TEGIMENT-Härtung gegen Kratzer und Ar-Dehumidifying-Technologien gegen das Beschlagen des Glases unter extremen Bedingungen."
+                }
+            ]
+        },
+        "tag_heuer": {
+            "sections": [
+                {
+                    "heading": "Motorsport-Erbe",
+                    "text": "TAG Heuer wurde 1860 von Edouard Heuer in St-Imier, Schweiz, gegründet und war früh eng mit Leistungssport und Autorennen verbunden. 1887 patentierte Heuer den Schwingtrieb, eine bedeutende Weiterentwicklung für mechanische Chronographen."
+                },
+                {
+                    "heading": "Carrera und Monaco",
+                    "text": "Das Erbe von TAG Heuer wird von ikonischen Rennchronographen geprägt. Die 1963 eingeführte Carrera bot Fahrern eine klare und gut ablesbare Zeitmessung. 1969 folgte die Monaco mit ihrem markanten quadratischen Gehäuse, bekannt aus dem Film „Le Mans“ mit Steve McQueen."
+                }
+            ]
+        },
+        "tudor": {
+            "sections": [
+                {
+                    "heading": "Der Schild von Rolex",
+                    "text": "Tudor wurde 1926 von Rolex-Gründer Hans Wilsdorf gegründet. Seine Vision war eine Uhr mit der legendären Zuverlässigkeit und Wasserdichtigkeit von Rolex zu einem zugänglicheren Preis, zunächst mithilfe bewährter zugekaufter mechanischer Werke."
+                },
+                {
+                    "heading": "Born to Dare",
+                    "text": "Im Laufe der Jahrzehnte entwickelte Tudor eine eigenständige Identität und stattete unter anderem militärische Taucheinheiten wie die französische Marine aus. Heute ist die Marke für die von der Vergangenheit inspirierte Black Bay und Pelagos sowie leistungsstarke Manufakturkaliber bekannt."
+                }
+            ]
+        },
+        "van_cleef_and_arpels": {
+            "sections": [
+                {
+                    "heading": "Haute Joaillerie und Romantik",
+                    "text": "Van Cleef & Arpels wurde 1896 von Alfred Van Cleef und seinem Schwiegervater Salomon Arpels in Paris gegründet und ist vor allem für spektakulären Luxusschmuck bekannt. In der Uhrmacherei überträgt die Maison denselben Zauber, handwerkliche Perfektion und erzählerische Ideen ans Handgelenk."
+                },
+                {
+                    "heading": "Poetische Komplikationen",
+                    "text": "Statt sich nur auf klassische Präzision zu konzentrieren, ist Van Cleef & Arpels für seine „Poetic Complications“ berühmt. Komplexe retrograde Anzeigen und mechanische Animationen erzählen die Zeit mit Feen, Planeten und Liebenden, die sich auf einer Brücke begegnen."
+                }
+            ]
+        },
+        "zenith": {
+            "sections": [
+                {
+                    "heading": "Die erste integrierte Schweizer Manufaktur",
+                    "text": "Zenith wurde 1865 von Georges Favre-Jacot in Le Locle, Schweiz, gegründet und revolutionierte die Branche, indem es alle uhrmacherischen Berufe unter einem Dach vereinte. Dieser Ansatz schuf eine der ersten echten integrierten Manufakturen der Schweizer Uhrengeschichte und ermöglichte außergewöhnliche Qualitätskontrolle."
+                },
+                {
+                    "heading": "Das legendäre El Primero",
+                    "text": "1969 veränderte Zenith die Uhrmacherei mit dem El Primero, das weithin als erstes automatisches Chronographenwerk der Welt gilt. Mit 36.000 Halbschwingungen pro Stunde ermöglichte es Zeitmessungen bis auf eine Zehntelsekunde und zählt bis heute zu den bekanntesten Kalibern."
+                }
+            ]
+        }
     }
 }

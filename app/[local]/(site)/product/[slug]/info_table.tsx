@@ -1,4 +1,5 @@
 "use client";
+
 import { Watch } from "@/types/watch";
 import Link from "next/link";
 import { useState } from "react";
@@ -6,7 +7,10 @@ import { useTranslations } from "next-intl";
 
 export default function InfoTable({ watch }: { watch: Watch }) {
     const [tab, set_tab] = useState<0 | 1 | 2 | 3>(0);
-    const t = useTranslations("product");
+
+    const common = useTranslations("common");
+    const payments = useTranslations("payments");
+    const product = useTranslations("product");
 
     return (
         <div className="w-full flex-col flex mt-2 font-sans">
@@ -16,147 +20,158 @@ export default function InfoTable({ watch }: { watch: Watch }) {
                     className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 0 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
                     onClick={() => set_tab(0)}
                 >
-                    {t("details")}
+                    {common("productCard.details")}
                 </button>
+
                 <button
                     type="button"
                     className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 1 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
                     onClick={() => set_tab(1)}
                 >
-                    {t("shipping")}
+                    {payments("shippingHeading")}
                 </button>
+
                 <button
                     type="button"
                     className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 2 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
                     onClick={() => set_tab(2)}
                 >
-                    {t("payments")}
+                    {payments("paymentsHeading")}
                 </button>
+
                 <button
                     type="button"
                     className={`sm:w-full w-1/2 border-b text-xs sm:text-base px-2 py-4 sm:px-4 sm:py-4 ${tab == 3 ? "button brightness-100 border-b-foreground" : "button2 brightness-80 border-b-transparent"} transition-default`}
                     onClick={() => set_tab(3)}
                 >
-                    {t("consignment")}
+                    {common("buttons.consignment")}
                 </button>
             </div>
-            <Displayed_Data watch={watch} tab={tab} />
+
+            <Displayed_Data watch={watch} tab={tab} common={common} payments={payments} product={product} />
         </div>
     );
 }
 
-function Displayed_Data({ watch, tab }: { watch: Watch; tab: 0 | 1 | 2 | 3 }) {
-    const t = useTranslations("product");
+function Displayed_Data({
+    watch,
+    tab,
+    common,
+    payments,
+    product,
+}: {
+    watch: Watch;
+    tab: 0 | 1 | 2 | 3;
+    common: ReturnType<typeof useTranslations>;
+    payments: ReturnType<typeof useTranslations>;
+    product: ReturnType<typeof useTranslations>;
+}) {
     switch (tab) {
-        case 0:
-            const included = `${watch.boxPapers.papers ? "Original papers, " : ""} ${watch.boxPapers.box ? "Box, " : ""} ${watch.boxPapers.firstInvoice ? "first invoice, " : ""} ${watch.boxPapers.serviceInvoice ? "service invoice, " : ""}`.trim();
+        case 0: {
+            const included = [
+                watch.boxPapers.papers ? common("filters.includesPapers") : "",
+                watch.boxPapers.box ? common("filters.includesBox") : "",
+                watch.boxPapers.firstInvoice ? common("filters.includesFirstInvoice") : "",
+                watch.boxPapers.serviceInvoice ? common("filters.includesServiceInvoice") : "",
+            ]
+                .filter(Boolean)
+                .join(", ");
+
             return (
                 <div className="w-full flex flex-col gap-2 py-4">
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2 ">
-                        <p className="w-fit md:w-100">{t("brand")}</p>
-                        <p>{watch.brand}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("model")}</p>
-                        <p>{watch.model}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("reference")}</p>
-                        <p>{watch.reference}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("year")}</p>
-                        <p>{watch.year}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("case")}</p>
-                        <p className="lowercase">{watch.caseDiameterMm} mm</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("movement")}</p>
-                        <p>{watch.movement}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("bracelet")}</p>
-                        <p>{watch.braceletMaterial}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("material")}</p>
-                        <p>{watch.caseMaterial}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("dial")}</p>
-                        <p>{watch.dialColor}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("condition")}</p>
-                        <p>{watch.condition}</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">{t("water_resistance")}</p>
-                        <p className="lowercase">{watch.waterResistanceM} m</p>
-                    </div>
-                    <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
-                        <p className="w-fit md:w-100">Scope of delivery</p>
-                        <p>{included.endsWith(",") ? included.slice(0, -1) + "." : included}</p>
-                    </div>
+                    <Row label={common("filters.brand")} value={watch.brand} />
+
+                    <Row label={product("model")} value={watch.model} />
+
+                    <Row label={product("reference")} value={watch.reference} />
+
+                    <Row label={common("filters.year")} value={String(watch.year)} />
+
+                    <Row label={common("productCard.caseSize")} value={`${watch.caseDiameterMm} mm`} />
+
+                    <Row label={common("productCard.movement")} value={watch.movement} />
+
+                    <Row label={common("productCard.bracelet")} value={watch.braceletMaterial} />
+
+                    <Row label={common("productCard.material")} value={watch.caseMaterial} />
+
+                    <Row label={product("dial")} value={watch.dialColor} />
+
+                    <Row label={common("productCard.condition")} value={watch.condition} />
+
+                    <Row label={common("filters.waterResistance")} value={`${watch.waterResistanceM} m`} />
+
+                    <Row label={product("scopeOfDelivery")} value={included ? `${included}.` : ""} />
                 </div>
             );
+        }
+
         case 1:
             return (
                 <div className="w-full py-4">
-                    Enjoy contactless, risk-free shipping with our long-time partners DHL, UPS, DHL Express and Prosegur. <br /> <br />
-                    earn more about shipping costs and times{" "}
+                    {product("shippingText")} <br /> <br />
                     <Link href="/info/payments" className="underline">
-                        here
+                        {product("learnMoreShipping")} {product("here")}
                     </Link>
                     .
                 </div>
             );
-        case 2:
+
+        case 2: {
+            const headers = payments.raw("paymentsTable.headers") as string[];
+
+            const rows = payments.raw("paymentsTable.rows") as string[][];
+
             return (
                 <div className="w-full py-4 overflow-x-auto">
                     <table className="min-w-full text-left border-collapse">
                         <thead>
                             <tr>
-                                <th className="border-b border-secondary p-3 text-sm font-semibold">Payment Method</th>
-                                <th className="border-b border-secondary p-3 text-sm font-semibold">Duration</th>
-                                <th className="border-b border-secondary p-3 text-sm font-semibold">Fees</th>
+                                {headers.map((header) => (
+                                    <th key={header} className="border-b border-secondary p-3 text-sm font-semibold">
+                                        {header}
+                                    </th>
+                                ))}
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td className="border-b border-secondary p-3 text-sm">National Bank Wire</td>
-                                <td className="border-b border-secondary p-3 text-sm">1-2 business days</td>
-                                <td className="border-b border-secondary p-3 text-sm">0%</td>
-                            </tr>
-                            <tr>
-                                <td className="border-b border-secondary p-3 text-sm">International Bank Wire</td>
-                                <td className="border-b border-secondary p-3 text-sm">2-3 business days</td>
-                                <td className="border-b border-secondary p-3 text-sm">0%</td>
-                            </tr>
-                            <tr>
-                                <td className="border-b border-secondary p-3 text-sm">PayPal</td>
-                                <td className="border-b border-secondary p-3 text-sm">immediate</td>
-                                <td className="border-b border-secondary p-3 text-sm">3%</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3 text-sm">Credit/Debit Payment</td>
-                                <td className="p-3 text-sm">immediate</td>
-                                <td className="p-3 text-sm">1.4%</td>
-                            </tr>
+                            {rows.map((row) => (
+                                <tr key={row.join("-")}>
+                                    {row.map((cell, i) => (
+                                        <td key={`${row[0]}-${i}`} className="border-b border-secondary p-3 text-sm">
+                                            {cell}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             );
+        }
+
         case 3:
             return (
                 <div className="w-full py-4">
-                    Do you wish to trade in one of your watches? Please contact us via the <Link href="/sell">Consignment/ Sell your watch</Link> page with the details about your watch and we will make you an offer.
+                    {product("consignmentBeforeLink")}{" "}
+                    <Link href="/sell" className="underline">
+                        {common("buttons.sellYourWatch")}
+                    </Link>{" "}
+                    {product("consignmentAfterLink")}
                 </div>
             );
 
         default:
-            return <></>;
+            return null;
     }
+}
+
+function Row({ label, value }: { label: string; value: string }) {
+    return (
+        <div className="border-b border-b-secondary flex justify-between md:justify-start items-center py-2">
+            <p className="w-fit md:w-100">{label}</p>
+            <p className="lowercase">{value}</p>
+        </div>
+    );
 }
