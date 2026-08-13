@@ -9,6 +9,7 @@ import updateUser from "@/app/server/update_user";
 import Input from "@/app/components/elements/input";
 import PayPal_Btn from "@/app/components/buttons/paypal";
 import { format_price } from "../lib/price_format";
+import { useTranslations } from "next-intl";
 
 const shipping_data = Object.values(shipping_info);
 
@@ -33,6 +34,9 @@ const payments = {
 export default function Order_list() {
     const { session } = useAuth();
     if (!session) return <></>;
+
+    const t = useTranslations("checkout");
+    const t_cart = useTranslations("cart");
 
     const [total, set_total] = useState<number>(session.cart.reduce((prev, current) => prev + current.price * current.quantity, 0) || 0);
 
@@ -101,9 +105,9 @@ export default function Order_list() {
         <div className="flex justify-start items-start flex-col gap-4 w-full h-fit font-secondary">
             <div className="flex flex-col justify-start items-start w-full h-[50dvh] border-b">
                 <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2 capitalize border-b bg-primary">
-                    <p className="min-w-30 w-full">Watch/Spare</p>
-                    <p className="min-w-10 max-w-10">Qty</p>
-                    <p className="min-w-25">price</p>
+                    <p className="min-w-30 w-full">{t("watchSpare")}</p>
+                    <p className="min-w-15 max-w-15">{t("qty")}</p>
+                    <p className="min-w-25">{t("price")}</p>
                 </div>
                 <div className="w-full h-full overflow-y-auto overflow-x-hidden gap-2 flex flex-col justify-start items-start py-2">
                     {session.cart.map((i) => (
@@ -116,39 +120,41 @@ export default function Order_list() {
                                 <p className="text-secondary">{i.model}</p>
                             </div>
                             <p className="text-2xl text-center font-medium min-w-20 max-w-20 block sm:hidden!">Qty: {i.quantity}</p>
-                            <p className="text-2xl text-center font-medium min-w-10 max-w-10 hidden sm:flex-center">{i.quantity}</p>
+                            <p className="text-2xl text-center font-medium min-w-15 max-w-15 hidden sm:flex-center">{i.quantity}</p>
                             <p className="text-2xl sm:text-base font-medium w-fit sm:w-25">{format_price(i.price * i.quantity)}</p>
                         </div>
                     ))}
                 </div>
             </div>
             <div className="w-full flex justify-between items-center mt-2 border-b">
-                <h5>Subtotal</h5>
+                <h5>{t("subtotal")}</h5>
                 <h5>{format_price(total)}</h5>
             </div>
             <div className="w-full flex flex-col justify-center items-start gap-2 border-b tracking-wider">
-                <CheckBox label="Local Pickup" action={set_local_pickup} active={local_pickup} />
+                <CheckBox label={t_cart("localPickup")} action={set_local_pickup} active={local_pickup} />
                 <div className={`w-full flex justify-between items-center ${local_pickup ? "line-through brightness-75" : ""}`}>
-                    <p>Shipping to {session.address.country}</p>
+                    <p>{t_cart("shipping_to", { country: session.address.country })}</p>
                     <p>{format_price(shipping.shipping_cost)}</p>
                 </div>
                 <div className="w-full flex justify-between items-center">
-                    <p>Taxes</p>
+                    <p>{t("taxes")}</p>
                     <p>{format_price(0)}</p>
                 </div>
                 <div className="w-full flex justify-between items-center">
-                    <p>{payment_method.name} Fee</p>
+                    <p>
+                        {payment_method.name} {t("fee")}
+                    </p>
                     <p>{format_price(payment_method.fee * total)}</p>
                 </div>
 
                 <div className="w-full flex justify-between items-center">
-                    <h5>Total</h5>
+                    <h5>{t_cart("total")}</h5>
                     <h5>{format_price(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</h5>
                 </div>
             </div>
 
             <div className="w-full border-b">
-                <h2>Payment</h2>
+                <h2>{t("payment")}</h2>
             </div>
 
             <div className="flex-center flex-col w-full gap-8 font-sans">
@@ -158,7 +164,7 @@ export default function Order_list() {
                         onClick={() => set_payment_method(payments.bank_transfer)}
                         className={`w-full h-full button2 sm:px-2 sm:py-4 p-2 transition-default border-b ${payment_method.name == "Bank Transfer" ? "bg-secondary border-b-foreground brightness-100" : "brightness-75 border-b-transparent"}`}
                     >
-                        Bank Transfer
+                        {t("bankTransfer")}
                     </button>
                     <button
                         type="button"
@@ -172,39 +178,36 @@ export default function Order_list() {
                         onClick={() => set_payment_method(payments.cards)}
                         className={`w-full h-full button2 sm:px-2 sm:py-4 p-2 transition-default border-b ${payment_method.name == "Credit/Debit Card" ? "bg-secondary border-b-foreground brightness-100" : "brightness-75 border-b-transparent"}`}
                     >
-                        Credit/Debit Card
+                        {t("card")}
                     </button>
                 </div>
                 {allowed_payment ? (
                     <div className={`flex justify-start items-center transition-default w-full ${payment_method.name == "PayPal" ? "" : "bg-secondary p-4 sm:p-0 sm:py-8 sm:px-12"} capitalize gap-2 flex-wrap`}>
                         {payment_method.name == "Bank Transfer" ? (
                             <div className="flex flex-col justify-start items-start gap-4">
-                                <p className="tracking-wider leading-6 text-sm">
-                                    Make your payment directly into our bank account. Please include the order ID, brand name and model of the item as the payment reference. Additionally, please note that no item will be shipped before the
-                                    funds have cleared in our account.
-                                </p>
+                                <p className="tracking-wider leading-6 text-sm">{t("bankNote")}</p>
 
                                 {read ? (
                                     <div className="w-full flex justify-center items-start flex-col gap-4 capitalize">
                                         <div className="w-full flex justify-between items-center">
-                                            <p>order number:</p>
+                                            <p>{t("orderNumber")}:</p>
                                             <p>92212</p>
                                         </div>
                                         <div className="w-full flex justify-between items-center">
-                                            <p>order date:</p>
+                                            <p>{t("orderDate")}:</p>
                                             <p>{new Date().toDateString()}</p>
                                         </div>
                                         <div className="w-full flex justify-between items-center">
-                                            <p>order total:</p>
+                                            <p>{t("orderTotal")}:</p>
                                             <p>{format_price(total + total * payment_method.fee + (local_pickup ? 0 : shipping.shipping_cost))}</p>
                                         </div>
                                         <div className="w-full flex justify-between items-center">
-                                            <p>payment method:</p>
+                                            <p>{t("paymentMethod")}:</p>
                                             <p>{payment_method.name}</p>
                                         </div>
                                         <span className="w-full h-px bg-foreground"></span>
                                         <div className="w-full flex justify-between items-center">
-                                            <p>bank:</p>
+                                            <p>Bank:</p>
                                             <p className="font-semibold">Hamburger Sparkasse AG</p>
                                         </div>
                                         <div className="w-full flex justify-between items-center">
@@ -218,30 +221,30 @@ export default function Order_list() {
                                     </div>
                                 ) : (
                                     <button className={`button ${allowed_payment ? "" : "cursor-not-allowed brightness-75"} `} type="button" onClick={() => allowed_payment && set_read(true)}>
-                                        Continue
+                                        {t("continue")}
                                     </button>
                                 )}
                             </div>
                         ) : payment_method.name == "PayPal" ? (
                             <div className="w-full">
                                 <PayPal_Btn disabled={false} />
-                                <p className="text-sm w-full">Note: the watch/spare will be shipped to paypal's address</p>
+                                <p className="text-sm w-full">{t("paypalNote")}</p>
                             </div>
                         ) : (
                             <>
                                 <div className="sm:text-xl text-sm tracking-wider w-full">
-                                    <Input label="card number" type="text" max={19} placeholder="1234 1234 1234 1234" onChange={validate_cc} value={card_number} />
+                                    <Input label={t("cardNumber")} type="text" max={19} placeholder="1234 1234 1234 1234" onChange={validate_cc} value={card_number} />
                                 </div>
 
                                 <div className="sm:text-xl text-sm tracking-wider w-[calc(50%-4px)]">
-                                    <Input label="expiration date" type="text" max={19} placeholder="MM/YY" onChange={validate_exp} value={expire} />
+                                    <Input label={t("expirationDate")} type="text" max={19} placeholder="MM/YY" onChange={validate_exp} value={expire} />
                                 </div>
 
                                 <div className="sm:text-xl text-sm tracking-wider w-[calc(50%-4px)]">
-                                    <Input label="security code" type="text" max={3} placeholder="123" onChange={validate_sec} value={sec_code} />
+                                    <Input label={t("securityCode")} type="text" max={3} placeholder="123" onChange={validate_sec} value={sec_code} />
                                 </div>
                                 <button type="button" className="button w-full mt-4 sm:text-base text-sm">
-                                    Place Order
+                                    {t("placeOrder")}
                                 </button>
                             </>
                         )}
@@ -249,10 +252,10 @@ export default function Order_list() {
                 ) : payment_method.name == "PayPal" ? (
                     <div className="w-full">
                         <PayPal_Btn disabled={false} />
-                        <p className="text-sm w-full">Note: the watch/spare will be shipped to PayPal's address</p>
+                        <p className="text-sm w-full">{t("paypalNote")}</p>
                     </div>
                 ) : (
-                    <h3>Billing details is missing</h3>
+                    <h3>{t("missingBilling")}</h3>
                 )}
             </div>
         </div>
