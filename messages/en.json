@@ -129,6 +129,20 @@
             "invalidEmail": "Please enter a valid email address"
         }
     },
+    "error": {
+        "heading": "Oops. Something went wrong!",
+        "subHeading": "An unexpected error occurred",
+        "subText": "Something broke while loading this page. You can try again, or head back to the homepage.",
+        "tryAgain": "try again",
+        "return": "Return Home"
+    },
+    "notFound": {
+        "heading": "404 Not Found",
+        "subHeading": "Time Has Run Out for This Page",
+        "subText": "The page or timepiece you are searching for has been moved, renamed, or no longer exists.",
+        "return": "Return Home",
+        "explore": "Explore Our Collection"
+    },
     "home": {
         "heroTitle": "TIMEDRIVEN",
         "heroSubtitle": "Your partner for high-end watches",

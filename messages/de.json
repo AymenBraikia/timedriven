@@ -129,6 +129,20 @@
             "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
         }
     },
+    "error": {
+        "heading": "Hoppla. Etwas ist schief gelaufen!",
+        "subHeading": "Es ist ein unerwarteter Fehler aufgetreten",
+        "subText": "Beim Laden dieser Seite ist etwas kaputt gegangen. Sie können es erneut versuchen oder zur Startseite zurückkehren.",
+        "tryAgain": "versuchen Sie es erneut",
+        "return": "Heimkehr"
+    },
+    "notFound": {
+        "heading": "404 Nicht gefunden",
+        "subHeading": "Die Zeit für diese Seite ist abgelaufen",
+        "subText": "Die von Ihnen gesuchte Seite oder Uhr wurde verschoben, umbenannt oder existiert nicht mehr.",
+        "return": "Heimkehr",
+        "explore": "Entdecken Sie unsere Sammlung"
+    },
     "home": {
         "heroTitle": "TIMEDRIVEN",
         "heroSubtitle": "Ihr Partner für hochwertige Luxusuhren",
