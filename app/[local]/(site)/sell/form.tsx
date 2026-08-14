@@ -74,12 +74,12 @@ export default function Form() {
             <h3 className="font-medium font-secondary">{t("heading")}</h3>
             <p>{t("intro")}</p>
 
-            <div className="flex justify-between items-center w-full mt-10 gap-2">
+            <div className="flex justify-between items-center w-full mt-10 gap-2 max-w-150">
                 <h6 className="text-sm! text-center">{t("sections.personalInformation")}</h6>
-                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-20"}`}>{t("sections.salePreference")}</h6>
-                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}></span>
-                <h6 className={`text-sm! text-center transition-default ${step >= 2 ? "opacity-100" : "opacity-20"}`}>{t("sections.watchDetails")}</h6>
+                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 1 ? "opacity-100" : "opacity-50"}`}></span>
+                <h6 className={`text-sm! text-center transition-default ${step >= 1 ? "opacity-100" : "opacity-50"}`}>{t("sections.salePreference")}</h6>
+                <span className={`w-10 sm:w-20 h-0.5 bg-foreground transition-default ${step >= 2 ? "opacity-100" : "opacity-50"}`}></span>
+                <h6 className={`text-sm! text-center transition-default ${step >= 2 ? "opacity-100" : "opacity-50"}`}>{t("sections.watchDetails")}</h6>
             </div>
 
             <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
