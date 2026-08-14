@@ -261,6 +261,7 @@
                 "sell": "Sell your watch"
             },
             "fields": {
+                "brand": "Brand",
                 "askingPrice": "Asking Price",
                 "model": "Model",
                 "referenceNumber": "Reference Number",

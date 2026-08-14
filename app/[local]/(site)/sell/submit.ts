@@ -1,22 +1,17 @@
 "use server";
 
-interface data_type {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    intent: "consign" | "sell";
-    brand: string;
-    price: number;
-    condition: "new" | "mint" | "pre-owned";
-    images: any;
-    model?: string | undefined;
-    refNum?: string | undefined;
-    box?: boolean | undefined;
-    papers?: boolean | undefined;
-    message?: string | undefined;
-}
+import { consignments_collection, sell_collection } from "@/app/db/collections";
+import { Consignment } from "@/types/consignment";
+import { Sell } from "@/types/sell";
 
-export default async function Submit(data: data_type) {
-    console.log(data)
+export default async function Submit(data: Consignment | Sell): Promise<boolean> {
+    try {
+        if (data.intent == "consign") await consignments_collection.insertOne(data);
+        else await sell_collection.insertOne(data);
+
+        return true;
+    } catch (error) {
+        console.error("failled to consign/sell: ", error);
+        return false;
+    }
 }

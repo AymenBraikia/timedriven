@@ -1,13 +1,16 @@
 "use server";
 
-interface data_type {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    reason?: string | undefined;
+import { appointments_collection } from "@/app/db/collections";
+import { Appointment } from "@/types/appointment";
+
+export default async function Submit(data: Appointment):Promise<boolean> {
+    try {
+        appointments_collection.insertOne(data);
+        
+        return true;
+    } catch (error) {
+        console.error("failled to consign/sell: ", error);
+        return false;
+    }
 }
 
-export default async function Submit(data: data_type) {
-    console.log(data);
-}

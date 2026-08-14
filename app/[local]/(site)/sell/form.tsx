@@ -36,9 +36,9 @@ type FormInput = z.input<typeof formSchema>;
 type FormOutput = z.output<typeof formSchema>;
 
 export default function Form() {
-    const t = useTranslations("sell.form")
-    const t_fields = useTranslations("common.formFields")
-    const t_btns = useTranslations("common.buttons")
+    const t = useTranslations("sell.form");
+    const t_fields = useTranslations("common.formFields");
+    const t_btns = useTranslations("common.buttons");
 
     const stepFields: Record<number, (keyof FormInput)[]> = {
         0: ["firstName", "lastName", "email", "phone"],
@@ -47,6 +47,8 @@ export default function Form() {
     };
 
     const [step, set_step] = useState<number>(0);
+
+    const [results, set_results] = useState<boolean>(false);
 
     const {
         register,
@@ -66,7 +68,7 @@ export default function Form() {
 
     const prevStep = () => set_step((p) => Math.max(p - 1, 0));
 
-    const onValid = (data: FormOutput) => Submit(data);
+    const onValid = async (data: FormOutput) => set_results(await Submit({ ...data, id: crypto.randomUUID() }));
     return (
         <div className="flex-center flex-col gap-4" id="form">
             <h3 className="font-medium font-secondary">{t("heading")}</h3>
