@@ -143,7 +143,42 @@
         "return": "Heimkehr",
         "explore": "Entdecken Sie unsere Sammlung"
     },
-    
+    "auth": {
+        "signUp": {
+            "homePage": "Startseite",
+            "title": "Konto erstellen",
+            "description": "Speichern Sie die Uhren, die Sie beobachten, verfolgen Sie Angebote und bezahlen Sie bei Ihrem nächsten Einkauf schneller.",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "firstNamePlaceholder": "Jordan",
+            "lastNamePlaceholder": "Blake",
+            "emailPlaceholder": "Jordan@timedriven.com",
+            "passwordPlaceholder": "Mindestens 8 Zeichen",
+            "agree": "den Allgemeinen Geschäftsbedingungen und der Datenschutzerklärung zustimmen",
+            "createAccount": "Konto erstellen",
+            "creatingAccount": "Konto wird erstellt…",
+            "alreadyHaveAccount": "Sie haben bereits ein Konto?",
+            "logIn": "Anmelden",
+            "termsRequired": "Sie müssen den Allgemeinen Geschäftsbedingungen zustimmen, um fortzufahren.",
+            "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+        },
+        "login": {
+            "homePage": "Startseite",
+            "title": "In Ihrem Konto anmelden",
+            "description": "Speichern Sie die Uhren, die Sie beobachten, verfolgen Sie Angebote und bezahlen Sie bei Ihrem nächsten Einkauf schneller.",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "emailPlaceholder": "Jordan@timedriven.com",
+            "passwordPlaceholder": "Mindestens 8 Zeichen",
+            "logIn": "Anmelden",
+            "loggingIn": "Anmeldung läuft…",
+            "dontHaveAccount": "Sie haben noch kein Konto?",
+            "signUp": "Registrieren",
+            "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+        }
+    },
     "home": {
         "heroTitle": "TIMEDRIVEN",
         "heroSubtitle": "Ihr Partner für hochwertige Luxusuhren",
