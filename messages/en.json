@@ -143,6 +143,42 @@
         "return": "Return Home",
         "explore": "Explore Our Collection"
     },
+    "auth": {
+        "signUp": {
+            "homePage": "Home page",
+            "title": "Create your account",
+            "description": "Save the pieces you're watching, track offers, and check out faster next time.",
+            "firstName": "First name",
+            "lastName": "Last name",
+            "email": "Email",
+            "password": "Password",
+            "firstNamePlaceholder": "Jordan",
+            "lastNamePlaceholder": "Blake",
+            "emailPlaceholder": "Jordan@timedriven.com",
+            "passwordPlaceholder": "At least 8 characters",
+            "agree": "agree to the Terms of Service and Privacy Policy",
+            "createAccount": "Create account",
+            "creatingAccount": "Creating account…",
+            "alreadyHaveAccount": "Already have an account?",
+            "logIn": "Log in",
+            "termsRequired": "You need to agree to the Terms of Service to continue.",
+            "somethingWentWrong": "Something went wrong. Please try again."
+        },
+        "login": {
+            "homePage": "Home page",
+            "title": "Log in to your account",
+            "description": "Save the pieces you're watching, track offers, and check out faster next time.",
+            "email": "Email",
+            "password": "Password",
+            "emailPlaceholder": "Jordan@timedriven.com",
+            "passwordPlaceholder": "At least 8 characters",
+            "logIn": "Log in",
+            "loggingIn": "Logging you in…",
+            "dontHaveAccount": "Don't have an account?",
+            "signUp": "Sign up",
+            "somethingWentWrong": "Something went wrong. Please try again."
+        }
+    },
     "home": {
         "heroTitle": "TIMEDRIVEN",
         "heroSubtitle": "Your partner for high-end watches",
