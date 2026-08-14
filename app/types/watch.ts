@@ -21,6 +21,6 @@ export interface Watch {
     inStock: boolean;
     featured: boolean;
     type: "watch";
-    date_added: Date;
+    date_added: Date | string;
     relevance_score: number;
 }
