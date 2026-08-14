@@ -13,7 +13,6 @@ const routes = [
     "/store",
     "/booking",
 
-    // Information / service pages
     "/info/about",
     "/info/cookies",
     "/info/disclaimer",
@@ -27,7 +26,6 @@ const routes = [
     "/info/withdraw",
 ] as const;
 
-// Brands currently linked from the homepage.
 const brandSlugs = ["audemars-piguet", "breitling", "cartier", "iwc", "omega", "patek-philippe", "rolex", "zenith"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -5,7 +5,7 @@ import { verifyJwt } from "./app/[local]/(auth)/auth/jwt";
 
 const handleI18nRouting = createMiddleware(routing);
 
-const protectedRoutes = ["/cart", "/favorites", "/checkout"];
+const protectedRoutes = ["/cart", "/thank_you", "/checkout"];
 
 export default function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
