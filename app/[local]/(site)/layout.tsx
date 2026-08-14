@@ -11,6 +11,7 @@ import getUser from "@/app/server/get_user";
 import { NextIntlClientProvider } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -74,6 +75,8 @@ export default async function RootLayout({
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
+                <SpeedInsights />
+
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
