@@ -14,7 +14,7 @@ export default function NotFound() {
                     <h5 className="font-secondary">{t("subHeading")}</h5>
                     <p className="mt-2 text-secondary">{t("subText")}</p>
                     <div className="flex gap-4">
-                        <Link href="/" className="mt-4 px-4 py-2 button capitalize">
+                        <Link href="/shop" className="mt-4 px-4 py-2 button capitalize">
                             {t("explore")}
                         </Link>
                         <Link href="/" className="mt-4 px-4 py-2 button2 capitalize">
