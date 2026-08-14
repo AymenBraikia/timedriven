@@ -1,5 +1,5 @@
 "use client";
-import React, { Activity, useState } from "react";
+import React, { Activity, useRef, useState } from "react";
 import Search from "../svg/search";
 import Cross from "../svg/cross";
 import { useTranslations } from "next-intl";
@@ -16,22 +16,31 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
     const [data, set_data] = useState<any[]>([]);
     const [fetching, set_fetching] = useState<boolean>(false);
     const [active, set_active] = useState<boolean>(false);
-
     const [value, set_value] = useState<string>("");
 
-    let timeout: NodeJS.Timeout;
+    const timeout_ref = useRef<NodeJS.Timeout | null>(null);
+    const request_id_ref = useRef(0);
 
     function handle_change(e: React.ChangeEvent<HTMLInputElement>) {
-        set_fetching(true);
         const query = e.currentTarget.value;
         set_value(query);
-
+        set_fetching(true);
         set_data([]);
 
-        clearTimeout(timeout);
-        timeout = setTimeout(async () => {
-            set_data(await (await fetch(route + "/?query=" + query)).json());
-            set_fetching(false);
+        if (timeout_ref.current) clearTimeout(timeout_ref.current);
+
+        timeout_ref.current = setTimeout(async () => {
+            const this_request = ++request_id_ref.current;
+            try {
+                const res = await fetch(route + "/?query=" + encodeURIComponent(query));
+                const json = await res.json();
+                if (this_request === request_id_ref.current) {
+                    set_data(json);
+                    set_fetching(false);
+                }
+            } catch {
+                if (this_request === request_id_ref.current) set_fetching(false);
+            }
         }, 200);
     }
 

@@ -15,12 +15,12 @@ export default function Footer() {
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
                     <HorizontalLogo classnames={"w-64"} />
                     <ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
-                        <li>Walther-von-Cronberg-Platz 18</li>
-                        <li>60594 Frankfurt am Main</li>
+                        <li>Marie-Curie-Straße 14</li>
+                        <li>60439 Frankfurt am Main</li>
                         <li>Germany</li>
-                        <li>+49 152 5544 3810</li>
-                        <li>+49 69 7958 0766</li>
-                        <li>info@timedriven.de</li>
+                        <li>+49 123 4567 8910</li>
+                        <li>+49 123 4567 890</li>
+                        <li>info@example.com</li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">

@@ -23,7 +23,7 @@ export default function StorePage() {
                         <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10 text-sm">
                             <h5>{t("addressHeading")}</h5>
                             <div className="flex flex-col gap-5">
-                                <p>Walther-von-Cronberg-Platz 18 60594 Frankfurt am Main Germany</p>
+                                <p>Marie-Curie-Straße 14 60439 Frankfurt am Main Germany</p>
                                 <p>
                                     {t("parkingText")}{" "}
                                     <Link
@@ -75,9 +75,9 @@ export default function StorePage() {
                         <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10">
                             <h5>{t("contactHeading")}</h5>
                             <div className="flex justify-between items-start flex-col text-sm">
-                                <p>+49 152 5544 3810</p>
-                                <p>+49 69 7958 0766</p>
-                                <p>info@timedriven.de</p>
+                                <p>+49 123 4567 8910</p>
+                                <p>+49 123 4567 890</p>
+                                <p>info@example.com</p>
                             </div>
                         </div>
                     </div>

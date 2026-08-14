@@ -3,16 +3,7 @@
         "siteName": "TIMEDRIVEN",
         "titleDefault": "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
         "description": "Explore our curated collection of pristine pre-owned and new luxury watches, including Rolex, Patek Philippe, and Cartier. Book a professional consultation with our horology experts today.",
-        "keywords": [
-            "luxury watches",
-            "pre-owned Rolex",
-            "Patek Philippe Calatrava",
-            "Cartier Panthere",
-            "Rolex Daytona",
-            "buy luxury watches",
-            "watch consultancy",
-            "TIMEDRIVEN"
-        ],
+        "keywords": ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "TIMEDRIVEN"],
         "ogDescription": "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
         "ogImageAlt": "TIMEDRIVEN Luxury Watch Collection",
         "twitterDescription": "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments."
@@ -283,10 +274,7 @@
         "polishing": {
             "heading": "Polishing & reconditioning:",
             "intro": "We remove scratches and minor signs of wear, restoring your watch to its original shine:",
-            "items": [
-                "Polishing & Refurbishment from €175",
-                "Polishing including material application & refurbishment from €249"
-            ]
+            "items": ["Polishing & Refurbishment from €175", "Polishing including material application & refurbishment from €249"]
         },
         "maintenance": {
             "heading": "Maintenance & repair:",
@@ -325,7 +313,7 @@
     "about": {
         "heading": "About Us",
         "paragraphs": [
-            "Our story began with a spark—an elegant timepiece worn by a legendary British agent that ignited a lifelong passion in our founder, Frederik Schlüter. This fascination with horology transformed Frederik from a young enthusiast into a distinguished dealer of high-end timepieces. In 2019, while pursuing his degree in mechanical engineering, he established the company originally known as FFSWATCHES, channeling his obsession into a thriving business dedicated to iconic wristwatches.",
+            "Our story began with a spark—an elegant timepiece worn by a legendary British agent that ignited a lifelong passion in our founder, Aymen Braikia. This fascination with horology transformed Frederik from a young enthusiast into a distinguished dealer of high-end timepieces. In 2019, while pursuing his degree in mechanical engineering, he established the company originally known as FFSWATCHES, channeling his obsession into a thriving business dedicated to iconic wristwatches.",
             "At Timedriven, we are your trusted experts for exquisite timepieces both new and pre-owned. Our expertise is driven by passion: we offer only the finest timepieces, each one a piece we would proudly wear ourselves. Our in-house watchmaker meticulously inspects every watch to ensure its authenticity and optimal performance, providing you with confidence in your purchase.",
             "Our team and in-house watch maker meticulously inspects every watch before selling it to guarantee its authenticity and performance.",
             "Looking to add to your collection? We offer an impressive selection of prestigious brands.",
@@ -340,32 +328,12 @@
         "paymentsHeading": "Payments",
         "paymentsSubtext": "Fast and secure online payments",
         "paymentsTable": {
-            "headers": [
-                "Payment Method",
-                "Duration",
-                "Fees"
-            ],
+            "headers": ["Payment Method", "Duration", "Fees"],
             "rows": [
-                [
-                    "National Bank Wire",
-                    "1–2 business days",
-                    "0%"
-                ],
-                [
-                    "International Bank Wire",
-                    "2–3 business days",
-                    "0%"
-                ],
-                [
-                    "PayPal",
-                    "immediate",
-                    "3%"
-                ],
-                [
-                    "Credit/Debit Payment",
-                    "immediate",
-                    "1.4%"
-                ]
+                ["National Bank Wire", "1–2 business days", "0%"],
+                ["International Bank Wire", "2–3 business days", "0%"],
+                ["PayPal", "immediate", "3%"],
+                ["Credit/Debit Payment", "immediate", "1.4%"]
             ]
         },
         "shippingHeading": "Shipping",
@@ -373,123 +341,39 @@
             "heading": "Germany",
             "text": "Delivery within Germany: 1–2 business days.",
             "rows": [
-                [
-                    "DHL",
-                    "Up to 500€",
-                    "6€"
-                ],
-                [
-                    "UPS",
-                    "500€ – 10.000€",
-                    "20€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "50€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "80€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "150€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "250€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ and more",
-                    "On request"
-                ]
+                ["DHL", "Up to 500€", "6€"],
+                ["UPS", "500€ – 10.000€", "20€"],
+                ["UPS", "10.000€ – 15.000€", "50€"],
+                ["UPS", "15.000€ – 25.000€", "80€"],
+                ["Prosegur", "25.000€ – 50.000€", "150€"],
+                ["Prosegur", "50.000€ – 250.000€", "250€"],
+                ["Prosegur", "250.000€ and more", "On request"]
             ]
         },
         "eu": {
             "heading": "European Union",
             "text": "Delivery within the European Union: 1–2 business days.",
             "rows": [
-                [
-                    "DHL",
-                    "Up to 500€",
-                    "15€"
-                ],
-                [
-                    "UPS",
-                    "500€ – 10.000€",
-                    "50€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "150€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "300€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "400€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "500€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ and more",
-                    "On request"
-                ]
+                ["DHL", "Up to 500€", "15€"],
+                ["UPS", "500€ – 10.000€", "50€"],
+                ["UPS", "10.000€ – 15.000€", "150€"],
+                ["UPS", "15.000€ – 25.000€", "300€"],
+                ["Prosegur", "25.000€ – 50.000€", "400€"],
+                ["Prosegur", "50.000€ – 250.000€", "500€"],
+                ["Prosegur", "250.000€ and more", "On request"]
             ]
         },
         "worldwide": {
             "heading": "Worldwide",
             "text": "Worldwide delivery: 3–10 business days.",
             "rows": [
-                [
-                    "DHL",
-                    "Up to 500€",
-                    "25€"
-                ],
-                [
-                    "DHL Express",
-                    "500€ – 10.000€",
-                    "100€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "150€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "400€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "750€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "1.000€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ and more",
-                    "On request"
-                ]
+                ["DHL", "Up to 500€", "25€"],
+                ["DHL Express", "500€ – 10.000€", "100€"],
+                ["UPS", "10.000€ – 15.000€", "150€"],
+                ["UPS", "15.000€ – 25.000€", "400€"],
+                ["Prosegur", "25.000€ – 50.000€", "750€"],
+                ["Prosegur", "50.000€ – 250.000€", "1.000€"],
+                ["Prosegur", "250.000€ and more", "On request"]
             ]
         }
     },
@@ -609,11 +493,7 @@
                 "The following privacy policy is intended to inform you in particular about the type, scope, purpose, duration, and legal basis for the processing of such data either under our own control or in conjunction with others. We also inform you below about the third-party components we use to optimize our website and improve the user experience which may result in said third parties also processing data they collect and control.",
                 "Our privacy policy is structured as follows:"
             ],
-            "structureList": [
-                "Information about us as controllers of your data",
-                "The rights of users and data subjects",
-                "Information about the data processing"
-            ],
+            "structureList": ["Information about us as controllers of your data", "The rights of users and data subjects", "Information about the data processing"],
             "sections": {
                 "controller": {
                     "heading": "Information about us as controllers of your data",
@@ -801,10 +681,7 @@
                         },
                         {
                             "heading": "7.2 For entrepreneurs",
-                            "items": [
-                                "If the purchased item is defective, the seller decides about the subsequent procedure.",
-                                "Any claim concerning the function of a used item is in principle not valid."
-                            ]
+                            "items": ["If the purchased item is defective, the seller decides about the subsequent procedure.", "Any claim concerning the function of a used item is in principle not valid."]
                         }
                     ]
                 },
@@ -857,11 +734,7 @@
                     "number": "14",
                     "heading": "Obligation to Inform according to the German Battery Act (BattG)",
                     "text": "Discharged batteries are special waste and should not be disposed of in domestic waste. Every customer can send us old batteries and we will correctly dispose of them. Pollutant batteries containing toxic substances are marked with the sign and thresholds:",
-                    "items": [
-                        "\"Cd\" Battery contains more than 0.002% cadmium",
-                        "\"Hg\" Battery contains more than 0.0005% mercury",
-                        "\"Pb\" Battery contains more than 0.004% lead"
-                    ]
+                    "items": ["\"Cd\" Battery contains more than 0.002% cadmium", "\"Hg\" Battery contains more than 0.0005% mercury", "\"Pb\" Battery contains more than 0.004% lead"]
                 }
             ]
         },

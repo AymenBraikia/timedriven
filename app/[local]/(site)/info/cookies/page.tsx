@@ -141,7 +141,7 @@ export default async function CookiesPage() {
 
                         <p>Frederik Schlüter</p>
                         <p>Timedriven</p>
-                        <p>Walther-von-Cronberg-Platz 18</p>
+                        <p>Marie-Curie-Straße 14</p>
                         <p>60594 Frankfurt am Main</p>
                         <p>Germany</p>
                         <p>Website: https://timedriven.de</p>

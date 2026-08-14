@@ -33,21 +33,21 @@ export default function PrivacyPolicyPage() {
 
                         <br />
                         <p>
-                            Timedriven, Frederik Schlüter
+                            Timedriven, Aymen Braikia
                             <br />
-                            Walther-von-Cronberg-Platz 18
+                            Marie-Curie-Straße 14
                             <br />
-                            60594 Frankfurt am Main
+                            60439 Frankfurt am Main
                             <br />
                             Germany
                             <br />
                             <br />
                             Telephone: +49 (0) 15255443810
                             <br />
-                            E-mail: info@timedriven.de
+                            E-mail: info@example.com
                             <br />
                             <br />
-                            The controller’s data protection officer is: Frederik Schlüter
+                            The controller’s data protection officer is: Aymen Braikia
                         </p>
                     </div>
                 </li>

@@ -8,11 +8,11 @@ export default function AboutPage() {
 
                 <h4 className="font-semibold">Right of withdrawal</h4>
                 <ol className="list-decimal list-inside ml-4">
-                    <li>If the customer is a consumer (as defined in our T&C) and has entered a distance agreement or an agreement as stated in section 3.2 BGB with Timedriven, Frederik Schlüter then holds:</li>
+                    <li>If the customer is a consumer (as defined in our T&C) and has entered a distance agreement or an agreement as stated in section 3.2 BGB with Timedriven, Aymen Braikia then holds:</li>
                     <li>The consumer has 14 days from product receipt date to withdraw from the agreement without giving any reason.</li>
                     <li>
-                        To exercise the right of withdrawal the consumer must inform us (Frederik Schlüter, Walther-von-Cronberg-Platz 18, 60594 Frankfurt am Main, info@timedriven.de, +49 (0) 152 5544 3810) in writing with a clear
-                        declaration of withdrawal by e‑mail or by sending us a letter to the above mentioned address. To meet the deadline it is sufficient to submit the clear declaration of withdrawal within the cancellation period.
+                        To exercise the right of withdrawal the consumer must inform us (Aymen Braikia, Marie-Curie-Straße 14, 60439 Frankfurt am Main, info@example.com, +49 (0) 152 5544 3810) in writing with a clear declaration of
+                        withdrawal by e‑mail or by sending us a letter to the above mentioned address. To meet the deadline it is sufficient to submit the clear declaration of withdrawal within the cancellation period.
                     </li>
                 </ol>
 

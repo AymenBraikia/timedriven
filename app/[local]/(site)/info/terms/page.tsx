@@ -18,7 +18,7 @@ export default function AboutPage() {
                     <li>Applicable law</li>
                     <li>Competent court</li>
                     <li>Alternative dispute resolution</li>
-                    <li>Right of withdrawal from Frederik Schlüter in the event of delayed payment by the customer according to section 4.5</li>
+                    <li>Right of withdrawal from Aymen Braikia in the event of delayed payment by the customer according to section 4.5</li>
                     <li>Identification obligation: Money Laundering Act</li>
                     <li>Obligation to inform according to the German Battery Act (BattG)</li>
                 </ul>
@@ -28,23 +28,23 @@ export default function AboutPage() {
                 <h4 className="font-semibold">1. Scope</h4>
                 <ul className="list-disc list-inside ml-4">
                     <li>
-                        These general terms and conditions (below referred to as "T&C") apply to all contracts between a consumer or a company (below referred to as customer or buyer) and Frederik Schlüter (below referred to as "seller")
+                        These general terms and conditions (below referred to as "T&C") apply to all contracts between a consumer or a company (below referred to as customer or buyer) and Aymen Braikia (below referred to as "seller")
                         concerning products and services offered on www.timedriven.de.
                     </li>
                     <li>
                         Consumer: any natural person entering a contract not in the exercise of a trade or profession. Entrepreneur: any natural or legal person or partnership with legal capacity entering a contract in the exercise of a
                         trade or profession.
                     </li>
-                    <li>Only the terms and conditions stated here at the time of the agreement apply. Frederik Schlüter does not recognize deviating terms of the customer unless expressly agreed.</li>
+                    <li>Only the terms and conditions stated here at the time of the agreement apply. Aymen Braikia does not recognize deviating terms of the customer unless expressly agreed.</li>
                 </ul>
 
                 <h4 className="font-semibold">2. Offer, acceptance and conclusion of contract</h4>
                 <ul className="list-disc list-inside ml-4">
-                    <li>Every offer made by Frederik Schlüter is non-binding and is to be understood as an invitation to the consumer to provide a counter-offer.</li>
-                    <li>When an order is placed, an offer is sent to Frederik Schlüter to conclude a purchase agreement. Acceptance is subject to the availability of the goods.</li>
+                    <li>Every offer made by Aymen Braikia is non-binding and is to be understood as an invitation to the consumer to provide a counter-offer.</li>
+                    <li>When an order is placed, an offer is sent to Aymen Braikia to conclude a purchase agreement. Acceptance is subject to the availability of the goods.</li>
                     <li>The acceptance of an order is sent via e‑mail with the purchase details as well as invoice. This written order confirmation represents the acceptance of the order placed by the customer.</li>
                     <li>
-                        Frederik Schlüter reserves the right to cancel or reject an order without being liable for any damages in the following situations:
+                        Aymen Braikia reserves the right to cancel or reject an order without being liable for any damages in the following situations:
                         <ul className="list-disc list-inside ml-6">
                             <li>The ordered product is out of stock.</li>
                             <li>The order placed is suspected to be fraudulent.</li>
@@ -74,7 +74,7 @@ export default function AboutPage() {
                 <ul className="list-disc list-inside ml-4">
                     <li>All prices on www.timedriven.de are in euros and include VAT where applicable. If the product is differentially taxed the VAT is not deductible.</li>
                     <li>All payment options are listed in the product description. Payment fees, shipping costs and/or import sales taxes are to be paid by the customer.</li>
-                    <li>Frederik Schlüter will only commence dispatch after receipt of the full purchase price and payment of any shipping costs incurred by the customer.</li>
+                    <li>Aymen Braikia will only commence dispatch after receipt of the full purchase price and payment of any shipping costs incurred by the customer.</li>
                     <li>In the order confirmation e‑mail, the customer obtains the final price including VAT and/or shipping costs. The total price is due upon receipt of the order confirmation e‑mail.</li>
                     <li>The customer is obliged to pay the whole price within three days of receiving the order confirmation e‑mail. If the customer does not pay within five days, the seller is entitled to cancel the order.</li>
                 </ul>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                         tries to repair the watch by himself or third party without informing the seller.
                     </li>
                     <li>Excluded from the warranty are waterproofness issues, usual signs of wear (e.g. scratches on the bracelet/case and wear of threads) and watch precision deviations caused by normal wear and tear.</li>
-                    <li>Frederik Schlüter is not liable for defects caused by improper handling of the object of purchase by the buyer or third parties.</li>
+                    <li>Aymen Braikia is not liable for defects caused by improper handling of the object of purchase by the buyer or third parties.</li>
                 </ul>
 
                 <p className="ml-4">7.2 For entrepreneurs:</p>
@@ -122,8 +122,8 @@ export default function AboutPage() {
                 <p className="ml-4">The seller is liable to the customer for all contractual, quasi-contractual and statutory claims for damages as follows:</p>
                 <ul className="list-disc list-inside ml-4">
                     <li>
-                        The seller is only unlimited liable under the following conditions: damage caused by intent or recklessness of Frederik Schlüter; warranty compromise unless agreed otherwise; obligatory liability as stated in the
-                        Product Liability Law.
+                        The seller is only unlimited liable under the following conditions: damage caused by intent or recklessness of Aymen Braikia; warranty compromise unless agreed otherwise; obligatory liability as stated in the Product
+                        Liability Law.
                     </li>
                     <li>If the seller negligently violates an essential contractual obligation, liability is limited to foreseeable damage typical of the contract unless liability is unlimited by law.</li>
                     <li>Apart from that, liability on the part of the seller is excluded, including for vicarious agents and legal representatives.</li>
@@ -150,10 +150,10 @@ export default function AboutPage() {
                     <li>The seller is not obliged to participate in the dispute resolution procedure.</li>
                 </ul>
 
-                <h4 className="font-semibold">12. Right of withdrawal from Frederik Schlüter in the event of delayed payment by the customer according to section 4.5</h4>
+                <h4 className="font-semibold">12. Right of withdrawal from Aymen Braikia in the event of delayed payment by the customer according to section 4.5</h4>
                 <ul className="list-disc list-inside ml-4">
                     <li>
-                        If the customer does not meet his payment obligations within the period specified under section 4.5, Frederik Schlüter is entitled to withdraw from the contract without prior notice. Any partial payments made by the
+                        If the customer does not meet his payment obligations within the period specified under section 4.5, Aymen Braikia is entitled to withdraw from the contract without prior notice. Any partial payments made by the
                         customer will be returned within a maximum of 21 days.
                     </li>
                     <li>The declaration of withdrawal is made in writing by e‑mail.</li>

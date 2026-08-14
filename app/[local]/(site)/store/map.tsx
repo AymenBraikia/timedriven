@@ -1,5 +1,5 @@
 export default function Map() {
-    const address = encodeURIComponent("TIMEDRIVEN, Walther-von-Cronberg-Platz 1, 60594 Frankfurt am Main, Germany");
+    const address = encodeURIComponent("TIMEDRIVEN, Walther-von-Cronberg-Platz 1, 60439 Frankfurt am Main, Germany");
     return (
         <div className="w-full overflow-hidden ">
             <iframe
