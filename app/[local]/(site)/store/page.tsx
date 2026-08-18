@@ -75,9 +75,9 @@ export default function StorePage() {
                         <div className="flex flex-col w-full lg:w-[calc(33%-25px)] xl:w-[calc(50%-30px)] gap-10">
                             <h5>{t("contactHeading")}</h5>
                             <div className="flex justify-between items-start flex-col text-sm">
-                                <p>+49 123 4567 8910</p>
-                                <p>+49 123 4567 890</p>
-                                <p>info@example.com</p>
+                                <p>+213 559 07 8448</p>
+                                <p>+213 559 07 8448</p>
+                                <p>aymebraikia1@gmail.com</p>
                             </div>
                         </div>
                     </div>

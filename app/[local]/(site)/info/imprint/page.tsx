@@ -21,7 +21,7 @@ export default async function ImprintPage() {
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("emailLabel")}</p>
-                    info@example.com
+                    aymebraikia1@gmail.com
                 </div>
 
                 <div className="flex-center gap-2">

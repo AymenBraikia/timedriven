@@ -18,9 +18,9 @@ export default function Footer() {
                         <li>Marie-Curie-Straße 14</li>
                         <li>60439 Frankfurt am Main</li>
                         <li>Germany</li>
-                        <li>+49 123 4567 8910</li>
-                        <li>+49 123 4567 890</li>
-                        <li>info@example.com</li>
+                        <li>+213 559 07 8448</li>
+                        <li>+213 559 07 8448</li>
+                        <li>aymebraikia1@gmail.com</li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
@@ -36,11 +36,7 @@ export default function Footer() {
                                 {t_nav("spareParts")}
                             </Link>
                         </li>
-                        <li>
-                            <Link aria-label="favorites" href={"/favorites"} className="underline">
-                                {t_nav("favorites")}
-                            </Link>
-                        </li>
+
                         <li>
                             <Link aria-label="about us" href={"/info/about"} className="underline">
                                 {t_nav("aboutUs")}

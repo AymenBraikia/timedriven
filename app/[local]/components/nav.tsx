@@ -29,11 +29,7 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                                 {nav("spareParts")}
                             </Link>
                         </li>
-                        <li>
-                            <Link className="text-sm" aria-label="favorites" href="/favorites">
-                                {nav("favorites")}
-                            </Link>
-                        </li>
+
                         <li>
                             <Link className="text-sm" aria-label="about us" href="/info/about">
                                 {nav("aboutUs")}
