@@ -6,7 +6,7 @@ export interface Watch {
     reference: string;
     year: number;
     price: number;
-    currency: "EUR" | "USD";
+    currency: "EUR";
     condition: "Pre-Owned" | "New";
     gender: "Men" | "Women";
     movement: "Automatic" | "Manual" | "Quartz";
@@ -24,3 +24,5 @@ export interface Watch {
     date_added: Date | string;
     relevance_score: number;
 }
+
+

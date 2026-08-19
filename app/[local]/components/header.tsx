@@ -198,7 +198,7 @@ export default function Header() {
                 </div>
 
                 {!session?.email && (
-                    <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary`} href={"/auth/sign_up"}>
+                    <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary capitalize`} href={"/auth/sign_up"}>
                         {t("buttons.register")}
                     </Link>
                 )}
