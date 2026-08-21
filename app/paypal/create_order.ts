@@ -75,7 +75,7 @@ export async function create_order(): Promise<string> {
             purchase_units: [
                 {
                     reference_id: ref_id,
-                    description: "Timedriven",
+                    description: "arvell",
                     // custom_id: ref_id,
                     items,
 
@@ -95,14 +95,14 @@ export async function create_order(): Promise<string> {
                     },
 
                     application_context: {
-                        brand_name: "Timedriven",
+                        brand_name: "arvell",
                         locale: "en-US",
                         landing_page: "LOGIN",
                         shipping_preference: "NO_SHIPPING",
                         user_action: "PAY_NOW",
 
-                        return_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://timedriven.vercel.app") + "/thank_you/",
-                        cancel_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://timedriven.vercel.app") + "/cart/",
+                        return_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://arvell.vercel.app") + "/thank_you/",
+                        cancel_url: (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://arvell.vercel.app") + "/cart/",
                     },
                 },
             ],

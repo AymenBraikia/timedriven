@@ -1,15 +1,15 @@
 {
     "meta": {
-        "siteName": "TIMEDRIVEN",
-        "titleDefault": "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
+        "siteName": "ARVELL",
+        "titleDefault": "ARVELL | High-End Luxury Watches & Expert Consultancy",
         "description": "Explore our curated collection of pristine pre-owned and new luxury watches, including Rolex, Patek Philippe, and Cartier. Book a professional consultation with our horology experts today.",
-        "keywords": ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "TIMEDRIVEN"],
+        "keywords": ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "ARVELL"],
         "ogDescription": "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
-        "ogImageAlt": "TIMEDRIVEN Luxury Watch Collection",
+        "ogImageAlt": "ARVELL Luxury Watch Collection",
         "twitterDescription": "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments."
     },
     "common": {
-        "brand": "TIMEDRIVEN",
+        "brand": "ARVELL",
         "nav": {
             "watches": "Watches",
             "spareParts": "Spare Parts",
@@ -37,8 +37,8 @@
             "withdrawal": "Withdrawal",
             "disclaimer": "Disclaimer",
             "cookiePolicy": "Cookie Policy",
-            "disclaimerText": "Timedriven is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.",
-            "copyright": "©{year} Timedriven. All Rights Reserved."
+            "disclaimerText": "Arvell is an independent dealer and is not affiliated with any other brand, nor is it an authorized reseller.",
+            "copyright": "©{year} Arvell. All Rights Reserved."
         },
         "contactLabels": {
             "phonePrimary": "Phone",
@@ -154,7 +154,7 @@
             "password": "Password",
             "firstNamePlaceholder": "Jordan",
             "lastNamePlaceholder": "Blake",
-            "emailPlaceholder": "Jordan@timedriven.com",
+            "emailPlaceholder": "Jordan@arvell.com",
             "passwordPlaceholder": "At least 8 characters",
             "agree": "agree to the Terms of Service and Privacy Policy",
             "createAccount": "Create account",
@@ -170,7 +170,7 @@
             "description": "Save the pieces you're watching, track offers, and check out faster next time.",
             "email": "Email",
             "password": "Password",
-            "emailPlaceholder": "Jordan@timedriven.com",
+            "emailPlaceholder": "Jordan@arvell.com",
             "passwordPlaceholder": "At least 8 characters",
             "logIn": "Log in",
             "loggingIn": "Logging you in…",
@@ -180,7 +180,7 @@
         }
     },
     "home": {
-        "heroTitle": "TIMEDRIVEN",
+        "heroTitle": "ARVELL",
         "heroSubtitle": "Your partner for high-end watches",
         "discover": "Discover",
         "newArrivalsHeading": "New Arrivals",
@@ -214,7 +214,7 @@
         "title": "Spare Parts"
     },
     "store": {
-        "heading": "Timedriven Store Frankfurt",
+        "heading": "Arvell Store Frankfurt",
         "cta": "Book an appointment",
         "welcomeText": "We look forward to welcoming you to our store soon.",
         "appointmentNote": "Please make an appointment to ensure the watch you are looking for is available at your time of visit.",
@@ -238,7 +238,7 @@
     "sell": {
         "heading": "Sell/Consign",
         "formCtaHeading": "Fill out the form",
-        "formCtaText": "Timedriven’s expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
+        "formCtaText": "Vayro’s expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
         "beginCta": "Begin",
         "howItWorksHeading": "How it works",
         "consign": {
@@ -269,7 +269,7 @@
         },
         "sellDirect": {
             "heading": "Sell",
-            "intro": "Timedriven’s expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
+            "intro": "Vayro’s expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
             "steps": [
                 {
                     "title": "Provide Details about your Watch",
@@ -291,7 +291,7 @@
         },
         "form": {
             "heading": "Consignment / Sell your Watch",
-            "intro": "Timedriven's expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
+            "intro": "Arvell's expert appraisers provide prompt and detailed estimates so you can get the most out of your sale.",
             "sections": {
                 "personalInformation": "Personal Information",
                 "salePreference": "Sale preference",
@@ -319,7 +319,7 @@
     },
     "polish": {
         "heading": "Polishing and Service",
-        "intro": "At Timedriven, we offer a first-class polishing and repair service for top-class brands such as Rolex, IWC, Tudor, Omega and Cartier. Our experienced watchmaker will get your watch in top shape – from precise polishing to professional maintenance.",
+        "intro": "At Arvell, we offer a first-class polishing and repair service for top-class brands such as Rolex, IWC, Tudor, Omega and Cartier. Our experienced watchmaker will get your watch in top shape – from precise polishing to professional maintenance.",
         "servicesHeading": "Our services at a glance:",
         "polishing": {
             "heading": "Polishing & reconditioning:",
@@ -364,7 +364,7 @@
         "heading": "About Us",
         "paragraphs": [
             "Our story began with a spark—an elegant timepiece worn by a legendary British agent that ignited a lifelong passion in our founder, Aymen Braikia. This fascination with horology transformed Frederik from a young enthusiast into a distinguished dealer of high-end timepieces. In 2019, while pursuing his degree in mechanical engineering, he established the company originally known as FFSWATCHES, channeling his obsession into a thriving business dedicated to iconic wristwatches.",
-            "At Timedriven, we are your trusted experts for exquisite timepieces both new and pre-owned. Our expertise is driven by passion: we offer only the finest timepieces, each one a piece we would proudly wear ourselves. Our in-house watchmaker meticulously inspects every watch to ensure its authenticity and optimal performance, providing you with confidence in your purchase.",
+            "At Arvell, we are your trusted experts for exquisite timepieces both new and pre-owned. Our expertise is driven by passion: we offer only the finest timepieces, each one a piece we would proudly wear ourselves. Our in-house watchmaker meticulously inspects every watch to ensure its authenticity and optimal performance, providing you with confidence in your purchase.",
             "Our team and in-house watch maker meticulously inspects every watch before selling it to guarantee its authenticity and performance.",
             "Looking to add to your collection? We offer an impressive selection of prestigious brands.",
             "Our brands: Rolex, Cartier, Audemars Piguet, Patek Philippe, Omega, Tudor, IWC, Glashütte, Breitling and more",
@@ -527,7 +527,7 @@
     },
     "imprint": {
         "heading": "Imprint",
-        "companyLabel": "Timedriven",
+        "companyLabel": "Arvell",
         "phoneLabel": "Phone number:",
         "emailLabel": "E-mail:",
         "vatIdLabel": "Sales tax identification number:",
@@ -549,7 +549,7 @@
             "sections": {
                 "controller": {
                     "heading": "Information about us as controllers of your data",
-                    "text": "The party responsible for this website (the “controller”) for purposes of data protection law is Timedriven, represented by its owner. Contact details are listed in the Imprint."
+                    "text": "The party responsible for this website (the “controller”) for purposes of data protection law is Arvell, represented by its owner. Contact details are listed in the Imprint."
                 },
                 "rights": {
                     "heading": "The rights of users and data subjects",

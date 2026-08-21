@@ -19,25 +19,25 @@ const gelasio = Gelasio({
 
 export const metadata: Metadata = {
     title: {
-        default: "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
-        template: "%s | TIMEDRIVEN",
+        default: "ARVELL | High-End Luxury Watches & Expert Consultancy",
+        template: "%s | ARVELL",
     },
     description: "Explore our curated collection of pristine pre-owned and new luxury watches, including Rolex, Patek Philippe, and Cartier. Book a professional consultation with our horology experts today.",
-    keywords: ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "TIMEDRIVEN"],
-    authors: [{ name: "TIMEDRIVEN" }],
-    creator: "TIMEDRIVEN",
-    metadataBase: new URL("https://timedriven.vercel.app/"),
+    keywords: ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "ARVELL"],
+    authors: [{ name: "ARVELL" }],
+    creator: "ARVELL",
+    metadataBase: new URL("https://arvell.vercel.app/"),
     openGraph: {
-        title: "TIMEDRIVEN | High-End Luxury Watches & Expert Consultancy",
+        title: "ARVELL | High-End Luxury Watches & Expert Consultancy",
         description: "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
-        url: "https://timedriven.vercel.app/",
-        siteName: "TIMEDRIVEN",
+        url: "https://arvell.vercel.app/",
+        siteName: "ARVELL",
         images: [
             {
                 url: "/banner.webp",
                 width: 1200,
                 height: 630,
-                alt: "TIMEDRIVEN Luxury Watch Collection",
+                alt: "ARVELL Luxury Watch Collection",
             },
         ],
         locale: "en_US",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "TIMEDRIVEN | High-End Luxury Watches",
+        title: "ARVELL | High-End Luxury Watches",
         description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
         images: ["/banner.webp"],
     },
@@ -64,9 +64,9 @@ export default function RootLayout({
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <NextIntlClientProvider>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden p-4">{children}</div>
-                </ThemeProvider>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                        <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden p-4">{children}</div>
+                    </ThemeProvider>
                 </NextIntlClientProvider>
             </body>
         </html>

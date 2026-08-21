@@ -9,7 +9,7 @@ export default async function ImprintPage() {
 
             <div className="flex justify-center items-start flex-col gap-2 text-[14px]">
                 <p className="font-bold">Aymen Braikia</p>
-                <p>Timedriven</p>
+                <p>Arvell</p>
                 <p>Marie-Curie-Straße 14</p>
                 <p>60439 Frankfurt am Main</p>
                 <p>Germany</p>

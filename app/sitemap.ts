@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://timedriven.vercel.app";
+const baseUrl = "https://arvell.vercel.app";
 
 const locales = ["en", "de"] as const;
 

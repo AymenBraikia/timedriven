@@ -140,12 +140,12 @@ export default async function CookiesPage() {
                         <p>{t("contact.intro")}</p>
 
                         <p>Frederik Schlüter</p>
-                        <p>Timedriven</p>
+                        <p>Arvell</p>
                         <p>Walther-von-Cronberg-Platz 18</p>
                         <p>60594 Frankfurt am Main</p>
                         <p>Germany</p>
-                        <p>Website: https://timedriven.de</p>
-                        <p>Email: info@timedriven.com</p>
+                        <p>Website: https://arvell.de</p>
+                        <p>Email: info@arvell.com</p>
                         <p>{common("contactLabels.phonePrimary")}: +4915255443810</p>
 
                         <p className="mt-2">

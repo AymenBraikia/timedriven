@@ -2,7 +2,6 @@
 import dynamic from "next/dynamic";
 
 import { useEffect, useReducer, useRef } from "react";
-import Logo from "./svg/logo";
 import Link from "next/link";
 import MenuBurger from "./svg/menu_burger";
 import Cart from "./svg/cart";
@@ -15,6 +14,7 @@ import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
+import { useTheme } from "next-themes";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -73,6 +73,8 @@ export default function Header() {
     const [ui, dispatch] = useReducer(headerReducer, { ...initialUIState, lang: locale.toUpperCase() as "EN" | "DE" });
     const cartRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLElement>(null);
+    
+    const { theme } = useTheme();
 
     useEffect(() => {
         const onTouchStart = (e: TouchEvent) => {
@@ -187,8 +189,8 @@ export default function Header() {
             </div>
 
             <div className="w-1/3 flex-center">
-                <Link aria-label={"home"} href={"/"}>
-                    <Logo classnames="w-18 sm:w-25" />
+                <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
+                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${theme == "light" ? "brightness-0" : "brightness-100"} `} />
                 </Link>
             </div>
 
@@ -202,11 +204,16 @@ export default function Header() {
                         {t("buttons.register")}
                     </Link>
                 )}
-                <button aria-label={"change language"} type="button" className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`} onClick={() => {
-                    const nextLocale = locale === "en" ? "de" : "en";
-                    dispatch({ type: "TOGGLE_LANG" });
-                    router.replace(pathname, { locale: nextLocale });
-                }}>
+                <button
+                    aria-label={"change language"}
+                    type="button"
+                    className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`}
+                    onClick={() => {
+                        const nextLocale = locale === "en" ? "de" : "en";
+                        dispatch({ type: "TOGGLE_LANG" });
+                        router.replace(pathname, { locale: nextLocale });
+                    }}
+                >
                     {ui.lang}
                 </button>
                 <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>

@@ -3,18 +3,24 @@ import Link from "next/link";
 import Instagram from "./svg/instagram";
 import Watch from "./svg/watch";
 import Ebay from "./svg/ebay";
-import HorizontalLogo from "./svg/logo_horizontal";
 import { useTranslations } from "next-intl";
 import WhatsApp from "./svg/whatsapp";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function Footer() {
     const t = useTranslations("common.footer");
     const t_nav = useTranslations("common.nav");
+
+    const { theme } = useTheme();
+
     return (
         <footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold z-30">
             <section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
-                    <HorizontalLogo classnames={"w-64"} />
+                    <div className="relative w-40 aspect-19/4">
+                        <Image src={"/logo_horizontal_light.png"} alt="Arvell" fill className={`object-cover object-center ${theme == "light" ? "brightness-0" : "brightness-100"} `} />
+                    </div>
                     <ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
                         <li>Marie-Curie-Straße 14</li>
                         <li>60439 Frankfurt am Main</li>
