@@ -5,6 +5,7 @@ import Watch from "./svg/watch";
 import Ebay from "./svg/ebay";
 import HorizontalLogo from "./svg/logo_horizontal";
 import { useTranslations } from "next-intl";
+import WhatsApp from "./svg/whatsapp";
 
 export default function Footer() {
     const t = useTranslations("common.footer");
@@ -18,8 +19,7 @@ export default function Footer() {
                         <li>Marie-Curie-Straße 14</li>
                         <li>60439 Frankfurt am Main</li>
                         <li>Germany</li>
-                        <li>+213 559 07 8448</li>
-                        <li>+213 559 07 8448</li>
+                        <li>+213 559 07 84 48</li>
                         <li>aymebraikia1@gmail.com</li>
                     </ul>
                 </div>
@@ -83,25 +83,25 @@ export default function Footer() {
                     <h5 className="lg:title5 title4">{t("otherPlatformsHeading")}</h5>
                     <ul className="flex flex-col justify-start items-start gap-2">
                         <li>
-                            <Link aria-label="visit chrono 24" href={"https://www.chrono24.de/dealer/timedriven/index.htm"} className="underline flex justify-start items-center gap-4">
+                            <Link target={"_blank"} aria-label="visit chrono 24" href={"https://www.chrono24.com"} className="underline flex justify-start items-center gap-4">
                                 {<Watch classnames={"w-6"} />}
                                 <p>Chrono 24</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="ebay store" href={"https://www.ebay.de/usr/timedriven*de"} className="underline flex justify-start items-center gap-4">
+                            <Link target={"_blank"} aria-label="ebay store" href={"https://www.ebay.com"} className="underline flex justify-start items-center gap-4">
                                 {<Ebay classnames={"w-6"} />}
                                 <p>Ebay</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="ebay store" href={"https://www.ebay-kleinanzeigen.de/pro/timedriven/"} className="underline flex justify-start items-center gap-4">
-                                {<Ebay classnames={"w-6"} />}
-                                <p>Ebay Kleinanzeigen</p>
+                            <Link target={"_blank"} aria-label="WhatsApp" href={"https://wa.me/213559078448"} className="underline flex justify-start items-center gap-4">
+                                {<WhatsApp classnames={"w-6"} />}
+                                <p>WhatsApp</p>
                             </Link>
                         </li>
                         <li>
-                            <Link aria-label="instagram page" href={"https://www.instagram.com/timedriven.de/"} className="underline flex justify-start items-center gap-4">
+                            <Link target={"_blank"} aria-label="instagram page" href={"https://www.instagram.com/ayme.n0412/"} className="underline flex justify-start items-center gap-4">
                                 {<Instagram classnames={"w-6"} />}
                                 <p>Instagram</p>
                             </Link>

@@ -16,7 +16,7 @@ export default async function ImprintPage() {
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("phoneLabel")}</p>
-                    +49 (0) 123 4567 8910
+                    +213 559 07 84 48
                 </div>
 
                 <div className="flex-center gap-2">

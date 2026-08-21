@@ -17,11 +17,11 @@ export default function generate_filters(items: (Watch | Spare)[]): filters_type
         availability = { inStock: false };
 
     for (const item of items) {
-        if (!(item.brand in brands)) brands[item.brand] = false;
+        if (!(item.brand in brands) && item.brand != "UNVERIFIED") brands[item.brand] = false;
         if (!(item.movement in movement)) movement[item.movement] = false;
-        if (!(item.caseMaterial in caseMaterial)) caseMaterial[item.caseMaterial] = false;
-        if (!(item.braceletMaterial in braceletMaterial)) braceletMaterial[item.braceletMaterial] = false;
-        if (!(item.dialColor in dialColor)) dialColor[item.dialColor] = false;
+        if (!(item.caseMaterial in caseMaterial) && item.caseMaterial != "UNVERIFIED") caseMaterial[item.caseMaterial] = false;
+        if (!(item.braceletMaterial in braceletMaterial) && item.braceletMaterial != "UNVERIFIED") braceletMaterial[item.braceletMaterial] = false;
+        if (!(item.dialColor in dialColor) && item.dialColor != "UNVERIFIED") dialColor[item.dialColor] = false;
 
         if (item.year < year.min) year.min = item.year;
         else if (item.year > year.max) year.max = item.year;
