@@ -16,12 +16,12 @@ export default async function ImprintPage() {
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("phoneLabel")}</p>
-                    +213 559 07 84 48
+                    +49 30 2312 5100
                 </div>
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("emailLabel")}</p>
-                    aymebraikia1@gmail.com
+                    info@arvell.com
                 </div>
 
                 <div className="flex-center gap-2">

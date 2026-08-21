@@ -25,8 +25,8 @@ export default function Footer() {
                         <li>Marie-Curie-Straße 14</li>
                         <li>60439 Frankfurt am Main</li>
                         <li>Germany</li>
-                        <li>+213 559 07 84 48</li>
-                        <li>aymebraikia1@gmail.com</li>
+                        <li>+49 30 2312 5100</li>
+                        <li>info@arvell.com</li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">

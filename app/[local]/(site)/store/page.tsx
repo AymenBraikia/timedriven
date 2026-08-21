@@ -77,7 +77,7 @@ export default function StorePage() {
                             <div className="flex justify-between items-start flex-col text-sm">
                                 <p>+213 559 07 8448</p>
                                 <p>+213 559 07 8448</p>
-                                <p>aymebraikia1@gmail.com</p>
+                                <p>info@arvell.com</p>
                             </div>
                         </div>
                     </div>
