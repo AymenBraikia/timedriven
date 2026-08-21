@@ -26,7 +26,7 @@ export default async function ImprintPage() {
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("vatIdLabel")}</p>
-                    DE123456789
+                    DE385492701
                 </div>
 
                 <div className="flex-center gap-2">

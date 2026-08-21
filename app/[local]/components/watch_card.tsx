@@ -39,16 +39,40 @@ export default memo(function Watch_card({
                 <h4 className="font-semibold capitalize">{name}</h4>
                 <p className="leading-6">{description}</p>
                 <div className="space-y-1 text-sm text-secondary">
-                    <p>{t("movement")}: {movement}</p>
-                    <p>{t("caseSize")}: {size} mm</p>
-                    <p>{t("bracelet")}: {braceletMaterial}</p>
-                    <p>{t("material")}: {caseMaterial}</p>
-                    <p>{t("condition")}: {condition}</p>
+                    {movement == "UNVERIFIED" ? (
+                        <></>
+                    ) : (
+                        <p>
+                            {t("movement")}: {movement}
+                        </p>
+                    )}
+                    <p>
+                        {t("caseSize")}: {size} mm
+                    </p>
+                    {braceletMaterial == "UNVERIFIED" ? (
+                        <></>
+                    ) : (
+                        <p>
+                            {t("bracelet")}: {braceletMaterial}
+                        </p>
+                    )}
+                    {caseMaterial == "UNVERIFIED" ? (
+                        <></>
+                    ) : (
+                        <p>
+                            {t("material")}: {caseMaterial}
+                        </p>
+                    )}
+                    {condition == "UNVERIFIED" ? (
+                        <></>
+                    ) : (
+                        <p>
+                            {t("condition")}: {condition}
+                        </p>
+                    )}
                 </div>
                 <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
             </div>
         </div>
     );
-})
-
-
+});

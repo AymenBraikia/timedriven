@@ -61,16 +61,16 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                             <p>
                                 {t("filters.movement")}: {view.movement}
                             </p>
-                            <p>
+                            <p className={`${view.caseMaterial == "UNVERIFIED" ? "hidden" : "block"}`}>
                                 {t("filters.caseMaterial")}: {view.caseMaterial}
                             </p>
-                            <p>
+                            <p className={`${view.braceletMaterial == "UNVERIFIED" ? "hidden" : "block"}`}>
                                 {t("filters.braceletMaterial")}: {view.braceletMaterial}
                             </p>
                             <p>
                                 {t("filters.condition")}: {view.condition}
                             </p>
-                            <p>
+                            <p className={`${view.dialColor == "UNVERIFIED" ? "hidden" : "block"}`}>
                                 {t("filters.dialColor")}: {view.dialColor}
                             </p>
                             <p>
