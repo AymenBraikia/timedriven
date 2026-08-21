@@ -1,5 +1,5 @@
 export default function Map() {
-    const address = encodeURIComponent("ARVELL, Walther-von-Cronberg-Platz 1, 60439 Frankfurt am Main, Germany");
+    const address = encodeURIComponent("ARVELL, Marie-Curie-Straße 14, 60439 Frankfurt am Main, Germany");
     return (
         <div className="w-full overflow-hidden ">
             <iframe

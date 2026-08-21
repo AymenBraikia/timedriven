@@ -139,7 +139,7 @@ export default async function CookiesPage() {
                     <div className="text-[14px] mt-2 flex flex-col justify-start items-start gap-2">
                         <p>{t("contact.intro")}</p>
 
-                        <p>Frederik Schlüter</p>
+                        <p>Aymen Braikia</p>
                         <p>Arvell</p>
                         <p>Walther-von-Cronberg-Platz 18</p>
                         <p>60594 Frankfurt am Main</p>
