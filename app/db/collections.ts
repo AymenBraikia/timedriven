@@ -9,7 +9,7 @@ import { Appointment } from "@/types/appointment";
 
 export const clientDB = await clientPromise;
 
-export const db = clientDB.db("arvell");
+export const db = clientDB.db("timedriven");
 
 export const watches_collection = db.collection<Watch>("watches");
 export const spares_collection = db.collection<Spare>("spares");
