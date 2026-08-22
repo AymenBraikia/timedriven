@@ -1,13 +1,12 @@
+import { Suspense } from "react";
+import AuthGate from "@/app/components/AuthGate";
+import AuthShell from "@/app/components/AuthShell";
+
 import type { Metadata, Viewport } from "next";
 import { Open_Sans, Gelasio } from "next/font/google";
 import "../globals.css";
-import Header from "@/app/components/header";
-import Footer from "@/app/components/footer";
 
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
-import { CartProvider } from "@/app/(site)/context/cartContext";
-import { AuthProvider } from "@/app/(site)/context/authContext";
-import getUser from "@/app/server/get_user";
 import { NextIntlClientProvider } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
@@ -25,7 +24,6 @@ const gelasio = Gelasio({
     variable: "--font-gelasio",
     display: "swap",
 });
-
 
 export const metadata: Metadata = {
     title: {
@@ -90,13 +88,7 @@ export const viewport: Viewport = {
     themeColor: "#000000",
 };
 
-export default async function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    const session = await getUser();
-
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
@@ -113,22 +105,9 @@ export default async function RootLayout({
                             </filter>
                         </svg>
 
-                        <AuthProvider initialSession={session}>
-                            <CartProvider>
-                                <Header />
-                                <div className="min-h-full flex-center flex-col max-w-dvw overflow-x-hidden pt-20">
-                                    <style>{`
-							.liquid-glass {
-								backdrop-filter: url(#liquid-frosted) blur(4px);
-								-webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
-								background-color: var(--clr-glass);
-								}
-								`}</style>
-                                    {children}
-                                    <Footer />
-                                </div>
-                            </CartProvider>
-                        </AuthProvider>
+                        <Suspense fallback={<AuthShell session={undefined}>{children}</AuthShell>}>
+                            <AuthGate>{children}</AuthGate>
+                        </Suspense>
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </body>
