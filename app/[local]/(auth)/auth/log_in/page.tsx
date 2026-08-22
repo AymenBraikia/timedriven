@@ -13,7 +13,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ re
     const params = use(searchParams);
     const t = useTranslations("auth.login");
 
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -46,7 +46,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ re
         <div className="relative w-full max-w-md flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-6 sm:p-10">
             <div className="flex-center">
                 <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${theme == "light" ? "brightness-0" : "brightness-100"} `} />
+                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${resolvedTheme == "light" ? "brightness-0" : "brightness-100"} `} />
                 </Link>
             </div>
 

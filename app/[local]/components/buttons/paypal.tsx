@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
     const router = useRouter();
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
 
     return (
         <PayPalScriptProvider
@@ -22,7 +22,7 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
                 forceReRender={[theme]}
                 style={{
                     layout: "vertical", // 'vertical' or 'horizontal'
-                    color: theme == "dark" ? "black" : "white", // 'gold', 'blue', 'silver', 'white', 'black'
+                    color: resolvedTheme == "dark" ? "black" : "white", // 'gold', 'blue', 'silver', 'white', 'black'
                     shape: "sharp",
                     label: "checkout",
                     height: 45,

@@ -73,8 +73,8 @@ export default function Header() {
     const [ui, dispatch] = useReducer(headerReducer, { ...initialUIState, lang: locale.toUpperCase() as "EN" | "DE" });
     const cartRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLElement>(null);
-    
-    const { theme } = useTheme();
+
+    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
         const onTouchStart = (e: TouchEvent) => {
@@ -190,7 +190,7 @@ export default function Header() {
 
             <div className="w-1/3 flex-center">
                 <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${theme == "light" ? "brightness-0" : "brightness-100"} `} />
+                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${resolvedTheme == "light" ? "brightness-0" : "brightness-100"} `} />
                 </Link>
             </div>
 
