@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Open_Sans, Gelasio } from "next/font/google";
 import "../globals.css";
 import Header from "@/app/components/header";
@@ -26,42 +26,68 @@ const gelasio = Gelasio({
     display: "swap",
 });
 
+
 export const metadata: Metadata = {
     title: {
-        default: "ARVELL | High-End Luxury Watches & Expert Consultancy",
+        default: "ARVELL | Luxury Watch Platform — Concept by Aymen Braikia",
         template: "%s | ARVELL",
     },
-    description: "Explore our curated collection of pristine pre-owned and new luxury watches, including Rolex, Patek Philippe, and Cartier. Book a professional consultation with our horology experts today.",
-    keywords: ["luxury watches", "pre-owned Rolex", "Patek Philippe Calatrava", "Cartier Panthere", "Rolex Daytona", "buy luxury watches", "watch consultancy", "ARVELL"],
-    authors: [{ name: "ARVELL" }],
-    creator: "ARVELL",
+    description: "A full-stack luxury watch marketplace concept — consignment, spare parts, appointment booking, and multilingual storefront. Built by Aymen Braikia as a demonstration of production-grade e-commerce architecture.",
+    authors: [{ name: "Aymen Braikia" }],
+    creator: "Aymen Braikia",
     metadataBase: new URL("https://arvell.vercel.app/"),
+    alternates: {
+        canonical: "/",
+        languages: {
+            en: "/en",
+            de: "/de",
+        },
+    },
     openGraph: {
-        title: "ARVELL | High-End Luxury Watches & Expert Consultancy",
-        description: "Our curated collection of pre-owned and new luxury watches is waiting for you. Partner with experts for your high-end horology needs.",
+        title: "ARVELL | Luxury Watch Platform Concept",
+        description: "A full-stack e-commerce concept for the luxury watch trade — consignment, appointments, multilingual UX.",
         url: "https://arvell.vercel.app/",
         siteName: "ARVELL",
         images: [
             {
                 url: "/banner.png",
-                width: 1200,
-                height: 630,
-                alt: "ARVELL Luxury Watch Collection",
+                width: 1536,
+                height: 1024,
+                alt: "ARVELL Platform Preview",
             },
         ],
         locale: "en_US",
+        alternateLocale: ["de_DE"],
         type: "website",
     },
     twitter: {
         card: "summary_large_image",
-        title: "ARVELL | High-End Luxury Watches",
-        description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
+        title: "ARVELL | Luxury Watch Platform Concept",
+        description: "A full-stack e-commerce concept for the luxury watch trade.",
         images: ["/banner.png"],
     },
     robots: {
-        index: true,
-        follow: true,
+        index: false,
+        follow: false,
+        googleBot: {
+            index: false,
+            follow: false,
+        },
     },
+    icons: {
+        icon: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
+    },
+    formatDetection: {
+        telephone: false,
+    },
+    category: "technology",
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#000000",
 };
 
 export default async function RootLayout({
