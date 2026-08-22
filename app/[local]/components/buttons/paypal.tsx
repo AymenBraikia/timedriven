@@ -19,7 +19,7 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
             <PayPalButtons
                 disabled={disabled}
                 fundingSource="paypal"
-                forceReRender={[theme]}
+                forceReRender={[resolvedTheme]}
                 style={{
                     layout: "vertical", // 'vertical' or 'horizontal'
                     color: resolvedTheme == "dark" ? "black" : "white", // 'gold', 'blue', 'silver', 'white', 'black'
