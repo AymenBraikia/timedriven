@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         siteName: "ARVELL",
         images: [
             {
-                url: "/banner.webp",
+                url: "/banner.png",
                 width: 1200,
                 height: 630,
                 alt: "ARVELL Luxury Watch Collection",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "ARVELL | High-End Luxury Watches",
         description: "Your partner for high-end watches. Explore Rolex, Patek Philippe, Cartier, and book expert appointments.",
-        images: ["/banner.webp"],
+        images: ["/banner.png"],
     },
     robots: {
         index: true,
