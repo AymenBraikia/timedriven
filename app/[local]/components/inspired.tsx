@@ -12,8 +12,8 @@ export default function Inspired(){
                 <p className="text-4xl sm:text-6xl tracking-wider">{t("getInspiredHeading")}</p>
                 <div className="md:h-full md:w-0.5 w-full h-1 bg-foreground"></div>
                 <div className="text-xl flex flex-col gap-8 h-1/2 font-secondary">
-                    <p className="max-w-100 wrap-break-word tracking-wide leading-8">{t("getInspiredSubtext")}</p>
-                    <Link aria-label="Begin your journey" className="underline" href={"#"}>
+                    <p className="max-w-100 wrap-break-word tracking-wide leading-8 text-shine">{t("getInspiredSubtext")}</p>
+                    <Link aria-label="Begin your journey" className="underline text-shine" href={"/shop"}>
                         {t_btn("begin")}
                     </Link>
                 </div>

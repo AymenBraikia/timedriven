@@ -63,7 +63,9 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                         ))}
                     </div>
                 ) : value ? (
-                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto frost font-secondary py-2">{fetching ? t("searching") : t("noSearchResults")}</div>
+                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 frost text-shine">
+                        {fetching ? t("searching") : t("noSearchResults")}
+                    </div>
                 ) : (
                     <></>
                 )}
@@ -82,7 +84,7 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                             ))}
                         </div>
                     ) : value ? (
-                        <div className="flex md:hidden top-[calc(100%+8px)] left-0 w-full h-fit overflow-y-auto font-secondary py-2">{fetching ? "Searching..." : "Sorry, but nothing matched your search terms."}</div>
+                        <div className="flex md:hidden top-[calc(100%+8px)] left-0 w-full h-fit overflow-y-auto font-secondary py-2 text-shine">{fetching ? t("searching") : t("noSearchResults")}</div>
                     ) : (
                         <></>
                     )}

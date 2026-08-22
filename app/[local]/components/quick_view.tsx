@@ -74,7 +74,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                                 {t("filters.dialColor")}: {view.dialColor}
                             </p>
                             <p>
-                                {t("filters.caseDiameterMm")}: {view.caseDiameterMm}mm
+                                {t("filters.caseDiameterMm")}: {view.caseDiameterMm} mm
                             </p>
                             <p>
                                 {t("filters.year")}: {view.year}
@@ -84,7 +84,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                             </p>
                         </div>
 
-                        <p className="text-secondary md:text-primary leading-relaxed tracking-wide text-xs sm:text-sm md:text-base">{view.description}</p>
+                        <p className="leading-relaxed tracking-wide text-xs sm:text-sm md:text-base text-shine">{view.description}</p>
                     </div>
 
                     <div className="w-full flex-center gap-4">

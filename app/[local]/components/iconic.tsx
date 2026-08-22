@@ -30,7 +30,7 @@ export default function Iconic() {
             <br />
             <div className="w-fit">
                 <FadeInObserver>
-                    <p className="font-secondary text-xl">{t("brandsSubtext")}</p>
+                    <p className="font-secondary text-xl text-shine">{t("brandsSubtext")}</p>
                 </FadeInObserver>
             </div>
             <div className={`my-5 font-secondary `}>

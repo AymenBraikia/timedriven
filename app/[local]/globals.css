@@ -134,6 +134,24 @@ img {
     user-select: none;
 }
 
+@utility text-shine {
+    display: inline-block;
+    color: transparent;
+    background: linear-gradient(120deg, var(--clr-secondary) 0%, var(--clr-secondary) 40%, var(--clr-primary) 50%, var(--clr-secondary) 60%, var(--clr-secondary) 100%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shine 5s linear infinite;
+}
+
+@keyframes text-shine {
+    to {
+        background-position: -200% 0;
+    }
+}
+
 @utility button {
     color: var(--clr-primary);
     background-color: var(--bg-primary);

@@ -16,57 +16,57 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
             className={`liquid-glass w-dvw sm:min-w-100 lg:w-[20dvw] transition-default max-h-dvh h-dvh fixed top-0 left-0 flex flex-col justify-between items-start gap-5 p-5 md:gap-8 md:px-16 md:py-8 ${ui.isNavOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
             <div className="flex flex-col h-7/10 md:h-6/10 gap-6">
-                <div className="flex flex-col gap-2 md:gap-3">
+                <div className="flex flex-col gap-5 md:gap-6">
                     <h5 className="title3">{footer("shopHeading")}</h5>
-                    <ul className="gap-2!">
+                    <ul className="gap-4!">
                         <li>
-                            <Link className="text-sm" aria-label="watches list" href="/shop">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="watches list" href="/shop">
                                 {nav("watches")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="spare parts" href="/spare">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="spare parts" href="/spare">
                                 {nav("spareParts")}
                             </Link>
                         </li>
 
                         <li>
-                            <Link className="text-sm" aria-label="about us" href="/info/about">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="about us" href="/info/about">
                                 {nav("aboutUs")}
                             </Link>
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col gap-2 md:gap-3">
+                <div className="flex flex-col gap-5 md:gap-6">
                     <h5 className="title3">{footer("serviceHeading")}</h5>
-                    <ul className="gap-2!">
+                    <ul className="gap-4!">
                         <li>
-                            <Link className="text-sm" aria-label="Store" href="/store">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Store" href="/store">
                                 {nav("store")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Sell / Consign" href="/sell">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Sell / Consign" href="/sell">
                                 {nav("sellConsign")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Polishing and Service" href="/polish">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Polishing and Service" href="/polish">
                                 {nav("polishingServices")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Shipping & Payments" href="/info/payments">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Shipping & Payments" href="/info/payments">
                                 {nav("shippingPayments")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Frequently Asked Questions" href="/info/faq">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Frequently Asked Questions" href="/info/faq">
                                 {nav("faq")}
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" aria-label="Vacancies" href="/info/vacancies">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Vacancies" href="/info/vacancies">
                                 {nav("vacancies")}
                             </Link>
                         </li>

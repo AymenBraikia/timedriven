@@ -37,7 +37,7 @@ export default memo(function Watch_card({
             <div className="py-4 flex flex-col justify-start items-start gap-3 min-h-50">
                 <span className="text-xs uppercase tracking-[0.3em] text-secondary">{brand}</span>
                 <h4 className="font-semibold capitalize">{name}</h4>
-                <p className="leading-6">{description}</p>
+                <p className="leading-6 text-shine">{description}</p>
                 <div className="space-y-1 text-sm text-secondary">
                     {movement == "UNVERIFIED" ? (
                         <></>

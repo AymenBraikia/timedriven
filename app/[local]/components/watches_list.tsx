@@ -156,7 +156,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                 <div className="min-w-0 flex-1">
                     <div className="flex w-full flex-col gap-5 py-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex w-full max-w-xl flex-col gap-2">
-                            <Input label={t("searchPlaceholder")} type="text" placeholder={t("searchPlaceholder")} value={query} onChange={(e) => set_query(e.target.value)} />
+                            <Input label={t("search")} type="text" placeholder={t("searchPlaceholder")} value={query} onChange={(e) => set_query(e.target.value)} />
                         </div>
                         <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end">
                             <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-none">
@@ -190,7 +190,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
                             ))
                         ) : (
                             <div className="text-center py-12 col-span-full">
-                                <p className="text-secondary">{t("noResults")}</p>
+                                <p className="text-secondary text-shine">{t("noResults")}</p>
                             </div>
                         )}
                     </div>
