@@ -103,25 +103,24 @@ export default function Order_list() {
 
     return (
         <div className="flex justify-start items-start flex-col gap-4 w-full h-fit font-secondary">
-            <div className="flex flex-col justify-start items-start w-full h-[50dvh] border-b">
-                <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2 capitalize border-b bg-primary">
+            <div className="flex flex-col justify-start items-start w-full max-h-[50dvh] border-b">
+                <div className="sm:flex hidden justify-between items-center font-medium w-full text-xl gap-4 p-2 capitalize border-b">
                     <p className="min-w-30 w-full">{t("watchSpare")}</p>
-                    <p className="min-w-15 max-w-15">{t("qty")}</p>
-                    <p className="min-w-25">{t("price")}</p>
                 </div>
-                <div className="w-full h-full overflow-y-auto overflow-x-hidden gap-2 flex flex-col justify-start items-start py-2">
-                    {session.cart.map((i) => (
-                        <div key={i.slug} className="flex justify-between items-center sm:flex-nowrap flex-wrap gap-4 h-fit w-full bg-secondary pr-4">
-                            <div className="relative aspect-square sm:h-25 h-20">
-                                <Image src={i.images[0]} alt={i.slug} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
+                <div className="w-full max-h-full overflow-y-auto overflow-x-hidden gap-2 flex flex-col justify-start items-start py-2">
+                    {session.cart.map((i, c) => (
+                        <div key={i.slug} className={`flex justify-between items-center gap-4 h-25 shrink-0 sm:h-fit w-full pr-4 pb-2 ${session.cart.length - 1 != c ? "border-b" : ""}`}>
+                            <div className="relative aspect-square sm:h-25 h-full">
+                                <Image src={i.images[0]} alt={i.slug} fill sizes="25vw" />
                             </div>
-                            <div className="sm:h-25 h-20 text-sm flex-col flex justify-center items-start sm:w-100 w-[calc(100%-96px)] tracking-wider capitalize">
-                                <h6>{i.brand}</h6>
-                                <p className="text-secondary">{i.model}</p>
+
+                            <div className="flex justify-between items-center flex-wrap gap-4 h-full w-full">
+                                <div className="w-full flex justify-start-items-start gap-2 tracking-wider capitalize">
+                                    <h6 className="text-shine">{i.brand + " " + i.model}</h6>
+                                </div>
+                                <p className="text-base font-medium min-w-20 max-w-30 block font-sans">Quantity: {i.quantity}</p>
+                                <p className="text-base sm:text-base font-medium w-fit sm:w-25 font-sans">{format_price(i.price * i.quantity)}</p>
                             </div>
-                            <p className="text-2xl text-center font-medium min-w-20 max-w-20 block sm:hidden!">Qty: {i.quantity}</p>
-                            <p className="text-2xl text-center font-medium min-w-15 max-w-15 hidden sm:flex-center">{i.quantity}</p>
-                            <p className="text-2xl sm:text-base font-medium w-fit sm:w-25">{format_price(i.price * i.quantity)}</p>
                         </div>
                     ))}
                 </div>
@@ -130,7 +129,7 @@ export default function Order_list() {
                 <h5>{t("subtotal")}</h5>
                 <h5>{format_price(total)}</h5>
             </div>
-            <div className="w-full flex flex-col justify-center items-start gap-2 border-b tracking-wider">
+            <div className="w-full flex flex-col justify-center items-start gap-4 border-b tracking-wider">
                 <CheckBox label={t_cart("localPickup")} action={set_local_pickup} active={local_pickup} />
                 <div className={`w-full flex justify-between items-center ${local_pickup ? "line-through brightness-75" : ""}`}>
                     <p>{t_cart("shipping_to", { country: session.address.country })}</p>
@@ -228,7 +227,10 @@ export default function Order_list() {
                         ) : payment_method.name == "PayPal" ? (
                             <div className="w-full">
                                 <PayPal_Btn disabled={false} />
-                                <p className="text-sm w-full">{t("paypalNote")}</p>
+                                <p className="w-full">
+                                    {t("paypalNote")} <br /> <br /> <span className="text-shine">{t("email")}: </span> <span className="font-semibold">test@arvell.com</span>
+                                    <br /> <span className="text-shine">{t("password")}: </span> <span className="font-semibold">Arvell_123</span>
+                                </p>
                             </div>
                         ) : (
                             <>
@@ -252,7 +254,10 @@ export default function Order_list() {
                 ) : payment_method.name == "PayPal" ? (
                     <div className="w-full">
                         <PayPal_Btn disabled={false} />
-                        <p className="text-sm w-full">{t("paypalNote")}</p>
+                        <p className="w-full">
+                            {t("paypalNote")} <br /> <br /> <span className="text-shine">{t("email")}: </span> <span className="font-semibold">test@arvell.com</span>
+                            <br /> <span className="text-shine">{t("password")}: </span> <span className="font-semibold">Arvell_123</span>
+                        </p>
                     </div>
                 ) : (
                     <h3>{t("missingBilling")}</h3>
@@ -261,4 +266,3 @@ export default function Order_list() {
         </div>
     );
 }
-

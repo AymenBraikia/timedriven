@@ -1,10 +1,10 @@
 export default interface filters_type {
-    brands: Record<string, boolean>;
+    brands?: Record<string, boolean>;
+    movement?: Record<string, boolean>;
+    caseMaterial?: Record<string, boolean>;
+    braceletMaterial?: Record<string, boolean>;
+    dialColor?: Record<string, boolean>;
 
-    movement: Record<string, boolean>;
-    caseMaterial: Record<string, boolean>;
-    braceletMaterial: Record<string, boolean>;
-    dialColor: Record<string, boolean>;
     condition: {
         New: boolean;
         "Pre-Owned": boolean;

@@ -36,10 +36,10 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                                 </div>
                                 <div className="w-3/4 h-full flex flex-col justify-between">
                                     <div>
-                                        <p className="title4 sm:title5 capitalize">{i.brand}</p>
-                                        <p className="text-secondary text-sm sm:title6 md:title-base capitalize">{i.model}</p>
+                                        <p className="title4 sm:title5 capitalize text-shine">{i.brand}</p>
+                                        <p className="text-base sm:title6 capitalize">{i.model}</p>
                                     </div>
-                                    <p className="title6 sm:title5 md:title-base lg:title6">
+                                    <p className="title6 sm:title5 md:title-base lg:title6 font-sans">
                                         {i.quantity} x {format_price(i.price)}
                                     </p>
                                 </div>
@@ -51,8 +51,8 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                             <p className="sm:title5 title6">{t("subtotal")}</p>
                             <p className="sm:title5 title6">{format_price(subtotal)}</p>
                         </div>
-                        <Link aria-label={t("emptyCta")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
-                            {t("emptyCta")}
+                        <Link aria-label={t("viewCart")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
+                            {t("viewCart")}
                         </Link>
                         <Link aria-label={t("checkoutCta")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/checkout">
                             {t("checkoutCta")}

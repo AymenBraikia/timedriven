@@ -72,7 +72,7 @@ export default function Form() {
     return (
         <div className="flex-center flex-col gap-4" id="form">
             <h3 className="font-medium font-secondary">{t("heading")}</h3>
-            <p>{t("intro")}</p>
+            <p className="text-shine">{t("intro")}</p>
 
             <div className="flex justify-between items-center w-full mt-10 gap-2 max-w-150">
                 <h6 className="text-sm! text-center">{t("sections.personalInformation")}</h6>

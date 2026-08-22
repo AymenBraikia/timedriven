@@ -108,7 +108,7 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
 
             <aside
                 aria-label="Watch filters"
-                className={`frost fixed left-0 top-25 z-100 flex sm:w-80 w-full flex-col gap-6 sm:overflow-y-visible max-h-[calc(100dvh-100px)] overflow-y-auto p-4 transition-default lg:sticky lg:top-4 lg:h-fit lg:translate-x-0 lg:p-0 ${
+                className={`frost fixed left-0 top-25 z-100 flex sm:w-80 w-full flex-col gap-6 sm:overflow-y-visible max-h-[calc(100dvh-100px)] overflow-y-auto p-4 transition-default lg:sticky lg:top-4 lg:min-h-fit lg:h-fit lg:translate-x-0 lg:p-0 ${
                     active ? "translate-x-0" : "-translate-x-full"
                 }`}
             >
@@ -117,7 +117,7 @@ export default function WatchFilters({ filters, set_Filters, active, setActive, 
                 </button>
 
                 {categories.map((category) => {
-                    const options = filters[category];
+                    const options = filters[category]!;
 
                     return (
                         <Dropdown key={category} titles={t(category)}>

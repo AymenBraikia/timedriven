@@ -45,23 +45,23 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
             }
 
             if (applyFilters.get("brands")) {
-                if (!filters.brands[watch.brand as keyof typeof filters.brands]) return false;
+                if (!filters.brands?.[watch.brand as keyof typeof filters.brands]) return false;
             }
 
             if (applyFilters.get("movement")) {
-                if (!filters.movement[watch.movement as keyof typeof filters.movement]) return false;
+                if (!filters.movement?.[watch.movement as keyof typeof filters.movement]) return false;
             }
 
             if (applyFilters.get("caseMaterial")) {
-                if (!filters.caseMaterial[watch.caseMaterial as keyof typeof filters.caseMaterial]) return false;
+                if (!filters.caseMaterial?.[watch.caseMaterial as keyof typeof filters.caseMaterial]) return false;
             }
 
             if (applyFilters.get("braceletMaterial")) {
-                if (!filters.braceletMaterial[watch.braceletMaterial as keyof typeof filters.braceletMaterial]) return false;
+                if (!filters.braceletMaterial?.[watch.braceletMaterial as keyof typeof filters.braceletMaterial]) return false;
             }
 
             if (applyFilters.get("dialColor")) {
-                if (!filters.dialColor[watch.dialColor as keyof typeof filters.dialColor]) return false;
+                if (!filters.dialColor?.[watch.dialColor as keyof typeof filters.dialColor]) return false;
             }
 
             if (applyFilters.get("condition")) {
@@ -141,7 +141,7 @@ export default function Watches_list({ watches }: { watches: Watch[] | Spare[] }
 
     return (
         <>
-            <div className="w-full min-w-0 flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-8 xl:gap-12">
+            <div className="w-full min-w-0 flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-8 xl:gap-12 h-fit">
                 {
                     <WatchFilters
                         filters={filters}

@@ -25,7 +25,9 @@ export default async function SellPage() {
 
             <div className="w-full">
                 <h2>{t("formCtaHeading")}</h2>
-                <p className="tracking-widest">{t("formCtaText")}</p>
+                <br />
+                <p className="tracking-widest text-shine">{t("formCtaText")}</p>
+                <br />
                 <Link href={"#form"} className="underline">
                     {t("beginCta")}
                 </Link>
@@ -35,13 +37,13 @@ export default async function SellPage() {
                 <h3 className="font-medium">{t("howItWorksHeading")}</h3>
                 <div className="flex justify-start items-start flex-col gap-4">
                     <h4 className="underline">{t("consign.heading")}</h4>
-                    <p className="text-sm tracking-widest">{t("consign.intro")}</p>
+                    <p className="text-sm tracking-widest text-shine">{t("consign.intro")}</p>
                     <div className="w-full">
                         <ul className="list-decimal ml-4">
                             {steps.map((e) => (
                                 <li key={e.title} className="text-xl my-2">
                                     {e.title}
-                                    <p className="text-sm tracking-wide mt-2 ml-4">{e.text}</p>
+                                    <p className="text-sm tracking-wider mt-2 ml-4 text-secondary">{e.text}</p>
                                 </li>
                             ))}
                         </ul>
@@ -50,13 +52,13 @@ export default async function SellPage() {
 
                 <div className="flex justify-start items-start flex-col gap-4">
                     <h4 className="underline">{t("sellDirect.heading")}</h4>
-                    <p className="text-sm tracking-widest">{t("sellDirect.intro")}</p>
+                    <p className="text-sm tracking-widest text-shine">{t("sellDirect.intro")}</p>
                     <div className="w-full">
                         <ul className="list-decimal ml-4">
                             {sell_steps.map((e) => (
                                 <li key={e.title} className="text-xl my-2">
                                     {e.title}
-                                    <p className="text-sm tracking-wide mt-2 ml-4">{e.text}</p>
+                                    <p className="text-sm tracking-wider mt-2 ml-4 text-secondary">{e.text}</p>
                                 </li>
                             ))}
                         </ul>

@@ -24,14 +24,14 @@ export default async function checkoutPage() {
                 </div>
             ) : (
                 <div className="flex xl:flex-row flex-col justify-center items-start gap-4 xl:gap-20 w-full">
-                    <div className="w-full flex flex-col justify-start items-start gap-8 p-4">
-                        <h2>{t("billing")}</h2>
+                    <div className="w-full xl:w-1/2 flex flex-col justify-start items-start gap-8 p-4">
+                        <h2 className="text-shine capitalize font-secondary">{t("billing")}</h2>
                         <Form />
                     </div>
 
-                    <div className="xl:w-2/5 w-full flex flex-col justify-start items-start bg-primary gap-8 p-4">
-                        <h2>{t("orderSummaryHeading")}</h2>
-                        <div className="w-full h-[fit]">
+                    <div className="xl:w-1/2 w-full flex flex-col justify-start items-start gap-8 p-4">
+                        <h2 className="font-secondary text-shine capitalize">{t("orderSummaryHeading")}</h2>
+                        <div className="w-full h-fit">
                             <Order_list />
                         </div>
                     </div>

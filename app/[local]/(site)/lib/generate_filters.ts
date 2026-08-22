@@ -36,18 +36,20 @@ export default function generate_filters(items: (Watch | Spare)[]): filters_type
         else if (item.waterResistanceM > waterResistance.max) waterResistance.max = item.waterResistanceM;
     }
 
-    return {
+    const obj = {
         brands,
         movement,
         caseMaterial,
         braceletMaterial,
         dialColor,
-        condition,
-        caseDiameterMm,
-        year,
-        waterResistance,
-        includes,
-        price,
-        availability,
     };
+
+    for (const e in obj) {
+        const filter = obj[e as keyof typeof obj];
+
+        if (Object.keys(filter).length <= 1) delete obj[e as keyof typeof obj];
+    }
+
+
+    return { ...obj, condition, caseDiameterMm, year, waterResistance, includes, price, availability };
 }
