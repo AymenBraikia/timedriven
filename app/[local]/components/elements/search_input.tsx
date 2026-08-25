@@ -51,7 +51,7 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                     <Search classnames="md:w-7" clr={"currentColor"} />
                 </label>
 
-                <button type="button" className="button2 md:hidden p-2" onClick={() => set_active(true)}>
+                <button aria-label="Search" type="button" className="button2 md:hidden p-2" onClick={() => set_active(true)}>
                     <Search classnames="sm:w-8 w-6" clr={"currentColor"} />
                 </button>
 

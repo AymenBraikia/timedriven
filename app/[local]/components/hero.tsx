@@ -12,7 +12,7 @@ export default function Hero() {
             <div className="flex-center flex-col font-secondary gap-2">
                 <h1 className="title1 tracking-widest">{t("heroTitle")}</h1>
 
-                <h5 className="sm:title5 title4 tracking-wider dark:text-shine text-(--bg-secondary)">{t("heroSubtitle")}</h5>
+                <h2 className="sm:title5 title4 tracking-wider dark:text-shine text-(--bg-secondary)">{t("heroSubtitle")}</h2>
 
                 <a href="#new" aria-label={t("discover")} className="underline sm:title6 title4 dark:text-shine text-(--bg-secondary) tracking-wider">
                     {t("discover")}
