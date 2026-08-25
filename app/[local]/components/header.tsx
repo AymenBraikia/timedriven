@@ -187,7 +187,7 @@ export default function Header() {
 
             <div className="w-1/3 flex-center">
                 <Link aria-label={"home"} href={"/"} className="relative aspect-video w-25">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
+                    <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
                 </Link>
             </div>
 
