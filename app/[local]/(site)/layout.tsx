@@ -31,16 +31,31 @@ export const metadata: Metadata = {
         template: "%s | ARVELL",
     },
     description: "A full-stack luxury watch marketplace concept — consignment, spare parts, appointment booking, and multilingual storefront. Built by Aymen Braikia as a demonstration of production-grade e-commerce architecture.",
+    applicationName: "ARVELL",
     authors: [{ name: "Aymen Braikia" }],
     creator: "Aymen Braikia",
+    publisher: "Aymen Braikia",
+
     metadataBase: new URL("https://arvell.vercel.app/"),
     alternates: {
-        canonical: "/",
+        canonical: "/en",
         languages: {
             en: "/en",
             de: "/de",
         },
     },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
+    },
+
     openGraph: {
         title: "ARVELL | Luxury Watch Platform Concept",
         description: "A full-stack e-commerce concept for the luxury watch trade — consignment, appointments, multilingual UX.",
@@ -64,28 +79,24 @@ export const metadata: Metadata = {
         description: "A full-stack e-commerce concept for the luxury watch trade.",
         images: ["/banner.png"],
     },
-    robots: {
-        index: false,
-        follow: false,
-        googleBot: {
-            index: false,
-            follow: false,
-        },
-    },
     icons: {
         icon: "/favicon.ico",
         apple: "/apple-touch-icon.png",
     },
     formatDetection: {
         telephone: false,
+        email: false,
+        address: false,
     },
-    category: "technology",
+    category: "ecommerce",
 };
 
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
+    viewportFit: "cover",
     themeColor: "#000000",
+    colorScheme: "dark light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
