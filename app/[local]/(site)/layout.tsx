@@ -96,14 +96,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <SpeedInsights />
 
                 <NextIntlClientProvider>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
+                    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+                        {/* <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
                             <filter id="liquid-frosted" x="0%" y="0%" width="100%" height="100%">
                                 <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="noise" />
                                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped" />
                                 <feGaussianBlur in="warped" stdDeviation="2" />
                             </filter>
-                        </svg>
+                        </svg> */}
 
                         <Suspense fallback={<AuthShell session={undefined}>{children}</AuthShell>}>
                             <AuthGate>{children}</AuthGate>

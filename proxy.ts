@@ -12,7 +12,7 @@ export default function proxy(request: NextRequest) {
 
     if (pathname.startsWith("/api") || pathname.startsWith("/_next") || pathname.includes(".")) return NextResponse.next();
 
-    if (request.headers.get("purpose") === "prefetch") return handleI18nRouting(request);
+    if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
 
     const isProtectedRoute = protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`) || routing.locales.some((locale) => pathname.startsWith(`/${locale}${route}`)));
 

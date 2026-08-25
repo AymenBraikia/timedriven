@@ -14,7 +14,6 @@ import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { useTheme } from "next-themes";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -73,8 +72,6 @@ export default function Header() {
     const [ui, dispatch] = useReducer(headerReducer, { ...initialUIState, lang: locale.toUpperCase() as "EN" | "DE" });
     const cartRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLElement>(null);
-
-    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
         const onTouchStart = (e: TouchEvent) => {
@@ -176,7 +173,7 @@ export default function Header() {
         };
     }, [ui.isCartOpen, ui.isNavOpen]);
     return (
-        <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-4000 sm:px-8 py-8 px-2 transition-default ${ui.isGlassy ? "h-25 sm:h-30 text-primary" : "h-20 sm:h-25 text-white backdrop-blur-md"}`}>
+        <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-4000 sm:px-8 py-8 px-2 transition-default h-25 sm:h-20 text-primary`}>
             <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
 
             <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
@@ -189,8 +186,8 @@ export default function Header() {
             </div>
 
             <div className="w-1/3 flex-center">
-                <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center ${resolvedTheme == "light" ? "brightness-0" : "brightness-100"} `} />
+                <Link aria-label={"home"} href={"/"} className="relative aspect-video w-25">
+                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
                 </Link>
             </div>
 

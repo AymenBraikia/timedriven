@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --background: #000000;
+        --foreground: #ffffff;
+
+        --clr-primary: white;
+        --clr-secondary: #c8c8c8;
+
+        --bg-primary: rgb(25, 25, 25);
+        --bg-secondary: rgb(50, 50, 50);
+
+        --clr-glass: rgba(0, 0, 0, 0.6);
+        --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
+    }
+} */
+
 :root {
     --background: #ffffff;
     --foreground: #171717;
@@ -7,14 +25,48 @@
     --clr-primary: #000000;
     --clr-secondary: #323232;
 
+    --clr-shine-secondary: rgb(0, 0, 0);
+    --clr-shine-primary: rgb(100, 100, 100);
+
     --bg-primary: rgb(245, 245, 245);
     --bg-secondary: rgb(235, 235, 235);
 
-    --clr-glass: rgba(255, 255, 255, 0.7);
+    --clr-glass: rgba(255, 255, 255, 1);
     --border-glass: linear-gradient(45deg, #32323266, #19191966);
 
     --transition: 0.3s ease;
     --transition-long: 0.8s ease-in-out;
+}
+
+:root.dark,
+html.dark {
+    --background: #000000;
+    --foreground: #ffffff;
+
+    --clr-primary: white;
+    --clr-secondary: #c8c8c8;
+
+    --bg-primary: rgb(25, 25, 25);
+    --bg-secondary: rgb(50, 50, 50);
+
+    --clr-glass: rgba(0, 0, 0, 1);
+    --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
+
+    --clr-shine-primary: rgb(150, 150, 150);
+    --clr-shine-secondary: rgb(255, 255, 255);
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+
+    font-family: var(--font-open-sans);
+    scroll-behavior: smooth;
+
+    overscroll-behavior-x: none;
+    overflow-x: hidden;
+
+    touch-action: pan-y;
 }
 
 @theme inline {
@@ -137,7 +189,7 @@ img {
 @utility text-shine {
     display: inline-block;
     color: transparent;
-    background: linear-gradient(120deg, var(--clr-secondary) 0%, var(--clr-secondary) 40%, var(--clr-primary) 50%, var(--clr-secondary) 60%, var(--clr-secondary) 100%);
+    background: linear-gradient(120deg, var(--clr-shine-secondary) 0%, var(--clr-shine-secondary) 40%, var(--clr-shine-primary) 50%, var(--clr-shine-secondary) 60%, var(--clr-shine-secondary) 100%);
     background-size: 200% 100%;
     background-position: 200% 0;
     background-clip: text;
@@ -196,7 +248,7 @@ img {
     }
 }
 
-@utility liquid-glass {
+/* @utility liquid-glass {
     backdrop-filter: url(#liquid-frosted) blur(4px);
     -webkit-backdrop-filter: url(#liquid-frosted) blur(4px);
     background-color: var(--clr-glass);
@@ -205,6 +257,13 @@ img {
 @utility frost {
     background-color: var(--clr-glass);
     backdrop-filter: blur(15px);
+} */
+@utility liquid-glass {
+    background-color: var(--bg-primary);
+}
+
+@utility frost {
+    background-color: var(--bg-primary);
 }
 
 @utility fade-in {
@@ -267,32 +326,6 @@ h6 {
     font-size: 20px;
 }
 
-.dark {
-    --background: #000000;
-    --foreground: #ffffff;
-
-    --clr-primary: white;
-    --clr-secondary: #c8c8c8;
-
-    --bg-primary: rgb(25, 25, 25);
-    --bg-secondary: rgb(50, 50, 50);
-
-    --clr-glass: rgba(0, 0, 0, 0.6);
-    --border-glass: linear-gradient(45deg, #c8c8c866, #e1e1e166);
-}
-
-body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-open-sans);
-    scroll-behavior: smooth;
-
-    overscroll-behavior-x: none;
-    overflow-x: hidden;
-
-    touch-action: pan-y;
-}
-
 ::selection {
     background-color: var(--foreground);
     color: var(--background);
@@ -302,7 +335,8 @@ html,
 body,
 * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    scrollbar-color: var(--clr-secondary) var(--clr-primary);
+    
 }
 
 ::-webkit-scrollbar {
@@ -311,11 +345,11 @@ body,
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--clr-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--clr-secondary);
     border-radius: 999px;
 }
 

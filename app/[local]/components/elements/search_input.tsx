@@ -57,13 +57,13 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
 
                 <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:block hidden`} placeholder={placeholder} id="searchWatches" />
                 {data.length ? (
-                    <div className="absolute hidden md:flex top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto flex-col frost font-secondary py-2">
+                    <div className="absolute hidden md:flex top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto flex-col bg-background font-secondary py-2">
                         {data.map((e, idx) => (
                             <SearchChildComponent key={idx} item={e} />
                         ))}
                     </div>
                 ) : value ? (
-                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 frost text-shine">
+                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 bg-background">
                         {fetching ? t("searching") : t("noSearchResults")}
                     </div>
                 ) : (
