@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
     images: {
         formats: ["image/avif", "image/webp"],
-        qualities: [65],
+        qualities: [60,65],
     },
     experimental: {
         optimizeCss: true,
