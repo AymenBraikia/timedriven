@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Credits from "../components/credits";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -115,7 +116,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                                 <feGaussianBlur in="warped" stdDeviation="2" />
                             </filter>
                         </svg> */}
-
                         <Suspense fallback={<AuthShell session={undefined}>{children}</AuthShell>}>
                             <AuthGate>{children}</AuthGate>
                         </Suspense>

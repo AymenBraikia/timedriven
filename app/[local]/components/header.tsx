@@ -14,6 +14,7 @@ import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
+import Credits from "./credits";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -173,56 +174,61 @@ export default function Header() {
         };
     }, [ui.isCartOpen, ui.isNavOpen]);
     return (
-        <header className={`flex justify-between items-center w-dvw fixed top-0 left-0 z-4000 sm:px-8 py-8 px-2 transition-default h-25 sm:h-20 text-primary`}>
-            <div className={`w-full h-full transition-default ease-in-out absolute inset-0 -z-10 liquid-glass ${ui.isGlassy ? "opacity-100" : "opacity-0"}`} />
+        <>
+            <header className={`flex flex-col w-dvw fixed top-0 left-0 z-4000 h-fit min-h-25 sm:min-h-20 text-primary bg-background`}>
+            <Credits />
+            <div className="w-full flex justify-between items-center sm:px-8 py-8 sm:py-2 px-2">
 
-            <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
-                <button aria-label={"menu"} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
-                    <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
-                </button>
-                <div className="xl:hidden block">
-                    <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
-                </div>
-            </div>
-
-            <div className="w-1/3 flex-center">
-                <Link aria-label={"home"} href={"/"} className="relative aspect-video w-25">
-                    <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
-                </Link>
-            </div>
-
-            <div className="flex justify-end items-center gap-2 w-1/3">
-                <div className="xl:block hidden">
-                    <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
+                    <button aria-label={"menu"} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+                        <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
+                    </button>
+                    <div className="xl:hidden block">
+                        <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                    </div>
                 </div>
 
-                {!session?.email && (
-                    <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary capitalize`} href={"/auth/sign_up"}>
-                        {t("buttons.register")}
+                <div className="w-1/3 flex-center">
+                    <Link aria-label={"home"} href={"/"} className="relative aspect-video w-25">
+                        <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
                     </Link>
-                )}
-                <button
-                    aria-label={"change language"}
-                    type="button"
-                    className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`}
-                    onClick={() => {
-                        const nextLocale = locale === "en" ? "de" : "en";
-                        dispatch({ type: "TOGGLE_LANG" });
-                        router.replace(pathname, { locale: nextLocale });
-                    }}
-                >
-                    {ui.lang}
-                </button>
-                <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
-                    <Cart clr={"currentColor"} />
-                    {session && session.cart.length ? <p className="absolute left-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
-                </button>
-                <ThemeToggle />
-            </div>
+                </div>
 
-            <Nav ref={navRef} ui={ui} dispatch={dispatch} />
-            <CartDrawer ref={cartRef} ui={ui} dispatch={dispatch} />
-        </header>
+                <div className="flex justify-end items-center gap-2 w-1/3">
+                    <div className="xl:block hidden">
+                        <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                    </div>
+
+                    {!session?.email && (
+                        <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary capitalize`} href={"/auth/sign_up"}>
+                            {t("buttons.register")}
+                        </Link>
+                    )}
+                    <button
+                        aria-label={"change language"}
+                        type="button"
+                        className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`}
+                        onClick={() => {
+                            const nextLocale = locale === "en" ? "de" : "en";
+                            dispatch({ type: "TOGGLE_LANG" });
+                            router.replace(pathname, { locale: nextLocale });
+                        }}
+                    >
+                        {ui.lang}
+                    </button>
+                    <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
+                        <Cart clr={"currentColor"} />
+                        {session && session.cart.length ? <p className="absolute left-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
+                    </button>
+                    <ThemeToggle />
+                </div>
+
+            </div>
+                <Nav ref={navRef} ui={ui} dispatch={dispatch} />
+                <CartDrawer ref={cartRef} ui={ui} dispatch={dispatch} />
+
+            </header>
+        </>
     );
 }
 

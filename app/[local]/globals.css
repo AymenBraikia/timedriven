@@ -104,7 +104,7 @@ h6 {
 /* Scrollbars */
 * {
     scrollbar-width: thin;
-    scrollbar-color: var(--clr-secondary) var(--clr-primary);
+    scrollbar-color: var(--bg-secondary) var(--bg-primary);
 }
 
 ::-webkit-scrollbar {
@@ -113,11 +113,11 @@ h6 {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--clr-primary);
+    background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--clr-secondary);
+    background: var(--bg-secondary);
     border-radius: 999px;
 }
 
