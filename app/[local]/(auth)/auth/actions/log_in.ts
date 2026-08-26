@@ -34,6 +34,7 @@ export default async function Log_in(data: FormData): Promise<{ success: boolean
         const payload = {
             email: email,
             full_name: exists.firstName + " " + exists.lastName,
+            admin: exists.admin === true,
         };
 
         const accessToken = signJwtAccessToken(payload);

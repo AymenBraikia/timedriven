@@ -13,5 +13,7 @@ export interface Consignment {
     box?: boolean | undefined;
     papers?: boolean | undefined;
     message?: string | undefined;
+    handled?: boolean;
+    created_at?: Date | string;
     id:string;
 }

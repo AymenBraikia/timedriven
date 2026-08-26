@@ -7,6 +7,7 @@ export interface User {
     firstName: string;
     lastName: string;
     password: string;
+    admin?: boolean;
 
     cart: User_Cart;
     wish_list: User_Cart;
@@ -20,6 +21,7 @@ export interface User {
 }
 
 export interface UserData {
+    admin?: boolean;
     cart: User_Cart;
     wish_list: User_Cart;
     ongoing_orders: Order[];

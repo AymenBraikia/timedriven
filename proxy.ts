@@ -6,6 +6,15 @@ import { verifyJwt } from "./app/[local]/(auth)/auth/jwt";
 const handleI18nRouting = createMiddleware(routing);
 
 const protectedRoutes = ["/cart", "/thank_you", "/checkout"];
+const adminRoutes = ["/admin"];
+
+/** Matches /admin, /admin/..., /en/admin, /de/admin/... */
+function matches(pathname: string, routes: string[]): boolean {
+    return routes.some((route) => {
+        if (pathname === route || pathname.startsWith(`${route}/`)) return true;
+        return routing.locales.some((locale) => pathname === `/${locale}${route}` || pathname.startsWith(`/${locale}${route}/`));
+    });
+}
 
 export default function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
@@ -14,29 +23,27 @@ export default function proxy(request: NextRequest) {
 
     if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
 
-    const isProtectedRoute = protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`) || routing.locales.some((locale) => pathname.startsWith(`/${locale}${route}`)));
+    const isAdminRoute = matches(pathname, adminRoutes);
+    const isProtectedRoute = isAdminRoute || matches(pathname, protectedRoutes);
 
     if (isProtectedRoute) {
         const token = request.cookies.get("accessToken")?.value;
 
-        const loginPath = "/auth/log_in";
-        const loginUrl = new URL(loginPath, request.url);
-        if (!token) {
-            loginUrl.searchParams.set("redirect", pathname);
-            return NextResponse.redirect(loginUrl);
-        } else
-            try {
-                const payload = verifyJwt(token);
-                if (!payload) {
-                    loginUrl.searchParams.set("redirect", pathname);
-                    return NextResponse.redirect(loginUrl);
-                }
-                if (request.nextUrl.pathname.includes("/admin")) if (!payload.admin) return NextResponse.redirect(new URL("/not_found", request.url));
-            } catch {
-                loginUrl.searchParams.set("redirect", pathname);
+        const loginUrl = new URL("/auth/log_in", request.url);
+        loginUrl.searchParams.set("redirect", pathname);
 
-                return NextResponse.redirect(loginUrl);
-            }
+        if (!token) return NextResponse.redirect(loginUrl);
+
+        try {
+            const payload = verifyJwt(token);
+            if (!payload) return NextResponse.redirect(loginUrl);
+
+            // Cheap early exit only. The admin layout re-checks against the database,
+            // because this claim is baked into a token that lives for 7 days.
+            if (isAdminRoute && !payload.admin) return NextResponse.redirect(new URL("/not_found", request.url));
+        } catch {
+            return NextResponse.redirect(loginUrl);
+        }
     }
 
     return handleI18nRouting(request);
