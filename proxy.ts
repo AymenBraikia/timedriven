@@ -17,7 +17,6 @@ function matches(pathname: string, routes: string[]): boolean {
 }
 
 export default function proxy(request: NextRequest) {
-    const { searchParams } = new URL(request.headers.get("referer") || request.nextUrl.href);
     const { pathname } = request.nextUrl;
 
     if (pathname.startsWith("/api") || pathname.startsWith("/_next") || pathname.includes(".")) return NextResponse.next();
@@ -27,7 +26,6 @@ export default function proxy(request: NextRequest) {
     if (BOT.test(request.headers.get("user-agent") || "")) return handleI18nRouting(request);
     if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
 
-    for (const [name, value] of searchParams.entries()) request.nextUrl.searchParams.set(name, value);
 
     const isAdminRoute = matches(pathname, adminRoutes);
     const isProtectedRoute = isAdminRoute || matches(pathname, protectedRoutes);
@@ -36,8 +34,6 @@ export default function proxy(request: NextRequest) {
         const token = request.cookies.get("accessToken")?.value;
 
         const loginUrl = new URL("/auth/log_in", request.url);
-
-        for (const [name, value] of searchParams.entries()) loginUrl.searchParams.set(name, value);
 
         loginUrl.searchParams.set("redirect", pathname);
 

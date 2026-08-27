@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Luxury Watch Platform Concept",
         description: "A full-stack e-commerce concept for the luxury watch trade — consignment, appointments, multilingual UX.",
-        url: "https://arvell.vercel.app/",
+        url: "https://arvell.vercel.app/en",
         siteName: "ARVELL",
         images: [
             {
