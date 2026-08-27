@@ -22,11 +22,10 @@ export default function proxy(request: NextRequest) {
 
     if (pathname.startsWith("/api") || pathname.startsWith("/_next") || pathname.includes(".")) return NextResponse.next();
 
-    if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
-
     const BOT = /facebookexternalhit|facebookcatalog|Instagram|WhatsApp|Twitterbot|Slackbot|Discordbot|TelegramBot|LinkedInBot|Googlebot|bingbot|Applebot|SkypeUriPreview|redditbot|Iframely|embedly/i;
 
     if (BOT.test(request.headers.get("user-agent") || "")) return handleI18nRouting(request);
+    if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
 
     for (const [name, value] of searchParams.entries()) request.nextUrl.searchParams.set(name, value);
 
