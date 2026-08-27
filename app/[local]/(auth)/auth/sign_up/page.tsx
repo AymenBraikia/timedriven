@@ -7,14 +7,12 @@ import CheckBox from "@/app/components/elements/checkbox";
 import Sign_up from "../actions/sign_up";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 
-export default function SignUpPage({ searchParams }: { searchParams: Promise<{ redirect?: string }> }) {
+export default function SignUpPage({ searchParams }: { searchParams: Promise<{ redirect?: string; ref?: string }> }) {
     const params = use(searchParams);
     const t = useTranslations("auth.signUp");
 
-    const { resolvedTheme } = useTheme();
 
     const [agreed, setAgreed] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,7 +50,7 @@ export default function SignUpPage({ searchParams }: { searchParams: Promise<{ r
         <div className="relative w-full max-w-md flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-6 sm:p-10">
             <div className="flex-center">
                 <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center bright-img `} />
+                    <Image src={"/logo_dark.png"} alt={params.ref || "Arvell"} fill className={`object-cover object-center bright-img `} />
                 </Link>
             </div>
 

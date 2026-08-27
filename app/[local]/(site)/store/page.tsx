@@ -2,8 +2,12 @@ import Link from "next/link";
 import Map from "./map";
 import Gallery from "./gallery";
 import { useTranslations } from "next-intl";
+type Props = {
+    params: Promise<{ ref: string }>;
+};
 
-export default function StorePage() {
+export default async function StorePage({ params }: Props) {
+    const { ref } = await params;
     const t = useTranslations("store");
     return (
         <div className="flex justify-start items-start flex-wrap w-full gap-10 py-20 px-5 md:px-10 xl:px-20">
@@ -77,7 +81,7 @@ export default function StorePage() {
                             <div className="flex justify-between items-start flex-col text-sm">
                                 <p>+213 559 07 8448</p>
                                 <p>+213 559 07 8448</p>
-                                <p>info@arvell.com</p>
+                                <p>info@{ref || "arvell"}.com</p>
                             </div>
                         </div>
                     </div>

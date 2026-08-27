@@ -6,27 +6,28 @@ import Ebay from "./svg/ebay";
 import { useTranslations } from "next-intl";
 import WhatsApp from "./svg/whatsapp";
 import Image from "next/image";
-import { useTheme } from "next-themes";
+import { useSearchParams } from "next/navigation";
 
 export default function Footer() {
     const t = useTranslations("common.footer");
     const t_nav = useTranslations("common.nav");
 
-    const { resolvedTheme } = useTheme();
+    const params = useSearchParams();
+
 
     return (
         <footer className="w-full py-8 md:px-15 lg:px-20 px-4 flex-center flex-col bg-background font-bold z-30">
             <section className="w-full lg:h-75 lg:flex-row flex-col flex justify-between lg:items-center items-start">
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">
                     <div className="relative w-40 aspect-19/4">
-                        <Image src={"/logo_horizontal_light.png"} sizes="300px" alt="Arvell" fill className={`object-cover object-center bright-img`} />
+                        <Image src={"/logo_horizontal_light.png"} sizes="300px" alt={params.get("ref") || "Arvell"} fill className={`object-cover object-center bright-img`} />
                     </div>
                     <ul className="flex flex-col justify-start items-start gap-2 tracking-wider">
                         <li>Marie-Curie-Straße 14</li>
                         <li>60439 Frankfurt am Main</li>
                         <li>Germany</li>
                         <li>+49 30 2312 5100</li>
-                        <li>info@arvell.com</li>
+                        <li>info@{params.get("ref") || "arvell"}.com</li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-4 my-5 lg:my-0 lg:h-full">

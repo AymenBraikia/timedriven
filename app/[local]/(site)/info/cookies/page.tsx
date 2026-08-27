@@ -1,6 +1,11 @@
 import { getLocale, getTranslations } from "next-intl/server";
+type Props = {
+    params: Promise<{ ref: string }>;
+};
 
-export default async function CookiesPage() {
+export default async function CookiesPage({ params }: Props) {
+    const { ref } = await params;
+
     const t = await getTranslations("legal.cookiePolicy");
     const common = await getTranslations("common");
     const locale = await getLocale();
@@ -140,12 +145,12 @@ export default async function CookiesPage() {
                         <p>{t("contact.intro")}</p>
 
                         <p>Aymen Braikia</p>
-                        <p>Arvell</p>
+                        <p>{ref || "Arvell"}</p>
                         <p>Walther-von-Cronberg-Platz 18</p>
                         <p>60594 Frankfurt am Main</p>
                         <p>Germany</p>
-                        <p>Website: https://arvell.de</p>
-                        <p>Email: info@arvell.com</p>
+                        <p>Website: https://{ref || "arvell"}.com</p>
+                        <p>Email: info@{ref || "arvell"}.com</p>
                         <p>{common("contactLabels.phonePrimary")}: +4915255443810</p>
 
                         <p className="mt-2">

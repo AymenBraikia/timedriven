@@ -1,6 +1,10 @@
 import { getTranslations } from "next-intl/server";
+type Props = {
+    params: Promise<{ ref: string }>;
+};
 
-export default async function ImprintPage() {
+export default async function ImprintPage({ params }: Props) {
+    const { ref } = await params;
     const t = await getTranslations("imprint");
 
     return (
@@ -9,7 +13,7 @@ export default async function ImprintPage() {
 
             <div className="flex justify-center items-start flex-col gap-2 text-[14px]">
                 <p className="font-bold">Aymen Braikia</p>
-                <p>Arvell</p>
+                <p>{ref || "Arvell"}</p>
                 <p>Marie-Curie-Straße 14</p>
                 <p>60439 Frankfurt am Main</p>
                 <p>Germany</p>
@@ -21,7 +25,7 @@ export default async function ImprintPage() {
 
                 <div className="flex-center gap-2">
                     <p className="font-bold">{t("emailLabel")}</p>
-                    info@arvell.com
+                    info@{ref || "arvell"}.com
                 </div>
 
                 <div className="flex-center gap-2">

@@ -7,7 +7,7 @@ const Iconic = dynamic(() => import("@/app/components/iconic"), { loading: () =>
 const Services = dynamic(() => import("@/app/components/services"), { loading: () => <></>, ssr: true });
 const Booking = dynamic(() => import("@/app/components/booking"), { loading: () => <></>, ssr: true });
 
-export default function Body() {
+export default async function Home() {
     return (
         <div className="flex-col flex-center w-full">
             <Hero />

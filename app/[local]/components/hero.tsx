@@ -1,7 +1,7 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Hero() {
-    const t = useTranslations("home");
+export default async function Hero() {
+    const t = await getTranslations("home");
 
     return (
         <section className="flex-col flex-center w-dvw h-dvh fixed top-0 left-0 text-white">

@@ -10,6 +10,7 @@ import Input from "@/app/components/elements/input";
 import PayPal_Btn from "@/app/components/buttons/paypal";
 import { format_price } from "../lib/price_format";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 
 const shipping_data = Object.values(shipping_info);
 

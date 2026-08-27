@@ -6,14 +6,11 @@ import Input from "@/app/components/elements/input";
 import { useRouter } from "next/navigation";
 import Log_in from "../actions/log_in";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 
-export default function LoginPage({ searchParams }: { searchParams: Promise<{ redirect?: string }> }) {
+export default function LoginPage({ searchParams }: { searchParams: Promise<{ redirect?: string; ref?: string }> }) {
     const params = use(searchParams);
     const t = useTranslations("auth.login");
-
-    const { resolvedTheme } = useTheme();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -46,7 +43,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ re
         <div className="relative w-full max-w-md flex-center flex-col gap-4 rounded-2xl border border-(--bg-primary) p-6 sm:p-10">
             <div className="flex-center">
                 <Link aria-label={"home"} href={"/"} className="relative aspect-video w-30">
-                    <Image src={"/logo_dark.png"} alt="Arvell" fill className={`object-cover object-center bright-img `} />
+                    <Image src={"/logo_dark.png"} alt={params.ref || "Arvell"} fill className={`object-cover object-center bright-img `} />
                 </Link>
             </div>
 
