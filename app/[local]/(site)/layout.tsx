@@ -11,7 +11,6 @@ import { NextIntlClientProvider } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Credits from "../components/credits";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -28,7 +27,7 @@ const gelasio = Gelasio({
 
 export const metadata: Metadata = {
     title: {
-        default: "ARVELL | Luxury Watch Platform — Concept by Aymen Braikia",
+        default: "Luxury Watch Platform | Concept by Aymen Braikia",
         template: "%s | ARVELL",
     },
     description: "A full-stack luxury watch marketplace concept — consignment, spare parts, appointment booking, and multilingual storefront. Built by Aymen Braikia as a demonstration of production-grade e-commerce architecture.",
