@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
 
     openGraph: {
-        title: "ARVELL | Luxury Watch Platform Concept",
+        title: "Luxury Watch Platform Concept",
         description: "A full-stack e-commerce concept for the luxury watch trade — consignment, appointments, multilingual UX.",
         url: "https://arvell.vercel.app/",
         siteName: "ARVELL",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "ARVELL | Luxury Watch Platform Concept",
+        title: "Luxury Watch Platform Concept",
         description: "A full-stack e-commerce concept for the luxury watch trade.",
         images: ["/banner.png"],
     },
