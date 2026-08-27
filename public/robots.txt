@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Prevent indexing parameter loops, internal search results, and admin directories
-Disallow: /*?*
+# Disallow: /*?*
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
