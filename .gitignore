@@ -19,7 +19,7 @@
 
 # production
 /build
-*/local
+/local*
 *scripts
 
 # misc

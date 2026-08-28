@@ -15,7 +15,7 @@ const globalWithMongo = global as typeof globalThis & {
 
 if (!globalWithMongo._mongoClientPromise) {
     const client = new MongoClient(uri, options);
-    attachDatabasePool(client); // ties client lifecycle to the function instance
+    attachDatabasePool(client);
     globalWithMongo._mongoClientPromise = client.connect();
 }
 

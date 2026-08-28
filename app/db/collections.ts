@@ -1,18 +1,3 @@
-/* ==========================================================================
- * app/db/collections.ts
- *
- * The problem with the current version:
- *
- *     export const clientDB = await clientPromise;
- *
- * Top-level await at module scope. Every server component that imports this
- * file — directly or transitively — stalls until the Mongo handshake finishes.
- * On a cold Lambda that's TCP + TLS + SCRAM auth before your page code starts.
- *
- * Lazy accessors instead: the connection is only awaited when a query actually
- * runs, so module evaluation, rendering and any cached path stay unblocked.
- * ======================================================================== */
-
 import clientPromise from "@/app/db/client";
 
 import type { Watch } from "@/app/types/watch";
