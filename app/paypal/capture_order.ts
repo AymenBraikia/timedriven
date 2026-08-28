@@ -34,10 +34,12 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
 
     try {
         if (data.status != "COMPLETED") {
-            const order = await orders_collection.findOneAndUpdate({ id: orderID }, { $set: { status: "Failed", capture_id: data.id } });
+            const order = await (await orders_collection()).findOneAndUpdate({ id: orderID }, { $set: { status: "Failed", capture_id: data.id } });
             if (!order) return;
 
-            await users_collection.findOneAndUpdate(
+            await (
+                await users_collection()
+            ).findOneAndUpdate(
                 { email: order.email },
                 {
                     $set: {
@@ -51,7 +53,7 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
 
             return;
         }
-        let order = (await orders_collection.findOne({ id: orderID })) as Order | null;
+        let order = (await (await orders_collection()).findOne({ id: orderID })) as Order | null;
 
         if (!order) return;
         if (order.email != payload.email) return;
@@ -68,9 +70,11 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
                   country: paypal_addr.country_code,
               }
             : undefined;
-        order = (await orders_collection.findOneAndUpdate({ id: orderID }, { $set: newAddr ? { status: "Completed", address: newAddr } : { status: "Completed" } }))!;
+        order = (await (await orders_collection()).findOneAndUpdate({ id: orderID }, { $set: newAddr ? { status: "Completed", address: newAddr } : { status: "Completed" } }))!;
 
-        const user = await users_collection.findOneAndUpdate(
+        const user = await (
+            await users_collection()
+        ).findOneAndUpdate(
             { email: order.email },
             {
                 $pullAll: {

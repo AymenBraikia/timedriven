@@ -21,7 +21,7 @@ export default async function Log_in(data: FormData): Promise<{ success: boolean
         if (!authRegex.password.test(password)) return { success: false, error: "Password should be atleast 8 characters long." };
         // if (!authRegex.password.test(password)) return { success: false, error: "Password should include atleast 1 special character, 1 upper case letter, 1 number." };
 
-        const exists = await users_collection.findOne({ email });
+        const exists = await (await users_collection()).findOne({ email });
 
         if (!exists) return { success: false, error: "Wrong email or password" };
 

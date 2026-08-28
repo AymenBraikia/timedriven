@@ -26,7 +26,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
         if (!authRegex.password.test(password)) return { success: false, error: "Password should be atleast 8 characters long." };
         // if (!authRegex.password.test(password)) return { success: false, error: "Password should include atleast 1 special character, 1 upper case letter, 1 number." };
 
-        const exists = await users_collection.findOne({ email });
+        const exists = await (await users_collection()).findOne({ email });
 
         if (exists) return { success: false, error: "Someone else already uses this email address use another one." };
 
@@ -64,7 +64,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
             },
         };
 
-        const operation = await users_collection.insertOne(user_document);
+        const operation = await (await users_collection()).insertOne(user_document);
 
         const payload = {
             email: email,

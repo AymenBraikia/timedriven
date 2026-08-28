@@ -22,7 +22,7 @@ export async function get_admin_session(): Promise<AdminSession | null> {
     const payload = verifyJwt(token);
     if (!payload?.email) return null;
 
-    const user = await users_collection.findOne({ email: payload.email }, { projection: { email: 1, firstName: 1, lastName: 1, admin: 1 } });
+    const user = await (await users_collection()).findOne({ email: payload.email }, { projection: { email: 1, firstName: 1, lastName: 1, admin: 1 } });
 
     if (!user?.admin) return null;
 

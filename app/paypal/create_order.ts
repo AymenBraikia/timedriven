@@ -27,7 +27,7 @@ export async function create_order(): Promise<string> {
             return "";
         }
     }
-    const user = await users_collection.findOne({ email: payload!.email });
+    const user = await (await users_collection()).findOne({ email: payload!.email });
 
     if (!user) return "";
 
@@ -128,7 +128,9 @@ export async function create_order(): Promise<string> {
           };
 
     if (order.id) {
-        await orders_collection.insertOne({
+        await (
+            await orders_collection()
+        ).insertOne({
             id: order.id,
             email: payload.email,
             items: cart,

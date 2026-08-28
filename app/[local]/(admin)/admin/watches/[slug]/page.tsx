@@ -10,7 +10,7 @@ export const metadata = { title: "Edit watch" };
 export default async function EditWatch({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    const found = await watches_collection.findOne({ slug }, { projection: { _id: 0 } });
+    const found = await (await watches_collection()).findOne({ slug }, { projection: { _id: 0 } });
     if (!found) notFound();
 
     const watch: Watch = JSON.parse(JSON.stringify(found));

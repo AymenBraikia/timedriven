@@ -15,7 +15,7 @@ export default async function addToCart(slug: string): Promise<boolean> {
         const item = await get_item(slug);
         if (!item) return false;
 
-        increase_relevance_score(slug,score_rewards.add_to_cart)
+        increase_relevance_score(slug, score_rewards.add_to_cart);
 
         const newCart = user.cart.find((i) => i.slug == slug)
             ? {
@@ -25,7 +25,7 @@ export default async function addToCart(slug: string): Promise<boolean> {
               }
             : { $push: { cart: { ...item, quantity: 1 } } };
 
-        const operation = await users_collection.updateOne({ email: user.email }, newCart);
+        const operation = await (await users_collection()).updateOne({ email: user.email }, newCart);
 
         revalidatePath("/");
         return operation.acknowledged;

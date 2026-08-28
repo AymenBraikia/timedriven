@@ -9,7 +9,9 @@ export default async function decrease_cart(reference: string): Promise<boolean>
         const user = await getUser();
         if (!user) return false;
 
-        const operation = await users_collection.updateOne(
+        const operation = await (
+            await users_collection()
+        ).updateOne(
             {
                 email: user.email,
                 cart: { $elemMatch: { reference, quantity: { $gt: 1 } } },

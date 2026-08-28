@@ -3,6 +3,7 @@ import get_watches from "@/app/server/get_watches";
 import Banner from "@/app/components/banner";
 import { getTranslations } from "next-intl/server";
 
+
 export default async function ShopPage() {
     const watches = (await get_watches());
     const t = await getTranslations("shop");

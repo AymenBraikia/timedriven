@@ -12,7 +12,7 @@ export async function set_order_status(id: string, status: Order["status"]): Pro
     if (!(await get_admin_session())) return { success: false, error: "Not authorised." };
 
     try {
-        await orders_collection.updateOne({ id }, { $set: { status } });
+        await (await orders_collection()).updateOne({ id }, { $set: { status } });
         revalidatePath("/admin/orders");
         return { success: true };
     } catch (err) {

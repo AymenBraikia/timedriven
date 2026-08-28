@@ -10,11 +10,11 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Enquiries" };
 
 function Card({ children, handled }: { children: React.ReactNode; handled: boolean }) {
-    return <li className={`border border-[var(--foreground)]/15 rounded p-4 ${handled ? "opacity-40" : ""}`}>{children}</li>;
+    return <li className={`border border-(--foreground)/15 rounded p-4 ${handled ? "opacity-40" : ""}`}>{children}</li>;
 }
 
 export default async function AdminEnquiries() {
-    const [sellsRaw, consignmentsRaw, appointmentsRaw] = await Promise.all([sell_collection.find({}).toArray(), consignments_collection.find({}).toArray(), appointments_collection.find({}).toArray()]);
+    const [sellsRaw, consignmentsRaw, appointmentsRaw] = await Promise.all([(await sell_collection()).find({}).toArray(), (await consignments_collection()).find({}).toArray(), (await appointments_collection()).find({}).toArray()]);
 
     const sells: Sell[] = JSON.parse(JSON.stringify(sellsRaw));
     const consignments: Consignment[] = JSON.parse(JSON.stringify(consignmentsRaw));

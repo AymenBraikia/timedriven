@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Orders" };
 
 export default async function AdminOrders() {
-    const raw = await orders_collection.find({}).sort({ created_at: -1 }).toArray();
+    const raw = await (await orders_collection()).find({}).sort({ created_at: -1 }).toArray();
     const orders: Order[] = JSON.parse(JSON.stringify(raw));
 
     return (

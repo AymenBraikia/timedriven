@@ -17,7 +17,9 @@ export default async function revmove_from_cart(reference: string): Promise<bool
 
         if (!is_in_cart) return false;
 
-        const operation = await users_collection.updateOne(
+        const operation = await (
+            await users_collection()
+        ).updateOne(
             { email: user.email },
             {
                 $pull: {

@@ -6,8 +6,8 @@ import { Sell } from "@/types/sell";
 
 export default async function Submit(data: Consignment | Sell): Promise<boolean> {
     try {
-        if (data.intent == "consign") await consignments_collection.insertOne(data);
-        else await sell_collection.insertOne(data);
+        if (data.intent == "consign") await (await consignments_collection()).insertOne(data);
+        else await (await sell_collection()).insertOne(data);
 
         return true;
     } catch (error) {

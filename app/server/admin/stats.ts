@@ -16,17 +16,17 @@ export interface AdminStats {
 
 export async function get_admin_stats(): Promise<AdminStats> {
     const [watches, inStock, spares, users, orders, pendingOrders, completed, stock, sells, consignments, appointments] = await Promise.all([
-        watches_collection.countDocuments({}),
-        watches_collection.countDocuments({ inStock: true }),
-        spares_collection.countDocuments({}),
-        users_collection.countDocuments({}),
-        orders_collection.countDocuments({}),
-        orders_collection.countDocuments({ status: "Pending" }),
-        orders_collection.find({ status: "Completed" }, { projection: { amount_to_pay: 1 } }).toArray(),
-        watches_collection.find({ inStock: true }, { projection: { price: 1 } }).toArray(),
-        sell_collection.countDocuments({ handled: { $ne: true } }),
-        consignments_collection.countDocuments({ handled: { $ne: true } }),
-        appointments_collection.countDocuments({ handled: { $ne: true } }),
+        (await watches_collection()).countDocuments({}),
+        (await watches_collection()).countDocuments({ inStock: true }),
+        (await spares_collection()).countDocuments({}),
+        (await users_collection()).countDocuments({}),
+        (await orders_collection()).countDocuments({}),
+        (await orders_collection()).countDocuments({ status: "Pending" }),
+        (await orders_collection()).find({ status: "Completed" }, { projection: { amount_to_pay: 1 } }).toArray(),
+        (await watches_collection()).find({ inStock: true }, { projection: { price: 1 } }).toArray(),
+        (await sell_collection()).countDocuments({ handled: { $ne: true } }),
+        (await consignments_collection()).countDocuments({ handled: { $ne: true } }),
+        (await appointments_collection()).countDocuments({ handled: { $ne: true } }),
     ]);
 
     return {
@@ -43,7 +43,7 @@ export async function get_admin_stats(): Promise<AdminStats> {
 }
 
 export async function get_recent_orders(limit = 6): Promise<Order[]> {
-    const data = await orders_collection.find({}).sort({ created_at: -1 }).limit(limit).toArray();
+    const data = await (await orders_collection()).find({}).sort({ created_at: -1 }).limit(limit).toArray();
     return JSON.parse(JSON.stringify(data));
 }
 
@@ -54,6 +54,6 @@ export async function get_admin_watches(search?: string): Promise<Watch[]> {
           }
         : {};
 
-    const data = await watches_collection.find(query).sort({ date_added: -1 }).toArray();
+    const data = await (await watches_collection()).find(query).sort({ date_added: -1 }).toArray();
     return JSON.parse(JSON.stringify(data));
 }

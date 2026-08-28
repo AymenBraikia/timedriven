@@ -15,7 +15,7 @@ export default async function updateUser(data: UpdateUserProps): Promise<boolean
     const payload = verifyJwt(token);
     if (!payload) return false;
 
-    const operation = await users_collection.updateOne({ email: payload.email }, { $set: data });
+    const operation = await (await users_collection()).updateOne({ email: payload.email }, { $set: data });
 
     if (operation.acknowledged) {
         revalidatePath("/");
