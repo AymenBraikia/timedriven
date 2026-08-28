@@ -16,6 +16,10 @@ export default memo(function Watch_card({
     condition,
     price,
     image_src,
+    slug,
+    reference,
+    year,
+    priority,
 }: {
     brand: string;
     name: string;
@@ -27,6 +31,10 @@ export default memo(function Watch_card({
     condition: string;
     price: number;
     image_src: string;
+    slug: string;
+    reference: string;
+    year: number;
+    priority: boolean;
 }) {
     const t = useTranslations("common.productCard");
     return (

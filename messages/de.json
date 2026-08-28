@@ -87,8 +87,6 @@
             "sort": "Sortieren",
             "newest": "Neueste",
             "relevance": "Relevanz",
-            "priceHightToLow": "Preis niedrig bis hoch",
-            "priceLowToHight": "Preis hoch bis niedrig",
             "brand": "Marke",
             "filtersLabel": "Filter",
             "inStock": "Auf Lager",
@@ -101,7 +99,17 @@
             "movementManual": "Handaufzug",
             "movementAutomatic": "Automatik",
             "movementQuartz": "Quarz",
-            "noResults": "Keine Ergebnisse entsprechen Ihren Filtern."
+            "noResults": "Keine Ergebnisse entsprechen Ihren Filtern.",
+            "clearAll": "Alle zurücksetzen",
+            "close": "Schließen",
+            "remove": "Filter entfernen",
+            "activeFilters": "Aktive Filter",
+            "showAll": "{count} weitere anzeigen",
+            "showLess": "Weniger anzeigen",
+            "showResults": "{count, plural, =0 {Keine Uhren} one {# Uhr} other {# Uhren}} anzeigen",
+            "resultCount": "{count, plural, =0 {Keine Uhren} one {# Uhr} other {# Uhren}}",
+            "priceLowToHight": "Preis aufsteigend",
+            "priceHightToLow": "Preis absteigend"
         },
         "productCard": {
             "movement": "Uhrwerk",
