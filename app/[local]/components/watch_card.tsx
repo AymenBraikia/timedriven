@@ -4,6 +4,7 @@ import { memo } from "react";
 import Image from "next/image";
 import { format_price } from "../(site)/lib/price_format";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default memo(function Watch_card({
     brand,
@@ -17,9 +18,6 @@ export default memo(function Watch_card({
     price,
     image_src,
     slug,
-    reference,
-    year,
-    priority,
 }: {
     brand: string;
     name: string;
@@ -32,13 +30,10 @@ export default memo(function Watch_card({
     price: number;
     image_src: string;
     slug: string;
-    reference: string;
-    year: number;
-    priority: boolean;
 }) {
     const t = useTranslations("common.productCard");
     return (
-        <div className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer font-secondary sm:px-0 px-4 w-full">
+        <Link href={`/product/${slug}`} className="group overflow-hidden transition-default hover:-translate-y-1 cursor-pointer font-secondary sm:px-0 px-4 w-full">
             <div className="sm:aspect-4/3 aspect-4/3 relative w-full">
                 <Image src={image_src} alt={image_src} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 40vw" className="group-hover:brightness-100 brightness-80 transition-default" />
             </div>
@@ -81,6 +76,6 @@ export default memo(function Watch_card({
                 </div>
                 <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
             </div>
-        </div>
+        </Link>
     );
 });

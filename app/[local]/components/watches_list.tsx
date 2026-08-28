@@ -148,21 +148,18 @@ export default function Watches_list({ watches }: { watches: Item[] }) {
 
                     {sorted.length > 0 ? (
                         <div className="grid w-full grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
-                            {visible.map((watch, i) => (
+                            {visible.map((watch) => (
                                 <Watch_card
                                     key={watch.slug}
                                     slug={watch.slug}
                                     brand={watch.brand}
                                     name={`${watch.brand} ${watch.model}`}
-                                    reference={watch.reference}
-                                    year={watch.year}
                                     movement={watch.movement}
                                     size={watch.caseDiameterMm}
                                     caseMaterial={watch.caseMaterial}
                                     condition={watch.condition}
                                     price={watch.price}
                                     image_src={watch.images[0]}
-                                    priority={i < 3}
                                     braceletMaterial={watch.braceletMaterial}
                                     description={watch.description}
                                 />
