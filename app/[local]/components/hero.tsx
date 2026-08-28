@@ -9,7 +9,7 @@ export default async function Hero() {
                 <source src="/hero_vid.mp4" type="video/mp4" />
             </video>
 
-            <div className="flex-center flex-col font-secondary gap-2">
+            <div className="flex-center flex-col font-secondary gap-2 text-center">
                 <h1 className="title1 tracking-widest">{t("heroTitle")}</h1>
 
                 <h2 className="sm:title5 title4 tracking-wider dark:text-shine text-(--bg-secondary)">{t("heroSubtitle")}</h2>
