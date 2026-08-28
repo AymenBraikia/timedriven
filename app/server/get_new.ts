@@ -6,7 +6,9 @@ import { Watch } from "../types/watch";
 const limit = 8;
 
 export default async function get_new(): Promise<Watch[]> {
-    const data = await watches_collection
+    const data = await (
+        await watches_collection()
+    )
         .find(
             {},
             {
