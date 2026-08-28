@@ -7,7 +7,7 @@ import { useActionState, useEffect } from "react";
 import { Watch } from "@/types/watch";
 import { save_watch, type ActionResult } from "@/app/server/admin/watch_actions";
 
-const field = "w-full outline-none text-base border-b border-[var(--foreground)]/30 py-1 bg-transparent focus:border-[var(--foreground)] transition-colors duration-300";
+const field = "w-full outline-none text-base border-b border-(--foreground)/30 py-1 bg-transparent focus:border-(--foreground) transition-colors duration-300";
 
 function Text({ label, name, defaultValue, required, type = "text", placeholder }: { label: string; name: string; defaultValue?: string | number; required?: boolean; type?: string; placeholder?: string }) {
     return (
@@ -27,7 +27,7 @@ function Select({ label, name, options, defaultValue }: { label: string; name: s
             <span className="text-xs uppercase tracking-[0.12em] opacity-50">{label}</span>
             <select className={field} name={name} defaultValue={defaultValue}>
                 {options.map((option) => (
-                    <option key={option} value={option} className="bg-[var(--background)]">
+                    <option key={option} value={option} className="bg-background">
                         {option}
                     </option>
                 ))}
@@ -104,7 +104,7 @@ export default function WatchForm({ watch }: { watch?: Watch }) {
             {state?.error && <p className="mb-4 text-sm text-red-500">{state.error}</p>}
 
             <div className="flex items-center gap-4">
-                <button type="submit" disabled={pending} className="px-6 py-2.5 bg-[var(--foreground)] text-[var(--background)] text-sm disabled:opacity-40 transition-opacity duration-300">
+                <button type="submit" disabled={pending} className="px-6 py-2.5 bg-[var(--foreground)] text-background text-sm disabled:opacity-40 transition-opacity duration-300">
                     {pending ? "Saving..." : watch ? "Save changes" : "Add watch"}
                 </button>
                 <Link href="/admin/watches" className="text-sm opacity-60 hover:opacity-100 transition-opacity">

@@ -18,7 +18,7 @@ export default async function EditWatch({ params }: { params: Promise<{ slug: st
     return (
         <>
             <header className="mb-8">
-                <h1 className="text-2xl font-[family-name:var(--font-gelasio)]">
+                <h1 className="text-2xl font-secondary">
                     {watch.brand} {watch.model}
                 </h1>
                 <p className="opacity-50 text-sm mt-1 font-mono">{watch.slug}</p>

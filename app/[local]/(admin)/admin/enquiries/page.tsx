@@ -25,12 +25,12 @@ export default async function AdminEnquiries() {
     return (
         <>
             <header className="mb-8">
-                <h1 className="text-2xl font-[family-name:var(--font-gelasio)]">Enquiries</h1>
+                <h1 className="text-2xl font-secondary">Enquiries</h1>
                 <p className="opacity-50 text-sm mt-1">People offering watches, and people asking to come in.</p>
             </header>
 
             <section className="mb-10">
-                <h2 className="text-lg mb-3 font-[family-name:var(--font-gelasio)]">Sell and consign ({offers.length})</h2>
+                <h2 className="text-lg mb-3 font-secondary">Sell and consign ({offers.length})</h2>
 
                 {offers.length === 0 ? (
                     <p className="opacity-50 text-sm">Nothing yet.</p>
@@ -64,7 +64,7 @@ export default async function AdminEnquiries() {
             </section>
 
             <section>
-                <h2 className="text-lg mb-3 font-[family-name:var(--font-gelasio)]">Appointments ({appointments.length})</h2>
+                <h2 className="text-lg mb-3 font-secondary">Appointments ({appointments.length})</h2>
 
                 {appointments.length === 0 ? (
                     <p className="opacity-50 text-sm">Nothing yet.</p>

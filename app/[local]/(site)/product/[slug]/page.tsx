@@ -1,3 +1,4 @@
+import { after } from "next/server";
 import AtcBtn from "@/app/components/buttons/addToCart";
 import { format_price } from "../../lib/price_format";
 import get_product from "./get_product";
@@ -34,16 +35,12 @@ const productLabels = {
 } as const;
 
 export default async function DynamicPage({ params }: PageProps) {
-    let increased = false;
     const slug = (await params).slug;
     const data = await get_product(slug);
     const locale = await getLocale();
     const t = productLabels[locale === "de" ? "de" : "en"];
 
-    if (!increased) {
-        increased = true;
-        increase_relevance_score(slug, score_rewards.view_details);
-    }
+    after(() => increase_relevance_score(slug, score_rewards.view_details));
 
     return (
         <div className="h-fit w-dvw py-4 xl:px-16 px-4 flex items-start justify-start flex-col lg:flex-row mt-10 gap-8 tracking-wider">

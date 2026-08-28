@@ -22,10 +22,10 @@ export default function OrderStatus({ id, status }: { id: string; status: Order[
                     router.refresh();
                 })
             }
-            className={`bg-transparent outline-none text-sm border-b border-[var(--foreground)]/30 py-0.5 ${pending ? "opacity-40" : ""}`}
+            className={`bg-transparent outline-none text-sm border-b border-(--foreground)/30 py-0.5 ${pending ? "opacity-40" : ""}`}
         >
             {options.map((option) => (
-                <option key={option} value={option} className="bg-[var(--background)]">
+                <option key={option} value={option} className="bg-background">
                     {option}
                 </option>
             ))}

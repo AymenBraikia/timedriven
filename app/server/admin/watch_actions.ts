@@ -1,7 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-
+import { revalidatePath, revalidateTag } from "next/cache";
 import { spares_collection, watches_collection } from "@/app/db/collections";
 import { Watch } from "@/types/watch";
 
@@ -19,13 +18,16 @@ const str = (data: FormData, key: string) => (data.get(key) as string | null)?.t
 const num = (data: FormData, key: string) => Number(data.get(key));
 
 function refresh(slug?: string) {
+    revalidateTag("watches", { expire: 0 });
+    if (slug) {
+        revalidateTag(`watch:${slug}`, { expire: 0 });
+        revalidateTag(`item:${slug}`, { expire: 0 });
+    }
     revalidatePath("/", "layout");
     revalidatePath("/shop");
     revalidatePath("/admin/watches");
     if (slug) revalidatePath(`/product/${slug}`);
 }
-
-/** Builds a Watch from the form, or returns an error string. */
 function parse_watch(data: FormData): Watch | string {
     const brand = str(data, "brand");
     const model = str(data, "model");
@@ -149,6 +151,7 @@ export async function delete_spare(slug: string): Promise<ActionResult> {
 
     try {
         await (await spares_collection()).deleteOne({ slug });
+        revalidateTag("spares", { expire: 0 });
         revalidatePath("/spare");
         revalidatePath("/admin/spares");
         return { success: true };

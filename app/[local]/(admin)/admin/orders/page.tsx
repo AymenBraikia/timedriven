@@ -14,7 +14,7 @@ export default async function AdminOrders() {
     return (
         <>
             <header className="mb-6">
-                <h1 className="text-2xl font-[family-name:var(--font-gelasio)]">Orders</h1>
+                <h1 className="text-2xl font-secondary">Orders</h1>
                 <p className="opacity-50 text-sm mt-1">{orders.length} total</p>
             </header>
 
@@ -23,7 +23,7 @@ export default async function AdminOrders() {
             ) : (
                 <ul className="flex flex-col gap-3">
                     {orders.map((order) => (
-                        <li key={order.id} className="border border-[var(--foreground)]/15 rounded p-4">
+                        <li key={order.id} className="border border-(--foreground)/15 rounded p-4">
                             <div className="flex flex-wrap items-start justify-between gap-3">
                                 <div>
                                     <p className="font-mono text-xs opacity-50">{order.id}</p>
@@ -41,7 +41,7 @@ export default async function AdminOrders() {
                                 </div>
                             </div>
 
-                            <ul className="mt-3 pt-3 border-t border-[var(--foreground)]/10 flex flex-col gap-1 text-sm opacity-70">
+                            <ul className="mt-3 pt-3 border-t border-(--foreground)/10 flex flex-col gap-1 text-sm opacity-70">
                                 {order.items.map((item) => (
                                     <li key={item.slug} className="flex justify-between gap-4">
                                         <span className="truncate">

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import get_new from "@/app/server/get_new";
 
 const Hero = dynamic(() => import("@/app/components/hero"), { loading: () => <></>, ssr: true });
 const New = dynamic(() => import("@/app/components/new"), { loading: () => <></>, ssr: true });
@@ -8,12 +9,14 @@ const Services = dynamic(() => import("@/app/components/services"), { loading: (
 const Booking = dynamic(() => import("@/app/components/booking"), { loading: () => <></>, ssr: true });
 
 export default async function Home() {
+    const newest = await get_new();
+
     return (
         <div className="flex-col flex-center w-full">
             <Hero />
 
             <div className="mt-[100dvh] flex-col flex-center w-full bg-background z-10">
-                <New />
+                <New watches={newest} />
                 <Inspired />
                 <Iconic />
                 <Services />

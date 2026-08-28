@@ -2,11 +2,10 @@
 import Link from "next/link";
 import List from "./scrollList";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FadeInObserver from "./fade_wrapper";
 import dynamic from "next/dynamic";
 import AtcBtn from "./buttons/addToCart";
-import get_new from "@/app/server/get_new";
 import { Watch } from "@/types/watch";
 import { format_price } from "../(site)/lib/price_format";
 import { useTranslations } from "next-intl";
@@ -14,16 +13,10 @@ import { useTranslations } from "next-intl";
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,
 });
-
-export default function New() {
+export default function New({ watches }: { watches: Watch[] }) {
     const t = useTranslations("home");
     const t_btn = useTranslations("common.buttons");
     const [view, set_view] = useState<null | Watch>(null);
-    const [data, set_data] = useState<Watch[]>([]);
-
-    useEffect(() => {
-        get_new().then((results) => set_data(results));
-    }, []);
 
     return (
         <section className="flex flex-col justify-center items-start sm:p-16 p-4 py-8 w-dvw gap-6" id="new">
@@ -47,13 +40,8 @@ export default function New() {
             <FadeInObserver>
                 <div className={`w-full sm-w-fit`}>
                     <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
-                        {data.map((d) => (
-                            <div
-                                aria-label={`${d.brand + " " + d.model}`}
-                                className="h-130 sm:h-110 w-full flex flex-col justify-start items-start gap-4 transition-long group"
-                                key={d.slug}
-                                onClick={() => innerWidth < 1536 && set_view(d)}
-                            >
+                        {watches.map((d) => (
+                            <div aria-label={`${d.brand + " " + d.model}`} className="h-130 sm:h-110 w-full flex flex-col justify-start items-start gap-4 transition-long group" key={d.slug} onClick={() => innerWidth < 1536 && set_view(d)}>
                                 <div className="relative w-full h-9/10 sm:h-fit flex-center overflow-hidden sm:aspect-square">
                                     <Image
                                         src={d.images[0]}

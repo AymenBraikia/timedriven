@@ -7,9 +7,9 @@ export const dynamic = "force-dynamic";
 
 function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
     return (
-        <div className="border border-[var(--foreground)]/15 rounded p-4">
+        <div className="border border-(--foreground)/15 rounded p-4">
             <p className="text-xs uppercase tracking-[0.15em] opacity-50">{label}</p>
-            <p className="text-2xl mt-2 font-[family-name:var(--font-gelasio)]">{value}</p>
+            <p className="text-2xl mt-2 font-secondary">{value}</p>
             {hint && <p className="text-xs opacity-40 mt-1">{hint}</p>}
         </div>
     );
@@ -21,7 +21,7 @@ export default async function AdminDashboard() {
     return (
         <>
             <header className="mb-8">
-                <h1 className="text-2xl font-[family-name:var(--font-gelasio)]">Dashboard</h1>
+                <h1 className="text-2xl font-secondary">Dashboard</h1>
                 <p className="opacity-50 text-sm mt-1">Everything at a glance.</p>
             </header>
 
@@ -33,13 +33,13 @@ export default async function AdminDashboard() {
                 <Stat label="Spare parts" value={String(stats.spares)} />
                 <Stat label="Customers" value={String(stats.users)} />
                 <Stat label="Open enquiries" value={String(stats.openEnquiries)} hint="Sell, consign, appointments" />
-                <Link href="/admin/watches/new" className="border border-dashed border-[var(--foreground)]/30 rounded p-4 flex items-center justify-center text-sm hover:bg-[var(--bg-secondary)] transition-colors duration-300">
+                <Link href="/admin/watches/new" className="border border-dashed border-(--foreground)/30 rounded p-4 flex items-center justify-center text-sm hover:bg-secondary transition-colors duration-300">
                     + Add a watch
                 </Link>
             </section>
 
             <section>
-                <h2 className="text-lg mb-3 font-[family-name:var(--font-gelasio)]">Recent orders</h2>
+                <h2 className="text-lg mb-3 font-secondary">Recent orders</h2>
 
                 {orders.length === 0 ? (
                     <p className="opacity-50 text-sm">No orders yet.</p>
