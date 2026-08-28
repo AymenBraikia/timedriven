@@ -6,12 +6,14 @@ export async function GET(req: NextRequest) {
 
     if (!query) return NextResponse.json([]);
 
-    const watches = await watches_collection
+    const watches = await (
+        await watches_collection()
+    )
         .find({
             $or: [{ brand: { $regex: query, $options: "i" } }, { model: { $regex: query, $options: "i" } }, { reference: { $regex: query, $options: "i" } }],
         })
         .limit(10)
         .toArray();
-        
+
     return NextResponse.json(watches);
 }
