@@ -23,13 +23,13 @@ export async function set_order_status(id: string, status: Order["status"]): Pro
 
 type EnquiryKind = "sell" | "consignment" | "appointment";
 
-const collection_for = (kind: EnquiryKind) => (kind === "sell" ? sell_collection : kind === "consignment" ? consignments_collection : appointments_collection);
+const collection_for = (kind: EnquiryKind) => (kind === "sell" ? sell_collection() : kind === "consignment" ? consignments_collection() : appointments_collection());
 
 export async function set_enquiry_handled(kind: EnquiryKind, id: string, handled: boolean): Promise<ActionResult> {
     if (!(await get_admin_session())) return { success: false, error: "Not authorised." };
 
     try {
-        await collection_for(kind).updateOne({ id }, { $set: { handled } });
+        (await collection_for(kind)).updateOne({ id }, { $set: { handled } });
         revalidatePath("/admin/enquiries");
         return { success: true };
     } catch (err) {
@@ -42,7 +42,7 @@ export async function delete_enquiry(kind: EnquiryKind, id: string): Promise<Act
     if (!(await get_admin_session())) return { success: false, error: "Not authorised." };
 
     try {
-        await collection_for(kind).deleteOne({ id });
+        (await collection_for(kind)).deleteOne({ id });
         revalidatePath("/admin/enquiries");
         return { success: true };
     } catch (err) {
