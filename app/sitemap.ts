@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import get_watches from "./server/get_watches";
 
 const baseUrl = "https://arvell.vercel.app";
 
@@ -26,10 +27,10 @@ const routes = [
     "/info/withdraw",
 ] as const;
 
-const brandSlugs = ["audemars-piguet", "breitling", "cartier", "iwc", "omega", "patek-philippe", "rolex", "zenith"] as const;
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const now = new Date();
+
+    const watches = await get_watches();
 
     const staticPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>
         routes.map((route) => ({
@@ -41,8 +42,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
 
     const brandPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>
-        brandSlugs.map((brand) => ({
-            url: `${baseUrl}/${locale}/brand/${brand}`,
+        watches.map((w) => ({
+            url: `${baseUrl}/${locale}/brand/${w.brand}`,
             lastModified: now,
             changeFrequency: "weekly" as const,
             priority: 0.8,

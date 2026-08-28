@@ -10,12 +10,10 @@ const nextConfig: NextConfig = {
     experimental: {
         optimizeCss: true,
     },
-    webpack: (config) => {
-        config.resolve.alias = {
-            ...config.resolve.alias,
-            "core-js": false,
-        };
-        return config;
+    turbopack: {
+        resolveAlias: {
+            "core-js": { browser: "./empty.js" },
+        },
     },
 };
 
