@@ -14,7 +14,21 @@ export default async function getUser(): Promise<UserData | undefined> {
     const payload = verifyJwt(token);
     if (!payload) return;
 
-    const user = await (await users_collection()).findOne<User>({ email: payload.email });
+    const user = await (
+        await users_collection()
+    ).findOne<User>(
+        { email: payload.email },
+        {
+            projection: {
+                _id: 0,
+                password: 0,
+                "ongoing_orders.items.description": 0,
+                "ongoing_orders.items.images": 0,
+                "fulfilled_orders.items.description": 0,
+                "fulfilled_orders.items.images": 0,
+            },
+        },
+    );
 
     if (!user) return;
 
