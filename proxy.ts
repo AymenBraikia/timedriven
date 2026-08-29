@@ -3,6 +3,7 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { verifyJwt } from "./app/[local]/(auth)/auth/jwt";
 import { sanitizeRef } from "./i18n/brand";
+import { save_visit } from "./app/server/save_visit";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -25,7 +26,6 @@ export default function proxy(request: NextRequest) {
 
     if (BOT.test(request.headers.get("user-agent") || "")) return handleI18nRouting(request);
     if (request.headers.get("purpose") == "prefetch") return handleI18nRouting(request);
-
 
     const isAdminRoute = matches(pathname, adminRoutes);
     const isProtectedRoute = isAdminRoute || matches(pathname, protectedRoutes);
@@ -53,7 +53,10 @@ export default function proxy(request: NextRequest) {
 
     const ref = sanitizeRef(request.nextUrl.searchParams.get("ref"));
     if (ref) {
-        response.cookies.set("ref", ref, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+        if (process.env.NODE_ENV == "production") {
+            response.cookies.set("ref", ref, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+            save_visit(request);
+        }
     } else if (request.nextUrl.searchParams.has("ref")) {
         response.cookies.delete("ref"); // ?ref= with nothing clears it
     }
