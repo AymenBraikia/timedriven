@@ -34,6 +34,7 @@ export async function save_visit(request: NextRequest) {
         browser: getBrowser(agent),
         os: getOS(agent),
         visits: 1,
+        set: false,
     };
     collection.insertOne(visitor);
 }
