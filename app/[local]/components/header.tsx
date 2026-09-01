@@ -269,7 +269,7 @@ export default function Header() {
 
     return (
         <>
-            <header className={`flex flex-col w-dvw fixed top-0 start-0 z-4000 h-fit min-h-25 sm:min-h-20 text-primary bg-background`}>
+            <header className={`flex flex-col w-dvw fixed top-0 inset-s-0 z-4000 h-fit min-h-25 sm:min-h-20 text-primary bg-background`}>
                 <Credits />
                 <div className="w-full flex justify-between items-center sm:px-8 py-8 sm:py-2 px-2">
                     <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
@@ -297,7 +297,8 @@ export default function Header() {
                                 {t("buttons.register")}
                             </Link>
                         )}
-                        <Select options={["English", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+                        {/* <Select options={["English", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} /> */}
+                        <Select options={["English", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
                         {/* <button
                             aria-label={"change language"}
@@ -314,7 +315,7 @@ export default function Header() {
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} />
-                            {session && session.cart.length ? <p className="absolute start-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
+                            {session && session.cart.length ? <p className="absolute inset-s-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                         </button>
                         <ThemeToggle />
                     </div>
