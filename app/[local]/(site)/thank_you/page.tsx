@@ -8,20 +8,22 @@ export default async function thank_you_page() {
     const t = await getTranslations("orders");
 
     return (
-        <div className="font-secondary p-8 w-full flex-center flex-col gap-12">
+        <div className="font-secondary py-8 w-full flex-center flex-col gap-12 capitalize">
             <Banner>
-                <div className="w-full font-secondary text-start">
-                    <h1>
-                        {t("thankYou")} <span className="underline capitalize">{user.first_name}</span> {t("thankYouSuffix")}
+                <div className="flex w-full flex-col items-start gap-5 font-secondary">
+                    <h1 className="leading-tight max-w-150">
+                        {t("thankYou")} {user.first_name} {t("thankYouSuffix")}
                     </h1>
+
+                    <p className="max-w-[46ch] font-sans text-sm leading-relaxed text-secondary sm:text-base">{t("subtitle")}</p>
                 </div>
             </Banner>
 
             <div className="flex-center flex-col gap-16 w-full px-4 sm:px-12 font-sans">
                 <div className="w-full">
-                    <h2>{t("ongoingOrders")}</h2>
+                    <h2 className="text-shine">{t("ongoingOrders")}</h2>
 
-                    <div className={`flex-center flex-col w-full mt-12 overflow-x-auto ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
+                    <div className={`flex justify-start items-start flex-col w-full mt-12 overflow-x-auto ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
                         <div className={`min-w-250 w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.ongoing_orders.length ? "flex justify-between items-center" : "hidden"}`}>
                             <p className="w-45">{t("orderId")}</p>
                             <p className="w-35">{t("orderDate")}</p>
@@ -32,9 +34,9 @@ export default async function thank_you_page() {
                         </div>
 
                         {user.ongoing_orders.length ? (
-                            <div className="min-w-250 overflow-y-auto w-full h-150 flex flex-col justify-start items-start gap-4">
-                                {user.ongoing_orders.map((o, i) => (
-                                    <Order_display key={o.id} last={user.ongoing_orders.length == i + 1} data={o} />
+                            <div className="min-w-250 overflow-y-auto w-full max-h-150 h-fit flex flex-col justify-start items-start gap-4">
+                                {user.ongoing_orders.map((order, i) => (
+                                    <Order_display key={order.id} last={user.ongoing_orders.length == i + 1} data={order} />
                                 ))}
                             </div>
                         ) : (
@@ -44,7 +46,7 @@ export default async function thank_you_page() {
                 </div>
 
                 <div className="w-full">
-                    <h2>{t("deliveredOrders")}</h2>
+                    <h2 className="text-shine">{t("deliveredOrders")}</h2>
 
                     <div className={`flex-center flex-col w-full mt-12 overflow-x-auto ${user.fulfilled_orders.length ? "bg-primary" : ""}`}>
                         <div className={`min-w-250 w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.fulfilled_orders.length ? "flex justify-between items-center" : "hidden"}`}>
@@ -57,7 +59,7 @@ export default async function thank_you_page() {
                         </div>
 
                         {user.fulfilled_orders.length ? (
-                            <div className="min-w-250 overflow-y-auto w-full h-150 flex flex-col justify-start items-start gap-4">
+                            <div className="min-w-250 overflow-y-auto w-full max-h-150 h-fit flex flex-col justify-start items-start gap-4">
                                 {user.fulfilled_orders.map((o, i) => (
                                     <Order_display key={o.id} last={user.fulfilled_orders.length == i + 1} data={o} />
                                 ))}

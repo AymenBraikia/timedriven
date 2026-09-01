@@ -1,10 +1,8 @@
 import { Order } from "@/types/order";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
 import { format_price } from "../lib/price_format";
 
 export default async function Order_display({ data, last }: { data: Order; last: boolean }) {
-    const t = await getTranslations("orders");
 
     const address = typeof data.address == "string" ? data.address : `${data.address.city}, ${data.address.address1 + (data.address.address2 ? `, ${data.address.address2}` : "")}`;
 
@@ -32,7 +30,7 @@ export default async function Order_display({ data, last }: { data: Order; last:
                 {data.items.map((item) => (
                     <div className="flex justify-start items-start gap-4 w-[calc(33%-12px)] h-25" key={item.slug}>
                         <div className="relative h-full aspect-square">
-                            <Image fill src={item.images[0]} alt={item.slug} sizes="(max-width: 768px) 80vw, 300px" className="object-cover object-center" />
+                            <Image fill src={item?.images?.[0]||"/nah.webp"} alt={item.slug} sizes="(max-width: 768px) 80vw, 300px" className="object-cover object-center" />
                         </div>
 
                         <div className="w-full h-full flex flex-col justify-between items-start tracking-wider">

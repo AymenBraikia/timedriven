@@ -1,0 +1,1 @@
+export type Locales = "en" | "de" | "ar" | "fr" | "tr" | "it";

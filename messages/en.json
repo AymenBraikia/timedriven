@@ -1,4 +1,24 @@
 {
+    "orders": {
+        "thankYou": "With thanks",
+        "thankYouSuffix": "your acquisition is confirmed",
+        "ongoingOrders": "awaiting delivery",
+        "orderId": "reference",
+        "orderDate": "placed",
+        "orderTotal": "total",
+        "paymentMethod": "payment",
+        "shipping": "destination",
+        "status": "status",
+        "noOngoingOrders": "no pieces are currently in transit",
+        "deliveredOrders": "your collection",
+        "noDeliveredOrders": "your collection begins with your first piece",
+        "subtitle": "Your order is recorded. A specialist will be in touch within one business day.",
+        "orderCount": "{count, plural, =0 {No orders} one {# order} other {# orders}}",
+        "quantity": "Quantity",
+        "localPickup": "Collection in boutique",
+        "discount": "Discount",
+        "browse": "Browse the collection"
+    },
     "meta": {
         "siteName": "ARVELL",
         "titleDefault": "ARVELL | High-End Luxury Watches & Expert Consultancy",

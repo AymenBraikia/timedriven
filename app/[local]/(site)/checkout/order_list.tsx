@@ -256,7 +256,7 @@ export default function Order_list() {
                     <div className="w-full">
                         <PayPal_Btn disabled={false} />
                         <p className="w-full">
-                            {t("paypalNote")} <br /> <br /> <span className="text-shine">{t("email")}: </span> <span className="font-semibold">test@arvell.com</span>
+                            {t("paypalNote")} <br /> <br /> <span className="text-shine">{t("email")}: </span> <span className="font-semibold lowercase">test@arvell.com</span>
                             <br /> <span className="text-shine">{t("password")}: </span> <span className="font-semibold">Arvell_123</span>
                         </p>
                     </div>

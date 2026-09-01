@@ -1,7 +1,5 @@
-// app/pitch/brand.ts
 export const DEFAULT_BRAND = "Arvell";
 
-/** Trust nothing from the query string. */
 export function sanitizeRef(raw?: string | null): string | null {
     if (!raw) return null;
     const clean = raw
@@ -11,7 +9,6 @@ export function sanitizeRef(raw?: string | null): string | null {
     return clean.length >= 2 ? clean : null;
 }
 
-/** Recursively swap the brand token through the whole message tree. */
 export function applyBrand<T>(node: T, brand: string): T {
     if (typeof node === "string") {
         return node

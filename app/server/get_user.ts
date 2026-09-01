@@ -22,10 +22,6 @@ export default async function getUser(): Promise<UserData | undefined> {
             projection: {
                 _id: 0,
                 password: 0,
-                "ongoing_orders.items.description": 0,
-                "ongoing_orders.items.images": 0,
-                "fulfilled_orders.items.description": 0,
-                "fulfilled_orders.items.images": 0,
             },
         },
     );

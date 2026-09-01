@@ -7,7 +7,7 @@ import { Open_Sans, Gelasio } from "next/font/google";
 import "../globals.css";
 
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -99,9 +99,17 @@ export const viewport: Viewport = {
     colorScheme: "dark light",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({
+    children,
+    params,
+}: Readonly<{
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+}>) {
+    const { locale } = await params;
+
     return (
-        <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={locale || "en"} className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
                 <SpeedInsights />
