@@ -7,7 +7,7 @@ export default function NotFound() {
     return (
         <div className="flex-center py-10">
             <div className="relative aspect-video w-dvw">
-                <div className="absolute top-1/7 right-1/8 flex justify-center items-start flex-col fade-in p-8 max-w-150 frost">
+                <div className="absolute top-1/7 inset-e-1/8 flex justify-center items-start flex-col fade-in p-8 max-w-150 frost">
                     <h1>404 Not Found</h1>
                     <h5 className="font-secondary">Time Has Run Out for This Page</h5>
                     <p className="mt-2 text-secondary">The page or timepiece you are searching for has been moved, renamed, or no longer exists.</p>

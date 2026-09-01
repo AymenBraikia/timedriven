@@ -40,7 +40,7 @@ export default function Items() {
         <div className="w-full h-fit flex xl:flex-row flex-col justify-between items-start gap-12 xl:gap-4">
             {session!.cart.length ? (
                 <>
-                    <div className=" xl:min-w-190 w-full h-full max-h-[75dvh] overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pr-2">
+                    <div className=" xl:min-w-190 w-full h-full max-h-[75dvh] overflow-y-auto overflow-x-hidden flex justify-start items-start flex-col gap-4 pe-2">
                         {session!.cart.map((i) => (
                             <Item_Display key={i.slug} {...i} />
                         ))}
@@ -93,5 +93,3 @@ export default function Items() {
         </div>
     );
 }
-
-

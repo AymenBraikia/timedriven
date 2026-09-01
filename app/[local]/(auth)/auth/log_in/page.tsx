@@ -70,7 +70,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ re
                 </Link>
             </p>
 
-            <div className={`fixed right-0 bottom-4 text-sm transition-default bg-secondary p-4 ${error ? "-translate-x-4" : "translate-x-full"}`}>{error}</div>
+            <div className={`fixed inset-e-0 bottom-4 text-sm transition-default bg-secondary p-4 ${error ? "-translate-x-4" : "translate-x-full"}`}>{error}</div>
         </div>
     );
 }

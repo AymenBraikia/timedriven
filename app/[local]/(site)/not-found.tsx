@@ -9,7 +9,7 @@ export default function NotFound() {
     return (
         <div className="flex-center py-10">
             <div className="relative aspect-video w-dvw">
-                <div className="absolute top-1/7 right-1/8 flex justify-center items-start flex-col fade-in p-8 max-w-150 liquid-glass">
+                <div className="absolute top-1/7 inset-e-1/8 flex justify-center items-start flex-col fade-in p-8 max-w-150 bg-background">
                     <h1>{t("heading")}</h1>
                     <h5 className="font-secondary">{t("subHeading")}</h5>
                     <p className="mt-2 text-secondary">{t("subText")}</p>

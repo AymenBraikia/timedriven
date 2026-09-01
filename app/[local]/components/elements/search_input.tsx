@@ -57,13 +57,13 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
 
                 <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:block hidden`} placeholder={placeholder} id="searchWatches" />
                 {data.length ? (
-                    <div className="absolute hidden md:flex top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto flex-col bg-background font-secondary py-2">
+                    <div className="absolute hidden md:flex top-[calc(100%+8px)] inset-s-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto flex-col bg-background font-secondary py-2">
                         {data.map((e, idx) => (
                             <SearchChildComponent key={idx} item={e} />
                         ))}
                     </div>
                 ) : value ? (
-                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] left-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 bg-background">
+                    <div className="absolute hidden md:flex-center top-[calc(100%+8px)] inset-s-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 bg-background">
                         {fetching ? t("searching") : t("noSearchResults")}
                     </div>
                 ) : (
@@ -71,8 +71,8 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                 )}
             </div>
             <Activity mode={active ? "visible" : "hidden"}>
-                <div className="fixed left-0 top-0 fade-in w-dvw h-dvh frost z-60 p-6 pb-0 flex flex-col gap-4 md:hidden">
-                    <button aria-label="close search" type="button" className="absolute top-4 right-4 p-0 cursor-pointer" onClick={() => set_active(false)}>
+                <div className="fixed inset-s-0 top-0 fade-in w-dvw h-dvh frost z-60 p-6 pb-0 flex flex-col gap-4 md:hidden">
+                    <button aria-label="close search" type="button" className="absolute top-4 inset-e-4 p-0 cursor-pointer" onClick={() => set_active(false)}>
                         <Cross classnames={"w-10"} />
                     </button>
                     <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:hidden block w-[calc(100%-40px)] h-fit border-b`} placeholder={placeholder} id="searchWatches" />
@@ -84,7 +84,7 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                             ))}
                         </div>
                     ) : value ? (
-                        <div className="flex md:hidden top-[calc(100%+8px)] left-0 w-full h-fit overflow-y-auto font-secondary py-2 text-shine">{fetching ? t("searching") : t("noSearchResults")}</div>
+                        <div className="flex md:hidden top-[calc(100%+8px)] inset-s-0 w-full h-fit overflow-y-auto font-secondary py-2 text-shine">{fetching ? t("searching") : t("noSearchResults")}</div>
                     ) : (
                         <></>
                     )}

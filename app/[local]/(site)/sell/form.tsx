@@ -84,7 +84,7 @@ export default function Form() {
 
             <form onSubmit={handleSubmit(onValid)} className="w-full h-fit p-4 flex-center flex-col gap-6">
                 <div className={`sm:w-full w-dvw h-fit ${step == 2 ? "min-h-210" : step == 1 ? "sm:min-h-50 min-h-30" : "sm:min-h-50 min-h-100"} relative flex-center overflow-hidden`}>
-                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute inset-s-1/2 top-1/2 -translate-1/2 gap-4 sm:grid-cols-2 grid-cols-1 grid transition-default" style={{ transform: `translateX(${step * -100}dvw)` }}>
                         <div className="flex-center flex-col w-full">
                             <Input {...register("firstName")} label={t_fields("firstName")} type={"text"} />
                             {errors.firstName && <p className="text-red-400 text-sm w-full">{errors.firstName.message}</p>}
@@ -103,13 +103,13 @@ export default function Form() {
                         </div>
                     </div>
 
-                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute left-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 absolute inset-s-1/2 top-1/2 -translate-1/2 gap-4 grid transition-default" style={{ transform: `translateX(${step * -100 + 100}dvw)` }}>
                         <Input {...register("intent")} label={t("salePreferenceOptions.consignment")} type={"radio"} value="consign" />
                         <Input {...register("intent")} label={t("salePreferenceOptions.sell")} type={"radio"} value="sell" />
                         {errors.intent && <p className="text-red-400 text-sm w-full">{errors.intent.message}</p>}
                     </div>
 
-                    <div className="w-full px-4 sm:px-0 sm:max-w-200 max-w-[90dvw] absolute left-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
+                    <div className="w-full px-4 sm:px-0 sm:max-w-200 max-w-[90dvw] absolute inset-s-1/2 top-1/2 -translate-1/2 gap-4 flex-center flex-col transition-default" style={{ transform: `translateX(${step * -100 + 200}dvw)` }}>
                         <Input {...register("brand")} label={t("fields.brand")} type={"text"} />
                         {errors.brand && <p className="text-red-400 text-sm w-full">{errors.brand.message}</p>}
 

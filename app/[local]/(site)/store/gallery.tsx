@@ -17,7 +17,7 @@ export default function Gallery() {
     return (
         <div className="w-full xl:w-[calc(50%-20px)] h-fit relative aspect-16/12">
             {sources.map((s, i) => (
-                <div key={s} className={`w-full h-full absolute left-0 top-0 transition-long ${i == index ? "opacity-100" : "opacity-0"}`}>
+                <div key={s} className={`w-full h-full absolute inset-s-0 top-0 transition-long ${i == index ? "opacity-100" : "opacity-0"}`}>
                     <div className="relative w-full h-full">
                         <Image fill src={s} alt={s} className="object-cover object-center" />
                     </div>

@@ -39,11 +39,11 @@ export default async function SellPage() {
                     <h4 className="underline">{t("consign.heading")}</h4>
                     <p className="text-sm tracking-widest text-shine">{t("consign.intro")}</p>
                     <div className="w-full">
-                        <ul className="list-decimal ml-4">
+                        <ul className="list-decimal ms-4">
                             {steps.map((e) => (
                                 <li key={e.title} className="text-xl my-2">
                                     {e.title}
-                                    <p className="text-sm tracking-wider mt-2 ml-4 text-secondary">{e.text}</p>
+                                    <p className="text-sm tracking-wider mt-2 ms-4 text-secondary">{e.text}</p>
                                 </li>
                             ))}
                         </ul>
@@ -54,11 +54,11 @@ export default async function SellPage() {
                     <h4 className="underline">{t("sellDirect.heading")}</h4>
                     <p className="text-sm tracking-widest text-shine">{t("sellDirect.intro")}</p>
                     <div className="w-full">
-                        <ul className="list-decimal ml-4">
+                        <ul className="list-decimal ms-4">
                             {sell_steps.map((e) => (
                                 <li key={e.title} className="text-xl my-2">
                                     {e.title}
-                                    <p className="text-sm tracking-wider mt-2 ml-4 text-secondary">{e.text}</p>
+                                    <p className="text-sm tracking-wider mt-2 ms-4 text-secondary">{e.text}</p>
                                 </li>
                             ))}
                         </ul>

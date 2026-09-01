@@ -40,12 +40,12 @@ export default async function TermsPage() {
                             {section.number}. {section.heading}
                         </h4>
 
-                        {section.intro && <p className="ml-4">{section.intro}</p>}
+                        {section.intro && <p className="ms-4">{section.intro}</p>}
 
-                        {section.text && <p className="ml-4">{section.text}</p>}
+                        {section.text && <p className="ms-4">{section.text}</p>}
 
                         {section.items && (
-                            <ul className="list-disc list-inside ml-4">
+                            <ul className="list-disc list-inside ms-4">
                                 {section.items.map((item) => (
                                     <li key={item}>{item}</li>
                                 ))}
@@ -54,12 +54,12 @@ export default async function TermsPage() {
 
                         {section.subsections?.map((subsection) => (
                             <div key={subsection.heading}>
-                                <p className="ml-4">{subsection.heading}</p>
+                                <p className="ms-4">{subsection.heading}</p>
 
-                                {subsection.text && <p className="ml-4">{subsection.text}</p>}
+                                {subsection.text && <p className="ms-4">{subsection.text}</p>}
 
                                 {subsection.items && (
-                                    <ul className="list-disc list-inside ml-8">
+                                    <ul className="list-disc list-inside ms-8">
                                         {subsection.items.map((item) => (
                                             <li key={item}>{item}</li>
                                         ))}

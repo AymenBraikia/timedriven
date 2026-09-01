@@ -24,7 +24,7 @@ export default async function thank_you_page() {
                     <h2 className="text-shine">{t("ongoingOrders")}</h2>
 
                     <div className={`flex justify-start items-start flex-col w-full mt-12 overflow-x-auto ${user.ongoing_orders.length ? "bg-primary" : ""}`}>
-                        <div className={`min-w-250 w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.ongoing_orders.length ? "flex justify-between items-center" : "hidden"}`}>
+                        <div className={`min-w-250 w-full gap-2 bg-primary ps-2 pe-5 py-6 font-semibold border-b ${user.ongoing_orders.length ? "flex justify-between items-center" : "hidden"}`}>
                             <p className="w-45">{t("orderId")}</p>
                             <p className="w-35">{t("orderDate")}</p>
                             <p className="w-25">{t("orderTotal")}</p>
@@ -49,7 +49,7 @@ export default async function thank_you_page() {
                     <h2 className="text-shine">{t("deliveredOrders")}</h2>
 
                     <div className={`flex-center flex-col w-full mt-12 overflow-x-auto ${user.fulfilled_orders.length ? "bg-primary" : ""}`}>
-                        <div className={`min-w-250 w-full gap-2 bg-primary pl-2 pr-5 py-6 font-semibold border-b ${user.fulfilled_orders.length ? "flex justify-between items-center" : "hidden"}`}>
+                        <div className={`min-w-250 w-full gap-2 bg-primary ps-2 pe-5 py-6 font-semibold border-b ${user.fulfilled_orders.length ? "flex justify-between items-center" : "hidden"}`}>
                             <p className="w-45">{t("orderId")}</p>
                             <p className="w-35">{t("orderDate")}</p>
                             <p className="w-25">{t("orderTotal")}</p>

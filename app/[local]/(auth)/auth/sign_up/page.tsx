@@ -13,7 +13,6 @@ export default function SignUpPage({ searchParams }: { searchParams: Promise<{ r
     const params = use(searchParams);
     const t = useTranslations("auth.signUp");
 
-
     const [agreed, setAgreed] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -85,7 +84,7 @@ export default function SignUpPage({ searchParams }: { searchParams: Promise<{ r
                 </Link>
             </p>
 
-            <div className={`fixed right-0 bottom-4 text-sm transition-default bg-secondary p-4 ${error ? "-translate-x-4" : "translate-x-full"}`}>{error}</div>
+            <div className={`fixed inset-e-0 bottom-4 text-sm transition-default bg-secondary p-4 ${error ? "-translate-x-4" : "translate-x-full"}`}>{error}</div>
         </div>
     );
 }

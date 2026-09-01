@@ -51,10 +51,10 @@ export default function New({ watches }: { watches: Watch[] }) {
                                         className="object-contain select-none scale-100 brightness-100 transition-long group-hover:scale-105 group-hover:brightness-50"
                                     />
                                     <div className="2xl:flex-center relative w-full h-15 fade-out group-hover:fade-in transition-long hidden gap-4 z-10">
-                                        <button aria-label={`quick view ${d.brand + " " + d.model}`} type="button" className="button cursor-pointer p-4 select-none transition-default capitalize h-full" onClick={() => set_view(d)}>
+                                        <button aria-label={`quick view ${d.brand + " " + d.model}`} type="button" className="button cursor-pointer p-4 select-none transition-default capitalize min-w-fit whitespace-nowrap text-sm h-fit" onClick={() => set_view(d)}>
                                             {t_btn("quick_view")}
                                         </button>
-                                        <div className="w-fit text-white hover:text-foreground transition-default capitalize">
+                                        <div className="w-fit text-white hover:text-foreground transition-default capitalize min-w-fit whitespace-nowrap text-sm">
                                             <AtcBtn slug={d.slug} />
                                         </div>
                                     </div>

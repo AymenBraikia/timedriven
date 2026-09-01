@@ -124,7 +124,7 @@ function Displayed_Data({
 
             return (
                 <div className="w-full py-4 overflow-x-auto">
-                    <table className="min-w-full text-left border-collapse">
+                    <table className="min-w-full text-start border-collapse">
                         <thead>
                             <tr>
                                 {headers.map((header) => (

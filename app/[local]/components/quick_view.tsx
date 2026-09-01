@@ -29,7 +29,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
     }, [view]);
 
     return view ? (
-        <div className="fixed fade-in w-dvw h-dvh left-0 top-0 z-70 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
+        <div className="fixed fade-in w-dvw h-dvh inset-s-0 top-0 z-70 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
                 tabIndex={-1}
                 role="dialog"
@@ -37,7 +37,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                 aria-label={`${view.brand} ${view.model} quick view`}
                 className="relative p-4 sm:pt-30 pt-25 flex w-full h-full flex-col md:flex-row bg-background font-secondary outline-none flex-center"
             >
-                <button aria-label={"close"} type="button" className="button absolute top-34 right-4 z-20 p-0" onClick={onClose}>
+                <button aria-label={"close"} type="button" className="button absolute top-34 inset-e-4 z-20 p-0" onClick={onClose}>
                     <Cross classnames="w-10" />
                 </button>
 

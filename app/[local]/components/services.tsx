@@ -16,7 +16,7 @@ export default function Services() {
                     <div className="relative w-full h-full transition hover:brightness-100 brightness-75 transition-default overflow-hidden group">
                         <Image sizes="(max-width: 1200px) 100vw, 70vw" src={sell_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
-                    <div className="absolute left-4 bottom-4 flex flex-col p-2 text-white">
+                    <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
                         <p className="lg:title4 md:title5 title6">{t("sellConsignCard.title")}</p>
                         <p className="underline">{t("sellConsignCard.cta")}</p>
                     </div>
@@ -25,7 +25,7 @@ export default function Services() {
                     <div className="relative w-full h-full transition hover:brightness-100 brightness-75 transition-default overflow-hidden group">
                         <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" src={spare_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
-                    <div className="absolute left-4 bottom-4 flex flex-col p-2 text-white">
+                    <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
                         <p className="lg:title4 md:title5 title6">{t("sparePartsCard.title")}</p>
                         <p className="underline">{t("sparePartsCard.cta")}</p>
                     </div>
@@ -34,7 +34,7 @@ export default function Services() {
                     <div className="relative w-full h-full transition hover:brightness-100 brightness-75 transition-default overflow-hidden group">
                         <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" src={services_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
-                    <div className="absolute left-4 bottom-4 flex flex-col p-2 text-white">
+                    <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
                         <p className="lg:title4 md:title5 title6">{t("polishCard.title")}</p>
                         <p className="underline">{t("polishCard.cta")}</p>
                     </div>

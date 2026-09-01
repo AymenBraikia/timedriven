@@ -98,14 +98,7 @@ export default function Range({ min, max, value, onChange, step = 1, label, form
                 <NumberField id={`${id}-to`} label={toLabel} value={value[1]} min={value[0]} max={max} format={format} onCommit={(n) => commit(1, n)} />
             </div>
 
-            <div
-                ref={track}
-                onPointerDown={onPointerDown}
-                onPointerMove={onPointerMove}
-                onPointerUp={endDrag}
-                onPointerCancel={endDrag}
-                className="relative h-6 w-full cursor-pointer touch-none select-none"
-            >
+            <div ref={track} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endDrag} onPointerCancel={endDrag} className="relative h-6 w-full cursor-pointer touch-none select-none">
                 <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-secondary opacity-40" />
                 <div className="absolute top-1/2 h-px -translate-y-1/2 bg-foreground" style={{ left: `${percent(value[0])}%`, right: `${100 - percent(value[1])}%` }} />
 
@@ -123,7 +116,7 @@ export default function Range({ min, max, value, onChange, step = 1, label, form
                         className="group absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-background bg-foreground outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         style={{ left: `${percent(value[index])}%` }}
                     >
-                        <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap text-xs text-secondary opacity-0 transition-default group-focus-visible:opacity-100 group-hover:opacity-100">
+                        <span className="pointer-events-none absolute bottom-full inset-s-1/2 mb-2 -translate-x-1/2 whitespace-nowrap text-xs text-secondary opacity-0 transition-default group-focus-visible:opacity-100 group-hover:opacity-100">
                             {format(value[index])}
                         </span>
                     </button>

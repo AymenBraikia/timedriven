@@ -110,13 +110,13 @@ export default function Order_list() {
                 </div>
                 <div className="w-full max-h-full overflow-y-auto overflow-x-hidden gap-2 flex flex-col justify-start items-start py-2">
                     {session.cart.map((i, c) => (
-                        <div key={i.slug} className={`flex justify-between items-center gap-4 h-25 shrink-0 sm:h-fit w-full pr-4 pb-2 ${session.cart.length - 1 != c ? "border-b" : ""}`}>
+                        <div key={i.slug} className={`flex justify-between items-center gap-4 h-25 shrink-0 sm:h-fit w-full pe-4 pb-2 ${session.cart.length - 1 != c ? "border-b" : ""}`}>
                             <div className="relative aspect-square sm:h-25 h-full">
                                 <Image src={i.images[0]} alt={i.slug} fill sizes="25vw" />
                             </div>
 
                             <div className="flex justify-between items-center flex-wrap gap-4 h-full w-full">
-                                <div className="w-full flex justify-start-items-start gap-2 tracking-wider capitalize">
+                                <div className="w-full flex justify-inset-s-items-start gap-2 tracking-wider capitalize">
                                     <h6 className="text-shine">{i.brand + " " + i.model}</h6>
                                 </div>
                                 <p className="text-base font-medium min-w-20 max-w-30 block font-sans">Quantity: {i.quantity}</p>

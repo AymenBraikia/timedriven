@@ -24,7 +24,7 @@ export default async function PrivacyPolicyPage() {
                     <p key={paragraph}>{paragraph}</p>
                 ))}
 
-                <ul className="list-disc ml-4">
+                <ul className="list-disc ms-4">
                     {structureList.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
@@ -44,7 +44,7 @@ export default async function PrivacyPolicyPage() {
                     <div className="text-[14px] flex flex-col gap-8">
                         <p>{t("sections.rights.intro")}</p>
 
-                        <ul className="list-disc ml-4">
+                        <ul className="list-disc ms-4">
                             {rightsItems.map((item) => (
                                 <li key={item}>{item}</li>
                             ))}
@@ -69,7 +69,7 @@ export default async function PrivacyPolicyPage() {
 
                         <h6>{t("sections.cookies.heading")}</h6>
 
-                        <ul className="list-disc ml-4">
+                        <ul className="list-disc ms-4">
                             <li className="font-bold">
                                 {t("sections.cookies.sessionCookies.heading")}
                                 <div className="flex justify-center items-start flex-col font-normal gap-4">

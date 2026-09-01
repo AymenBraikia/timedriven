@@ -14,21 +14,21 @@ export default async function WithdrawalPage() {
                 <p>{t("intro")}</p>
 
                 <h4 className="font-semibold">{t("rightHeading")}</h4>
-                <ol className="list-decimal list-inside ml-4">
+                <ol className="list-decimal list-inside ms-4">
                     {rightItems.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
                 </ol>
 
                 <h4 className="font-semibold">{t("consequencesHeading")}</h4>
-                <ol className="list-decimal list-inside ml-4">
+                <ol className="list-decimal list-inside ms-4">
                     {consequencesItems.map((item) => (
                         <li key={item}>{item}</li>
                     ))}
                 </ol>
 
                 <h4 className="font-semibold">{t("formHeading")}</h4>
-                <p className="ml-4">{t("formNote")}</p>
+                <p className="ms-4">{t("formNote")}</p>
 
                 <form className="w-full mt-4 flex flex-col gap-3">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">

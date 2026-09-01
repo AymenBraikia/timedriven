@@ -4,7 +4,7 @@ export default async function Hero() {
     const t = await getTranslations("home");
 
     return (
-        <section className="flex-col flex-center w-dvw h-dvh fixed top-0 left-0 text-white">
+        <section className="flex-col flex-center w-dvw h-dvh fixed top-0 inset-s-0 text-white">
             <video aria-hidden="true" autoPlay muted loop playsInline preload="metadata" poster="/hero_placeholder.webp" className="absolute inset-0 -z-10 size-full object-cover dark:brightness-50">
                 <source src="/hero_vid.mp4" type="video/mp4" />
             </video>

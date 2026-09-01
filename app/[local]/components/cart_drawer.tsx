@@ -16,7 +16,9 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
     return (
         <div
             ref={ref}
-            className={`liquid-glass z-50 backdrop-blur-xl w-dvw sm:min-w-100 sm:w-[70dvw] md:w-1/2 lg:w-[30dvw] h-dvh fixed top-0 right-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${ui.isCartOpen ? "translate-x-0" : "translate-x-full"}`}
+            className={`bg-background z-70 w-dvw sm:min-w-100 sm:w-[70dvw] md:w-1/2 lg:w-[30dvw] h-dvh fixed top-0 inset-e-0 flex flex-col justify-start items-start gap-4 p-4 md:gap-4 md:p-4 md:py-8 font-secondary transition-default ${
+                ui.isCartOpen ? "translate-x-0" : "ltr:translate-x-full rtl:-translate-x-full"
+            }`}
             onClick={(e) => e.stopPropagation()}
         >
             <div className="flex justify-between items-center w-full h-fit">
@@ -60,7 +62,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     </div>
                 </>
             ) : (
-                <div className="flex-center flex-col gap-4 w-full h-9/10 md:h-4/5 font-sans text-secondary">
+                <div className="flex-center flex-col gap-4 w-full h-9/10 md:h-4/5 font-sans text-parimary">
                     <Info classnames={"w-18"} />
                     <h5 className="title5 flex-center text-center">{t("empty")}</h5>
                 </div>

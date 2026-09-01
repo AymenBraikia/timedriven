@@ -11,6 +11,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getDirection } from "@/i18n/direction";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -104,25 +105,20 @@ export default async function RootLayout({
     params,
 }: Readonly<{
     children: React.ReactNode;
-    params: Promise<{ locale: string }>;
+    params: Promise<{ local: string }>;
 }>) {
-    const { locale } = await params;
+    const { local } = await params;
+
+    const direction = getDirection(local);
 
     return (
-        <html lang={locale || "en"} className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={local} dir={direction} className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
                 <SpeedInsights />
 
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-                        {/* <svg style={{ position: "absolute", width: 0, height: 0 }} aria-hidden="true">
-                            <filter id="liquid-frosted" x="0%" y="0%" width="100%" height="100%">
-                                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="noise" />
-                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped" />
-                                <feGaussianBlur in="warped" stdDeviation="2" />
-                            </filter>
-                        </svg> */}
                         <Suspense fallback={<AuthShell session={undefined}>{children}</AuthShell>}>
                             <AuthGate>{children}</AuthGate>
                         </Suspense>

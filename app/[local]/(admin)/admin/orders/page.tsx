@@ -33,7 +33,7 @@ export default async function AdminOrders() {
                                     </p>
                                 </div>
 
-                                <div className="text-right">
+                                <div className="text-end">
                                     <p>{format_price(order.amount_to_pay)}</p>
                                     <div className="mt-1">
                                         <OrderStatus id={order.id} status={order.status} />

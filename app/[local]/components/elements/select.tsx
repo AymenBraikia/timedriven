@@ -21,7 +21,7 @@ export default function Select({ options, value, set_value, label }: SelectProps
             </div>
 
             <Activity mode={active ? "visible" : "hidden"}>
-                <div className="w-full absolute -bottom-4 left-0 translate-y-full bg-primary min-w-fit max-h-100 overflow-x-hidden overflow-y-auto select-none">
+                <div className="w-full absolute -bottom-4 inset-s-0 translate-y-full bg-primary min-w-fit max-h-100 overflow-x-hidden overflow-y-auto select-none">
                     {new Array(...new Set(options)).map((o) => (
                         <p
                             key={o}

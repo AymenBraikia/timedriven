@@ -6,7 +6,6 @@ import Arrow from "./svg/arrow";
 export default function Dropdown({ children, titles }: { children: React.ReactNode[] | React.ReactNode; titles: string | string[] }) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [IsActive, setIsActive] = useState<boolean>(false);
-    
 
     return Array.isArray(titles) ? (
         <div className="w-full frost">
@@ -15,7 +14,7 @@ export default function Dropdown({ children, titles }: { children: React.ReactNo
                     <div className="w-full flex justify-start items-center gap-2" onClick={() => setActiveIndex(activeIndex === index ? null : index)}>
                         <Title title={title} active={activeIndex == index} />
                     </div>
-                    <div className={`w-full overflow-hidden ml-6 pr-6 max-h-250 ${activeIndex == index ? "flex" : "hidden"}`}>{Array.isArray(children) ? children[index] : children}</div>
+                    <div className={`w-full overflow-hidden ms-6 pe-6 max-h-250 ${activeIndex == index ? "flex" : "hidden"}`}>{Array.isArray(children) ? children[index] : children}</div>
                 </div>
             ))}
         </div>

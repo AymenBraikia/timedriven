@@ -114,14 +114,14 @@ export default function WatchFilters({ facets, counts, selection, onChange, resu
                 role="dialog"
                 aria-modal={open || undefined}
                 aria-label={t("filtersLabel")}
-                className={`frost fixed inset-y-0 left-0 z-100 flex w-[88%] max-w-sm flex-col transition-transform duration-300 ease-out lg:sticky lg:top-4 lg:z-0 lg:h-fit lg:max-h-[calc(100dvh-2rem)] lg:w-80 lg:max-w-none lg:translate-x-0 ${
+                className={`frost fixed inset-y-0 inset-s-0 z-100 flex w-[88%] max-w-sm flex-col transition-transform duration-300 ease-out lg:sticky lg:top-4 lg:z-0 lg:h-fit lg:max-h-[calc(100dvh-2rem)] lg:w-80 lg:max-w-none lg:translate-x-0 ${
                     open ? "translate-x-0" : "-translate-x-full"
                 }`}
             >
                 <header className="flex shrink-0 items-center justify-between gap-3 border-b border-secondary/30 px-4 py-4">
                     <h2 className="title6 font-secondary font-semibold">
                         {t("filtersLabel")}
-                        {activeCount > 0 && <span className="ml-2 text-sm font-normal text-secondary tabular-nums">({activeCount})</span>}
+                        {activeCount > 0 && <span className="ms-2 text-sm font-normal text-secondary tabular-nums">({activeCount})</span>}
                     </h2>
 
                     <div className="flex items-center gap-2">
@@ -213,7 +213,7 @@ function Accordion({ title, badge, defaultOpen, children }: { title: string; bad
                     onClick={() => setOpen((v) => !v)}
                     aria-expanded={open}
                     aria-controls={`filter-${id}`}
-                    className="flex w-full cursor-pointer items-center justify-between gap-2 py-4 text-left outline-none focus-visible:underline focus-visible:underline-offset-4"
+                    className="flex w-full cursor-pointer items-center justify-between gap-2 py-4 text-start outline-none focus-visible:underline focus-visible:underline-offset-4"
                 >
                     <span className="flex items-baseline gap-2 text-base">
                         {title}
@@ -288,7 +288,7 @@ function Option({ label, count, checked, onToggle }: { label: string; count: num
             aria-checked={checked}
             disabled={unavailable}
             onClick={onToggle}
-            className={`flex w-full items-center gap-3 py-1.5 text-left outline-none transition-default focus-visible:underline focus-visible:underline-offset-4 capitalize ${
+            className={`flex w-full items-center gap-3 py-1.5 text-start outline-none transition-default focus-visible:underline focus-visible:underline-offset-4 capitalize ${
                 unavailable ? "cursor-not-allowed opacity-35" : "cursor-pointer hover:opacity-100"
             } ${checked ? "opacity-100" : "opacity-75"}`}
         >
