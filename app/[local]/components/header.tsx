@@ -89,6 +89,7 @@ const locales_map = new Map<string, Locales>([
     ["French", "fr"],
     ["Italian", "it"],
     ["Turkish", "tr"],
+    ["Spanish", "es"],
 
     ["en", "en"],
     ["de", "de"],
@@ -96,6 +97,7 @@ const locales_map = new Map<string, Locales>([
     ["fr", "fr"],
     ["it", "it"],
     ["tr", "tr"],
+    ["es", "es"],
 ]);
 
 function headerReducer(state: UIState, action: UIAction): UIState {
@@ -298,7 +300,7 @@ export default function Header() {
                             </Link>
                         )}
                         {/* <Select options={["English", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} /> */}
-                        <Select options={["English", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+                        <Select options={["English","Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
                         {/* <button
                             aria-label={"change language"}
