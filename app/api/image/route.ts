@@ -1,195 +1,425 @@
-import { NextRequest, NextResponse } from "next/server";
-import sharp from "sharp";
+// import { NextRequest, NextResponse } from "next/server";
+// import { avif, mozjpeg, png, resize, webp } from "@squoosh-kit/core";
+// import type { ImageInput } from "@squoosh-kit/core";
 
-export const runtime = "nodejs";
-export const maxDuration = 10;
+// export const runtime = "nodejs";
+// export const maxDuration = 10;
 
-const MAX_WIDTH = 2400;
-const MIN_WIDTH = 16;
+// const MAX_WIDTH = 2400;
+// const MIN_WIDTH = 16;
 
-const DEFAULT_WIDTH = 800;
+// const DEFAULT_WIDTH = 800;
 
-const MAX_INPUT_BYTES = 12 * 1024 * 1024; // 12 MB
-const MAX_INPUT_PIXELS = 40_000_000; // 40 MP
+// const MAX_INPUT_BYTES = 12 * 1024 * 1024; // 12 MB
+// const MAX_INPUT_PIXELS = 40_000_000; // 40 MP
 
-const DEFAULT_QUALITY = 75;
+// const DEFAULT_QUALITY = 75;
 
-type OutputFormat = "avif" | "webp" | "jpeg";
+// type OutputFormat = "avif" | "webp" | "jpeg";
 
-function clamp(value: number, min: number, max: number) {
-    return Math.min(Math.max(value, min), max);
-}
+// function clamp(value: number, min: number, max: number) {
+//     return Math.min(Math.max(value, min), max);
+// }
 
-function parseNumber(value: string | null, fallback: number) {
-    const n = Number(value);
-    return Number.isFinite(n) ? n : fallback;
-}
+// function parseNumber(value: string | null, fallback: number) {
+//     const n = Number(value);
 
-function accepts(header: string, type: string) {
-    return header.split(",").some((part) => {
-        const [mime, ...params] = part.trim().toLowerCase().split(";");
+//     return Number.isFinite(n) ? n : fallback;
+// }
 
-        if (mime !== type) return false;
+// function accepts(header: string, type: string) {
+//     return header.split(",").some((part) => {
+//         const [mime, ...params] = part.trim().toLowerCase().split(";");
 
-        const q = params.find((p) => p.trim().startsWith("q="))?.split("=")[1];
+//         if (mime !== type) {
+//             return false;
+//         }
 
-        return q === undefined || Number(q) > 0;
-    });
-}
+//         const q = params.find((p) => p.trim().startsWith("q="))?.split("=")[1];
 
-function negotiateFormat(accept: string): OutputFormat {
-    if (accepts(accept, "image/avif")) {
-        return "avif";
-    }
+//         return q === undefined || Number(q) > 0;
+//     });
+// }
 
-    if (accepts(accept, "image/webp")) {
-        return "webp";
-    }
+// function negotiateFormat(accept: string): OutputFormat {
+//     if (accepts(accept, "image/avif")) {
+//         return "avif";
+//     }
 
-    return "jpeg";
-}
+//     if (accepts(accept, "image/webp")) {
+//         return "webp";
+//     }
 
-export async function GET(request: NextRequest) {
-    const { searchParams } = new URL(request.url);
+//     return "jpeg";
+// }
 
-    const imagePath = searchParams.get("url");
+// /**
+//  * Detect image format from magic bytes.
+//  *
+//  * This is more trustworthy than blindly
+//  * trusting Content-Type.
+//  */
+// function detectImageFormat(data: Uint8Array): "jpeg" | "png" | "webp" | "avif" | null {
+//     // JPEG
+//     if (data.length >= 3 && data[0] === 0xff && data[1] === 0xd8 && data[2] === 0xff) {
+//         return "jpeg";
+//     }
 
-    if (!imagePath) {
-        return new NextResponse("Missing URL parameter", {
-            status: 400,
-        });
-    }
+//     // PNG
+//     if (data.length >= 8 && data[0] === 0x89 && data[1] === 0x50 && data[2] === 0x4e && data[3] === 0x47 && data[4] === 0x0d && data[5] === 0x0a && data[6] === 0x1a && data[7] === 0x0a) {
+//         return "png";
+//     }
 
-    const width = clamp(Math.floor(parseNumber(searchParams.get("w"), DEFAULT_WIDTH)), MIN_WIDTH, MAX_WIDTH);
+//     // WebP
+//     if (
+//         data.length >= 12 &&
+//         data[0] === 0x52 && // R
+//         data[1] === 0x49 && // I
+//         data[2] === 0x46 && // F
+//         data[3] === 0x46 && // F
+//         data[8] === 0x57 && // W
+//         data[9] === 0x45 && // E
+//         data[10] === 0x42 && // B
+//         data[11] === 0x50 // P
+//     ) {
+//         return "webp";
+//     }
 
-    const quality = clamp(Math.floor(parseNumber(searchParams.get("q"), DEFAULT_QUALITY)), 20, 90);
+//     /*
+//      * AVIF / ISO-BMFF:
+//      *
+//      * bytes 4-7 = "ftyp"
+//      * followed by brands such as:
+//      * avif, avis, mif1
+//      */
+//     if (
+//         data.length >= 12 &&
+//         data[4] === 0x66 && // f
+//         data[5] === 0x74 && // t
+//         data[6] === 0x79 && // y
+//         data[7] === 0x70 // p
+//     ) {
+//         const brand = String.fromCharCode(data[8], data[9], data[10], data[11]);
 
-    /*
-     * Only allow local paths.
-     *
-     * Example:
-     * /images/photo.jpg
-     *
-     * Do NOT blindly allow arbitrary external URLs here
-     * unless you add SSRF protection / an allowlist.
-     */
-    if (!imagePath.startsWith("/")) {
-        return new NextResponse("Invalid image URL", {
-            status: 400,
-        });
-    }
+//         if (brand === "avif" || brand === "avis" || brand === "mif1" || brand === "msf1") {
+//             return "avif";
+//         }
+//     }
 
-    /*
-     * Prevent recursive calls to this endpoint.
-     */
-    if (imagePath.startsWith("/api/image")) {
-        return new NextResponse("Recursive image request", {
-            status: 400,
-        });
-    }
+//     return null;
+// }
 
-    const sourceUrl = new URL(imagePath, request.url);
+// /**
+//  * Some decoders can produce images larger than
+//  * our configured pixel limit.
+//  *
+//  * Check the decoded image before allocating
+//  * additional processing buffers.
+//  */
+// function validateImageInput(image: ImageInput) {
+//     if (!Number.isInteger(image.width) || !Number.isInteger(image.height) || image.width <= 0 || image.height <= 0) {
+//         throw new Error("Invalid decoded image dimensions");
+//     }
 
-    const controller = new AbortController();
+//     const pixels = image.width * image.height;
 
-    const timeout = setTimeout(controller.abort, 8000);
+//     if (!Number.isSafeInteger(pixels) || pixels > MAX_INPUT_PIXELS) {
+//         throw new Error("Image exceeds pixel limit");
+//     }
 
-    try {
-        const response = await fetch(sourceUrl, {
-            signal: controller.signal,
-            cache: "force-cache",
-        });
+//     const expectedBytes = pixels * 4;
 
-        if (!response.ok) {
-            return new NextResponse("Failed to fetch image", {
-                status: 400,
-            });
-        }
+//     if (image.data.byteLength < expectedBytes) {
+//         throw new Error("Decoded image buffer is too small");
+//     }
+// }
 
-        const contentLength = Number(response.headers.get("content-length") || 0);
+// export async function GET(request: NextRequest) {
+//     const { searchParams } = new URL(request.url);
 
-        if (contentLength && contentLength > MAX_INPUT_BYTES) {
-            return new NextResponse("Image too large", {
-                status: 413,
-            });
-        }
+//     const imagePath = searchParams.get("url");
 
-        const arrayBuffer = await response.arrayBuffer();
+//     if (!imagePath) {
+//         return new NextResponse("Missing URL parameter", {
+//             status: 400,
+//         });
+//     }
 
-        if (arrayBuffer.byteLength > MAX_INPUT_BYTES) {
-            return new NextResponse("Image too large", {
-                status: 413,
-            });
-        }
+//     const width = clamp(Math.floor(parseNumber(searchParams.get("w"), DEFAULT_WIDTH)), MIN_WIDTH, MAX_WIDTH);
 
-        const input = Buffer.from(arrayBuffer);
+//     const quality = clamp(Math.floor(parseNumber(searchParams.get("q"), DEFAULT_QUALITY)), 20, 90);
 
-        const accept = request.headers.get("accept") || "";
+//     /*
+//      * Only permit local paths.
+//      *
+//      * Example:
+//      * /images/photo.jpg
+//      *
+//      * This prevents arbitrary external fetches.
+//      */
+//     if (!imagePath.startsWith("/")) {
+//         return new NextResponse("Invalid image URL", {
+//             status: 400,
+//         });
+//     }
 
-        const format = negotiateFormat(accept);
+//     /*
+//      * Prevent recursive calls to this endpoint.
+//      */
+//     if (imagePath === "/api/image" || imagePath.startsWith("/api/image/") || imagePath.startsWith("/api/image?")) {
+//         return new NextResponse("Recursive image request", {
+//             status: 400,
+//         });
+//     }
 
-        let pipeline = sharp(input, {
-            limitInputPixels: MAX_INPUT_PIXELS,
-            sequentialRead: true,
-        })
-            .rotate()
-            .resize({
-                width,
-                withoutEnlargement: true,
-                fit: "inside",
-                fastShrinkOnLoad: true,
-            });
+//     const sourceUrl = new URL(imagePath, request.url);
 
-        switch (format) {
-            case "avif":
-                pipeline = pipeline.avif({
-                    quality,
-                    effort: 4,
-                });
-                break;
+//     const controller = new AbortController();
 
-            case "webp":
-                pipeline = pipeline.webp({
-                    quality,
-                    effort: 4,
-                    smartSubsample: true,
-                });
-                break;
+//     const timeout = setTimeout(() => controller.abort(), 8000);
 
-            case "jpeg":
-                pipeline = pipeline.jpeg({
-                    quality,
-                    progressive: true,
-                    mozjpeg: true,
-                });
-                break;
-        }
+//     try {
+//         /*
+//          * Fetch original image.
+//          */
+//         const response = await fetch(sourceUrl, {
+//             signal: controller.signal,
+//             cache: "force-cache",
+//         });
 
-        const output = await pipeline.toBuffer();
+//         if (!response.ok) {
+//             return new NextResponse("Failed to fetch image", {
+//                 status: 400,
+//             });
+//         }
 
-        return new NextResponse(new Uint8Array(output), {
-            status: 200,
-            headers: {
-                "Content-Type": `image/${format}`,
+//         /*
+//          * Reject using Content-Length
+//          * when the origin provides it.
+//          */
+//         const contentLengthHeader = response.headers.get("content-length");
 
-                "Cache-Control": "public, max-age=31536000, immutable",
+//         const contentLength = contentLengthHeader ? Number(contentLengthHeader) : 0;
 
-                "CDN-Cache-Control": "public, max-age=31536000, immutable",
+//         if (Number.isFinite(contentLength) && contentLength > MAX_INPUT_BYTES) {
+//             return new NextResponse("Image too large", {
+//                 status: 413,
+//             });
+//         }
 
-                Vary: "Accept",
+//         /*
+//          * Read body.
+//          */
+//         const arrayBuffer = await response.arrayBuffer();
 
-                "X-Image-Format": format,
-            },
-        });
-    } catch (error) {
-        if (error instanceof Error && error.name === "AbortError") {
-            return new NextResponse("Image fetch timed out", { status: 504 });
-        }
+//         /*
+//          * Enforce the real size as well.
+//          *
+//          * Content-Length can be missing.
+//          */
+//         if (arrayBuffer.byteLength > MAX_INPUT_BYTES) {
+//             return new NextResponse("Image too large", {
+//                 status: 413,
+//             });
+//         }
 
-        console.error("Image optimization error:", error);
+//         const input = new Uint8Array(arrayBuffer);
 
-        return new NextResponse("Error optimizing image", { status: 500 });
-    } finally {
-        clearTimeout(timeout);
-    }
-}
+//         /*
+//          * Detect original format.
+//          */
+//         const inputFormat = detectImageFormat(input);
+
+//         if (!inputFormat) {
+//             return new NextResponse("Unsupported image format", {
+//                 status: 415,
+//             });
+//         }
+
+//         /*
+//          * Select browser-compatible output.
+//          */
+//         const accept = request.headers.get("accept") || "";
+
+//         const format = negotiateFormat(accept);
+
+//         /*
+//          * Decode into raw RGBA pixels.
+//          *
+//          * Squoosh-Kit codecs operate on
+//          * ImageInput rather than encoded
+//          * image bytes.
+//          */
+//         let decoded: ImageInput;
+
+//         switch (inputFormat) {
+//             case "jpeg": {
+//                 decoded = await mozjpeg.decode(input);
+
+//                 break;
+//             }
+
+//             case "png": {
+//                 decoded = await png.decode(input);
+
+//                 break;
+//             }
+
+//             case "webp": {
+//                 decoded = await webp.decode(input);
+
+//                 break;
+//             }
+
+//             case "avif": {
+//                 decoded = await avif.decode(input);
+
+//                 break;
+//             }
+
+//             default:
+//                 return new NextResponse("Unsupported image format", {
+//                     status: 415,
+//                 });
+//         }
+
+//         /*
+//          * Make sure the decoded image
+//          * stays within your pixel limit.
+//          */
+//         validateImageInput(decoded);
+
+//         /*
+//          * Don't enlarge smaller images.
+//          *
+//          * Sharp's withoutEnlargement behavior
+//          * is reproduced here by calculating
+//          * whether resize is actually needed.
+//          */
+//         const targetWidth = Math.min(width, decoded.width);
+
+//         let processed: ImageInput = decoded;
+
+//         if (targetWidth < decoded.width) {
+//             /*
+//              * Aspect ratio is maintained
+//              * automatically when only width
+//              * is supplied.
+//              */
+//             processed = await resize.resize(
+//                 decoded,
+//                 {
+//                     width: targetWidth,
+
+//                     method: "lanczos3",
+
+//                     /*
+//                      * Keep alpha correct for
+//                      * transparent PNG/WebP/AVIF.
+//                      */
+//                     premultiply: true,
+//                 },
+//                 controller.signal,
+//             );
+//         }
+
+//         validateImageInput(processed);
+
+//         /*
+//          * Encode the resized pixels.
+//          */
+//         let output: Uint8Array;
+
+//         let contentType: string;
+
+//         switch (format) {
+//             case "avif": {
+//                 output = await avif.encode(
+//                     processed,
+//                     {
+//                         quality,
+//                     },
+//                     controller.signal,
+//                 );
+
+//                 contentType = "image/avif";
+
+//                 break;
+//             }
+
+//             case "webp": {
+//                 output = await webp.encode(
+//                     processed,
+//                     {
+//                         quality,
+//                         lossless: false,
+//                     },
+//                     controller.signal,
+//                 );
+
+//                 contentType = "image/webp";
+
+//                 break;
+//             }
+
+//             case "jpeg":
+//             default: {
+//                 output = await mozjpeg.encode(
+//                     processed,
+//                     {
+//                         quality,
+//                     },
+//                     controller.signal,
+//                 );
+
+//                 contentType = "image/jpeg";
+
+//                 break;
+//             }
+//         }
+
+//         /*
+//          * Make sure we actually return a
+//          * Uint8Array that NextResponse accepts.
+//          */
+//         const body = new Uint8Array(output);
+
+//         return new NextResponse(body, {
+//             status: 200,
+
+//             headers: {
+//                 "Content-Type": contentType,
+
+//                 /*
+//                  * URL + width + quality +
+//                  * Accept determine the result.
+//                  */
+//                 "Cache-Control": "public, max-age=31536000, immutable",
+
+//                 "CDN-Cache-Control": "public, max-age=31536000, immutable",
+
+//                 Vary: "Accept",
+
+//                 "X-Image-Format": format,
+
+//                 "X-Image-Width": String(processed.width),
+
+//                 "X-Image-Height": String(processed.height),
+//             },
+//         });
+//     } catch (error) {
+//         if (error instanceof Error && error.name === "AbortError") {
+//             return new NextResponse("Image processing timed out", {
+//                 status: 504,
+//             });
+//         }
+
+//         console.error("Image optimization error:", error);
+
+//         return new NextResponse("Error optimizing image", {
+//             status: 500,
+//         });
+//     } finally {
+//         clearTimeout(timeout);
+//     }
+// }
