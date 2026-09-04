@@ -1,4 +1,6 @@
 "use client";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import List from "./scrollList";
 import { ZoomableImage } from "./elements/zoomableImage";
 import AtcBtn from "./buttons/addToCart";
@@ -6,7 +8,6 @@ import { Watch } from "@/types/watch";
 import { Spare } from "@/types/spare";
 import Cross from "./svg/cross";
 import { format_price } from "../(site)/lib/price_format";
-import { useEffect, useState } from "react";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import Link from "next/link";
@@ -21,14 +22,19 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
     const t = useTranslations("common");
 
     const [increased, set_increased] = useState(false);
+    const [mounted, set_mounted] = useState(false);
+
     useEffect(() => {
+        set_mounted(true);
         if (!increased && view) {
             increase_relevance_score(view.slug, score_rewards.quick_view);
             set_increased(true);
         }
-    }, [view]);
+    }, [view, increased]);
 
-    return view ? (
+    if (!view || !mounted) return null;
+
+    return createPortal(
         <div className="fixed fade-in w-dvw h-dvh inset-s-0 top-0 z-70 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div
                 tabIndex={-1}
@@ -97,8 +103,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                     </div>
                 </div>
             </div>
-        </div>
-    ) : (
-        <></>
+        </div>,
+        document.body,
     );
 }
