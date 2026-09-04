@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+    serverExternalPackages: ["sharp"],
     images: {
         formats: ["image/avif", "image/webp"],
         qualities: [60, 65],
