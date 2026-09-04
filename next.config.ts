@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
         formats: ["image/avif", "image/webp"],
         qualities: [60, 65],
         minimumCacheTTL: 2678400,
-        unoptimized: true,
+        loader: "custom",
+        loaderFile: "./image_loader.ts",
     },
     experimental: {
         optimizeCss: true,
