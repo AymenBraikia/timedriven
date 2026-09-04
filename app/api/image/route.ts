@@ -128,7 +128,6 @@ export async function GET(request: NextRequest) {
 
         const format = negotiateFormat(accept);
 
-
         let pipeline = sharp(input, {
             limitInputPixels: MAX_INPUT_PIXELS,
             sequentialRead: true,
@@ -168,7 +167,7 @@ export async function GET(request: NextRequest) {
 
         const output = await pipeline.toBuffer();
 
-        return new NextResponse(output, {
+        return new NextResponse(new Uint8Array(output), {
             status: 200,
             headers: {
                 "Content-Type": `image/${format}`,
