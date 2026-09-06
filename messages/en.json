@@ -1326,5 +1326,12 @@
                 }
             ]
         }
+    },
+
+    "note": {
+        "title": "Built for Arvell",
+        "heading": "A storefront concept designed to turn your existing Instagram traffic into browsable inventory and enquiries.",
+        "problem": { "title": "The problem", "text": "customers see your watches on Instagram, but there's no dedicated place to browse your stock." },
+        "solution": { "title": "The solution", "text": "searchable inventory, individual watch pages, enquiry flow, and a sell-to-us page." }
     }
 }

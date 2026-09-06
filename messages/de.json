@@ -1325,5 +1325,17 @@
                 }
             ]
         }
+    },
+    "note": {
+        "title": "Entwickelt für Arvell",
+        "heading": "Ein Storefront-Konzept, das entwickelt wurde, um Ihren bestehenden Instagram-Traffic in durchsuchbaren Bestand und Anfragen zu verwandeln.",
+        "problem": {
+            "title": "Das Problem",
+            "text": "Kunden sehen Ihre Uhren auf Instagram, aber es gibt keinen dedizierten Ort, um Ihren Bestand zu durchsuchen."
+        },
+        "solution": {
+            "title": "Die Lösung",
+            "text": "Durchsuchbarer Bestand, individuelle Uhrenseiten, Anfragen-Ablauf und eine „An uns verkaufen“-Seite."
+        }
     }
 }

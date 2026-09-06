@@ -1326,5 +1326,17 @@
                 }
             ]
         }
+    },
+    "note": {
+        "title": "Arvell için tasarlandı",
+        "heading": "Mevcut Instagram trafiğinizi göz atılabilir stoklara ve taleplere dönüştürmek için tasarlanmış bir mağaza konsepti.",
+        "problem": {
+            "title": "Sorun",
+            "text": "Müşteriler saatlerinizi Instagram'da görüyor ancak stoğunuza göz atabilecekleri özel bir alan yok."
+        },
+        "solution": {
+            "title": "Çözüm",
+            "text": "Arama yapılabilir stok, bireysel saat sayfaları, talep akışı ve \"Bize Satın\" sayfası."
+        }
     }
 }

@@ -3,9 +3,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
     images: {
-    //    unoptimized: true,
+        //    unoptimized: true,
         // formats: ["image/avif", "image/webp"],
-        // qualities: [60, 65],
+        qualities: [60, 65, 70, 75],
         // minimumCacheTTL: 2678400,
         loader: "custom",
         loaderFile: "./image_loader.ts",

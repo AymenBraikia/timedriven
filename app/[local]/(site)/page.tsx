@@ -6,6 +6,7 @@ import Iconic from "@/app/components/iconic";
 import Services from "@/app/components/services";
 import Booking from "@/app/components/booking";
 import get_new from "@/app/server/get_new";
+import Note from "../components/note";
 
 async function NewArrivals() {
     const watches = await get_new();
@@ -26,6 +27,7 @@ export default function Home() {
                 <Services />
                 <Booking />
             </div>
+            <Note />
         </div>
     );
 }

@@ -7,13 +7,14 @@ interface SelectProps {
     value: string;
     set_value: Dispatch<SetStateAction<string>>;
     label?: string;
+    classnames?: string;
 }
 
-export default function Select({ options, value, set_value, label }: SelectProps) {
+export default function Select({ options, value, set_value, label, classnames }: SelectProps) {
     const [active, set_active] = useState<boolean>(false);
 
     return (
-        <div className="w-full flex justify-between items-center relative z-60 font-sans">
+        <div className={`w-full flex justify-between items-center relative z-60 font-sans ${classnames ? classnames : ""}`}>
             <div onClick={() => set_active(!active)} className="font-semibold cursor-pointer flex justify-start items-center gap-2">
                 {label && <p className="font-normal">{label}</p>}
                 <p>{value}</p>

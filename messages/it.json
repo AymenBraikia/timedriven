@@ -1326,5 +1326,17 @@
                 }
             ]
         }
+    },
+    "note": {
+        "title": "Creato per Arvell",
+        "heading": "Un concept di vetrina progettato per trasformare il tuo traffico Instagram esistente in un inventario consultabile e in richieste di informazioni.",
+        "problem": {
+            "title": "Il problema",
+            "text": "I clienti vedono i tuoi orologi su Instagram, ma non c'è uno spazio dedicato per consultare il tuo stock."
+        },
+        "solution": {
+            "title": "La soluzione",
+            "text": "Inventario consultabile, pagine individuali per ogni orologio, flusso di richieste e una pagina \"Vendi a noi\"."
+        }
     }
 }

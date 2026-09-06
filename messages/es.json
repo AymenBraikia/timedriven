@@ -1328,5 +1328,17 @@
                 }
             ]
         }
+    },
+    "note": {
+        "title": "Diseñado para Arvell",
+        "heading": "Un concepto de tienda diseñado para convertir tu tráfico actual de Instagram en un inventario navegable y consultas.",
+        "problem": {
+            "title": "El problema",
+            "text": "Los clientes ven tus relojes en Instagram, pero no hay un lugar dedicado para explorar tu inventario."
+        },
+        "solution": {
+            "title": "La solución",
+            "text": "Inventario con buscador, páginas individuales para cada reloj, flujo de consultas y una página de \"Véndenos\"."
+        }
     }
 }

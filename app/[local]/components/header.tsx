@@ -28,12 +28,6 @@ const Nav = dynamic(() => import("./nav"), {
 const GESTURE_LOCK = 15;
 const SWIPE_THRESHOLD = 80;
 
-/**
- * Walks up from the touched node to decide whether the drawer swipe is allowed
- * to claim this gesture. Returns the horizontal scroller it landed in, if any.
- *
- * Opt out of the drawer swipe on any element with `data-no-swipe`.
- */
 function swipe_guard(target: EventTarget | null): { blocked: boolean; scroller: HTMLElement | null } {
     let el = target instanceof Element ? (target as HTMLElement) : null;
 
@@ -42,8 +36,6 @@ function swipe_guard(target: EventTarget | null): { blocked: boolean; scroller: 
 
         const style = getComputedStyle(el);
 
-        // The element already told the browser it handles horizontal input itself
-        // (e.g. the price slider's `touch-none`). Leave it alone.
         const touch = style.touchAction;
         if (touch.includes("none") || touch.includes("pan-y")) return { blocked: true, scroller: null };
 
@@ -58,11 +50,9 @@ function swipe_guard(target: EventTarget | null): { blocked: boolean; scroller: 
     return { blocked: false, scroller: null };
 }
 
-/** Can this scroller still move in the direction the finger is going? */
 function can_scroll(el: HTMLElement, deltaX: number): boolean {
     const max = el.scrollWidth - el.clientWidth;
 
-    // Finger moves right -> content scrolls back toward the start.
     if (deltaX > 0) return el.scrollLeft > 1;
 
     return el.scrollLeft < max - 1;
@@ -299,21 +289,8 @@ export default function Header() {
                                 {t("buttons.register")}
                             </Link>
                         )}
-                        {/* <Select options={["English", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} /> */}
-                        <Select options={["English","Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
-
-                        {/* <button
-                            aria-label={"change language"}
-                            type="button"
-                            className={`button2 hidden sm:block ${ui.isGlassy ? "" : "hover:text-primary"}`}
-                            onClick={() => {
-                                const nextLocale = locale == "en" ? "de" : "en";
-                                dispatch({ type: "TOGGLE_LANG" });
-                                router.replace(pathname, { locale: nextLocale });
-                            }}
-                        >
-                            {ui.lang}
-                        </button> */}
+                        {/* <Select options={["English", "Spanish", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} /> */}
+                        <Select classnames="hidden sm:flex" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} />

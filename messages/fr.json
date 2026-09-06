@@ -23,16 +23,7 @@
         "siteName": "ARVELL",
         "titleDefault": "ARVELL | Montres de luxe haut de gamme & conseil d'experts",
         "description": "Découvrez notre collection sélectionnée de montres de luxe neuves et d'occasion en parfait état, dont Rolex, Patek Philippe et Cartier. Réservez dès aujourd'hui une consultation professionnelle avec nos experts en horlogerie.",
-        "keywords": [
-            "montres de luxe",
-            "Rolex d'occasion",
-            "Patek Philippe Calatrava",
-            "Cartier Panthère",
-            "Rolex Daytona",
-            "acheter des montres de luxe",
-            "conseil en horlogerie",
-            "ARVELL"
-        ],
+        "keywords": ["montres de luxe", "Rolex d'occasion", "Patek Philippe Calatrava", "Cartier Panthère", "Rolex Daytona", "acheter des montres de luxe", "conseil en horlogerie", "ARVELL"],
         "ogDescription": "Notre collection sélectionnée de montres de luxe neuves et d'occasion vous attend. Faites appel à nos experts pour tous vos besoins en haute horlogerie.",
         "ogImageAlt": "Collection de montres de luxe ARVELL",
         "twitterDescription": "Votre partenaire pour les montres haut de gamme. Découvrez Rolex, Patek Philippe et Cartier, et prenez rendez-vous avec nos experts."
@@ -363,10 +354,7 @@
         "polishing": {
             "heading": "Polissage & remise en état :",
             "intro": "Nous éliminons les rayures et les légères traces d'usure pour redonner à votre montre son éclat d'origine :",
-            "items": [
-                "Polissage & remise en état à partir de 175 €",
-                "Polissage avec apport de matière & remise en état à partir de 249 €"
-            ]
+            "items": ["Polissage & remise en état à partir de 175 €", "Polissage avec apport de matière & remise en état à partir de 249 €"]
         },
         "maintenance": {
             "heading": "Entretien & réparation :",
@@ -420,32 +408,12 @@
         "paymentsHeading": "Paiements",
         "paymentsSubtext": "Des paiements en ligne rapides et sécurisés",
         "paymentsTable": {
-            "headers": [
-                "Moyen de paiement",
-                "Délai",
-                "Frais"
-            ],
+            "headers": ["Moyen de paiement", "Délai", "Frais"],
             "rows": [
-                [
-                    "Virement bancaire national",
-                    "1 à 2 jours ouvrés",
-                    "0 %"
-                ],
-                [
-                    "Virement bancaire international",
-                    "2 à 3 jours ouvrés",
-                    "0 %"
-                ],
-                [
-                    "PayPal",
-                    "immédiat",
-                    "3 %"
-                ],
-                [
-                    "Carte de crédit/débit",
-                    "immédiat",
-                    "1,4 %"
-                ]
+                ["Virement bancaire national", "1 à 2 jours ouvrés", "0 %"],
+                ["Virement bancaire international", "2 à 3 jours ouvrés", "0 %"],
+                ["PayPal", "immédiat", "3 %"],
+                ["Carte de crédit/débit", "immédiat", "1,4 %"]
             ]
         },
         "shippingHeading": "Livraison",
@@ -453,123 +421,39 @@
             "heading": "Allemagne",
             "text": "Livraison en Allemagne : 1 à 2 jours ouvrés.",
             "rows": [
-                [
-                    "DHL",
-                    "Jusqu'à 500€",
-                    "6€"
-                ],
-                [
-                    "UPS",
-                    "500€ – 10.000€",
-                    "20€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "50€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "80€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "150€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "250€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ et plus",
-                    "Sur demande"
-                ]
+                ["DHL", "Jusqu'à 500€", "6€"],
+                ["UPS", "500€ – 10.000€", "20€"],
+                ["UPS", "10.000€ – 15.000€", "50€"],
+                ["UPS", "15.000€ – 25.000€", "80€"],
+                ["Prosegur", "25.000€ – 50.000€", "150€"],
+                ["Prosegur", "50.000€ – 250.000€", "250€"],
+                ["Prosegur", "250.000€ et plus", "Sur demande"]
             ]
         },
         "eu": {
             "heading": "Union européenne",
             "text": "Livraison dans l'Union européenne : 1 à 2 jours ouvrés.",
             "rows": [
-                [
-                    "DHL",
-                    "Jusqu'à 500€",
-                    "15€"
-                ],
-                [
-                    "UPS",
-                    "500€ – 10.000€",
-                    "50€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "150€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "300€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "400€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "500€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ et plus",
-                    "Sur demande"
-                ]
+                ["DHL", "Jusqu'à 500€", "15€"],
+                ["UPS", "500€ – 10.000€", "50€"],
+                ["UPS", "10.000€ – 15.000€", "150€"],
+                ["UPS", "15.000€ – 25.000€", "300€"],
+                ["Prosegur", "25.000€ – 50.000€", "400€"],
+                ["Prosegur", "50.000€ – 250.000€", "500€"],
+                ["Prosegur", "250.000€ et plus", "Sur demande"]
             ]
         },
         "worldwide": {
             "heading": "International",
             "text": "Livraison dans le monde entier : 3 à 10 jours ouvrés.",
             "rows": [
-                [
-                    "DHL",
-                    "Jusqu'à 500€",
-                    "25€"
-                ],
-                [
-                    "DHL Express",
-                    "500€ – 10.000€",
-                    "100€"
-                ],
-                [
-                    "UPS",
-                    "10.000€ – 15.000€",
-                    "150€"
-                ],
-                [
-                    "UPS",
-                    "15.000€ – 25.000€",
-                    "400€"
-                ],
-                [
-                    "Prosegur",
-                    "25.000€ – 50.000€",
-                    "750€"
-                ],
-                [
-                    "Prosegur",
-                    "50.000€ – 250.000€",
-                    "1.000€"
-                ],
-                [
-                    "Prosegur",
-                    "250.000€ et plus",
-                    "Sur demande"
-                ]
+                ["DHL", "Jusqu'à 500€", "25€"],
+                ["DHL Express", "500€ – 10.000€", "100€"],
+                ["UPS", "10.000€ – 15.000€", "150€"],
+                ["UPS", "15.000€ – 25.000€", "400€"],
+                ["Prosegur", "25.000€ – 50.000€", "750€"],
+                ["Prosegur", "50.000€ – 250.000€", "1.000€"],
+                ["Prosegur", "250.000€ et plus", "Sur demande"]
             ]
         },
         "value": "Valeur",
@@ -691,11 +575,7 @@
                 "La présente politique de confidentialité a notamment pour but de vous informer sur la nature, l'étendue, la finalité, la durée et la base juridique du traitement de ces données, sous notre propre responsabilité ou conjointement avec des tiers. Nous vous informons également ci-dessous des composants tiers que nous utilisons pour optimiser notre site web et améliorer l'expérience utilisateur, ce qui peut amener ces tiers à traiter également les données qu'ils collectent et contrôlent.",
                 "Notre politique de confidentialité est structurée comme suit :"
             ],
-            "structureList": [
-                "Informations nous concernant en tant que responsables du traitement de vos données",
-                "Les droits des utilisateurs et des personnes concernées",
-                "Informations sur le traitement des données"
-            ],
+            "structureList": ["Informations nous concernant en tant que responsables du traitement de vos données", "Les droits des utilisateurs et des personnes concernées", "Informations sur le traitement des données"],
             "sections": {
                 "controller": {
                     "heading": "Informations nous concernant en tant que responsables du traitement de vos données",
@@ -883,10 +763,7 @@
                         },
                         {
                             "heading": "7.2 Pour les entrepreneurs",
-                            "items": [
-                                "Si l'article acheté est défectueux, le vendeur décide de la suite de la procédure.",
-                                "Toute réclamation concernant le fonctionnement d'un article d'occasion est en principe irrecevable."
-                            ]
+                            "items": ["Si l'article acheté est défectueux, le vendeur décide de la suite de la procédure.", "Toute réclamation concernant le fonctionnement d'un article d'occasion est en principe irrecevable."]
                         }
                     ]
                 },
@@ -939,11 +816,7 @@
                     "number": "14",
                     "heading": "Obligation d'information conformément à la loi allemande sur les piles et batteries (BattG)",
                     "text": "Les piles usagées sont des déchets spéciaux et ne doivent pas être jetées avec les ordures ménagères. Chaque client peut nous renvoyer ses piles usagées et nous les éliminerons correctement. Les piles polluantes contenant des substances toxiques portent le symbole correspondant et les seuils suivants :",
-                    "items": [
-                        "« Cd » la pile contient plus de 0,002 % de cadmium",
-                        "« Hg » la pile contient plus de 0,0005 % de mercure",
-                        "« Pb » la pile contient plus de 0,004 % de plomb"
-                    ]
+                    "items": ["« Cd » la pile contient plus de 0,002 % de cadmium", "« Hg » la pile contient plus de 0,0005 % de mercure", "« Pb » la pile contient plus de 0,004 % de plomb"]
                 }
             ]
         },
@@ -1452,6 +1325,18 @@
                     "text": "En 1969, Zenith change à jamais l'horlogerie en présentant El Primero, largement considéré comme le premier mouvement de chronographe automatique au monde. Battant à la fréquence élevée de 36 000 alternances par heure, il permettait de mesurer le temps au dixième de seconde près et demeure l'un des calibres les plus célèbres jamais réalisés."
                 }
             ]
+        }
+    },
+    "note": {
+        "title": "Conçu pour Arvell",
+        "heading": "Un concept de boutique conçu pour transformer votre trafic Instagram existant en un inventaire consultable et en demandes d'information.",
+        "problem": {
+            "title": "Le problème",
+            "text": "Les clients voient vos montres sur Instagram, mais il n'y a pas d'espace dédié pour consulter votre stock."
+        },
+        "solution": {
+            "title": "La solution",
+            "text": "Inventaire recherchable, pages individuelles pour chaque montre, parcours de demande d'information et page « Vendez-nous votre montre »."
         }
     }
 }
