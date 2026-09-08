@@ -30,9 +30,9 @@ export default function New({ watches }: { watches: Watch[] }) {
                     <p className="text-shine">{t("newArrivalsSubtext")}</p>
                 </FadeInObserver>
             </div>
-            <div className="w-fit flex justify-center items-start flex-col">
+            <div className="w-fit flex justify-center items-start flex-col font-secondary">
                 <FadeInObserver>
-                    <Link aria-label={t_btn("viewAllWatches")} href={"/shop"} className={`underline`}>
+                    <Link aria-label={t_btn("viewAllWatches")} href={"/shop"} className="underline italic">
                         {t_btn("viewAllWatches")}
                     </Link>
                 </FadeInObserver>

@@ -97,7 +97,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                         <div className="w-full">
                             <AtcBtn slug={view.slug} />
                         </div>
-                        <Link href={"/product/" + view.slug} className="w-full button2 flex-center ">
+                        <Link href={"/product/" + view.slug} className="w-full button2 flex-center">
                             {t("productCard.details")}
                         </Link>
                     </div>

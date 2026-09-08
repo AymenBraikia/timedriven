@@ -17,8 +17,8 @@ export default function Services() {
                         <Image sizes="(max-width: 1200px) 100vw, 70vw" src={sell_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
                     <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
-                        <p className="lg:title4 md:title5 title6">{t("sellConsignCard.title")}</p>
-                        <p className="underline">{t("sellConsignCard.cta")}</p>
+                        <p className="lg:title4 md:title5 title6 font-secondary italic">{t("sellConsignCard.title")}</p>
+                        <p className="underline italic font-secondary">{t("sellConsignCard.cta")}</p>
                     </div>
                 </Link>
                 <Link aria-label="spare parts" href={"/spare"} className="md:max-w-150 lg:min-w-1/3 aspect-square w-full flex flex-col justify-start items-start relative">
@@ -26,8 +26,8 @@ export default function Services() {
                         <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" src={spare_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
                     <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
-                        <p className="lg:title4 md:title5 title6">{t("sparePartsCard.title")}</p>
-                        <p className="underline">{t("sparePartsCard.cta")}</p>
+                        <p className="lg:title4 md:title5 title6 font-secondary italic">{t("sparePartsCard.title")}</p>
+                        <p className="underline italic font-secondary">{t("sparePartsCard.cta")}</p>
                     </div>
                 </Link>
                 <Link aria-label="polishing and services" href={"/polish"} className="md:max-w-150 lg:min-w-1/3 aspect-square w-full flex flex-col justify-start items-start relative">
@@ -35,8 +35,8 @@ export default function Services() {
                         <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" src={services_src} fill alt="Sell / Consign" className="object-cover object-center select-none" />
                     </div>
                     <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white">
-                        <p className="lg:title4 md:title5 title6">{t("polishCard.title")}</p>
-                        <p className="underline">{t("polishCard.cta")}</p>
+                        <p className="lg:title4 md:title5 title6 font-secondary italic">{t("polishCard.title")}</p>
+                        <p className="underline italic font-secondary">{t("polishCard.cta")}</p>
                     </div>
                 </Link>
             </div>

@@ -44,7 +44,7 @@ export default function Iconic() {
                                 </div>
                                 <div className="absolute inset-s-4 bottom-4 flex flex-col p-2 text-white capitalize">
                                     <h4 className="title4">{d.name}</h4>
-                                    <h5 className="underline title5">{t_btn("viewAllWatches")}</h5>
+                                    <h5 className="underline title5 italic">{t_btn("viewAllWatches")}</h5>
                                 </div>
                             </Link>
                         ))}
