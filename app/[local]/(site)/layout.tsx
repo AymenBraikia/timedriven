@@ -3,7 +3,7 @@ import AuthGate from "@/app/components/AuthGate";
 import AuthShell from "@/app/components/AuthShell";
 
 import type { Metadata, Viewport } from "next";
-import { Open_Sans, Cormorant_Garamond } from "next/font/google";
+import { Open_Sans, Gelasio } from "next/font/google";
 import "../globals.css";
 
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
@@ -19,9 +19,15 @@ const openSans = Open_Sans({
     display: "swap",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+// const cormorantGaramond = Cormorant_Garamond({
+//     subsets: ["latin"],
+//     weight: ["300", "400", "500", "600", "700"],
+//     variable: "--font-cormorantGaramond",
+//     display: "swap",
+// });
+const gelasio = Gelasio({
     subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700"],
+    weight: ["400", "500", "600", "700"],
     variable: "--font-cormorantGaramond",
     display: "swap",
 });
@@ -116,7 +122,7 @@ export default async function RootLayout({
     const direction = getDirection(local);
 
     return (
-        <html lang={local} dir={direction} className={`${openSans.variable} ${cormorantGaramond.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={local} dir={direction} className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
                 <SpeedInsights />

@@ -60,8 +60,8 @@ export default function New({ watches }: { watches: Watch[] }) {
                                     </div>
                                 </div>
                                 <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
-                                    <h5 className="sm:title5 title2 font-medium font-secondary capitalize text-shine">{d.brand + " " + d.model}</h5>
-                                    <h6 className="sm:title6 title3 font-medium font-secondary">{format_price(d.price)}</h6>
+                                    <h5 className="sm:title6 title2 font-secondary capitalize text-shine">{d.brand + " " + d.model}</h5>
+                                    <h6 className="sm:title6 title3 font-secondary">{format_price(d.price)}</h6>
                                 </div>
                             </div>
                         ))}
