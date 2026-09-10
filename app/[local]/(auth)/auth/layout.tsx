@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Gelasio } from "next/font/google";
+import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 import "../../globals.css";
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
@@ -10,10 +10,10 @@ const openSans = Open_Sans({
     display: "swap",
 });
 
-const gelasio = Gelasio({
+const cormorantGaramond = Cormorant_Garamond({
     subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
-    variable: "--font-gelasio",
+    weight: ["300", "400", "500", "600", "700"],
+    variable: "--font-cormorantGaramond",
     display: "swap",
 });
 
@@ -61,7 +61,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang="en" className={`${openSans.variable} ${cormorantGaramond.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

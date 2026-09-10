@@ -127,7 +127,7 @@ h6 {
     --color-foreground: var(--foreground);
 
     --font-sans: var(--font-open-sans), sans-serif;
-    --font-secondary: var(--font-gelasio), sans-serif;
+    --font-secondary: var(--font-cormorantGaramond), sans-serif;
 
     --color-primary: var(--clr-primary);
     --color-secondary: var(--clr-secondary);
@@ -140,7 +140,7 @@ h6 {
 
 /* Utilities */
 @utility font-secondary {
-    font-family: var(--font-gelasio), sans-serif;
+    font-family: var(--font-cormorantGaramond), sans-serif;
 }
 
 @utility flex-center {

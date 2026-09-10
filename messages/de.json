@@ -1327,15 +1327,134 @@
         }
     },
     "note": {
-        "title": "Entwickelt für Arvell",
-        "heading": "Ein Storefront-Konzept, das entwickelt wurde, um Ihren bestehenden Instagram-Traffic in durchsuchbaren Bestand und Anfragen zu verwandeln.",
-        "problem": {
-            "title": "Das Problem",
-            "text": "Kunden sehen Ihre Uhren auf Instagram, aber es gibt keinen dedizierten Ort, um Ihren Bestand zu durchsuchen."
+        "title": "Warum dieser Store existiert",
+        "heading": "Instagram weckt Interesse an Ihren Uhren. Dieser Store gibt Interessenten einen Ort, an dem sie Ihre Kollektion ansehen können, bevor sie Ihnen eine Nachricht senden.",
+        "link": "Sehen Sie, warum das für Sie nützlich sein könnte →"
+    },
+    "why": {
+        "title": "Warum ein eigener Store?",
+        "hero": {
+            "eyebrow": "Instagram → Store → Anfrage",
+            "title": "Instagram erzeugt Aufmerksamkeit.<br><i>Geben Sie Interessenten einen Ort für den nächsten Schritt.</i>",
+            "description": "Es geht nicht darum, Instagram zu ersetzen. Es geht darum, Menschen, die Ihre Uhren bereits entdecken, einen Ort zu geben, an dem sie Ihr Angebot durchsuchen, einzelne Stücke ansehen und Kontakt aufnehmen können.",
+            "seeDifference": "Den Unterschied sehen",
+            "openStorefront": "Store öffnen"
         },
-        "solution": {
-            "title": "Die Lösung",
-            "text": "Durchsuchbarer Bestand, individuelle Uhrenseiten, Anfragen-Ablauf und eine „An uns verkaufen“-Seite."
+        "gap": {
+            "eyebrow": "01 / Die Lücke",
+            "title": "Instagram ist hervorragend für die Entdeckung.<br><span>Aber kein Katalog.</span>",
+            "description": "Ein Käufer kann eine Uhr auf Instagram finden und trotzdem keinen Ort haben, an dem er Ihren aktuellen Bestand durchsuchen, Stücke vergleichen, Details lesen oder eine strukturierte Anfrage stellen kann.",
+            "instagram": {
+                "title": "Instagram / DM",
+                "label": "Entdeckung",
+                "items": ["Der Käufer sieht eine Uhr in einem Beitrag oder einer Story.", "Er fragt, was sonst verfügbar ist.", "Sie senden Fotos, Preise und Details manuell.", "Termin oder Anfrage bleiben innerhalb des Chats."]
+            },
+            "storefront": {
+                "title": "Eigener Store",
+                "label": "Ihr Eigentum",
+                "items": [
+                    "Der Käufer kann den aktuellen Bestand selbst durchsuchen.",
+                    "Jede Uhr kann eine eigene Seite mit Details haben.",
+                    "Sie senden einen Link statt einer ganzen Reihe von Fotos.",
+                    "Anfragen und Terminwünsche haben ein klares Ziel."
+                ]
+            },
+            "footnote": "Es geht nicht darum, \"eine Website zu haben\", sondern die Lücke zwischen Aufmerksamkeit und Handlung zu schließen."
+        },
+        "buyer": {
+            "eyebrow": "02 / Für den Käufer",
+            "title": "Der Käufer erhält Antworten<br><i>bevor er die erste Nachricht sendet.</i>",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Durchsuchen",
+                    "description": "Sehen Sie die aktuell verfügbaren Uhren, ohne erst nach dem Bestand fragen zu müssen."
+                },
+                {
+                    "number": "02",
+                    "title": "Ansehen",
+                    "description": "Öffnen Sie ein Stück und sehen Sie die von Ihnen bereitgestellten Fotos, Preise und Informationen."
+                },
+                {
+                    "number": "03",
+                    "title": "Auswählen",
+                    "description": "Der Käufer gelangt bereits mit einem konkreten Stück im Blick auf die Anfrage-Seite."
+                },
+                {
+                    "number": "04",
+                    "title": "Kontakt aufnehmen",
+                    "description": "Eine strukturierte Anfrage oder Terminbuchung gibt dem Gespräch einen klaren Ausgangspunkt."
+                }
+            ]
+        },
+        "dealer": {
+            "eyebrow": "03 / Für den Händler",
+            "title": "Ein besserer Link zum Versenden.<br><span>Ein sauberer Weg, Interesse zu bearbeiten.</span>",
+            "benefits": [
+                {
+                    "title": "Ein Link für den Bestand",
+                    "description": "Statt Screenshots zu senden oder jemanden durch Instagram suchen zu lassen, schicken Sie ihn an einen Ort, an dem Ihr Angebot bereits organisiert ist."
+                },
+                {
+                    "title": "Eine Seite pro Uhr",
+                    "description": "Wenn ein Käufer nach einer Referenz fragt, können Sie direkt die Seite dieser Uhr mit den gewünschten Informationen und Bildern senden."
+                },
+                {
+                    "title": "Weniger wiederholte Nachrichten",
+                    "description": "Der Store übernimmt das grundlegende Browsen und die Produktinformationen zuerst, sodass Ihr Gespräch weiter unten im Funnel beginnen kann."
+                },
+                {
+                    "title": "Sie kontrollieren den Bestand",
+                    "description": "Uhren hinzufügen, bearbeiten und entfernen – ohne bei jeder Bestandsänderung einen Entwickler zu benötigen."
+                }
+            ]
+        },
+        "role": {
+            "eyebrow": "04 / Die Rolle",
+            "title": "Behalten Sie Instagram.<br><i>Geben Sie ihm ein Ziel.</i>",
+            "description": "Sie müssen Ihr Publikum nicht von Instagram wegführen. Posten Sie weiterhin dort. Nutzen Sie weiterhin DMs, WhatsApp und Telefon. Der Store wird einfach zum Ort, an dem Interessenten Ihr Angebot tatsächlich durchsehen können.",
+            "existingFlowTitle": "Aktueller Ablauf",
+            "expandedFlowTitle": "Erweiterter Ablauf",
+            "existingFlow": "Instagram → DM",
+            "expandedFlow": "Instagram → Store → Anfrage",
+            "footnote": "Der Store ist eine zusätzliche Verkaufsfläche, kein Ersatz für Kanäle, die bereits funktionieren."
+        },
+        "gettingStarted": {
+            "eyebrow": "05 / Der Start",
+            "title": "Keine Präsentation vorbereiten.<br><span>Zeigen Sie mir einfach Ihren Bestand.</span>",
+            "description": "Das Konzept steht bereits. Der nächste sinnvolle Schritt ist zu sehen, wie es mit Ihrem tatsächlichen Bestand aussieht.",
+            "steps": [
+                {
+                    "number": "01 / SIE",
+                    "title": "Bestand senden",
+                    "description": "Senden Sie Ihre aktuelle Website, Chrono24-Seite, Instagram oder einige aktive Referenzen."
+                },
+                {
+                    "number": "02 / ICH",
+                    "title": "Ich setze ihn ein",
+                    "description": "Ich füge einige Ihrer tatsächlichen Uhren in den Store ein, damit Sie die Idee anhand Ihres eigenen Bestands beurteilen können."
+                },
+                {
+                    "number": "03 / ENTSCHEIDUNG",
+                    "title": "Sie entscheiden",
+                    "description": "Wenn der zusätzliche Store zu Ihrer Verkaufsweise passt, sprechen wir über die Umsetzung als echte Website."
+                }
+            ]
+        },
+        "cta": {
+            "eyebrow": "Nächster Schritt",
+            "title": "Sehen Sie, wie Ihre echten Uhren<br><i>hier aussehen.</i>",
+            "description": "Kein 60-minütiges Verkaufsgespräch. Senden Sie den Link zu Ihrem aktuellen Bestand oder drei Stücke, die Sie aktiv verkaufen. Ich kümmere mich um den Rest.",
+            "sendStock": "Bestand senden",
+            "backToDemo": "Zur Demo zurück",
+            "credit": "Aymen · Arvell"
+        },
+        "nav": {
+            "back": "← Zurück zum Store",
+            "nextStep": "Nächsten Schritt sehen"
+        },
+        "footer": {
+            "tagline": "Private Store-Konzepte für unabhängige Uhrenhändler"
         }
     }
 }

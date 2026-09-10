@@ -1,7 +1,3 @@
-import { Suspense } from "react";
-import AuthGate from "@/app/components/AuthGate";
-import AuthShell from "@/app/components/AuthShell";
-
 import type { Metadata, Viewport } from "next";
 import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 import "../globals.css";
@@ -12,6 +8,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDirection } from "@/i18n/direction";
+import Header from "./why/header";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -123,9 +120,8 @@ export default async function RootLayout({
 
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-                        <Suspense fallback={<AuthShell session={undefined}>{children}</AuthShell>}>
-                            <AuthGate>{children}</AuthGate>
-                        </Suspense>
+                        <Header />
+                        <div className="h-fit w-dvw flex flex-col justify-center items-center xl:px-25 2xl:px-50 p-4">{children}</div>
                     </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

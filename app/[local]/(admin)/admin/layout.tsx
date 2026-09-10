@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Gelasio } from "next/font/google";
+import { Open_Sans, Cormorant_Garamond } from "next/font/google";
 
 import "../../globals.css";
 
@@ -10,7 +10,7 @@ import { require_admin } from "@/app/server/admin/session";
 import Sidebar from "./components/sidebar";
 
 const openSans = Open_Sans({ subsets: ["latin"], variable: "--font-open-sans", display: "swap" });
-const gelasio = Gelasio({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-gelasio", display: "swap" });
+const cormorantGaramond = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-cormorantGaramond", display: "swap" });
 
 export const metadata: Metadata = {
     title: { default: "Admin", template: "%s | ARVELL Admin" },
@@ -22,7 +22,7 @@ export default async function AdminLayout({ children }: Readonly<{ children: Rea
     const session = await require_admin();
 
     return (
-        <html lang="en" className={`${openSans.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang="en" className={`${openSans.variable} ${cormorantGaramond.variable} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

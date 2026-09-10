@@ -1328,15 +1328,139 @@
         }
     },
     "note": {
-        "title": "Conçu pour Arvell",
-        "heading": "Un concept de boutique conçu pour transformer votre trafic Instagram existant en un inventaire consultable et en demandes d'information.",
-        "problem": {
-            "title": "Le problème",
-            "text": "Les clients voient vos montres sur Instagram, mais il n'y a pas d'espace dédié pour consulter votre stock."
+        "title": "Pourquoi cette vitrine existe",
+        "heading": "Instagram attire l'attention sur vos montres. Cette vitrine donne aux acheteurs un endroit où parcourir votre collection avant de vous envoyer un message.",
+        "link": "Découvrez pourquoi cela pourrait vous être utile →"
+    },
+    "why": {
+        "title": "Pourquoi une vitrine dédiée ?",
+        "hero": {
+            "eyebrow": "Instagram → Vitrine → Demande",
+            "title": "Instagram attire l'attention.<br><i>Donnez aux acheteurs un endroit où aller ensuite.</i>",
+            "description": "Il ne s'agit pas de remplacer Instagram. Il s'agit de donner aux personnes qui découvrent déjà vos montres un endroit où parcourir la collection, ouvrir une fiche produit et vous contacter.",
+            "seeDifference": "Voir la différence",
+            "openStorefront": "Ouvrir la vitrine"
         },
-        "solution": {
-            "title": "La solution",
-            "text": "Inventaire recherchable, pages individuelles pour chaque montre, parcours de demande d'information et page « Vendez-nous votre montre »."
+        "gap": {
+            "eyebrow": "01 / L'écart",
+            "title": "Instagram est excellent pour la découverte.<br><span>Ce n'est pas un catalogue.</span>",
+            "description": "Un acheteur peut trouver une montre sur Instagram sans pour autant avoir un endroit où consulter votre stock actuel, comparer les pièces, lire les détails ou envoyer une demande structurée.",
+            "instagram": {
+                "title": "Instagram / DM",
+                "label": "Découverte",
+                "items": [
+                    "L'acheteur voit une montre dans une publication ou une story.",
+                    "Il demande ce que vous avez d'autre.",
+                    "Vous envoyez manuellement photos, prix et détails.",
+                    "La demande ou le rendez-vous reste dans la conversation."
+                ]
+            },
+            "storefront": {
+                "title": "Vitrine dédiée",
+                "label": "À vous",
+                "items": [
+                    "L'acheteur peut parcourir la collection actuelle lui-même.",
+                    "Chaque montre peut avoir sa propre page et ses détails.",
+                    "Vous envoyez un seul lien au lieu d'une série de photos.",
+                    "Les demandes et rendez-vous ont une destination claire."
+                ]
+            },
+            "footnote": "L'objectif n'est pas simplement \"d'avoir un site\". C'est de supprimer l'écart entre l'attention et l'action."
+        },
+        "buyer": {
+            "eyebrow": "02 / Pour l'acheteur",
+            "title": "L'acheteur obtient des réponses<br><i>avant d'envoyer le premier DM.</i>",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Parcourir",
+                    "description": "Voir les montres actuellement disponibles sans avoir à demander ce qui est en stock."
+                },
+                {
+                    "number": "02",
+                    "title": "Examiner",
+                    "description": "Ouvrir une pièce et voir les photos, le prix et les informations que vous choisissez de publier."
+                },
+                {
+                    "number": "03",
+                    "title": "Choisir",
+                    "description": "L'acheteur arrive sur la page de demande en sachant déjà quelle montre l'intéresse."
+                },
+                {
+                    "number": "04",
+                    "title": "Contacter",
+                    "description": "Une demande structurée ou une prise de rendez-vous donne un point de départ clair à la conversation."
+                }
+            ]
+        },
+        "dealer": {
+            "eyebrow": "03 / Pour le revendeur",
+            "title": "Un meilleur lien à envoyer.<br><span>Une manière plus claire de gérer l'intérêt.</span>",
+            "benefits": [
+                {
+                    "title": "Un lien pour le stock",
+                    "description": "Au lieu d'envoyer des captures d'écran ou de demander à quelqu'un de chercher sur Instagram, envoyez-le vers un seul endroit où votre collection est déjà organisée."
+                },
+                {
+                    "title": "Une page par montre",
+                    "description": "Lorsqu'un acheteur demande une référence, vous pouvez envoyer directement la page de la montre avec les informations et photos souhaitées."
+                },
+                {
+                    "title": "Moins de messages répétitifs",
+                    "description": "La vitrine gère d'abord la navigation et les informations de base, afin que votre conversation commence plus loin dans le parcours."
+                },
+                {
+                    "title": "Vous contrôlez le stock",
+                    "description": "Ajoutez, modifiez et retirez les montres depuis le tableau de bord sans dépendre d'un développeur à chaque changement d'inventaire."
+                }
+            ]
+        },
+        "role": {
+            "eyebrow": "04 / Le rôle",
+            "title": "Gardez Instagram.<br><i>Donnez-lui une destination.</i>",
+            "description": "Vous n'avez pas besoin d'éloigner votre audience d'Instagram. Continuez à y publier. Continuez à utiliser les DM, WhatsApp et le téléphone. La vitrine devient simplement l'endroit où les personnes intéressées peuvent réellement parcourir votre collection.",
+            "existingFlowTitle": "Flux actuel",
+            "expandedFlowTitle": "Flux élargi",
+            "existingFlow": "Instagram → DM",
+            "expandedFlow": "Instagram → Vitrine → Demande",
+            "footnote": "La vitrine est une surface de vente supplémentaire, pas un remplacement des canaux qui fonctionnent déjà."
+        },
+        "gettingStarted": {
+            "eyebrow": "05 / Commencer",
+            "title": "Ne préparez pas de présentation.<br><span>Montrez-moi simplement le stock.</span>",
+            "description": "Le concept est déjà construit. L'étape utile consiste maintenant à voir ce qu'il donne avec votre inventaire réel.",
+            "steps": [
+                {
+                    "number": "01 / VOUS",
+                    "title": "Envoyez le stock",
+                    "description": "Envoyez votre site actuel, votre page Chrono24, votre Instagram ou quelques références actives."
+                },
+                {
+                    "number": "02 / MOI",
+                    "title": "Je le mets en place",
+                    "description": "J'intègre quelques-unes de vos vraies montres dans la vitrine afin que vous puissiez juger l'idée avec votre propre inventaire."
+                },
+                {
+                    "number": "03 / DÉCISION",
+                    "title": "Vous décidez",
+                    "description": "Si cette vitrine supplémentaire correspond à votre façon de vendre, nous parlons de transformer le concept en véritable site."
+                }
+            ]
+        },
+        "cta": {
+            "eyebrow": "Prochaine étape",
+            "title": "Voyez à quoi ressemblent vos vraies montres<br><i>ici.</i>",
+            "description": "Pas d'appel commercial de 60 minutes. Envoyez le lien de votre stock actuel ou trois pièces que vous vendez activement. Je m'occupe du reste.",
+            "sendStock": "Envoyer le stock",
+            "backToDemo": "Retour à la démo",
+            "credit": "Aymen · Arvell"
+        },
+        "nav": {
+            "back": "← Retour à la vitrine",
+            "nextStep": "Voir l'étape suivante"
+        },
+        "footer": {
+            "tagline": "Concepts de vitrines privées pour revendeurs de montres indépendants"
         }
     }
 }

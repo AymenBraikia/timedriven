@@ -1329,9 +1329,134 @@
     },
 
     "note": {
-        "title": "Built for Arvell",
-        "heading": "A storefront concept designed to turn your existing Instagram traffic into browsable inventory and enquiries.",
-        "problem": { "title": "The problem", "text": "customers see your watches on Instagram, but there's no dedicated place to browse your stock." },
-        "solution": { "title": "The solution", "text": "searchable inventory, individual watch pages, enquiry flow, and a sell-to-us page." }
+        "title": "Why this storefront exists",
+        "heading": "Instagram gets people interested in your watches. This gives them somewhere to browse your collection before they send you a message.",
+        "link": "See why this could be useful"
+    },
+    "why": {
+        "title": "Why a dedicated storefront?",
+        "hero": {
+            "eyebrow": "Instagram → Storefront → Enquiry",
+            "title": "Your Instagram gets the attention.<br></br><span>Give buyers somewhere to go next.</span>",
+            "description": "This isn't about replacing Instagram. It's about giving the people who already discover your watches a proper place to browse the collection, open a specific piece, and contact you.",
+            "seeDifference": "See the difference",
+            "openStorefront": "Open the storefront"
+        },
+        "gap": {
+            "eyebrow": "01 / The gap",
+            "title": "Instagram is excellent at discovery.<br></br><span>It isn't a catalogue.</span>",
+            "description": "A buyer can find a watch on Instagram and still have nowhere to browse your current stock, compare pieces, read the details, or submit a structured enquiry.",
+            "instagram": {
+                "title": "Instagram / DM",
+                "label": "Discovery",
+                "items": ["Buyer sees a watch in a post or story.", "They ask what else you have.", "You send photos, prices and details manually.", "Booking or enquiry stays inside the conversation."]
+            },
+            "storefront": {
+                "title": "Dedicated storefront",
+                "label": "Owned",
+                "items": [
+                    "Buyer can browse the current collection themselves.",
+                    "Every watch can have its own page and details.",
+                    "You can send one link instead of a stack of photos.",
+                    "Enquiries and appointment requests have a clear destination."
+                ]
+            },
+            "footnote": "The point isn't \"having a website.\" The point is removing the gap between attention and action."
+        },
+        "buyer": {
+            "eyebrow": "02 / For the buyer",
+            "title": "The buyer gets answers<br></br><span>before sending the first DM.</span>",
+            "steps": [
+                {
+                    "number": "1",
+                    "title": "Browse",
+                    "description": "See the watches you currently have available instead of asking what's in stock."
+                },
+                {
+                    "number": "2",
+                    "title": "Inspect",
+                    "description": "Open a piece and see the photos, price and information you choose to publish."
+                },
+                {
+                    "number": "3",
+                    "title": "Choose",
+                    "description": "The buyer can arrive at your enquiry page already knowing which watch they want to ask about."
+                },
+                {
+                    "number": "4",
+                    "title": "Contact",
+                    "description": "A structured enquiry or appointment request gives the conversation a clear starting point."
+                }
+            ]
+        },
+        "dealer": {
+            "eyebrow": "03 / For the dealer",
+            "title": "A better link to send.<br></br><span>A cleaner way to handle interest.</span>",
+            "benefits": [
+                {
+                    "title": "One link for stock",
+                    "description": "Instead of sending screenshots or telling someone to scroll through Instagram, send them to one place where the collection is already organized."
+                },
+                {
+                    "title": "One page per watch",
+                    "description": "When a buyer asks about a reference, you can send the actual watch page with the information and photography you want them to see."
+                },
+                {
+                    "title": "Less repetitive messaging",
+                    "description": "The storefront handles the basic browsing and product information first, so your conversation can start further down the funnel."
+                },
+                {
+                    "title": "You control the stock",
+                    "description": "Add, edit and remove pieces from the dashboard instead of relying on a developer every time your inventory changes."
+                }
+            ]
+        },
+        "role": {
+            "eyebrow": "04 / The role",
+            "title": "Keep Instagram.<br></br><span>Give it a destination.</span>",
+            "description": "You don't need to move your audience away from Instagram. Keep posting there. Keep using DMs, WhatsApp and phone calls. The storefront simply becomes the place people can go when they want to actually browse the dealership.",
+            "existingFlowTitle": "Existing flow",
+            "expandedFlowTitle": "Expanded flow",
+            "existingFlow": "Instagram → DM",
+            "expandedFlow": "Instagram → Storefront → Enquiry",
+            "footnote": "The storefront is an additional sales surface, not a replacement for the channels that already work."
+        },
+        "gettingStarted": {
+            "eyebrow": "05 / Getting started",
+            "title": "Don't prepare a presentation.<br></br><span>Just show me the stock.</span>",
+            "description": "I already built the concept. The useful next step is seeing what it looks like with your actual inventory.",
+            "steps": [
+                {
+                    "number": "01 / YOU",
+                    "title": "Send the stock",
+                    "description": "Send your current site, Chrono24 page, Instagram or a few active references."
+                },
+                {
+                    "number": "02 / ME",
+                    "title": "I stage it",
+                    "description": "I put a few of your actual watches into the storefront so you can judge the idea on your own inventory."
+                },
+                {
+                    "number": "03 / DECISION",
+                    "title": "You decide",
+                    "description": "If the added storefront makes sense for the way you sell, we talk about turning the concept into your real site."
+                }
+            ]
+        },
+        "cta": {
+            "eyebrow": "Next step",
+            "title": "See what your actual watches<br></br><span>look like here.</span>",
+            "description": "No 60-minute sales call. Send the current stock link or three pieces you're actively selling. I'll take it from there.",
+            "sendStock": "Send current stock",
+            "backToDemo": "Back to the demo",
+            "credit": "Aymen · Arvell"
+        },
+        "nav": {
+            "back": "← Back to storefront",
+            "nextStep": "See the next step"
+        },
+        "footer": {
+            "tagline": "Private storefront concepts for independent watch dealers"
+        }
     }
 }

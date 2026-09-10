@@ -1328,15 +1328,134 @@
         }
     },
     "note": {
-        "title": "Creato per Arvell",
-        "heading": "Un concept di vetrina progettato per trasformare il tuo traffico Instagram esistente in un inventario consultabile e in richieste di informazioni.",
-        "problem": {
-            "title": "Il problema",
-            "text": "I clienti vedono i tuoi orologi su Instagram, ma non c'è uno spazio dedicato per consultare il tuo stock."
+        "title": "Perché esiste questo store",
+        "heading": "Instagram crea interesse per i tuoi orologi. Questo store dà ai potenziali clienti un posto dove esplorare la tua collezione prima di mandarti un messaggio.",
+        "link": "Scopri perché potrebbe esserti utile →"
+    },
+    "why": {
+        "title": "Perché un negozio dedicato?",
+        "hero": {
+            "eyebrow": "Instagram → Store → Richiesta",
+            "title": "Instagram attira l'attenzione.<br><i>Dai ai clienti un posto dove andare dopo.</i>",
+            "description": "Non si tratta di sostituire Instagram. Si tratta di dare alle persone che scoprono già i tuoi orologi uno spazio dove sfogliare la collezione, aprire il singolo pezzo e contattarti.",
+            "seeDifference": "Scopri la differenza",
+            "openStorefront": "Apri lo store"
         },
-        "solution": {
-            "title": "La soluzione",
-            "text": "Inventario consultabile, pagine individuali per ogni orologio, flusso di richieste e una pagina \"Vendi a noi\"."
+        "gap": {
+            "eyebrow": "01 / Il divario",
+            "title": "Instagram è ottimo per farsi scoprire.<br><span>Non è un catalogo.</span>",
+            "description": "Un acquirente può trovare un orologio su Instagram e non avere comunque un posto dove vedere il tuo stock attuale, confrontare i pezzi, leggere i dettagli o inviare una richiesta strutturata.",
+            "instagram": {
+                "title": "Instagram / DM",
+                "label": "Scoperta",
+                "items": ["Il cliente vede un orologio in un post o in una storia.", "Chiede cos'altro hai disponibile.", "Invii manualmente foto, prezzi e dettagli.", "La richiesta o l'appuntamento restano nella conversazione."]
+            },
+            "storefront": {
+                "title": "Store dedicato",
+                "label": "Di tua proprietà",
+                "items": [
+                    "Il cliente può sfogliare autonomamente la collezione attuale.",
+                    "Ogni orologio può avere una pagina e dettagli propri.",
+                    "Puoi inviare un solo link invece di una serie di foto.",
+                    "Richieste e appuntamenti hanno una destinazione chiara."
+                ]
+            },
+            "footnote": "Il punto non è semplicemente \"avere un sito\". È eliminare il divario tra attenzione e azione."
+        },
+        "buyer": {
+            "eyebrow": "02 / Per il cliente",
+            "title": "Il cliente riceve le risposte<br><i>prima di inviare il primo DM.</i>",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Sfoglia",
+                    "description": "Vede gli orologi attualmente disponibili senza dover chiedere cosa hai in stock."
+                },
+                {
+                    "number": "02",
+                    "title": "Esamina",
+                    "description": "Apre un pezzo e vede foto, prezzo e informazioni che scegli di pubblicare."
+                },
+                {
+                    "number": "03",
+                    "title": "Scegli",
+                    "description": "Il cliente arriva alla pagina di richiesta sapendo già per quale orologio vuole chiedere informazioni."
+                },
+                {
+                    "number": "04",
+                    "title": "Contatta",
+                    "description": "Una richiesta strutturata o un appuntamento danno alla conversazione un punto di partenza chiaro."
+                }
+            ]
+        },
+        "dealer": {
+            "eyebrow": "03 / Per il rivenditore",
+            "title": "Un link migliore da inviare.<br><span>Un modo più pulito per gestire l'interesse.</span>",
+            "benefits": [
+                {
+                    "title": "Un solo link per lo stock",
+                    "description": "Invece di inviare screenshot o dire a qualcuno di cercare su Instagram, lo mandi in un unico posto dove la collezione è già organizzata."
+                },
+                {
+                    "title": "Una pagina per ogni orologio",
+                    "description": "Quando un cliente chiede una referenza, puoi inviare la pagina dell'orologio con le informazioni e le immagini che vuoi mostrare."
+                },
+                {
+                    "title": "Meno messaggi ripetitivi",
+                    "description": "Lo store gestisce prima la navigazione e le informazioni di base, così la conversazione può iniziare più avanti nel percorso."
+                },
+                {
+                    "title": "Controlli tu lo stock",
+                    "description": "Aggiungi, modifica e rimuovi gli orologi dal pannello senza dover coinvolgere uno sviluppatore ogni volta che cambia l'inventario."
+                }
+            ]
+        },
+        "role": {
+            "eyebrow": "04 / Il ruolo",
+            "title": "Tieni Instagram.<br><i>Dagli una destinazione.</i>",
+            "description": "Non devi spostare il tuo pubblico da Instagram. Continua a pubblicare lì e a usare DM, WhatsApp e telefono. Lo store diventa semplicemente il posto dove chi è interessato può sfogliare davvero la collezione.",
+            "existingFlowTitle": "Flusso attuale",
+            "expandedFlowTitle": "Flusso ampliato",
+            "existingFlow": "Instagram → DM",
+            "expandedFlow": "Instagram → Store → Richiesta",
+            "footnote": "Lo store è un canale di vendita aggiuntivo, non un sostituto dei canali che già funzionano."
+        },
+        "gettingStarted": {
+            "eyebrow": "05 / Come iniziare",
+            "title": "Non preparare una presentazione.<br><span>Fammi vedere lo stock.</span>",
+            "description": "Il concept è già pronto. Il passo utile ora è vedere come appare con il tuo inventario reale.",
+            "steps": [
+                {
+                    "number": "01 / TU",
+                    "title": "Invia lo stock",
+                    "description": "Invia il tuo sito attuale, la pagina Chrono24, Instagram o alcuni riferimenti attivi."
+                },
+                {
+                    "number": "02 / IO",
+                    "title": "Lo preparo",
+                    "description": "Inserisco alcuni dei tuoi orologi reali nello store così puoi valutare l'idea sul tuo stesso inventario."
+                },
+                {
+                    "number": "03 / DECISIONE",
+                    "title": "Decidi tu",
+                    "description": "Se lo store aggiuntivo ha senso per il tuo modo di vendere, parliamo di trasformare il concept nel tuo vero sito."
+                }
+            ]
+        },
+        "cta": {
+            "eyebrow": "Prossimo passo",
+            "title": "Guarda come appaiono i tuoi orologi reali<br><i>qui.</i>",
+            "description": "Nessuna call commerciale di 60 minuti. Invia il link al tuo stock attuale o tre pezzi che stai vendendo. Al resto penso io.",
+            "sendStock": "Invia lo stock",
+            "backToDemo": "Torna alla demo",
+            "credit": "Aymen · Arvell"
+        },
+        "nav": {
+            "back": "← Torna allo store",
+            "nextStep": "Vedi il prossimo passo"
+        },
+        "footer": {
+            "tagline": "Concept di store privati per rivenditori di orologi indipendenti"
         }
     }
 }

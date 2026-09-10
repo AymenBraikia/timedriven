@@ -1328,15 +1328,134 @@
         }
     },
     "note": {
-        "title": "Arvell için tasarlandı",
-        "heading": "Mevcut Instagram trafiğinizi göz atılabilir stoklara ve taleplere dönüştürmek için tasarlanmış bir mağaza konsepti.",
-        "problem": {
-            "title": "Sorun",
-            "text": "Müşteriler saatlerinizi Instagram'da görüyor ancak stoğunuza göz atabilecekleri özel bir alan yok."
+        "title": "Bu mağaza neden var",
+        "heading": "Instagram insanların saatlerinizle ilgilenmesini sağlıyor. Bu mağaza, size mesaj göndermeden önce koleksiyonunuzu inceleyebilecekleri bir yer sunuyor.",
+        "link": "Neden işinize yarayabileceğini görün →"
+    },
+    "why": {
+        "title": "Neden özel bir vitrin?",
+        "hero": {
+            "eyebrow": "Instagram → Mağaza → Talep",
+            "title": "Instagram ilgiyi topluyor.<br><i>Alıcılara bundan sonra gidecekleri bir yer verin.</i>",
+            "description": "Amaç Instagram'ı değiştirmek değil. Saatlerinizi zaten keşfeden kişilere koleksiyonunuzu inceleyebilecekleri, belirli bir saati açabilecekleri ve sizinle iletişime geçebilecekleri düzgün bir alan sunmak.",
+            "seeDifference": "Farkı görün",
+            "openStorefront": "Mağazayı aç"
         },
-        "solution": {
-            "title": "Çözüm",
-            "text": "Arama yapılabilir stok, bireysel saat sayfaları, talep akışı ve \"Bize Satın\" sayfası."
+        "gap": {
+            "eyebrow": "01 / Boşluk",
+            "title": "Instagram keşif için mükemmel.<br><span>Ama bir katalog değil.</span>",
+            "description": "Bir alıcı Instagram'da bir saat bulabilir ancak mevcut stokunuzu gezebileceği, parçaları karşılaştırabileceği, detayları okuyabileceği veya düzenli bir talep gönderebileceği bir yere sahip olmayabilir.",
+            "instagram": {
+                "title": "Instagram / DM",
+                "label": "Keşif",
+                "items": ["Alıcı bir gönderide veya hikâyede bir saat görür.", "Başka nelerin mevcut olduğunu sorar.", "Fotoğrafları, fiyatları ve detayları manuel olarak gönderirsiniz.", "Talep veya randevu sohbetin içinde kalır."]
+            },
+            "storefront": {
+                "title": "Özel vitrin",
+                "label": "Size ait",
+                "items": [
+                    "Alıcı mevcut koleksiyona kendi başına göz atabilir.",
+                    "Her saatin kendi sayfası ve detayları olabilir.",
+                    "Bir dizi fotoğraf yerine tek bir bağlantı gönderebilirsiniz.",
+                    "Talepler ve randevular için net bir hedef vardır."
+                ]
+            },
+            "footnote": "Mesele sadece \"bir web sitesine sahip olmak\" değil. İlgi ile aksiyon arasındaki boşluğu ortadan kaldırmak."
+        },
+        "buyer": {
+            "eyebrow": "02 / Alıcı için",
+            "title": "Alıcı, ilk DM'i göndermeden<br><i>önce cevaplarını alır.</i>",
+            "steps": [
+                {
+                    "number": "01",
+                    "title": "Göz at",
+                    "description": "Mevcut saatleri görmek için önce stokta ne olduğunu sormak zorunda kalmaz."
+                },
+                {
+                    "number": "02",
+                    "title": "İncele",
+                    "description": "Bir parçayı açıp yayınlamayı seçtiğiniz fotoğraf, fiyat ve bilgileri görebilir."
+                },
+                {
+                    "number": "03",
+                    "title": "Seç",
+                    "description": "Alıcı talep sayfasına hangi saat hakkında bilgi istediğini bilerek gelir."
+                },
+                {
+                    "number": "04",
+                    "title": "İletişime geç",
+                    "description": "Düzenli bir talep veya randevu isteği, görüşmeye net bir başlangıç noktası sağlar."
+                }
+            ]
+        },
+        "dealer": {
+            "eyebrow": "03 / Satıcı için",
+            "title": "Gönderebileceğiniz daha iyi bir bağlantı.<br><span>İlgiyi yönetmenin daha temiz bir yolu.</span>",
+            "benefits": [
+                {
+                    "title": "Stok için tek bağlantı",
+                    "description": "Ekran görüntüleri göndermek veya kişiden Instagram'da aramasını istemek yerine, koleksiyonunuzun düzenli olduğu tek bir yere gönderin."
+                },
+                {
+                    "title": "Her saat için bir sayfa",
+                    "description": "Bir alıcı belirli bir referansı sorduğunda, istediğiniz bilgiler ve fotoğraflarla doğrudan o saatin sayfasını gönderebilirsiniz."
+                },
+                {
+                    "title": "Daha az tekrarlayan mesaj",
+                    "description": "Vitrin temel gezinmeyi ve ürün bilgilerini önce üstlenir; böylece görüşmeniz sürecin daha ilerleyen bir noktasından başlayabilir."
+                },
+                {
+                    "title": "Stok sizin kontrolünüzde",
+                    "description": "Envanter değiştiğinde her seferinde geliştiriciye ihtiyaç duymadan saatleri panelden ekleyebilir, düzenleyebilir ve kaldırabilirsiniz."
+                }
+            ]
+        },
+        "role": {
+            "eyebrow": "04 / Rolü",
+            "title": "Instagram'ı kullanmaya devam edin.<br><i>Sadece ona bir hedef verin.</i>",
+            "description": "Kitlenizi Instagram'dan uzaklaştırmanız gerekmez. Orada paylaşmaya devam edin. DM, WhatsApp ve telefonu kullanmaya devam edin. Vitrin, ilgilenen kişilerin koleksiyona gerçekten göz atabileceği yer olur.",
+            "existingFlowTitle": "Mevcut akış",
+            "expandedFlowTitle": "Genişletilmiş akış",
+            "existingFlow": "Instagram → DM",
+            "expandedFlow": "Instagram → Vitrin → Talep",
+            "footnote": "Vitrin, çalışan kanalların yerine geçmez; onlara ek bir satış alanı sağlar."
+        },
+        "gettingStarted": {
+            "eyebrow": "05 / Başlangıç",
+            "title": "Sunum hazırlamayın.<br><span>Sadece stoğu gösterin.</span>",
+            "description": "Konsepti zaten oluşturdum. Şimdi önemli olan, bunun gerçek envanterinizle nasıl göründüğünü görmek.",
+            "steps": [
+                {
+                    "number": "01 / SİZ",
+                    "title": "Stoğu gönderin",
+                    "description": "Mevcut sitenizi, Chrono24 sayfanızı, Instagram hesabınızı veya birkaç aktif referansı gönderin."
+                },
+                {
+                    "number": "02 / BEN",
+                    "title": "Ben yerleştireyim",
+                    "description": "Gerçek saatlerinizden birkaçını vitrine ekleyeyim; böylece fikri kendi envanteriniz üzerinden değerlendirebilirsiniz."
+                },
+                {
+                    "number": "03 / KARAR",
+                    "title": "Karar sizin",
+                    "description": "Ek vitrinin satış şeklinize uyduğunu düşünürseniz, konsepti gerçek sitenize dönüştürmeyi konuşuruz."
+                }
+            ]
+        },
+        "cta": {
+            "eyebrow": "Sonraki adım",
+            "title": "Gerçek saatlerinizin<br><i>burada nasıl göründüğünü görün.</i>",
+            "description": "60 dakikalık satış görüşmesi yok. Mevcut stok bağlantınızı veya aktif olarak sattığınız üç parçayı gönderin. Gerisini ben hallederim.",
+            "sendStock": "Stoğu gönder",
+            "backToDemo": "Demoya dön",
+            "credit": "Aymen · Arvell"
+        },
+        "nav": {
+            "back": "← Vitrine dön",
+            "nextStep": "Sonraki adımı gör"
+        },
+        "footer": {
+            "tagline": "Bağımsız saat satıcıları için özel vitrin konseptleri"
         }
     }
 }
