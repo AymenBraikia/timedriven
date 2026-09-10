@@ -59,7 +59,7 @@ export default function Note() {
 
                 <div className="max-w-5xl flex flex-col gap-4 pe-8">
                     <div>
-                        <p className="title4 sm:title3 font-light tracking-wide">{t("title")}</p>
+                        <p className="title4 sm:title3 font-light! tracking-wide">{t("title")}</p>
 
                         <p className="font-sans text-xs sm:text-base tracking-wide leading-6 sm:leading-8 text-secondary max-w-3xl mt-2">{t("heading")}</p>
                     </div>
