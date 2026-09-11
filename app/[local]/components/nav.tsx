@@ -52,7 +52,7 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
             }`}
         >
             <div className="flex flex-col h-7/10 md:h-6/10 gap-6">
-                <div className="flex flex-col gap-3 md:gap-6 w-full font-secondary h-full">
+                <div className="flex flex-col gap-3 md:gap-6 w-full font-secondary h-full sm:hidden">
                     <h5 className="title3 font-primary">{footer("settingsHeading")}</h5>
                     <div className="w-full flex justify-between items-center">
                         <p>{footer("themeHeading")}</p>
@@ -67,7 +67,7 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                         set_value={set_lang as Dispatch<SetStateAction<string>>}
                     />
                 </div>
-                
+
                 <div className="flex flex-col gap-3 md:gap-6">
                     <h5 className="title3 font-primary">{footer("shopHeading")}</h5>
                     <ul className="gap-2!">
