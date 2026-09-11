@@ -2,6 +2,7 @@ import Watches_list from "@/app/components/watches_list";
 import get_watches from "@/app/server/get_watches";
 import Banner from "@/app/components/banner";
 import { getTranslations } from "next-intl/server";
+import Note from "@/app/components/note";
 
 
 export default async function ShopPage() {
@@ -16,6 +17,7 @@ export default async function ShopPage() {
                 </Banner>
                 <Watches_list watches={watches} />
             </div>
+            <Note />
         </section>
     );
 }

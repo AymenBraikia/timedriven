@@ -8,6 +8,7 @@ import InfoTable from "./info_table";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../../lib/relevance_score";
 import { getLocale } from "next-intl/server";
+import Note from "@/app/components/note";
 
 interface PageProps {
     params: Promise<{
@@ -68,6 +69,7 @@ export default async function DynamicPage({ params }: PageProps) {
                 </div>
                 <InfoTable watch={data} />
             </div>
+            <Note />
         </div>
     );
 }

@@ -22,7 +22,7 @@ export default function Home() {
                 <Services />
                 <Booking />
             </div>
-            <Note />
+            <Note one_time={true} />
         </div>
     );
 }

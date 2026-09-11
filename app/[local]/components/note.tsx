@@ -6,7 +6,7 @@ import { Activity, useEffect, useState } from "react";
 import Link from "next/link";
 import { update_visit } from "@/app/server/update_visit";
 
-export default function Note() {
+export default function Note({ one_time = false }: { one_time?: boolean }) {
     const t = useTranslations("note");
 
     const [disabled, set_disabled] = useState(false);
@@ -24,17 +24,12 @@ export default function Note() {
         set_active(true);
     }
 
-    const handle_scroll = () => window.scrollY >= window.innerHeight * 2 && activate();
-
     useEffect(() => {
-        if (disabled) return;
+        if (one_time && disabled) return;
 
         const timer = setTimeout(activate, 1e4);
 
-        window.addEventListener("scroll", handle_scroll);
-
         return () => {
-            window.removeEventListener("scroll", handle_scroll);
             clearTimeout(timer);
         };
     }, [disabled, active]);
@@ -49,7 +44,7 @@ export default function Note() {
     }
 
     return (
-        <Activity mode={disabled ? "hidden" : "visible"}>
+        <Activity mode={one_time && disabled ? "hidden" : "visible"}>
             <div
                 className={`z-9000 fixed top-full inset-s-0 w-full -translate-y-full
                 bg-background border-t border-foreground/10
