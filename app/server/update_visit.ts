@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { cookies } from "next/headers";
 import { visitors_collection } from "../db/collections";
 
@@ -9,8 +9,8 @@ export async function update_visit() {
 
     const cookieStore = await cookies();
 
-    const referer = cookieStore.get("ref");
+    const referer = cookieStore.get("ref")?.value;
     if (!referer) return;
 
-    collection.updateOne({ referer }, { $set: { saw_pop_up: true } });
+    await collection.updateOne({ referer }, { $set: { saw_pop_up: true } });
 }
