@@ -261,12 +261,12 @@ export default function Header() {
 
     return (
         <>
-            <header className={`flex flex-col w-dvw fixed top-0 inset-s-0 z-4000 h-fit min-h-25 sm:min-h-20 text-primary bg-background`}>
+            <header className={`flex flex-col w-dvw fixed top-0 inset-s-0 z-4000 h-fit min-h-20 text-primary bg-background`}>
                 <Credits />
-                <div className="w-full flex justify-between items-center sm:px-8 py-8 sm:py-2 px-2">
-                    <div className={`w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
-                        <button aria-label={"menu"} type="button" className="button2 p-2 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
-                            <MenuBurger classnames="w-6 sm:w-8" clr={"currentColor"} />
+                <div className="w-full flex justify-between items-center sm:px-8 py-2 px-2">
+                    <div className={`sm:w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
+                        <button aria-label={"menu"} type="button" className="button2 p-0 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+                            <MenuBurger classnames="w-5 sm:w-8" clr={"currentColor"} />
                         </button>
                         <div className="xl:hidden block">
                             <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
@@ -274,8 +274,9 @@ export default function Header() {
                     </div>
 
                     <div className="w-1/3 flex-center">
-                        <Link aria-label={"home"} href={"/"} className="relative aspect-video w-25">
-                            <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 `} />
+                        <Link aria-label={"home"} href={"/"} className="relative aspect-video w-20 sm:w-25">
+                            <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 hidden sm:block `} />
+                            <Image src={"/logo_dark_compact.png"} sizes="100px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 sm:hidden `} />
                         </Link>
                     </div>
 
@@ -285,18 +286,19 @@ export default function Header() {
                         </div>
 
                         {!session?.email && (
-                            <Link aria-label={t("buttons.register")} className={`button2 hidden sm:block hover:text-primary capitalize`} href={"/auth/sign_up"}>
+                            <Link aria-label={t("buttons.register")} className={`button2 hidden md:block hover:text-primary capitalize`} href={"/auth/sign_up"}>
                                 {t("buttons.register")}
                             </Link>
                         )}
-                        {/* <Select options={["English", "Spanish", "Deutsch", "Arabic", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} /> */}
-                        <Select classnames="hidden sm:flex" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+                        <Select classnames="flex" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} />
                             {session && session.cart.length ? <p className="absolute inset-s-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                         </button>
-                        <ThemeToggle />
+                        <div className="sm:block hidden">
+                            <ThemeToggle />
+                        </div>
                     </div>
                 </div>
                 <Nav ref={navRef} ui={ui} dispatch={dispatch} />

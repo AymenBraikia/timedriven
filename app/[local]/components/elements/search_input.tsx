@@ -51,8 +51,8 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                     <Search classnames="md:w-7" clr={"currentColor"} />
                 </label>
 
-                <button aria-label="Search" type="button" className="button2 md:hidden p-2" onClick={() => set_active(true)}>
-                    <Search classnames="sm:w-8 w-6" clr={"currentColor"} />
+                <button aria-label="Search" type="button" className="button2 md:hidden p-0" onClick={() => set_active(true)}>
+                    <Search classnames="sm:w-8 w-5" clr={"currentColor"} />
                 </button>
 
                 <input autoComplete="off" onChange={handle_change} type="text" className={`placeholder:text-primary outline-0 md:block hidden`} placeholder={placeholder} id="searchWatches" />
