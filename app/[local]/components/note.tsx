@@ -68,7 +68,7 @@ export default function Note() {
                         <p className="font-sans text-xs sm:text-base tracking-wide leading-6 sm:leading-8 text-secondary max-w-3xl mt-2">{t("heading")}</p>
                     </div>
 
-                    <Link href="/en/why" className="font-sans w-fit button font-light sm:font-normal text-sm sm:text-base">
+                    <Link href="/en/why" className="w-fit button font-light sm:font-normal text-sm sm:text-base font-secondary tracking-wide">
                         {t("link")}
                     </Link>
                 </div>
