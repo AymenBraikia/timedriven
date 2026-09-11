@@ -263,9 +263,9 @@ export default function Header() {
         <>
             <header className={`flex flex-col w-dvw fixed top-0 inset-s-0 z-4000 h-fit min-h-20 text-primary bg-background`}>
                 <Credits />
-                <div className="w-full flex justify-between items-center sm:px-8 py-2 px-2">
-                    <div className={`sm:w-1/3 flex justify-start items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
-                        <button aria-label={"menu"} type="button" className="button2 p-0 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
+                <div className="w-full flex justify-between items-center sm:px-8 py-4 px-2">
+                    <div className={`w-1/3 flex justify-between items-center transition-default ${ui.isNavOpen ? "opacity-0" : "opacity-100"} gap-2`}>
+                        <button aria-label={"menu"} type="button" className="button2 p-1 md:p-auto" onClick={() => dispatch({ type: "OPEN_NAV" })}>
                             <MenuBurger classnames="w-5 sm:w-8" clr={"currentColor"} />
                         </button>
                         <div className="xl:hidden block">
@@ -274,7 +274,7 @@ export default function Header() {
                     </div>
 
                     <div className="w-1/3 flex-center">
-                        <Link aria-label={"home"} href={"/"} className="relative aspect-video w-20 sm:w-25">
+                        <Link aria-label={"home"} href={"/"} className="relative aspect-square sm:aspect-video w-8 sm:w-25">
                             <Image src={"/logo_dark.png"} sizes="(max-width: 768px) 175px, 200px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 hidden sm:block `} />
                             <Image src={"/logo_dark_compact.png"} sizes="100px" alt="Arvell" fill className={`object-cover object-center dark:brightness-100 brightness-0 sm:hidden `} />
                         </Link>
@@ -290,10 +290,11 @@ export default function Header() {
                                 {t("buttons.register")}
                             </Link>
                         )}
-                        <Select classnames="flex" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
-                        <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
-                            <Cart clr={"currentColor"} />
+                        <Select classnames="flex text-sm sm:text-base" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+
+                        <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 p-1 sm:p-auto relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
+                            <Cart clr={"currentColor"} classnames="w-5 sm:w-auto" />
                             {session && session.cart.length ? <p className="absolute inset-s-1/2 top-1/2 text-[10px] flex-center p-1 bg-foreground text-background aspect-square rounded-full w-4 h-4">{session.cart.length}</p> : <></>}
                         </button>
                         <div className="sm:block hidden">
