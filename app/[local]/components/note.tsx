@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Cross from "./svg/cross";
 import { Activity, useEffect, useState } from "react";
 import Link from "next/link";
+import { update_visit } from "@/app/server/update_visit";
 
 export default function Note() {
     const t = useTranslations("note");
@@ -14,17 +15,21 @@ export default function Note() {
     useEffect(() => {
         const alreadyDisabled = window.localStorage.getItem("disabled_note");
 
-        if (alreadyDisabled) {
-            set_disabled(true);
-        }
+        if (alreadyDisabled) set_disabled(true);
     }, []);
 
-    const handle_scroll = () => window.scrollY >= window.innerHeight * 2 && !active && set_active(true);
+    function activate() {
+        if (active) return;
+        update_visit();
+        set_active(true);
+    }
+
+    const handle_scroll = () => window.scrollY >= window.innerHeight * 2 && activate();
 
     useEffect(() => {
         if (disabled) return;
 
-        const timer = setTimeout(() => !active && set_active(true), 1e4);
+        const timer = setTimeout(activate, 1e4);
 
         window.addEventListener("scroll", handle_scroll);
 

@@ -12,4 +12,6 @@ export type Visitor = {
 
     visits: number;
     set: boolean;
+
+    saw_pop_up: boolean;
 };
