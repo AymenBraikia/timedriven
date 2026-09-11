@@ -19,19 +19,18 @@ export default function Note() {
         }
     }, []);
 
-    function handle_scroll() {
-        if (window.scrollY >= window.innerHeight * 2 && !active) {
-            set_active(true);
-        }
-    }
+    const handle_scroll = () => window.scrollY >= window.innerHeight * 2 && !active && set_active(true);
 
     useEffect(() => {
         if (disabled) return;
+
+        const timer = setTimeout(() => !active && set_active(true), 1e4);
 
         window.addEventListener("scroll", handle_scroll);
 
         return () => {
             window.removeEventListener("scroll", handle_scroll);
+            clearTimeout(timer);
         };
     }, [disabled, active]);
 
