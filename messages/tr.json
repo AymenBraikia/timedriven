@@ -45,6 +45,9 @@
         "footer": {
             "shopHeading": "Mağaza",
             "serviceHeading": "Servis",
+            "settingsHeading": "Ayarlar",
+            "themeHeading": "Tema",
+            "language": "dil",
             "otherPlatformsHeading": "Diğer Platformlar",
             "legalHeading": "Yasal",
             "chrono24": "Chrono24",

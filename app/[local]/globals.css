@@ -38,6 +38,25 @@ html.dark {
 
     --clr-shine-primary: #969696;
     --clr-shine-secondary: #fff;
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--bg-secondary) var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--bg-secondary);
+        border-radius: 999px;
+    }
 }
 
 /* Global */
@@ -99,26 +118,6 @@ h5 {
 
 h6 {
     font-size: 20px;
-}
-
-/* Scrollbars */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--bg-secondary) var(--bg-primary);
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--bg-secondary);
-    border-radius: 999px;
 }
 
 /* Tailwind theme */

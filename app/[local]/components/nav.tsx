@@ -1,15 +1,49 @@
 "use client";
 import Link from "next/link";
-import { ActionDispatch, RefObject } from "react";
+import { ActionDispatch, Dispatch, RefObject, SetStateAction, useEffect, useState } from "react";
 import Cross from "./svg/cross";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { NavThemeToggle } from "./navTheme";
+import Select from "./elements/select";
+import { Locales } from "@/types/locales";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
+
+const locales_map = new Map<string, Locales>([
+    ["English", "en"],
+    ["Deutsch", "de"],
+    // ["Arabic", "ar"],
+    ["French", "fr"],
+    ["Italian", "it"],
+    ["Turkish", "tr"],
+    ["Spanish", "es"],
+
+    ["en", "en"],
+    ["de", "de"],
+    // ["ar", "ar"],
+    ["fr", "fr"],
+    ["it", "it"],
+    ["tr", "tr"],
+    ["es", "es"],
+]);
 
 export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isNavOpen: boolean } }) {
     const nav = useTranslations("common.nav");
     const footer = useTranslations("common.footer");
-    const booking = useTranslations("home.bookingBanner");
+
+    const locale = useLocale() as Locales;
+
+    const [lang, set_lang] = useState<Locales>(locale);
+
+    const selected_locale = locales_map.get(lang)!.toUpperCase();
+
+    const pathname = usePathname();
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace(pathname, { locale: selected_locale });
+    }, [lang]);
     return (
         <nav
             ref={ref}
@@ -18,72 +52,81 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
             }`}
         >
             <div className="flex flex-col h-7/10 md:h-6/10 gap-6">
-                <div className="flex flex-col gap-5 md:gap-6">
-                    <h5 className="title3">{footer("shopHeading")}</h5>
-                    <ul className="gap-4!">
+                <div className="flex flex-col gap-3 md:gap-6 w-full font-secondary h-full">
+                    <h5 className="title3 font-primary">{footer("settingsHeading")}</h5>
+                    <div className="w-full flex justify-between items-center">
+                        <p>{footer("themeHeading")}</p>
+                        <NavThemeToggle />
+                    </div>
+
+                    <Select
+                        classnames="flex text-sm sm:text-base w-full"
+                        label={footer("language")}
+                        options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]}
+                        value={selected_locale}
+                        set_value={set_lang as Dispatch<SetStateAction<string>>}
+                    />
+                </div>
+                
+                <div className="flex flex-col gap-3 md:gap-6">
+                    <h5 className="title3 font-primary">{footer("shopHeading")}</h5>
+                    <ul className="gap-2!">
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="watches list" href="/shop">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="watches list" href="/shop">
                                 {nav("watches")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="spare parts" href="/spare">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="spare parts" href="/spare">
                                 {nav("spareParts")}
                             </Link>
                         </li>
 
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="about us" href="/info/about">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="about us" href="/info/about">
                                 {nav("aboutUs")}
                             </Link>
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col gap-5 md:gap-6">
-                    <h5 className="title3">{footer("serviceHeading")}</h5>
-                    <ul className="gap-4!">
+                <div className="flex flex-col gap-3 md:gap-6">
+                    <h5 className="title3 font-primary">{footer("serviceHeading")}</h5>
+                    <ul className="gap-2!">
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Store" href="/store">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Store" href="/store">
                                 {nav("store")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Sell / Consign" href="/sell">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Sell / Consign" href="/sell">
                                 {nav("sellConsign")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Polishing and Service" href="/polish">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Polishing and Service" href="/polish">
                                 {nav("polishingServices")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Shipping & Payments" href="/info/payments">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Shipping & Payments" href="/info/payments">
                                 {nav("shippingPayments")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Frequently Asked Questions" href="/info/faq">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Frequently Asked Questions" href="/info/faq">
                                 {nav("faq")}
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base" aria-label="Vacancies" href="/info/vacancies">
+                            <Link onClick={() => dispatch({ type: "CLOSE_NAV" })} className="text-base font-secondary text-secondary hover:text-primary transition-default" aria-label="Vacancies" href="/info/vacancies">
                                 {nav("vacancies")}
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div className="md:h-3/10 h-3/10  w-full flex flex-col gap-4">
-                <h5 className="title5 tracking-wider">{booking("heading")}</h5>
-                <p className="leading-6 tracking-wide text-sm">{booking("subtext")}</p>
-                <Link aria-label={booking("cta")} className="title6 underline" href={"/booking"}>
-                    {booking("cta")}
-                </Link>
-            </div>
             <button aria-label={"close"} type="button" className="absolute top-4 inset-e-4 p-0 cursor-pointer" onClick={() => dispatch({ type: "CLOSE_NAV" })}>
-                <Cross classnames={"w-16"} />
+                <Cross classnames={"w-10"} />
             </button>
         </nav>
     );

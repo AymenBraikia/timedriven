@@ -45,6 +45,9 @@
         "footer": {
             "shopHeading": "المتجر",
             "serviceHeading": "الخدمات",
+            "settingsHeading": "إعدادات",
+            "themeHeading": "سمة",
+            "language": "لغة",
             "otherPlatformsHeading": "منصات أخرى",
             "legalHeading": "معلومات قانونية",
             "chrono24": "Chrono24",

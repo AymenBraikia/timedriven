@@ -45,6 +45,9 @@
         "footer": {
             "shopHeading": "Boutique",
             "serviceHeading": "Service",
+            "settingsHeading": "Paramètres",
+            "themeHeading": "thème",
+            "language": "langue",
             "otherPlatformsHeading": "Autres plateformes",
             "legalHeading": "Informations légales",
             "chrono24": "Chrono24",

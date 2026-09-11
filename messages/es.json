@@ -45,6 +45,9 @@
         "footer": {
             "shopHeading": "Tienda",
             "serviceHeading": "Servicio",
+            "settingsHeading": "Ajustes",
+            "themeHeading": "Tema",
+            "language": "lokota",
             "otherPlatformsHeading": "Otras plataformas",
             "legalHeading": "Legal",
             "chrono24": "Chrono 24",

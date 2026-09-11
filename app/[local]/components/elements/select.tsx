@@ -14,11 +14,11 @@ export default function Select({ options, value, set_value, label, classnames }:
     const [active, set_active] = useState<boolean>(false);
 
     return (
-        <div className={`w-full flex justify-between items-center relative z-60 font-sans ${classnames ? classnames : ""}`}>
+        <div className={`w-full flex justify-between items-center relative z-60 ${classnames ? classnames : ""}`}>
             <div onClick={() => set_active(!active)} className="font-semibold cursor-pointer flex justify-start items-center gap-2">
                 {label && <p className="font-normal">{label}</p>}
                 <p>{value}</p>
-                <Arrow />
+                <Arrow classnames={`transition-default ${active ? "rotate-180" : "rotate-0"} w-6`} />
             </div>
 
             <Activity mode={active ? "visible" : "hidden"}>
