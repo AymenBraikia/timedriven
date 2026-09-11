@@ -127,7 +127,8 @@ h6 {
     --color-foreground: var(--foreground);
 
     --font-sans: var(--font-open-sans), sans-serif;
-    --font-secondary: var(--font-cormorantGaramond), sans-serif;
+    --font-primary: var(--font-cormorantGaramond), sans-serif;
+    --font-secondary: var(--font-gelasio), sans-serif;
 
     --color-primary: var(--clr-primary);
     --color-secondary: var(--clr-secondary);
@@ -139,8 +140,11 @@ h6 {
 }
 
 /* Utilities */
-@utility font-secondary {
+@utility font-primary {
     font-family: var(--font-cormorantGaramond), sans-serif;
+}
+@utility font-secondary {
+    font-family: var(--font-gelasio), sans-serif;
 }
 
 @utility flex-center {
@@ -273,6 +277,50 @@ ul {
 
     &:active {
         transform: scale(0.95);
+    }
+}
+
+@utility loading {
+    background-color: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+    animation: dim 2s ease 1s infinite alternate;
+
+    &::before {
+        content: "";
+        background-color: var(--bg-secondary);
+
+        z-index: 10;
+
+        position: absolute;
+        top: 0;
+        left: -60px;
+
+        height: 100%;
+        width: 60px;
+        max-width: 20%;
+
+        transform: skew(15deg, 0) translateX(-100%);
+        animation: load 1s ease 2s infinite;
+        filter: blur(30px);
+    }
+}
+@keyframes load {
+    from {
+        left: -60px;
+        transform: skew(15deg, 0) translateX(-100%);
+    }
+    to {
+        left: calc(100% + 60px);
+        transform: skew(15deg, 0) translateX(100%);
+    }
+}
+@keyframes dim {
+    from {
+        filter: brightness(1);
+    }
+    to {
+        filter: brightness(0.7);
     }
 }
 

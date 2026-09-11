@@ -5,13 +5,8 @@ import Inspired from "@/app/components/inspired";
 import Iconic from "@/app/components/iconic";
 import Services from "@/app/components/services";
 import Booking from "@/app/components/booking";
-import get_new from "@/app/server/get_new";
 import Note from "../components/note";
-
-async function NewArrivals() {
-    const watches = await get_new();
-    return <New watches={watches} />;
-}
+import NewLoader from "../components/loaders/new";
 
 export default function Home() {
     return (
@@ -19,8 +14,8 @@ export default function Home() {
             <Hero />
 
             <div className="mt-[100dvh] flex-col flex-center w-full bg-background z-10">
-                <Suspense fallback={<div className="w-dvw sm:p-16 p-4 py-8 min-h-150" />}>
-                    <NewArrivals />
+                <Suspense fallback={<NewLoader />}>
+                    <New />
                 </Suspense>
                 <Inspired />
                 <Iconic />

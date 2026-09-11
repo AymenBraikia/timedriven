@@ -51,7 +51,7 @@ export default function Note() {
                 bg-background border-t border-foreground/10
                 px-5 py-6 sm:px-8 sm:py-5
                 font-secondary
-                ${active ? "fade-in" : "fade-out"}`}
+                ${active ? "fade-in" : "hidden"}`}
             >
                 <button type="button" aria-label="Close" className="button2 p-0 w-fit absolute top-3 sm:top-4 inset-e-4" onClick={close_note}>
                     <Cross classnames="sm:w-8 w-7" />

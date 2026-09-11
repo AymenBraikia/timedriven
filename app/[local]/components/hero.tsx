@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 export default async function Hero() {
     const t = await getTranslations("home");
@@ -9,14 +10,14 @@ export default async function Hero() {
                 <source src="/hero_vid.mp4" type="video/mp4" />
             </video>
 
-            <div className="flex-center flex-col font-secondary gap-2 text-center">
-                <h1 className="tracking-widest font-thin!">{t("heroTitle")}</h1>
+            <div className="flex-center flex-col font-primary gap-2 text-center">
+                <h1 className="tracking-widest font-light!">{t("heroTitle")}</h1>
 
-                <h2 className="sm:title5 title4 tracking-wider dark:text-shine text-(--bg-secondary) italic">{t("heroSubtitle")}</h2>
+                <h2 className="sm:title5 title4 tracking-wider dark:text-shine text-(--bg-secondary) italic font-secondary">{t("heroSubtitle")}</h2>
 
-                <a href="#new" aria-label={t("discover")} className="underline sm:title6 title4 dark:text-shine text-(--bg-secondary) tracking-wider">
+                <Link href="#new" aria-label={t("discover")} className="underline dark:text-shine text-(--bg-secondary) tracking-wider title4">
                     {t("discover")}
-                </a>
+                </Link>
             </div>
         </section>
     );
