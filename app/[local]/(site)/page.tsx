@@ -17,10 +17,12 @@ export default function Home() {
                 <Suspense fallback={<NewLoader />}>
                     <New />
                 </Suspense>
-                <Inspired />
-                <Iconic />
-                <Services />
-                <Booking />
+                <Suspense fallback={<></>}>
+                    <Inspired />
+                    <Iconic />
+                    <Services />
+                    <Booking />
+                </Suspense>
             </div>
             <Note one_time={true} />
         </div>
