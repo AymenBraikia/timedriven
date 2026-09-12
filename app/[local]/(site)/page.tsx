@@ -7,11 +7,14 @@ import Services from "@/app/components/services";
 import Booking from "@/app/components/booking";
 import Note from "../components/note";
 import NewLoader from "../components/loaders/new";
+import HeroLoader from "../components/loaders/hero";
 
 export default function Home() {
     return (
         <div className="flex-col flex-center w-full">
-            <Hero />
+            <Suspense fallback={<HeroLoader />}>
+                <Hero />
+            </Suspense>
 
             <div className="mt-[100dvh] flex-col flex-center w-full bg-background z-10">
                 <Suspense fallback={<NewLoader />}>
