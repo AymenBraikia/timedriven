@@ -5,7 +5,7 @@ export default async function CTA() {
     const t = await getTranslations("why.cta");
 
     return (
-        <section id="cta" className="min-h-dvh h-fit w-full text-center bg-background font-secondary flex flex-col justify-center items-center py-20 gap-8">
+        <section id="cta" className="min-h-dvh h-fit w-full text-center bg-background font-primary flex flex-col justify-center items-center py-20 gap-8 scroll-mt-20">
             <p className="md:text-5xl text-3xl tracking-wide leading-16">
                 {t.rich("title", {
                     br: () => <br />,

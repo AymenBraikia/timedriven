@@ -4,7 +4,7 @@ export default async function Buyer() {
     const t = await getTranslations("why.buyer");
 
     return (
-        <section className="min-h-dvh w-full bg-background font-secondary flex justify-center items-start flex-col py-20 gap-8">
+        <section className="min-h-dvh w-full bg-background font-primary flex justify-center items-start flex-col py-20 gap-8">
             <p className="md:text-5xl text-3xl tracking-wide leading-14">
                 {t.rich("title", {
                     br: () => <br />,

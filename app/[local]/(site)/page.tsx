@@ -5,7 +5,6 @@ import Inspired from "@/app/components/inspired";
 import Iconic from "@/app/components/iconic";
 import Services from "@/app/components/services";
 import Booking from "@/app/components/booking";
-import Note from "../components/note";
 import NewLoader from "../components/loaders/new";
 import HeroLoader from "../components/loaders/hero";
 
@@ -27,7 +26,6 @@ export default function Home() {
                     <Booking />
                 </Suspense>
             </div>
-            <Note one_time={true} />
         </div>
     );
 }

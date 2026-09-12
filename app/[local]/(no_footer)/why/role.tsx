@@ -4,7 +4,7 @@ export default async function Role() {
     const t = await getTranslations("why.role");
 
     return (
-        <section className="h-fit w-full bg-background font-secondary flex md:flex-row flex-col justify-center items-start py-20 gap-8">
+        <section className="h-fit w-full bg-background font-primary flex md:flex-row flex-col justify-center items-start py-20 gap-8">
             <p className="md:text-5xl text-3xl tracking-wide leading-14 md:w-2/5">
                 {t.rich("title", {
                     br: () => <br />,
@@ -13,7 +13,7 @@ export default async function Role() {
             </p>
             <div className="md:w-3/5 flex flex-col justify-start items-start gap-8 font-sans">
                 <p className="text-secondary leading-8 font-light">{t("description")}</p>
-                <div className="font-secondary w-full h-fit border border-(--bg-secondary) flex md:flex-row flex-col justify-between items-center gap-4 p-8">
+                <div className="font-primary w-full h-fit border border-(--bg-secondary) flex md:flex-row flex-col justify-between items-center gap-4 p-8">
                     <div className="md:w-fit w-full h-full flex flex-col gap-4">
                         <p className="text-secondary font-sans">{t("existingFlowTitle")}</p>
                         <h5 className="min-w-fit">{t("existingFlow")}</h5>

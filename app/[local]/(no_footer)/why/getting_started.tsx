@@ -4,7 +4,7 @@ export default async function GettingStarted() {
     const t = await getTranslations("why.gettingStarted");
 
     return (
-        <section className="h-fit w-full bg-background font-secondary flex flex-col justify-center items-start py-20 gap-8">
+        <section className="h-fit w-full bg-background font-primary flex flex-col justify-center items-start py-20 gap-8">
             <p className="md:text-5xl text-2xl tracking-wide md:leading-14 leading-8">
                 {t.rich("title", {
                     br: () => <br />,

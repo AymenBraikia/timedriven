@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 export default async function Gap() {
     const t = await getTranslations("why.gap");
     return (
-        <section id="gap" className="min-h-dvh w-full bg-background font-secondary flex justify-center items-start flex-col py-20 gap-8">
+        <section id="gap" className="min-h-dvh w-full bg-background font-primary flex justify-center items-start flex-col py-20 gap-8 scroll-mt-20">
             <p className="md:text-5xl text-3xl tracking-wide leading-14">
                 {t.rich("title", {
                     br: () => <br />,
