@@ -17,7 +17,7 @@ export default async function New() {
     const watches = await get_new();
 
     return (
-        <section className="flex flex-col justify-center items-start sm:p-16 p-4 py-8 w-dvw gap-6" id="new">
+        <section className="flex flex-col justify-center items-start sm:p-16 p-4 py-8 w-dvw gap-6 scroll-mt-20" id="new">
             <div className="w-fit flex justify-center items-start flex-col">
                 <FadeInObserver>
                     <h1 className={`text-5xl font-secondary tracking-wide`}>{t("newArrivalsHeading")}</h1>

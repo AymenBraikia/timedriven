@@ -1,22 +1,27 @@
 "use client";
 import dynamic from "next/dynamic";
 
+import { Watch } from "@/types/watch";
+import { Locales } from "@/types/locales";
+
 import { Dispatch, SetStateAction, useEffect, useReducer, useRef, useState } from "react";
 import Link from "next/link";
+
+import Image from "next/image";
 import MenuBurger from "./svg/menu_burger";
 import Cart from "./svg/cart";
-import { ThemeToggle } from "./theme";
-import { useAuth } from "../(site)/context/authContext";
-import Search_input from "./elements/search_input";
-import { Watch } from "@/types/watch";
-import Image from "next/image";
+
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
+
+import { useAuth } from "../(site)/context/authContext";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
+
 import Credits from "./credits";
 import Select from "./elements/select";
-import { Locales } from "@/types/locales";
+import Search_input from "./elements/search_input";
+import { ThemeToggle } from "./theme";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -75,7 +80,6 @@ const initialUIState: UIState = {
 const locales_map = new Map<string, Locales>([
     ["English", "en"],
     ["Deutsch", "de"],
-    // ["Arabic", "ar"],
     ["French", "fr"],
     ["Italian", "it"],
     ["Turkish", "tr"],
@@ -83,7 +87,6 @@ const locales_map = new Map<string, Locales>([
 
     ["en", "en"],
     ["de", "de"],
-    // ["ar", "ar"],
     ["fr", "fr"],
     ["it", "it"],
     ["tr", "tr"],
@@ -133,11 +136,9 @@ export default function Header() {
     const navRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        // Lets us tear down a half-finished gesture if the component unmounts.
         let release: (() => void) | null = null;
 
         const onTouchStart = (e: TouchEvent) => {
-            // Pinch-zoom and other multi-touch are never drawer gestures.
             if (e.touches.length > 1) return;
 
             const cartEl = cartRef.current;
@@ -167,13 +168,10 @@ export default function Header() {
                 const deltaX = currentX - startX;
                 const deltaY = currentY - startY;
 
-                // Wait until the user clearly starts moving
                 if (gesture === null) {
                     if (Math.abs(deltaX) < GESTURE_LOCK && Math.abs(deltaY) < GESTURE_LOCK) return;
 
                     if (Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
-                        // The scroller under the finger gets first refusal. Only once it
-                        // has run out of room does the drawer take the gesture.
                         if (scroller && can_scroll(scroller, deltaX)) {
                             gesture = "native";
                             return;
@@ -185,7 +183,6 @@ export default function Header() {
                     }
                 }
 
-                // Let vertical scrolling and native horizontal scrolling happen normally
                 if (gesture !== "horizontal") return;
 
                 if (moveEvent.cancelable) {
