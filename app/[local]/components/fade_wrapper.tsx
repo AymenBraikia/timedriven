@@ -32,7 +32,7 @@ export default function FadeInObserver({ children }: { children: React.ReactNode
 	return (
 		<div 
 			ref={elementRef} 
-			className={isVisible ? "fade-in w-full flex-center flex-col " : "opacity-0 w-full"}
+			className={isVisible ? "fade-in w-full flex-center flex-col " : "opacity-0"}
 		>
 			{children}
 		</div>

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import FadeInObserver from "./fade_wrapper";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Inspired(){
-        const t = useTranslations("home");
-        const t_btn = useTranslations("common.buttons");
-    
+export default async function Inspired() {
+    const t = await getTranslations("home");
+    const t_btn = await getTranslations("common.buttons");
+
     return (
         <FadeInObserver>
             <div className="px-4 py-12 flex-center flex-col md:flex-row min-h-100 gap-5 md:h-50 md:gap-20 overflow-hidden text-center relative">
