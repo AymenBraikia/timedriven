@@ -14,4 +14,7 @@ export type Visitor = {
     set: boolean;
 
     saw_pop_up: boolean;
+    closed: boolean;
+    ignored: boolean;
+    clicked: boolean;
 };

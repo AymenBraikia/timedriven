@@ -5,6 +5,7 @@ import Cross from "./svg/cross";
 import { Activity, useEffect, useState } from "react";
 import Link from "next/link";
 import { update_visit } from "@/app/server/update_visit";
+import { closed_popup } from "@/app/server/popup";
 
 export default function Note({ one_time = false }: { one_time?: boolean }) {
     const t = useTranslations("note");
@@ -36,6 +37,7 @@ export default function Note({ one_time = false }: { one_time?: boolean }) {
 
     function close_note() {
         set_active(false);
+        closed_popup();
 
         setTimeout(() => {
             set_disabled(true);

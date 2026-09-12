@@ -36,6 +36,9 @@ export async function save_visit(request: NextRequest) {
         visits: 1,
         set: false,
         saw_pop_up: false,
+        clicked: false,
+        closed: false,
+        ignored: true,
     };
     collection.insertOne(visitor);
 }

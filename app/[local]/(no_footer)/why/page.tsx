@@ -5,8 +5,10 @@ import GettingStarted from "./getting_started";
 import Hero from "./hero";
 import CTA from "./cta";
 import Role from "./role";
+import { clicked_popup } from "@/app/server/popup";
 
 export default function Home() {
+    clicked_popup();
     return (
         <>
             <Hero />
