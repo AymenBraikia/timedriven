@@ -114,7 +114,7 @@ export default function WatchFilters({ facets, counts, selection, onChange, resu
                 role="dialog"
                 aria-modal={open || undefined}
                 aria-label={t("filtersLabel")}
-                className={`frost fixed inset-y-0 inset-s-0 z-100 flex w-[88%] max-w-sm flex-col transition-transform duration-300 ease-out lg:sticky lg:top-4 lg:z-0 lg:h-fit lg:max-h-[calc(100dvh-2rem)] lg:w-80 lg:max-w-none lg:translate-x-0 ${
+                className={`bg-background fixed inset-y-0 inset-s-0 z-100 flex w-[88%] max-w-sm flex-col transition-transform duration-300 ease-out lg:sticky lg:top-4 lg:z-0 lg:h-fit lg:max-h-[calc(100dvh-2rem)] lg:w-80 lg:max-w-none lg:translate-x-0 ${
                     open ? "translate-x-0" : "-translate-x-full"
                 }`}
             >

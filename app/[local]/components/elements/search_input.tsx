@@ -71,7 +71,7 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                 )}
             </div>
             <Activity mode={active ? "visible" : "hidden"}>
-                <div className="fixed inset-s-0 top-0 fade-in w-dvw h-dvh frost z-60 p-6 pb-0 flex flex-col gap-4 md:hidden">
+                <div className="fixed inset-s-0 top-0 fade-in w-dvw h-dvh bg-background z-60 p-6 pb-0 flex flex-col gap-4 md:hidden">
                     <button aria-label="close search" type="button" className="absolute top-4 inset-e-4 p-0 cursor-pointer" onClick={() => set_active(false)}>
                         <Cross classnames={"w-10"} />
                     </button>

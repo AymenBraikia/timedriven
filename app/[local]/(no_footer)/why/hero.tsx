@@ -5,24 +5,25 @@ export default async function Hero() {
     const t = await getTranslations("why");
 
     return (
-        <section className="w-full min-h-dvh flex-center flex-col gap-10 text-center">
-            <p className="text-sm text-shine min-w-fit whitespace-nowrap uppercase tracking-widest">{t("hero.eyebrow")}</p>
-            <h1 className="font-primary xl:text-6xl! tracking-wider italic font-light">
+        <section className="w-full min-h-dvh flex-center flex-col gap-5 sm:gap-10 text-center">
+            <p className="text-xs sm:text-base text-shine min-w-fit whitespace-nowrap uppercase tracking-widest">{t("hero.eyebrow")}</p>
+
+            <p className="font-primary text-2xl sm:text-3xl lg:text-4xl xl:text-5xl tracking-wider italic font-light">
                 {t.rich("hero.title", {
                     br: () => <br />,
                     span: (chunks) => <span className="text-secondary">{chunks}</span>,
                 })}
-            </h1>
-            <p className="font-thin text-secondary max-w-200 text-center tracking-wider">{t("hero.description")}</p>
-            <div className="flex-center gap-8">
-                <Link href={"#gap"} className="font-thin button2">
+            </p>
+            <p className="text-xs sm:text-sm lg:text-base leading-6 sm:leading-8 font-thin text-secondary w-200 max-w-[90dvw] sm:max-w-[70dvw] text-center tracking-wider">{t("hero.description")}</p>
+
+            <div className="flex-center sm:gap-8 gap-2 flex-col sm:flex-row capitalize text-sm">
+                <Link href={"#gap"} className="font-normal button2">
                     {t("hero.seeDifference")}
                 </Link>
-                <Link href={"/"} className="font-thin button2">
+                <Link href={"/"} className="font-normal button2">
                     {t("hero.openStorefront")}
                 </Link>
             </div>
-
         </section>
     );
 }

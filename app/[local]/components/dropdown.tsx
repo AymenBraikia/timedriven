@@ -8,7 +8,7 @@ export default function Dropdown({ children, titles }: { children: React.ReactNo
     const [IsActive, setIsActive] = useState<boolean>(false);
 
     return Array.isArray(titles) ? (
-        <div className="w-full frost">
+        <div className="w-full bg-background">
             {titles.map((title, index) => (
                 <div key={title + index} className={`w-full flex flex-col gap-2 border-b-2 py-4 px-2`}>
                     <div className="w-full flex justify-start items-center gap-2" onClick={() => setActiveIndex(activeIndex === index ? null : index)}>
@@ -19,7 +19,7 @@ export default function Dropdown({ children, titles }: { children: React.ReactNo
             ))}
         </div>
     ) : (
-        <div className="w-full frost">
+        <div className="w-full bg-background">
             <div className={`w-full flex flex-col gap-2 border-b-2 py-4 px-2`}>
                 <div className="w-full flex justify-start items-center gap-2" onClick={() => setIsActive(!IsActive)}>
                     <Title title={titles} active={IsActive} />
