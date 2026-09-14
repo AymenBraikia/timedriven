@@ -21,8 +21,8 @@ export function Floating_Cta() {
     }, [active]);
 
     return (
-        <div className={`min-w-fit whitespace-nowrap bg-primary transition-default fixed bottom-10 inset-s-1/2 -translate-x-1/2 hover:bg-background active:scale-95 shine ${active ? "fade-in" : "invisible fade-out"}`}>
-            <Link href="https://www.instagram.com/ayme.n0412/" className="py-4 px-6 text-shine font-secondary title6 lg:title5 tracking-wider" target="_blank" rel="noopener noreferrer">
+        <div className={`min-w-fit whitespace-nowrap bg-primary transition-default fixed bottom-5 inset-s-1/2 -translate-x-1/2 hover:bg-background active:scale-95 shine ${active ? "fade-in" : "invisible fade-out"}`}>
+            <Link href="https://www.instagram.com/ayme.n0412/" className="sm:py-4 sm:px-6 py-3 px-4 text-shine font-secondary text-sm lg:title5 tracking-wider" target="_blank" rel="noopener noreferrer">
                 {t("cta.floatingCta")}
             </Link>
         </div>
