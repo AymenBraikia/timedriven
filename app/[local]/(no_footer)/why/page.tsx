@@ -5,6 +5,7 @@ import GettingStarted from "./getting_started";
 import Hero from "./hero";
 import CTA from "./cta";
 import Role from "./role";
+import { Floating_Cta } from "./floating_cta";
 
 export default function Home() {
     return (
@@ -22,6 +23,7 @@ export default function Home() {
             <GettingStarted />
             <hr className="w-dvw text-(--bg-secondary)" />
             <CTA />
+            <Floating_Cta />
         </>
     );
 }

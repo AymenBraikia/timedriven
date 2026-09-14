@@ -15,16 +15,14 @@ export default async function Hero() {
             </h1>
             <p className="font-thin text-secondary max-w-200 text-center tracking-wider">{t("hero.description")}</p>
             <div className="flex-center gap-8">
-                <Link href={"#gap"} className="font-thin button">
+                <Link href={"#gap"} className="font-thin button2">
                     {t("hero.seeDifference")}
                 </Link>
-                <Link href={"/"} className="font-thin button">
+                <Link href={"/"} className="font-thin button2">
                     {t("hero.openStorefront")}
                 </Link>
             </div>
-            <Link href="https://www.instagram.com/direct/t/17848725818503902/" className="button2 font-primary title5">
-                {t("cta.sendStock")}
-            </Link>
+
         </section>
     );
 }

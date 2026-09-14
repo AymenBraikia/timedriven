@@ -14,7 +14,7 @@ export default async function CTA() {
             </p>
             <p className="text-shine font-sans tracking-wide md:w-150">{t("description")}</p>
             <div className="flex-center gap-4 min-w-fit md:w-130 w-full md:flex-row flex-col">
-                <Link href="https://www.instagram.com/direct/t/17848725818503902/" className="button w-full font-sans font-light">
+                <Link href="https://www.instagram.com/ayme.n0412/" className="button w-full font-sans font-light">
                     {t("sendStock")}
                 </Link>
                 <Link href="/" target="_blank" className="button2 w-full font-sans font-light">

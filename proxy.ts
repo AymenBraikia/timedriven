@@ -53,10 +53,10 @@ export default function proxy(request: NextRequest) {
 
     const ref = sanitizeRef(request.nextUrl.searchParams.get("ref"));
     if (ref) {
-        if (process.env.NODE_ENV == "production") {
-            response.cookies.set("ref", ref, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
-            save_visit(request);
-        }
+        // if (process.env.NODE_ENV == "production") {
+        response.cookies.set("ref", ref, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+        save_visit(request);
+        // }
     } else if (request.nextUrl.searchParams.has("ref")) {
         response.cookies.delete("ref"); // ?ref= with nothing clears it
     }
