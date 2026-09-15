@@ -21,22 +21,24 @@ export default function Select({ options, value, set_value, label, classnames }:
                 <Arrow classnames={`transition-default ${active ? "rotate-180" : "rotate-0"} w-6`} />
             </div>
 
-            <Activity mode={active ? "visible" : "hidden"}>
-                <div className="w-full absolute -bottom-4 inset-s-0 translate-y-full bg-primary min-w-fit max-h-100 overflow-x-hidden overflow-y-auto select-none">
-                    {new Array(...new Set(options)).map((o) => (
-                        <p
-                            key={o}
-                            className="whitespace-nowrap text-secondary hover:text-foreground bg-secondary hover:bg-background transition-default cursor-pointer px-2 py-1"
-                            onClick={() => {
-                                set_value(o);
-                                set_active(false);
-                            }}
-                        >
-                            {o}
-                        </p>
-                    ))}
-                </div>
-            </Activity>
+            {/* <Activity mode={active ? "visible" : "hidden"}> */}
+            <div
+                className={`w-full absolute inset-s-0 translate-y-full bg-primary min-w-fit overflow-x-hidden select-none transition-default ${active ? "overflow-y-auto max-h-100 opacity-100 -bottom-4" : "max-h-0 overflow-y-hidden opacity-0 bottom-0"}`}
+            >
+                {new Array(...new Set(options)).map((o) => (
+                    <p
+                        key={o}
+                        className="whitespace-nowrap text-secondary hover:text-foreground bg-secondary hover:bg-background transition-default cursor-pointer px-2 py-1"
+                        onClick={() => {
+                            set_value(o);
+                            set_active(false);
+                        }}
+                    >
+                        {o}
+                    </p>
+                ))}
+            </div>
+            {/* </Activity> */}
         </div>
     );
 }
