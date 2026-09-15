@@ -21,7 +21,6 @@ export default function Select({ options, value, set_value, label, classnames }:
                 <Arrow classnames={`transition-default ${active ? "rotate-180" : "rotate-0"} w-6`} />
             </div>
 
-            {/* <Activity mode={active ? "visible" : "hidden"}> */}
             <div
                 className={`w-full absolute inset-s-0 translate-y-full bg-primary min-w-fit overflow-x-hidden select-none transition-default ${active ? "overflow-y-auto max-h-100 opacity-100 -bottom-4" : "max-h-0 overflow-y-hidden opacity-0 bottom-0"}`}
             >
@@ -38,7 +37,6 @@ export default function Select({ options, value, set_value, label, classnames }:
                     </p>
                 ))}
             </div>
-            {/* </Activity> */}
         </div>
     );
 }
