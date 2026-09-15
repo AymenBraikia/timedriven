@@ -6,6 +6,7 @@ import { format_price } from "../(site)/lib/price_format";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+
 const QuickViewModal = dynamic(() => import("./quick_view"), {
     ssr: false,
 });
@@ -15,8 +16,8 @@ export default function Card({ data }: { data: Watch }) {
     const [view, set_view] = useState<null | Watch>(null);
     return (
         <>
-            <div aria-label={`${data.brand + " " + data.model}`} className="h-130 sm:h-110 w-full flex flex-col justify-start items-start gap-4 transition-long group" key={data.slug} onClick={() => innerWidth < 1536 && set_view(data)}>
-                <div className="relative w-full h-9/10 sm:h-fit flex-center overflow-hidden sm:aspect-square">
+            <div aria-label={`${data.brand + " " + data.model}`} className="h-fit sm:h-110 w-full flex flex-col justify-start items-start gap-4 transition-long group" key={data.slug} onClick={() => innerWidth < 1536 && set_view(data)}>
+                <div className="relative w-full sm:h-fit flex-center overflow-hidden aspect-square">
                     <Image
                         src={data.images[0]}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
@@ -38,9 +39,9 @@ export default function Card({ data }: { data: Watch }) {
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-25">
-                    <h5 className="sm:title6 title2 font-secondary capitalize text-shine">{data.brand + " " + data.model}</h5>
-                    <h6 className="sm:title6 title3 font-secondary">{format_price(data.price)}</h6>
+                <div className="w-full flex flex-col justify-start items-start max-h-30 min-h-20">
+                    <h5 className="sm:title6 title4 font-secondary capitalize text-shine">{data.brand + " " + data.model}</h5>
+                    <h6 className="sm:title6 title5 font-secondary">{format_price(data.price)}</h6>
                 </div>
             </div>
             <QuickViewModal view={view} onClose={() => set_view(null)} />
