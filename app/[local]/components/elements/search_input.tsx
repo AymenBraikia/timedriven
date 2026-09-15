@@ -6,11 +6,12 @@ import { useTranslations } from "next-intl";
 
 interface searchProps {
     SearchChildComponent: React.ComponentType<{ item: any }>;
+    SearchChildLoader: React.ComponentType;
     route: string;
     placeholder: string;
 }
 
-export default function Search_input({ route, SearchChildComponent, placeholder }: searchProps) {
+export default function Search_input({ route, SearchChildComponent, placeholder, SearchChildLoader }: searchProps) {
     const t = useTranslations("common.filters");
 
     const [data, set_data] = useState<any[]>([]);
@@ -64,14 +65,18 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                     </div>
                 ) : value ? (
                     <div className="absolute hidden md:flex-center top-[calc(100%+8px)] inset-s-0 w-full min-w-100 max-w-100 h-fit max-h-100 overflow-y-auto font-secondary py-2 bg-background">
-                        {fetching ? t("searching") : t("noSearchResults")}
+                        {fetching ? (
+                            <div className="w-full h-fit flex flex-col justify-start items-start">{Array.from({length:5}).map((e,i)=><SearchChildLoader key={i}/>)}</div>
+                        ) : (
+                            t("noSearchResults")
+                        )}
                     </div>
                 ) : (
                     <></>
                 )}
             </div>
             <Activity mode={active ? "visible" : "hidden"}>
-                <div className="fixed inset-s-0 top-0 fade-in w-dvw h-dvh bg-background z-60 p-6 pb-0 flex flex-col gap-4 md:hidden">
+                <div className="fixed inset-s-0 top-0 fade-in w-dvw h-dvh bg-background z-70 p-6 pb-0 flex flex-col gap-4 md:hidden">
                     <button aria-label="close search" type="button" className="absolute top-4 inset-e-4 p-0 cursor-pointer" onClick={() => set_active(false)}>
                         <Cross classnames={"w-10"} />
                     </button>
@@ -84,7 +89,13 @@ export default function Search_input({ route, SearchChildComponent, placeholder 
                             ))}
                         </div>
                     ) : value ? (
-                        <div className="flex md:hidden top-[calc(100%+8px)] inset-s-0 w-full h-fit overflow-y-auto font-secondary py-2 text-shine">{fetching ? t("searching") : t("noSearchResults")}</div>
+                        <div className="flex md:hidden top-[calc(100%+8px)] inset-s-0 w-full h-fit overflow-y-auto font-secondary py-2 text-shine">
+                            {fetching ? (
+                                <div className="w-full h-fit flex flex-col justify-start items-start">{Array.from({length:5}).map((e,i)=><SearchChildLoader key={i}/>)}</div>
+                            ) : (
+                                t("noSearchResults")
+                            )}
+                        </div>
                     ) : (
                         <></>
                     )}

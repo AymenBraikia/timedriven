@@ -22,6 +22,7 @@ import Credits from "./credits";
 import Select from "./elements/select";
 import Search_input from "./elements/search_input";
 import { ThemeToggle } from "./theme";
+import { format_price } from "../(site)/lib/price_format";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -266,7 +267,7 @@ export default function Header() {
                             <MenuBurger classnames="w-5 sm:w-8" clr={"currentColor"} />
                         </button>
                         <div className="xl:hidden block">
-                            <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                            <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} SearchChildLoader={SearchChildLoader} />
                         </div>
                     </div>
 
@@ -279,7 +280,7 @@ export default function Header() {
 
                     <div className="flex justify-end items-center gap-2 w-1/3">
                         <div className="xl:block hidden">
-                            <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} />
+                            <Search_input placeholder={t("filters.searchPlaceholder")} route="/api/search_watches" SearchChildComponent={SearchChildComponent} SearchChildLoader={SearchChildLoader} />
                         </div>
 
                         {!session?.email && (
@@ -316,7 +317,21 @@ function SearchChildComponent({ item }: { item: Watch }) {
             <div className="relative min-w-15 aspect-square">
                 <Image src={item.images[0]} alt={item.brand + " " + item.model} fill sizes="(max-width: 768px) 150px, 100px" />
             </div>
-            <p className="w-full">{item.brand + " " + item.model + " " + item.year + " Ref. " + item.reference}</p>
+            <div className="w-full h-full flex flex-col justify-start items-start gap-2">
+                <p className="w-full">{item.brand + " " + item.model + " " + (item.year || "") + " Ref. " + item.reference}</p>
+                <p>{format_price(item.price)}</p>
+            </div>
         </Link>
+    );
+}
+function SearchChildLoader() {
+    return (
+        <div className="flex justify-between items-center w-full h-full gap-2 border-b sm:border-0 p-2">
+            <div className="relative min-w-15 aspect-square loading"></div>
+            <div className="w-full h-full flex flex-col justify-start items-start gap-2">
+                <div className="w-full h-5 loading"></div>
+                <div className="w-30 h-5 loading"></div>
+            </div>
+        </div>
     );
 }
