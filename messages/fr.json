@@ -1341,14 +1341,14 @@
         "title": "Pourquoi une vitrine dédiée ?",
         "hero": {
             "eyebrow": "Instagram → Vitrine → Demande",
-            "title": "Instagram attire l'attention.<br><i>Donnez aux acheteurs un endroit où aller ensuite.</i>",
+            "title": "Instagram attire l'attention.<br></br><span>Donnez aux acheteurs un endroit où aller ensuite.</span>",
             "description": "Il ne s'agit pas de remplacer Instagram. Il s'agit de donner aux personnes qui découvrent déjà vos montres un endroit où parcourir la collection, ouvrir une fiche produit et vous contacter.",
             "seeDifference": "Voir la différence",
             "openStorefront": "Ouvrir la vitrine"
         },
         "gap": {
             "eyebrow": "01 / L'écart",
-            "title": "Instagram est excellent pour la découverte.<br><span>Ce n'est pas un catalogue.</span>",
+            "title": "Instagram est excellent pour la découverte.<br></br><span>Ce n'est pas un catalogue.</span>",
             "description": "Un acheteur peut trouver une montre sur Instagram sans pour autant avoir un endroit où consulter votre stock actuel, comparer les pièces, lire les détails ou envoyer une demande structurée.",
             "instagram": {
                 "title": "Instagram / DM",
@@ -1374,7 +1374,7 @@
         },
         "buyer": {
             "eyebrow": "02 / Pour l'acheteur",
-            "title": "L'acheteur obtient des réponses<br><i>avant d'envoyer le premier DM.</i>",
+            "title": "L'acheteur obtient des réponses<br></br><span>avant d'envoyer le premier DM.</span>",
             "steps": [
                 {
                     "number": "01",
@@ -1400,7 +1400,7 @@
         },
         "dealer": {
             "eyebrow": "03 / Pour le revendeur",
-            "title": "Un meilleur lien à envoyer.<br><span>Une manière plus claire de gérer l'intérêt.</span>",
+            "title": "Un meilleur lien à envoyer.<br></br><span>Une manière plus claire de gérer l'intérêt.</span>",
             "benefits": [
                 {
                     "title": "Un lien pour le stock",
@@ -1422,7 +1422,7 @@
         },
         "role": {
             "eyebrow": "04 / Le rôle",
-            "title": "Gardez Instagram.<br><i>Donnez-lui une destination.</i>",
+            "title": "Gardez Instagram.<br></br><span>Donnez-lui une destination.</span>",
             "description": "Vous n'avez pas besoin d'éloigner votre audience d'Instagram. Continuez à y publier. Continuez à utiliser les DM, WhatsApp et le téléphone. La vitrine devient simplement l'endroit où les personnes intéressées peuvent réellement parcourir votre collection.",
             "existingFlowTitle": "Flux actuel",
             "expandedFlowTitle": "Flux élargi",
@@ -1432,7 +1432,7 @@
         },
         "gettingStarted": {
             "eyebrow": "05 / Commencer",
-            "title": "Ne préparez pas de présentation.<br><span>Montrez-moi simplement le stock.</span>",
+            "title": "Ne préparez pas de présentation.<br></br><span>Montrez-moi simplement le stock.</span>",
             "description": "Le concept est déjà construit. L'étape utile consiste maintenant à voir ce qu'il donne avec votre inventaire réel.",
             "steps": [
                 {
@@ -1454,7 +1454,7 @@
         },
         "cta": {
             "eyebrow": "Prochaine étape",
-            "title": "Voyez à quoi ressemblent vos vraies montres<br><i>ici.</i>",
+            "title": "Voyez à quoi ressemblent vos vraies montres<br></br><span>ici.</span>",
             "description": "Pas d'appel commercial de 60 minutes. Envoyez le lien de votre stock actuel ou trois pièces que vous vendez activement. Je m'occupe du reste.",
             "sendStock": "Réservez votre démonstration personnalisée",
             "floatingCta": "Réservez la démo personnalisée d'Arvell",

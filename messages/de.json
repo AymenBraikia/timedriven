@@ -1340,14 +1340,14 @@
         "title": "Warum ein eigener Store?",
         "hero": {
             "eyebrow": "Instagram → Store → Anfrage",
-            "title": "Instagram erzeugt Aufmerksamkeit.<br><i>Geben Sie Interessenten einen Ort für den nächsten Schritt.</i>",
+            "title": "Instagram erzeugt Aufmerksamkeit.<br></br><span>Geben Sie Interessenten einen Ort für den nächsten Schritt.</span>",
             "description": "Es geht nicht darum, Instagram zu ersetzen. Es geht darum, Menschen, die Ihre Uhren bereits entdecken, einen Ort zu geben, an dem sie Ihr Angebot durchsuchen, einzelne Stücke ansehen und Kontakt aufnehmen können.",
             "seeDifference": "Den Unterschied sehen",
             "openStorefront": "Store öffnen"
         },
         "gap": {
             "eyebrow": "01 / Die Lücke",
-            "title": "Instagram ist hervorragend für die Entdeckung.<br><span>Aber kein Katalog.</span>",
+            "title": "Instagram ist hervorragend für die Entdeckung.<br></br><span>Aber kein Katalog.</span>",
             "description": "Ein Käufer kann eine Uhr auf Instagram finden und trotzdem keinen Ort haben, an dem er Ihren aktuellen Bestand durchsuchen, Stücke vergleichen, Details lesen oder eine strukturierte Anfrage stellen kann.",
             "instagram": {
                 "title": "Instagram / DM",
@@ -1368,7 +1368,7 @@
         },
         "buyer": {
             "eyebrow": "02 / Für den Käufer",
-            "title": "Der Käufer erhält Antworten<br><i>bevor er die erste Nachricht sendet.</i>",
+            "title": "Der Käufer erhält Antworten<br></br><span>bevor er die erste Nachricht sendet.</span>",
             "steps": [
                 {
                     "number": "01",
@@ -1394,7 +1394,7 @@
         },
         "dealer": {
             "eyebrow": "03 / Für den Händler",
-            "title": "Ein besserer Link zum Versenden.<br><span>Ein sauberer Weg, Interesse zu bearbeiten.</span>",
+            "title": "Ein besserer Link zum Versenden.<br></br><span>Ein sauberer Weg, Interesse zu bearbeiten.</span>",
             "benefits": [
                 {
                     "title": "Ein Link für den Bestand",
@@ -1416,7 +1416,7 @@
         },
         "role": {
             "eyebrow": "04 / Die Rolle",
-            "title": "Behalten Sie Instagram.<br><i>Geben Sie ihm ein Ziel.</i>",
+            "title": "Behalten Sie Instagram.<br></br><span>Geben Sie ihm ein Ziel.</span>",
             "description": "Sie müssen Ihr Publikum nicht von Instagram wegführen. Posten Sie weiterhin dort. Nutzen Sie weiterhin DMs, WhatsApp und Telefon. Der Store wird einfach zum Ort, an dem Interessenten Ihr Angebot tatsächlich durchsehen können.",
             "existingFlowTitle": "Aktueller Ablauf",
             "expandedFlowTitle": "Erweiterter Ablauf",
@@ -1426,7 +1426,7 @@
         },
         "gettingStarted": {
             "eyebrow": "05 / Der Start",
-            "title": "Keine Präsentation vorbereiten.<br><span>Zeigen Sie mir einfach Ihren Bestand.</span>",
+            "title": "Keine Präsentation vorbereiten.<br></br><span>Zeigen Sie mir einfach Ihren Bestand.</span>",
             "description": "Das Konzept steht bereits. Der nächste sinnvolle Schritt ist zu sehen, wie es mit Ihrem tatsächlichen Bestand aussieht.",
             "steps": [
                 {
@@ -1448,7 +1448,7 @@
         },
         "cta": {
             "eyebrow": "Nächster Schritt",
-            "title": "Sehen Sie, wie Ihre echten Uhren<br><i>hier aussehen.</i>",
+            "title": "Sehen Sie, wie Ihre echten Uhren<br></br><span>hier aussehen.</span>",
             "description": "Kein 60-minütiges Verkaufsgespräch. Senden Sie den Link zu Ihrem aktuellen Bestand oder drei Stücke, die Sie aktiv verkaufen. Ich kümmere mich um den Rest.",
             "sendStock": "Vereinbaren Sie Ihre individuelle Demo",
             "floatingCta": "Buche Arvell's Custom Demo",

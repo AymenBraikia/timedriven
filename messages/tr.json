@@ -1341,14 +1341,14 @@
         "title": "Neden özel bir vitrin?",
         "hero": {
             "eyebrow": "Instagram → Mağaza → Talep",
-            "title": "Instagram ilgiyi topluyor.<br><i>Alıcılara bundan sonra gidecekleri bir yer verin.</i>",
+            "title": "Instagram ilgiyi topluyor.<br></br><span>Alıcılara bundan sonra gidecekleri bir yer verin.</span>",
             "description": "Amaç Instagram'ı değiştirmek değil. Saatlerinizi zaten keşfeden kişilere koleksiyonunuzu inceleyebilecekleri, belirli bir saati açabilecekleri ve sizinle iletişime geçebilecekleri düzgün bir alan sunmak.",
             "seeDifference": "Farkı görün",
             "openStorefront": "Mağazayı aç"
         },
         "gap": {
             "eyebrow": "01 / Boşluk",
-            "title": "Instagram keşif için mükemmel.<br><span>Ama bir katalog değil.</span>",
+            "title": "Instagram keşif için mükemmel.<br></br><span>Ama bir katalog değil.</span>",
             "description": "Bir alıcı Instagram'da bir saat bulabilir ancak mevcut stokunuzu gezebileceği, parçaları karşılaştırabileceği, detayları okuyabileceği veya düzenli bir talep gönderebileceği bir yere sahip olmayabilir.",
             "instagram": {
                 "title": "Instagram / DM",
@@ -1369,7 +1369,7 @@
         },
         "buyer": {
             "eyebrow": "02 / Alıcı için",
-            "title": "Alıcı, ilk DM'i göndermeden<br><i>önce cevaplarını alır.</i>",
+            "title": "Alıcı, ilk DM'i göndermeden<br></br><span>önce cevaplarını alır.</span>",
             "steps": [
                 {
                     "number": "01",
@@ -1395,7 +1395,7 @@
         },
         "dealer": {
             "eyebrow": "03 / Satıcı için",
-            "title": "Gönderebileceğiniz daha iyi bir bağlantı.<br><span>İlgiyi yönetmenin daha temiz bir yolu.</span>",
+            "title": "Gönderebileceğiniz daha iyi bir bağlantı.<br></br><span>İlgiyi yönetmenin daha temiz bir yolu.</span>",
             "benefits": [
                 {
                     "title": "Stok için tek bağlantı",
@@ -1417,7 +1417,7 @@
         },
         "role": {
             "eyebrow": "04 / Rolü",
-            "title": "Instagram'ı kullanmaya devam edin.<br><i>Sadece ona bir hedef verin.</i>",
+            "title": "Instagram'ı kullanmaya devam edin.<br></br><span>Sadece ona bir hedef verin.</span>",
             "description": "Kitlenizi Instagram'dan uzaklaştırmanız gerekmez. Orada paylaşmaya devam edin. DM, WhatsApp ve telefonu kullanmaya devam edin. Vitrin, ilgilenen kişilerin koleksiyona gerçekten göz atabileceği yer olur.",
             "existingFlowTitle": "Mevcut akış",
             "expandedFlowTitle": "Genişletilmiş akış",
@@ -1427,7 +1427,7 @@
         },
         "gettingStarted": {
             "eyebrow": "05 / Başlangıç",
-            "title": "Sunum hazırlamayın.<br><span>Sadece stoğu gösterin.</span>",
+            "title": "Sunum hazırlamayın.<br></br><span>Sadece stoğu gösterin.</span>",
             "description": "Konsepti zaten oluşturdum. Şimdi önemli olan, bunun gerçek envanterinizle nasıl göründüğünü görmek.",
             "steps": [
                 {
@@ -1449,7 +1449,7 @@
         },
         "cta": {
             "eyebrow": "Sonraki adım",
-            "title": "Gerçek saatlerinizin<br><i>burada nasıl göründüğünü görün.</i>",
+            "title": "Gerçek saatlerinizin<br></br><span>burada nasıl göründüğünü görün.</span>",
             "description": "60 dakikalık satış görüşmesi yok. Mevcut stok bağlantınızı veya aktif olarak sattığınız üç parçayı gönderin. Gerisini ben hallederim.",
             "sendStock": "Size Özel Demonuzu Ayırtın",
             "floatingCta": "Arvell'in Özel Demosu İçin Randevu Alın",

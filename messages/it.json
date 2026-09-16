@@ -1341,14 +1341,14 @@
         "title": "Perché un negozio dedicato?",
         "hero": {
             "eyebrow": "Instagram → Store → Richiesta",
-            "title": "Instagram attira l'attenzione.<br><i>Dai ai clienti un posto dove andare dopo.</i>",
+            "title": "Instagram attira l'attenzione.<br></br><span>Dai ai clienti un posto dove andare dopo.</span>",
             "description": "Non si tratta di sostituire Instagram. Si tratta di dare alle persone che scoprono già i tuoi orologi uno spazio dove sfogliare la collezione, aprire il singolo pezzo e contattarti.",
             "seeDifference": "Scopri la differenza",
             "openStorefront": "Apri lo store"
         },
         "gap": {
             "eyebrow": "01 / Il divario",
-            "title": "Instagram è ottimo per farsi scoprire.<br><span>Non è un catalogo.</span>",
+            "title": "Instagram è ottimo per farsi scoprire.<br></br><span>Non è un catalogo.</span>",
             "description": "Un acquirente può trovare un orologio su Instagram e non avere comunque un posto dove vedere il tuo stock attuale, confrontare i pezzi, leggere i dettagli o inviare una richiesta strutturata.",
             "instagram": {
                 "title": "Instagram / DM",
@@ -1369,7 +1369,7 @@
         },
         "buyer": {
             "eyebrow": "02 / Per il cliente",
-            "title": "Il cliente riceve le risposte<br><i>prima di inviare il primo DM.</i>",
+            "title": "Il cliente riceve le risposte<br></br><span>prima di inviare il primo DM.</span>",
             "steps": [
                 {
                     "number": "01",
@@ -1395,7 +1395,7 @@
         },
         "dealer": {
             "eyebrow": "03 / Per il rivenditore",
-            "title": "Un link migliore da inviare.<br><span>Un modo più pulito per gestire l'interesse.</span>",
+            "title": "Un link migliore da inviare.<br></br><span>Un modo più pulito per gestire l'interesse.</span>",
             "benefits": [
                 {
                     "title": "Un solo link per lo stock",
@@ -1417,7 +1417,7 @@
         },
         "role": {
             "eyebrow": "04 / Il ruolo",
-            "title": "Tieni Instagram.<br><i>Dagli una destinazione.</i>",
+            "title": "Tieni Instagram.<br></br><span>Dagli una destinazione.</span>",
             "description": "Non devi spostare il tuo pubblico da Instagram. Continua a pubblicare lì e a usare DM, WhatsApp e telefono. Lo store diventa semplicemente il posto dove chi è interessato può sfogliare davvero la collezione.",
             "existingFlowTitle": "Flusso attuale",
             "expandedFlowTitle": "Flusso ampliato",
@@ -1427,7 +1427,7 @@
         },
         "gettingStarted": {
             "eyebrow": "05 / Come iniziare",
-            "title": "Non preparare una presentazione.<br><span>Fammi vedere lo stock.</span>",
+            "title": "Non preparare una presentazione.<br></br><span>Fammi vedere lo stock.</span>",
             "description": "Il concept è già pronto. Il passo utile ora è vedere come appare con il tuo inventario reale.",
             "steps": [
                 {
@@ -1449,7 +1449,7 @@
         },
         "cta": {
             "eyebrow": "Prossimo passo",
-            "title": "Guarda come appaiono i tuoi orologi reali<br><i>qui.</i>",
+            "title": "Guarda come appaiono i tuoi orologi reali<br></br><span>qui.</span>",
             "description": "Nessuna call commerciale di 60 minuti. Invia il link al tuo stock attuale o tre pezzi che stai vendendo. Al resto penso io.",
             "sendStock": "Prenota la tua demo personalizzata",
             "floatingCta": "Prenota la demo personalizzata di Arvell",
