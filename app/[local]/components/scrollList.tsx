@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import Next from "./svg/next";
 
 interface Breakpoints {
@@ -20,6 +21,26 @@ export default function List({ children, display }: { children: React.ReactNode;
         return display.base || 1;
     });
 
+    const [isRTL, setIsRTL] = useState(false);
+
+    useEffect(() => {
+        const updateDirection = () => {
+            const dir = document.documentElement.dir || "ltr";
+            setIsRTL(dir === "rtl");
+        };
+
+        updateDirection();
+
+        const observer = new MutationObserver(updateDirection);
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["dir"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     useEffect(() => {
         if (typeof display === "number") return;
 
@@ -38,16 +59,18 @@ export default function List({ children, display }: { children: React.ReactNode;
 
         handleResize();
         window.addEventListener("resize", handleResize);
+
         return () => window.removeEventListener("resize", handleResize);
     }, [display]);
 
     const canLoop = N >= currentDisplay && N > 0;
 
-    const [index, set_index] = useState<number>(0);
-    const [swipe, set_swipe] = useState<number>(canLoop ? N : 0);
-    const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
-    const isAnimating = useRef<boolean>(false);
-    const prevDisplay = useRef<number>(currentDisplay);
+    const [index, set_index] = useState(0);
+    const [swipe, set_swipe] = useState(canLoop ? N : 0);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+
+    const isAnimating = useRef(false);
+    const prevDisplay = useRef(currentDisplay);
 
     useEffect(() => {
         if (prevDisplay.current !== currentDisplay) {
@@ -60,22 +83,29 @@ export default function List({ children, display }: { children: React.ReactNode;
 
     const handleNext = () => {
         if (!canLoop || isAnimating.current) return;
+
         setIsTransitioning(true);
         isAnimating.current = true;
+
         set_swipe((prev) => prev + 1);
+
         set_index((prev) => (prev + 1 !== N ? prev + 1 : 0));
     };
 
     const handlePrev = () => {
         if (!canLoop || isAnimating.current) return;
+
         setIsTransitioning(true);
         isAnimating.current = true;
+
         set_swipe((prev) => prev - 1);
+
         set_index((prev) => (prev - 1 !== -1 ? prev - 1 : N - 1));
     };
 
     const handleTransitionEnd = () => {
         if (!canLoop) return;
+
         isAnimating.current = false;
 
         if (swipe >= 2 * N) {
@@ -90,11 +120,13 @@ export default function List({ children, display }: { children: React.ReactNode;
     useEffect(() => {
         if (!isTransitioning) {
             let frame2: number;
+
             const frame1 = requestAnimationFrame(() => {
                 frame2 = requestAnimationFrame(() => {
                     setIsTransitioning(true);
                 });
             });
+
             return () => {
                 cancelAnimationFrame(frame1);
                 if (frame2) cancelAnimationFrame(frame2);
@@ -116,17 +148,27 @@ export default function List({ children, display }: { children: React.ReactNode;
         };
 
         handleResize();
+
         window.addEventListener("resize", handleResize);
+
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    const direction = isRTL ? 1 : -1;
+
+    const translateX = swipe * (100 / currentDisplay) * direction;
+
+    const translateGap = ((swipe * gap) / currentDisplay) * direction;
+
     return (
-        <div className="relative w-full h-full overflow-hidden flex items-start justify-center flex-col sm:gap-4">
+        <div dir={isRTL ? "rtl" : "ltr"} className="relative w-full h-full overflow-hidden flex items-start justify-center flex-col sm:gap-4">
             <div
                 onTransitionEnd={handleTransitionEnd}
-                className={`flex w-full h-full ${gap ? "transition-transform duration-300 ease-in-out" : ""} ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
+                className={`flex w-full h-full ${isTransitioning ? "transition-transform duration-300 ease-in-out" : ""}`}
                 style={{
                     gap: `${gap}px`,
-                    transform: `translateX(calc(-${swipe * (100 / currentDisplay)}% - ${(swipe * gap) / currentDisplay}px))`,
+                    transform: `translateX(calc(${translateX}% + ${translateGap}px))`,
+
                 }}
             >
                 {extendedItems.map((child, globalIndex) => (
@@ -134,7 +176,10 @@ export default function List({ children, display }: { children: React.ReactNode;
                         key={globalIndex}
                         className="shrink-0 min-w-0"
                         style={{
-                            width: `calc(${100 / currentDisplay}% - ${(gap * (currentDisplay - 1)) / currentDisplay}px)`,
+                            width: `calc(
+                                ${100 / currentDisplay}%
+                                - ${(gap * (currentDisplay - 1)) / currentDisplay}px
+                            )`,
                         }}
                     >
                         {child}
@@ -143,14 +188,28 @@ export default function List({ children, display }: { children: React.ReactNode;
             </div>
 
             <div className="flex items-center justify-center gap-2 sm:gap-4 w-full mt-3 sm:mt-4 px-2">
-                <button aria-label="Previous" type="button" className={`button2 flex-center rotate-180 p-2 sm:p-3 ${!canLoop ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`} onClick={handlePrev} disabled={!canLoop}>
-                    <Next classnames="w-6 sm:w-8 lg:w-10" clr="currentColor" />
+                <button aria-label="Previous" type="button" className={`button2 flex-center p-2 sm:p-3 ${!canLoop ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`} onClick={handlePrev} disabled={!canLoop}>
+                    <Next
+                        classnames="w-6 sm:w-8 lg:w-10"
+                        clr="currentColor"
+
+                        style={{
+                            transform: `rotate(${isRTL ? 0 : 180}deg)`,
+                        }}
+                    />
                 </button>
 
                 <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">{gen_dot(N, index)}</div>
 
                 <button aria-label="Next" type="button" className={`button2 flex-center p-2 sm:p-3 ${!canLoop ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`} onClick={handleNext} disabled={!canLoop}>
-                    <Next classnames="w-6 sm:w-8 lg:w-10" clr="currentColor" />
+                    <Next
+                        classnames="w-6 sm:w-8 lg:w-10"
+                        clr="currentColor"
+                    
+                        style={{
+                            transform: `rotate(${isRTL ? 180 : 0}deg)`,
+                        }}
+                    />
                 </button>
             </div>
         </div>

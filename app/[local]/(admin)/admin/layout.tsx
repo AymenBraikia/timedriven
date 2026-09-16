@@ -9,8 +9,8 @@ import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
 import { require_admin } from "@/app/server/admin/session";
 import Sidebar from "./components/sidebar";
 
-const openSans = Open_Sans({ subsets: ["latin"], variable: "--font-open-sans", display: "swap" });
-const cormorantGaramond = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-cormorantGaramond", display: "swap" });
+const openSans = Open_Sans({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const cormorantGaramond = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-primary", display: "swap" });
 
 export const metadata: Metadata = {
     title: { default: "Admin", template: "%s | ARVELL Admin" },

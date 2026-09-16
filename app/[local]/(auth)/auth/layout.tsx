@@ -6,14 +6,14 @@ import { NextIntlClientProvider } from "next-intl";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
-    variable: "--font-open-sans",
+    variable: "--font-sans",
     display: "swap",
 });
 
 const cormorantGaramond = Cormorant_Garamond({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
-    variable: "--font-cormorantGaramond",
+    variable: "--font-primary",
     display: "swap",
 });
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
                 alt: "ARVELL Luxury Watch Collection",
             },
         ],
-        locale: "en_US",
+        locale: "en",
         type: "website",
     },
     twitter: {

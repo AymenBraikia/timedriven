@@ -13,7 +13,7 @@ type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CAR
 const locales_map = new Map<string, Locales>([
     ["English", "en"],
     ["Deutsch", "de"],
-    // ["Arabic", "ar"],
+    ["Arabic", "ar"],
     ["French", "fr"],
     ["Italian", "it"],
     ["Turkish", "tr"],
@@ -21,7 +21,7 @@ const locales_map = new Map<string, Locales>([
 
     ["en", "en"],
     ["de", "de"],
-    // ["ar", "ar"],
+    ["ar", "ar"],
     ["fr", "fr"],
     ["it", "it"],
     ["tr", "tr"],

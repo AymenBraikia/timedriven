@@ -1,6 +1,6 @@
-export default function Arrow({ classnames = "w-6", clr = "currentColor" }: { classnames?: string; clr?: string }) {
+export default function Arrow({ classnames = "w-6", clr = "currentColor", style }: { classnames?: string; clr?: string; style?: React.CSSProperties }) {
     return (
-        <svg className={classnames} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className={classnames} style={style} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"

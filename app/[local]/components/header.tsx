@@ -85,6 +85,7 @@ const locales_map = new Map<string, Locales>([
     ["Italian", "it"],
     ["Turkish", "tr"],
     ["Spanish", "es"],
+    ["Arabic", "ar"],
 
     ["en", "en"],
     ["de", "de"],
@@ -92,6 +93,7 @@ const locales_map = new Map<string, Locales>([
     ["it", "it"],
     ["tr", "tr"],
     ["es", "es"],
+    ["ar", "ar"],
 ]);
 
 function headerReducer(state: UIState, action: UIAction): UIState {
@@ -120,9 +122,9 @@ export default function Header() {
     const { session } = useAuth();
     const locale = useLocale() as Locales;
     const t = useTranslations("common");
-
+    
     const [lang, set_lang] = useState<Locales>(locale);
-
+    
     const selected_locale = locales_map.get(lang)!.toUpperCase();
 
     const pathname = usePathname();
@@ -289,7 +291,7 @@ export default function Header() {
                             </Link>
                         )}
 
-                        <Select classnames="flex text-sm sm:text-base" options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+                        <Select classnames="flex text-sm sm:text-base" options={["English", "Arabic", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 p-1 sm:p-2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} classnames="w-5 sm:w-6" />

@@ -12,20 +12,20 @@ import Header from "./why/header";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
-    variable: "--font-open-sans",
+    variable: "--font-sans",
     display: "swap",
 });
 
 const cormorantGaramond = Cormorant_Garamond({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
-    variable: "--font-cormorantGaramond",
+    variable: "--font-primary",
     display: "swap",
 });
 const gelasio = Gelasio({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
-    variable: "--font-gelasio",
+    variable: "--font-secondary",
     display: "swap",
 });
 export const metadata: Metadata = {
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
                 alt: "ARVELL Platform Preview",
             },
         ],
-        locale: "en_US",
-        alternateLocale: ["de_DE"],
+        locale: "en",
+        alternateLocale: ["de"],
         type: "website",
     },
     twitter: {

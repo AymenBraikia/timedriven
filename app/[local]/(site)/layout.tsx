@@ -3,7 +3,7 @@ import AuthGate from "@/app/components/AuthGate";
 import AuthShell from "@/app/components/AuthShell";
 
 import type { Metadata, Viewport } from "next";
-import { Open_Sans, Gelasio, Cormorant_Garamond } from "next/font/google";
+import { Open_Sans, Gelasio, Cormorant_Garamond, Tajawal, Lateef } from "next/font/google";
 import "../globals.css";
 
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
@@ -13,22 +13,35 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDirection } from "@/i18n/direction";
 
+const tajawal = Tajawal({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "700","800","900"],
+    variable: "--font-sans",
+    display: "swap",
+});
+const lateef = Lateef({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "600", "700","800"],
+    variable: "--font-primary",
+    display: "swap",
+});
+
 const openSans = Open_Sans({
     subsets: ["latin"],
-    variable: "--font-open-sans",
+    variable: "--font-sans",
     display: "swap",
 });
 
 const cormorantGaramond = Cormorant_Garamond({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
-    variable: "--font-cormorantGaramond",
+    variable: "--font-primary",
     display: "swap",
 });
 const gelasio = Gelasio({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
-    variable: "--font-gelasio",
+    variable: "--font-secondary",
     display: "swap",
 });
 
@@ -80,8 +93,8 @@ export const metadata: Metadata = {
                 alt: "ARVELL Platform Preview",
             },
         ],
-        locale: "en_US",
-        alternateLocale: ["de_DE"],
+        locale: "en",
+        alternateLocale: ["de"],
         type: "website",
     },
     twitter: {
@@ -121,8 +134,10 @@ export default async function RootLayout({
 
     const direction = getDirection(local);
 
+    const fonts_classes = direction == "ltr" ? `${openSans.variable} ${gelasio.variable} ${cormorantGaramond.variable}` : `${lateef.variable} ${tajawal.variable}`;
+
     return (
-        <html lang={local} dir={direction} className={`${openSans.variable} ${gelasio.variable} ${cormorantGaramond.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={local} dir={direction} className={`${fonts_classes} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
                 <SpeedInsights />
