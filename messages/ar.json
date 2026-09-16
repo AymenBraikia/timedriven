@@ -1010,6 +1010,8 @@
         "model": "الموديل",
         "dial": "المينا",
         "here": "هنا",
+        "findInStore": "اعثر عليه في المتجر",
+        "bookAppointment": "احجز موعداً",
         "consignmentBeforeLink": "هل ترغب في مبادلة إحدى ساعاتك؟ يرجى التواصل معنا عبر صفحة",
         "consignmentAfterLink": "مع ذكر تفاصيل ساعتك وسنقدّم لك عرضًا."
     },

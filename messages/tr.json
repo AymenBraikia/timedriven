@@ -1013,6 +1013,8 @@
         "model": "Model",
         "dial": "Kadran",
         "here": "buraya",
+        "findInStore": "Mağazada bul",
+        "bookAppointment": "Randevu al",
         "consignmentBeforeLink": "Saatlerinizden birini takas etmek ister misiniz? Saatinizle ilgili bilgileri paylaşarak bizimle",
         "consignmentAfterLink": "sayfası üzerinden iletişime geçin, size bir teklif sunalım."
     },

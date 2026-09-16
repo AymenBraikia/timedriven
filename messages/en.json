@@ -1013,6 +1013,8 @@
         "model": "Model",
         "dial": "Dial",
         "here": "here",
+        "findInStore": "Find in store",
+        "bookAppointment": "Book an appointment",
         "consignmentBeforeLink": "Do you wish to trade in one of your watches? Please contact us via the",
         "consignmentAfterLink": "page with the details about your watch and we will make you an offer."
     },

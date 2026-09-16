@@ -1013,6 +1013,8 @@
         "model": "Modèle",
         "dial": "Cadran",
         "here": "ici",
+        "findInStore": "Trouver en magasin",
+        "bookAppointment": "Prendre rendez-vous",
         "consignmentBeforeLink": "Souhaitez-vous reprendre l'une de vos montres en échange ? Contactez-nous via la page",
         "consignmentAfterLink": "en précisant les détails de votre montre et nous vous ferons une offre."
     },

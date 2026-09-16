@@ -1013,6 +1013,8 @@
         "model": "Modello",
         "dial": "Quadrante",
         "here": "qui",
+        "findInStore": "Trova in negozio",
+        "bookAppointment": "Prenota un appuntamento",
         "consignmentBeforeLink": "Desideri dare in permuta uno dei tuoi orologi? Contattaci tramite la pagina",
         "consignmentAfterLink": "indicando i dettagli del tuo orologio e ti faremo un'offerta."
     },
