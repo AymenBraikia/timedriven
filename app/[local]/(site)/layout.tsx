@@ -15,13 +15,13 @@ import { getDirection } from "@/i18n/direction";
 
 const tajawal = Tajawal({
     subsets: ["arabic"],
-    weight: ["200", "300", "400", "500", "700","800","900"],
+    weight: ["200", "300", "400", "500", "700", "800", "900"],
     variable: "--font-sans",
     display: "swap",
 });
 const lateef = Lateef({
     subsets: ["arabic"],
-    weight: ["200", "300", "400", "500", "600", "700","800"],
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
     variable: "--font-primary",
     display: "swap",
 });
@@ -66,6 +66,7 @@ export const metadata: Metadata = {
             fr: "/fr",
             it: "/it",
             es: "/es",
+            ar: "/ar",
         },
     },
     robots: {

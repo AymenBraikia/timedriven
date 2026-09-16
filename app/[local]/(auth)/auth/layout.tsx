@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { Open_Sans, Cormorant_Garamond } from "next/font/google";
+import { Open_Sans, Cormorant_Garamond, Lateef, Tajawal } from "next/font/google";
 import "../../globals.css";
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
+import { getDirection } from "@/i18n/direction";
+
+const tajawal = Tajawal({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "700","800","900"],
+    variable: "--font-sans",
+    display: "swap",
+});
+const lateef = Lateef({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "600", "700","800"],
+    variable: "--font-primary",
+    display: "swap",
+});
+
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -55,13 +70,21 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function AuthLayout({
     children,
+    params,
 }: Readonly<{
     children: React.ReactNode;
+    params: Promise<{ local: string }>;
 }>) {
+        const { local } = await params;
+    
+        const direction = getDirection(local);
+    
+        const fonts_classes = direction == "ltr" ? `${openSans.variable} ${cormorantGaramond.variable}` : `${lateef.variable} ${tajawal.variable}`;
+    
     return (
-        <html lang="en" className={`${openSans.variable} ${cormorantGaramond.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={local} dir={direction} className={`${fonts_classes} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

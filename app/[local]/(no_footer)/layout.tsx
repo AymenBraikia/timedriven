@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Open_Sans, Cormorant_Garamond, Gelasio } from "next/font/google";
+import { Open_Sans, Cormorant_Garamond, Gelasio, Tajawal, Lateef } from "next/font/google";
 import "../globals.css";
 
 import { ThemeProvider } from "@/app/(site)/context/ThemeProvider";
@@ -9,6 +9,20 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDirection } from "@/i18n/direction";
 import Header from "./why/header";
+
+const tajawal = Tajawal({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "700","800","900"],
+    variable: "--font-sans",
+    display: "swap",
+});
+const lateef = Lateef({
+    subsets: ["arabic"],
+    weight: ["200", "300", "400", "500", "600", "700","800"],
+    variable: "--font-primary",
+    display: "swap",
+});
+
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -49,6 +63,7 @@ export const metadata: Metadata = {
             fr: "/fr",
             it: "/it",
             es: "/es",
+            ar: '/ar',
         },
     },
     robots: {
@@ -106,7 +121,7 @@ export const viewport: Viewport = {
     colorScheme: "dark light",
 };
 
-export default async function RootLayout({
+export default async function NoFooterLayout({
     children,
     params,
 }: Readonly<{
@@ -117,8 +132,11 @@ export default async function RootLayout({
 
     const direction = getDirection(local);
 
+    const fonts_classes = direction == "ltr" ? `${openSans.variable} ${gelasio.variable} ${cormorantGaramond.variable}` : `${lateef.variable} ${tajawal.variable}`;
+
+
     return (
-        <html lang={local} dir={direction} className={`${openSans.variable} ${cormorantGaramond.variable} ${gelasio.variable} h-full antialiased`} suppressHydrationWarning>
+        <html lang={local} dir={direction} className={`${fonts_classes} h-full antialiased`} suppressHydrationWarning>
             <body className="font-sans">
                 <Analytics />
                 <SpeedInsights />
