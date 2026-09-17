@@ -5,6 +5,7 @@ import { Consignment } from "@/types/consignment";
 import { Sell } from "@/types/sell";
 
 import EnquiryActions from "../components/enquiry_actions";
+import { get_country } from "@/app/(site)/lib/get_country";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Enquiries" };
@@ -14,6 +15,8 @@ function Card({ children, handled }: { children: React.ReactNode; handled: boole
 }
 
 export default async function AdminEnquiries() {
+    const country = await get_country();
+
     const [sellsRaw, consignmentsRaw, appointmentsRaw] = await Promise.all([(await sell_collection()).find({}).toArray(), (await consignments_collection()).find({}).toArray(), (await appointments_collection()).find({}).toArray()]);
 
     const sells: Sell[] = JSON.parse(JSON.stringify(sellsRaw));
@@ -45,7 +48,7 @@ export default async function AdminEnquiries() {
                                             {offer.brand} {offer.model ?? ""} {offer.refNum ? `· ref. ${offer.refNum}` : ""}
                                         </p>
                                         <p className="text-sm opacity-60 mt-0.5">
-                                            {offer.condition} · asking {format_price(offer.price)}
+                                            {offer.condition} · asking {format_price(offer.price, country)}
                                             {offer.box ? " · box" : ""}
                                             {offer.papers ? " · papers" : ""}
                                         </p>

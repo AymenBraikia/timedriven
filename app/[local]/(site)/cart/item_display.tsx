@@ -5,8 +5,10 @@ import revmove_from_cart from "@/app/server/remove_cart";
 import { Cart_Item } from "@/types/user";
 import Image from "next/image";
 import { format_price } from "../lib/price_format";
+import { get_country } from "../lib/get_country";
 
-export default function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
+export default async function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
+    const country = await get_country();
     return (
         <div className="flex flex-wrap md:flex-nowrap justify-between items-center w-full gap-4 border-b-foreground border-b p-4 font-secondary">
             <button type="button" className="hidden md:flex button2 p-0" onClick={() => revmove_from_cart(reference)}>
@@ -43,7 +45,7 @@ export default function Item_Display({ brand, model, slug, price, quantity, imag
                         </button>
                     </div>
 
-                    <p className="w-40 text-xl text-end">{format_price(price * quantity)}</p>
+                    <p className="w-40 text-xl text-end">{format_price(price * quantity, country)}</p>
                 </div>
             </div>
         </div>

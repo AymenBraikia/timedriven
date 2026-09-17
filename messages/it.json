@@ -1453,7 +1453,7 @@
             "description": "Nessuna call commerciale di 60 minuti. Invia il link al tuo stock attuale o tre pezzi che stai vendendo. Al resto penso io.",
             "sendStock": "Prenota la tua demo personalizzata",
             "floatingCta": "Prenota la demo personalizzata di Arvell",
-            "backToDemo": "Torna alla demo",
+            "openStorefront": "Apri lo store",
             "credit": "Aymen · Arvell"
         },
         "nav": {

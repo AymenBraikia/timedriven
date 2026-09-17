@@ -1454,7 +1454,7 @@
             "description": "No 60-minute sales call. Send the current stock link or three pieces you're actively selling. I'll take it from there.",
             "sendStock": "Book Your Custom Demo",
             "floatingCta": "Book Arvell's Custom Demo",
-            "backToDemo": "Back to the demo",
+            "openStorefront": "Open the storefront",
             "credit": "Aymen · Arvell"
         },
         "nav": {

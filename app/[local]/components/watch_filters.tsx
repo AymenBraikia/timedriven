@@ -74,6 +74,7 @@ export default function WatchFilters({ facets, counts, selection, onChange, resu
     const panel = useRef<HTMLDivElement>(null);
     const closeButton = useRef<HTMLButtonElement>(null);
     const restoreFocus = useRef<HTMLElement | null>(null);
+    
 
     const activeCount = count_active(selection);
 

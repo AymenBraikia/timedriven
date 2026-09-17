@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { format_price } from "@/app/(site)/lib/price_format";
 import { get_admin_stats, get_recent_orders } from "@/app/server/admin/stats";
+import { get_country } from "@/app/(site)/lib/get_country";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,7 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
 
 export default async function AdminDashboard() {
     const [stats, orders] = await Promise.all([get_admin_stats(), get_recent_orders()]);
+    const country = await get_country();
 
     return (
         <>
@@ -27,8 +29,8 @@ export default async function AdminDashboard() {
 
             <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
                 <Stat label="Watches" value={String(stats.watches)} hint={`${stats.inStock} in stock`} />
-                <Stat label="Stock value" value={format_price(stats.stockValue)} hint="In-stock watches" />
-                <Stat label="Revenue" value={format_price(stats.revenue)} hint="Completed orders" />
+                <Stat label="Stock value" value={format_price(stats.stockValue, country)} hint="In-stock watches" />
+                <Stat label="Revenue" value={format_price(stats.revenue, country)} hint="Completed orders" />
                 <Stat label="Orders" value={String(stats.orders)} hint={`${stats.pendingOrders} pending`} />
                 <Stat label="Spare parts" value={String(stats.spares)} />
                 <Stat label="Customers" value={String(stats.users)} />
@@ -59,7 +61,7 @@ export default async function AdminDashboard() {
                                     <tr key={order.id}>
                                         <td className="font-mono text-xs">{order.id.slice(0, 12)}</td>
                                         <td>{order.email}</td>
-                                        <td>{format_price(order.amount_to_pay)}</td>
+                                        <td>{format_price(order.amount_to_pay, country)}</td>
                                         <td>{order.status}</td>
                                     </tr>
                                 ))}

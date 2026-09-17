@@ -17,8 +17,8 @@ export default async function CTA() {
                 <Link href="https://www.instagram.com/ayme.n0412/" className="button w-full font-sans font-light">
                     {t("sendStock")}
                 </Link>
-                <Link href="/" target="_blank" className="button2 w-full font-sans font-light">
-                    {t("backToDemo")}
+                <Link href="/" target="_blank" className="button2 w-full font-sans font-light" prefetch={true}>
+                    {t("openStorefront")}
                 </Link>
             </div>
             <p className="text-secondary text-sm font-sans tracking-wider">{t("credit")}</p>

@@ -1453,7 +1453,7 @@
             "description": "60 dakikalık satış görüşmesi yok. Mevcut stok bağlantınızı veya aktif olarak sattığınız üç parçayı gönderin. Gerisini ben hallederim.",
             "sendStock": "Size Özel Demonuzu Ayırtın",
             "floatingCta": "Arvell'in Özel Demosu İçin Randevu Alın",
-            "backToDemo": "Demoya dön",
+            "openStorefront": "Mağazayı aç",
             "credit": "Aymen · Arvell"
         },
         "nav": {

@@ -7,7 +7,8 @@ import Link from "next/link";
 import InfoTable from "./info_table";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../../lib/relevance_score";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { get_country } from "../../lib/get_country";
 
 interface PageProps {
     params: Promise<{
@@ -19,6 +20,7 @@ export default async function DynamicPage({ params }: PageProps) {
     const slug = (await params).slug;
     const data = await get_product(slug);
     const t = await getTranslations("product");
+    const country = await get_country();
 
     after(() => increase_relevance_score(slug, score_rewards.view_details));
 
@@ -31,7 +33,7 @@ export default async function DynamicPage({ params }: PageProps) {
                 <h1 className="tracking-wider">{data.brand + " " + data.model}</h1>
                 <p className="font-sans text-shine tracking-widest leading-8">{data.description}</p>
                 <h3>{t("reference") + data.reference}</h3>
-                <h3>{format_price(data.price)}</h3>
+                <h3>{format_price(data.price, country)}</h3>
                 <h4>{t("stock") + ": " + (data.inStock ? t("available") : t("notAvailable"))}</h4>
                 <div className="flex-center gap-2 w-full flex-wrap sm:flex-nowrap lg:flex-wrap xl:flex-nowrap text-sm sm:text-base">
                     <div className="2xl:w-2/5 font-sans xl:w-1/3 lg:w-full sm:w-1/3 w-full">

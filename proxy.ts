@@ -48,17 +48,17 @@ export default function proxy(request: NextRequest) {
             return NextResponse.redirect(loginUrl);
         }
     }
-
     const response = handleI18nRouting(request);
+
+    const country = request.headers.get("x-vercel-ip-country") || "US";
+    if (request.cookies.get("Country")?.value != country) response.cookies.set("Country", country, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
 
     const ref = sanitizeRef(request.nextUrl.searchParams.get("ref"));
     if (ref) {
-        // if (process.env.NODE_ENV == "production") {
         response.cookies.set("ref", ref, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
-        save_visit(request);
-        // }
+        if (process.env.NODE_ENV == "production") save_visit(request);
     } else if (request.nextUrl.searchParams.has("ref")) {
-        response.cookies.delete("ref"); // ?ref= with nothing clears it
+        response.cookies.delete("ref");
     }
 
     return response;

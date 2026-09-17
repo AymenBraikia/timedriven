@@ -1,15 +1,6 @@
 import type { Watch } from "@/types/watch";
 import type { Spare } from "@/types/spare";
 
-/* --------------------------------------------------------------------------
- * Replaces generate_filters.ts.
- *
- * The old model stored "what options exist" and "what the user picked" in the
- * same object, which is why a separate Map<string, number> was needed to track
- * whether a category was active. Splitting them makes option counts, chips,
- * clear-all and URL sync fall out for free.
- * ----------------------------------------------------------------------- */
-
 export type Item = Watch | Spare;
 export type Bounds = { min: number; max: number };
 

@@ -4,12 +4,14 @@ import Image from "next/image";
 import { format_price } from "@/app/(site)/lib/price_format";
 import { get_admin_watches } from "@/app/server/admin/stats";
 import WatchRowActions from "../components/watch_row_actions";
+import { get_country } from "@/app/(site)/lib/get_country";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminWatches({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
     const { q } = await searchParams;
     const watches = await get_admin_watches(q);
+    const country = await get_country();
 
     return (
         <>
@@ -53,7 +55,7 @@ export default async function AdminWatches({ searchParams }: { searchParams: Pro
                                 </p>
                             </div>
 
-                            <p className="text-sm whitespace-nowrap hidden sm:block">{format_price(watch.price)}</p>
+                            <p className="text-sm whitespace-nowrap hidden sm:block">{format_price(watch.price, country)}</p>
 
                             <WatchRowActions slug={watch.slug} inStock={watch.inStock} featured={watch.featured} />
                         </li>

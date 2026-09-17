@@ -1,8 +1,10 @@
 import { Order } from "@/types/order";
 import Image from "next/image";
 import { format_price } from "../lib/price_format";
+import { get_country } from "../lib/get_country";
 
 export default async function Order_display({ data, last }: { data: Order; last: boolean }) {
+    const country = await get_country();
 
     const address = typeof data.address == "string" ? data.address : `${data.address.city}, ${data.address.address1 + (data.address.address2 ? `, ${data.address.address2}` : "")}`;
 
@@ -13,7 +15,7 @@ export default async function Order_display({ data, last }: { data: Order; last:
 
                 <p className="w-35">{new Date(data.created_at).toDateString()}</p>
 
-                <p className="w-25">{format_price(data.amount_to_pay)}</p>
+                <p className="w-25">{format_price(data.amount_to_pay, country)}</p>
 
                 <p className="w-35">{data.payment_method}</p>
 
@@ -30,14 +32,14 @@ export default async function Order_display({ data, last }: { data: Order; last:
                 {data.items.map((item) => (
                     <div className="flex justify-start items-start gap-4 w-[calc(33%-12px)] h-25" key={item.slug}>
                         <div className="relative h-full aspect-square">
-                            <Image fill src={item?.images?.[0]||"/nah.webp"} alt={item.slug} sizes="(max-width: 768px) 80vw, 300px" className="object-cover object-center" />
+                            <Image fill src={item?.images?.[0] || "/nah.webp"} alt={item.slug} sizes="(max-width: 768px) 80vw, 300px" className="object-cover object-center" />
                         </div>
 
                         <div className="w-full h-full flex flex-col justify-between items-start tracking-wider">
                             <h6 className="capitalize font-thin">{item.brand + " " + item.model}</h6>
 
                             <p className="text-xl">
-                                {item.quantity}x · {format_price(item.price)}
+                                {item.quantity}x · {format_price(item.price, country)}
                             </p>
                         </div>
                     </div>

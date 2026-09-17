@@ -1452,7 +1452,7 @@
             "description": "Kein 60-minütiges Verkaufsgespräch. Senden Sie den Link zu Ihrem aktuellen Bestand oder drei Stücke, die Sie aktiv verkaufen. Ich kümmere mich um den Rest.",
             "sendStock": "Vereinbaren Sie Ihre individuelle Demo",
             "floatingCta": "Buche Arvell's Custom Demo",
-            "backToDemo": "Zur Demo zurück",
+            "openStorefront": "Store öffnen",
             "credit": "Aymen · Arvell"
         },
         "nav": {

@@ -3,6 +3,7 @@ import { format_price } from "@/app/(site)/lib/price_format";
 import { Order } from "@/types/order";
 
 import OrderStatus from "../components/order_status";
+import { get_country } from "@/app/(site)/lib/get_country";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Orders" };
@@ -10,6 +11,7 @@ export const metadata = { title: "Orders" };
 export default async function AdminOrders() {
     const raw = await (await orders_collection()).find({}).sort({ created_at: -1 }).toArray();
     const orders: Order[] = JSON.parse(JSON.stringify(raw));
+    const country = await get_country();
 
     return (
         <>
@@ -34,7 +36,7 @@ export default async function AdminOrders() {
                                 </div>
 
                                 <div className="text-end">
-                                    <p>{format_price(order.amount_to_pay)}</p>
+                                    <p>{format_price(order.amount_to_pay, country)}</p>
                                     <div className="mt-1">
                                         <OrderStatus id={order.id} status={order.status} />
                                     </div>
@@ -47,7 +49,7 @@ export default async function AdminOrders() {
                                         <span className="truncate">
                                             {item.quantity} x {item.brand} {item.model}
                                         </span>
-                                        <span className="whitespace-nowrap">{format_price(item.price * item.quantity)}</span>
+                                        <span className="whitespace-nowrap">{format_price(item.price * item.quantity, country)}</span>
                                     </li>
                                 ))}
                             </ul>
