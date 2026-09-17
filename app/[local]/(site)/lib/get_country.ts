@@ -1,3 +1,4 @@
+"use server"
 import { cookies } from "next/headers";
 import { Supported_Countries } from "@/currency";
 
