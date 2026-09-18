@@ -45,6 +45,7 @@ export default async function Sign_up(data: FormData): Promise<{ success: boolea
             ongoing_orders: [],
             fulfilled_orders: [],
             local_pickup: false,
+            payment_method: "paypal",
             address: {
                 country: "Germany",
                 address1: undefined,

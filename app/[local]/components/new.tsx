@@ -1,16 +1,11 @@
 import Link from "next/link";
 import List from "./scrollList";
 import FadeInObserver from "./fade_wrapper";
-import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 import get_new from "@/app/server/get_new";
-import NewCardLoader from "./loaders/newCard";
 import update_currency_rates from "@/app/server/update_currency_rates";
+import NewCardWrapper from "./wrappers/newCard";
 
-const Card = dynamic(async () => import("./newCard"), {
-    ssr: true,
-    loading: NewCardLoader,
-});
 
 export default async function New() {
     await update_currency_rates();
@@ -39,8 +34,8 @@ export default async function New() {
             </div>
             <div className={`w-full sm-w-fit`}>
                 <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
-                    {watches.map((d) => (
-                        <Card data={d} key={d.slug} />
+                    {watches.map((data) => (
+                        <NewCardWrapper data={data} key={data.slug} />
                     ))}
                 </List>
             </div>

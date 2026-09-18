@@ -5,6 +5,8 @@ import Image from "next/image";
 import { format_price } from "../(site)/lib/price_format";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { Supported_Currencies } from "@/currency";
+import { read_cookie } from "../(site)/lib/read_cookie";
 
 export default memo(function Watch_card({
     brand,
@@ -74,7 +76,7 @@ export default memo(function Watch_card({
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-semibold text-foreground font-sans">{format_price(price)}</span>
+                <span className="text-xl font-semibold text-foreground font-sans">{format_price(price, read_cookie("Currency") as Supported_Currencies)}</span>
             </div>
         </Link>
     );

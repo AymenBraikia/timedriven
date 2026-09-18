@@ -9,6 +9,7 @@ export interface User {
     password: string;
     admin?: boolean;
 
+    payment_method?: "paypal" | "bank" | "card";
     cart: User_Cart;
     wish_list: User_Cart;
     ongoing_orders: Order[];
@@ -22,6 +23,7 @@ export interface User {
 
 export interface UserData {
     admin?: boolean;
+    payment_method?: "paypal" | "bank" | "card";
     cart: User_Cart;
     wish_list: User_Cart;
     ongoing_orders: Order[];

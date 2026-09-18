@@ -12,6 +12,8 @@ import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../(site)/lib/relevance_score";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { read_cookie } from "../(site)/lib/read_cookie";
+import { Supported_Currencies } from "@/currency";
 
 interface QuickViewProps {
     view: Watch | Spare | null;
@@ -33,6 +35,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
     }, [view, increased]);
 
     if (!view || !mounted) return null;
+
 
     return createPortal(
         <div className="fixed fade-in w-dvw h-dvh inset-s-0 top-0 z-70 bg-black/60" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -61,7 +64,7 @@ export default function QuickViewModal({ view, onClose }: QuickViewProps) {
                     <div className="flex flex-col gap-1 md:gap-2">
                         <p className="font-semibold tracking-tight capitalize text-2xl sm:text-3xl lg:text-4xl">{view.brand}</p>
                         <p className="tracking-wide capitalize text-secondary text-lg sm:text-xl lg:text-2xl">{view.model}</p>
-                        <p className="font-medium tracking-wide text-xl sm:text-2xl">{format_price(view.price)}</p>
+                        <p className="font-medium tracking-wide text-xl sm:text-2xl">{format_price(view.price, read_cookie("Currency") as Supported_Currencies)}</p>
 
                         <div className="hidden md:flex flex-col gap-2 leading-relaxed tracking-wide text-sm text-secondary">
                             <p>

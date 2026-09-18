@@ -10,6 +10,8 @@ import Link from "next/link";
 import updateUser from "@/app/server/update_user";
 import { format_price } from "../lib/price_format";
 import { useTranslations } from "next-intl";
+import { Supported_Currencies } from "@/currency";
+import { read_cookie } from "../lib/read_cookie";
 
 const shipping_options: string[] = Object.values(shipping_data).map((c) => c.country_name);
 
@@ -36,6 +38,8 @@ export default function Items() {
         updateUser({ local_pickup: pickup });
     }, [pickup]);
 
+    const currency = read_cookie("Currency") as Supported_Currencies;
+
     return (
         <div className="w-full h-fit flex xl:flex-row flex-col justify-between items-start gap-12 xl:gap-4">
             {session!.cart.length ? (
@@ -50,7 +54,7 @@ export default function Items() {
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h4>{t("subtotal")}</h4>
-                            <h4>{format_price(total)}</h4>
+                            <h4>{format_price(total, currency)}</h4>
                         </div>
 
                         <div className="flex flex-col justify-center items-start w-full border-b gap-4 py-1">
@@ -60,10 +64,10 @@ export default function Items() {
                                     <p>{t("shipping_to", { country })}</p>
                                     <Select options={shipping_options} set_value={set_country} value={country} label={t("choose_shipping_country")} />
                                 </div>
-                                <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format_price(shipping_costs)}</p>
+                                <p className={`xl:flex hidden ${pickup ? "line-through" : ""}`}>{format_price(shipping_costs, currency)}</p>
                             </div>
 
-                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>{t("shipping_costs", { cost: format_price(shipping_costs) })}</p>
+                            <p className={`xl:hidden flex ${pickup ? "line-through" : ""}`}>{t("shipping_costs", { cost: format_price(shipping_costs, currency) })}</p>
 
                             <CheckBox label={t("localPickup")} active={pickup} action={set_pickup} />
 
@@ -77,7 +81,7 @@ export default function Items() {
 
                         <div className="flex justify-between items-center w-full border-b py-1">
                             <h2>{t("total")}</h2>
-                            <h2>{format_price(total + (pickup ? 0 : shipping_costs))}</h2>
+                            <h2>{format_price(total + (pickup ? 0 : shipping_costs), currency)}</h2>
                         </div>
 
                         <div className="flex justify-between items-center w-full py-1">

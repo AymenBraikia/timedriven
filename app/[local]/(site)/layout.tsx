@@ -133,6 +133,7 @@ export default async function RootLayout({
 }>) {
     const { local } = await params;
 
+
     const direction = getDirection(local);
 
     const fonts_classes = direction == "ltr" ? `${openSans.variable} ${gelasio.variable} ${cormorantGaramond.variable}` : `${lateef.variable} ${tajawal.variable}`;

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { format_price } from "@/app/(site)/lib/price_format";
 import { get_admin_stats, get_recent_orders } from "@/app/server/admin/stats";
-import { get_country } from "@/app/(site)/lib/get_country";
+import { get_Currency } from "@/app/(site)/lib/get_currency";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,7 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
 
 export default async function AdminDashboard() {
     const [stats, orders] = await Promise.all([get_admin_stats(), get_recent_orders()]);
-    const country = await get_country();
+    const country = await get_Currency();
 
     return (
         <>

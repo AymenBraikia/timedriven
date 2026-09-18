@@ -38,6 +38,7 @@ export default async function getUser(): Promise<UserData | undefined> {
         email: user.email,
         local_pickup: user.local_pickup,
         address: user.address,
+        payment_method: user.payment_method || "paypal",
 
         diff_address: user.diff_address,
     };

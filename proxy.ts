@@ -4,6 +4,8 @@ import { routing } from "./i18n/routing";
 import { verifyJwt } from "./app/[local]/(auth)/auth/jwt";
 import { sanitizeRef } from "./i18n/brand";
 import { save_visit } from "./app/server/save_visit";
+import { country_to_currency } from "@/app/(site)/lib/price_format";
+import { Supported_Countries, Supported_Currencies } from "./currency";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -50,8 +52,12 @@ export default function proxy(request: NextRequest) {
     }
     const response = handleI18nRouting(request);
 
-    const country = request.headers.get("x-vercel-ip-country") || "US";
-    if (request.cookies.get("Country")?.value != country) response.cookies.set("Country", country, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+    if (!request.cookies.get("Currency")?.value) {
+        const country = (request.headers.get("x-vercel-ip-country") as Supported_Countries) || "US";
+        const currency: Supported_Currencies = country_to_currency.get(country_to_currency.has(country) ? country : "US") || "USD";
+
+        response.cookies.set("Currency", currency, { path: "/", maxAge: 60 * 60 * 24 * 30, sameSite: "lax" });
+    }
 
     const ref = sanitizeRef(request.nextUrl.searchParams.get("ref"));
     if (ref) {

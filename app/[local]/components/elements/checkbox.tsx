@@ -5,7 +5,7 @@ type CheckBoxProps = {
     label: string;
     active?: boolean;
     name?: string;
-    action?: Dispatch<SetStateAction<boolean>>;
+    action?: Dispatch<SetStateAction<boolean>> | ((e: boolean) => void);
 };
 
 export default function CheckBox({ label, active = false, name, action }: CheckBoxProps) {

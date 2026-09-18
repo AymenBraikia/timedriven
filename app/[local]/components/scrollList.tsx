@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Next from "./svg/next";
 
 interface Breakpoints {
@@ -41,25 +41,38 @@ export default function List({ children, display }: { children: React.ReactNode;
         return () => observer.disconnect();
     }, []);
 
-    useEffect(() => {
-        if (typeof display === "number") return;
+    const [gap, setGap] = useState(16);
 
+    useLayoutEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
-            let computed = display.base || 1;
 
-            if (width >= 1600 && display.xxl) computed = display.xxl;
-            else if (width >= 1280 && display.xl) computed = display.xl;
-            else if (width >= 1024 && display.lg) computed = display.lg;
-            else if (width >= 768 && display.md) computed = display.md;
-            else if (width >= 640 && display.sm) computed = display.sm;
+            // display
+            if (typeof display !== "number") {
+                let computed = display.base || 1;
 
-            setCurrentDisplay(computed);
+                if (width >= 1600 && display.xxl) computed = display.xxl;
+                else if (width >= 1280 && display.xl) computed = display.xl;
+                else if (width >= 1024 && display.lg) computed = display.lg;
+                else if (width >= 768 && display.md) computed = display.md;
+                else if (width >= 640 && display.sm) computed = display.sm;
+
+                setCurrentDisplay(computed);
+            }
+
+            // gap
+            if (width < 640) {
+                setGap(0);
+            } else if (width < 768) {
+                setGap(12);
+            } else {
+                setGap(16);
+            }
         };
 
         handleResize();
-        window.addEventListener("resize", handleResize);
 
+        window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, [display]);
 
@@ -134,26 +147,6 @@ export default function List({ children, display }: { children: React.ReactNode;
         }
     }, [isTransitioning]);
 
-    const [gap, setGap] = useState(16);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 640) {
-                setGap(0);
-            } else if (window.innerWidth < 768) {
-                setGap(12);
-            } else {
-                setGap(16);
-            }
-        };
-
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
     const direction = isRTL ? 1 : -1;
 
     const translateX = swipe * (100 / currentDisplay) * direction;
@@ -168,7 +161,6 @@ export default function List({ children, display }: { children: React.ReactNode;
                 style={{
                     gap: `${gap}px`,
                     transform: `translateX(calc(${translateX}% + ${translateGap}px))`,
-
                 }}
             >
                 {extendedItems.map((child, globalIndex) => (
@@ -192,7 +184,6 @@ export default function List({ children, display }: { children: React.ReactNode;
                     <Next
                         classnames="w-6 sm:w-8 lg:w-10"
                         clr="currentColor"
-
                         style={{
                             transform: `rotate(${isRTL ? 0 : 180}deg)`,
                         }}
@@ -205,7 +196,6 @@ export default function List({ children, display }: { children: React.ReactNode;
                     <Next
                         classnames="w-6 sm:w-8 lg:w-10"
                         clr="currentColor"
-                    
                         style={{
                             transform: `rotate(${isRTL ? 180 : 0}deg)`,
                         }}

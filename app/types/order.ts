@@ -1,8 +1,10 @@
+import { Supported_Currencies } from "@/currency";
 import { Cart_Item } from "./user";
 
 export interface Order {
     id: string;
     items: Cart_Item[];
+    currency: Supported_Currencies;
     payment_method: "PayPal" | "Credit/Debit Card" | "Bank Transfer";
     shipping:
         | {

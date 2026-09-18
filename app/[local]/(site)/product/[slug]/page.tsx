@@ -8,7 +8,7 @@ import InfoTable from "./info_table";
 import increase_relevance_score from "@/app/server/increase_relevance_score";
 import score_rewards from "../../lib/relevance_score";
 import { getTranslations } from "next-intl/server";
-import { get_country } from "../../lib/get_country";
+import { get_Currency } from "../../lib/get_currency";
 
 interface PageProps {
     params: Promise<{
@@ -20,7 +20,7 @@ export default async function DynamicPage({ params }: PageProps) {
     const slug = (await params).slug;
     const data = await get_product(slug);
     const t = await getTranslations("product");
-    const country = await get_country();
+    const country = await get_Currency();
 
     after(() => increase_relevance_score(slug, score_rewards.view_details));
 

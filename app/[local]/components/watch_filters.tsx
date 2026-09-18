@@ -23,6 +23,8 @@ import {
     type RangeFacet,
     type Selection,
 } from "../(site)/lib/filters";
+import { read_cookie } from "../(site)/lib/read_cookie";
+import { Supported_Currencies } from "@/currency";
 
 const T_KEY: Record<string, string> = {
     brand: "brands",
@@ -74,7 +76,6 @@ export default function WatchFilters({ facets, counts, selection, onChange, resu
     const panel = useRef<HTMLDivElement>(null);
     const closeButton = useRef<HTMLButtonElement>(null);
     const restoreFocus = useRef<HTMLElement | null>(null);
-    
 
     const activeCount = count_active(selection);
 
@@ -163,7 +164,7 @@ export default function WatchFilters({ facets, counts, selection, onChange, resu
                                         onChange={(value) => onChange(set_range(selection, section.facet, value, facets))}
                                         fromLabel={t("from")}
                                         toLabel={t("to")}
-                                        format={section.money ? format_price : (n) => `${n}${section.unit ? ` ${section.unit}` : ""}`}
+                                        format={section.money ? format_price.bind(window, 1, read_cookie("Currency") as Supported_Currencies) : (n) => `${n}${section.unit ? ` ${section.unit}` : ""}`}
                                     />
                                 )}
 
@@ -365,7 +366,7 @@ function chip_label(t: ReturnType<typeof useTranslations>, chip: ActiveChip): st
         case "range": {
             const money = chip.facet === "price";
             const unit = chip.facet === "caseDiameterMm" ? " mm" : chip.facet === "waterResistanceM" ? " m" : "";
-            const fmt = (n: number) => (money ? format_price(n) : `${n}${unit}`);
+            const fmt = (n: number) => (money ? format_price(n, read_cookie("Currency") as Supported_Currencies) : `${n}${unit}`);
             return `${t(T_KEY[chip.facet])}: ${fmt(chip.value[0])} – ${fmt(chip.value[1])}`;
         }
         case "include":

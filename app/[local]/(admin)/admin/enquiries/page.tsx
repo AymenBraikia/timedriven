@@ -5,7 +5,7 @@ import { Consignment } from "@/types/consignment";
 import { Sell } from "@/types/sell";
 
 import EnquiryActions from "../components/enquiry_actions";
-import { get_country } from "@/app/(site)/lib/get_country";
+import { get_Currency } from "@/app/(site)/lib/get_currency";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Enquiries" };
@@ -15,7 +15,7 @@ function Card({ children, handled }: { children: React.ReactNode; handled: boole
 }
 
 export default async function AdminEnquiries() {
-    const country = await get_country();
+    const country = await get_Currency();
 
     const [sellsRaw, consignmentsRaw, appointmentsRaw] = await Promise.all([(await sell_collection()).find({}).toArray(), (await consignments_collection()).find({}).toArray(), (await appointments_collection()).find({}).toArray()]);
 

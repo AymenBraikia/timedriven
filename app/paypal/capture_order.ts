@@ -14,6 +14,7 @@ export async function capture_order({ orderID }: { orderID: string }): Promise<v
 
     let payload;
 
+
     if (!token) return;
     else {
         payload = verifyJwt(token);

@@ -3,7 +3,7 @@ import { format_price } from "@/app/(site)/lib/price_format";
 import { Order } from "@/types/order";
 
 import OrderStatus from "../components/order_status";
-import { get_country } from "@/app/(site)/lib/get_country";
+import { get_Currency } from "@/app/(site)/lib/get_currency";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Orders" };
@@ -11,7 +11,7 @@ export const metadata = { title: "Orders" };
 export default async function AdminOrders() {
     const raw = await (await orders_collection()).find({}).sort({ created_at: -1 }).toArray();
     const orders: Order[] = JSON.parse(JSON.stringify(raw));
-    const country = await get_country();
+    const country = await get_Currency();
 
     return (
         <>

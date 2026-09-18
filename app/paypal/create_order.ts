@@ -6,6 +6,8 @@ import { getAccessToken } from "./paypal";
 import { orders_collection, users_collection } from "../db/collections";
 
 import shippin_data from "@/app/shipping.json";
+import { get_Currency } from "@/app/(site)/lib/get_currency";
+import { calc_price } from "@/app/(site)/lib/calc_price";
 
 const shipping_values = Object.values(shippin_data);
 
@@ -23,9 +25,7 @@ export async function create_order(): Promise<string> {
     else {
         payload = verifyJwt(jwt_token);
 
-        if (!payload) {
-            return "";
-        }
+        if (!payload) return "";
     }
     const user = await (await users_collection()).findOne({ email: payload!.email });
 
@@ -35,34 +35,48 @@ export async function create_order(): Promise<string> {
 
     const cart = user.cart;
 
-    const items = cart.map((item) => {
-        return {
-            name: item.brand + item.model,
-            description: item.description,
-            quantity: item.quantity.toString(),
-            unit_amount: {
-                currency_code: "EUR",
-                value: item.price,
-            },
-        };
-    });
+    const currency = await get_Currency();
+    const zeroDecimalCurrencies = new Set(["JPY", "HUF", "TWD", "KRW", "UGX", "VND"]);
+    const isZeroDecimal = zeroDecimalCurrencies.has(currency);
+
+    const items = cart.map((item) => ({
+        name: item.brand + item.model,
+        description: item.description,
+        quantity: item.quantity.toString(),
+        unit_amount: {
+            currency_code: currency,
+            // value: calc_price(item.price, currency),
+            value: calc_price(item.price, currency).toFixed(isZeroDecimal ? 0 : 2),
+        },
+    }));
 
     const ref_id = `ORDER-${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
 
-    const shipping_amount_cents = shipping ? Math.round(shipping.shipping_cost * 100) : 0;
-    const shipping_amount = shipping_amount_cents / 100;
+    // const shipping_amount_cents = shipping ? Math.floor(shipping.shipping_cost * 100) : 0;
+    // const shipping_amount = isZeroDecimal ? Math.floor(shipping_amount_cents / 100) : shipping_amount_cents / 100;
 
-    const total_amount_cents: number = Math.round(cart.reduce((prev: number, item: { price: number; quantity: number }) => prev + item.price * item.quantity, 0) * 100);
-    const total_amount: number = total_amount_cents / 100;
+    // const total_amount: number = items.reduce((prev: number, item) => prev + Number(item.unit_amount.value) * Number(item.quantity), 0);
+    // const total_amount_cents: number = total_amount * 100;
 
-    const tax_amount_cents: number = Math.round(total_amount * TAX_RATE * 100);
-    const tax_amount: number = tax_amount_cents / 100;
+    // const tax_amount_cents: number = Math.floor(total_amount * TAX_RATE * 100);
+    // const tax_amount = isZeroDecimal ? Math.floor(tax_amount_cents / 100) : tax_amount_cents / 100;
 
-    const discount_amount_cents: number = 0;
-    const discount_amount: number = discount_amount_cents / 100;
+    // const discount_amount_cents: number = 0;
+    // const discount_amount = isZeroDecimal ? Math.floor(discount_amount_cents / 100) : discount_amount_cents / 100;
 
-    const amount_to_pay_cents = Math.round(total_amount_cents + shipping_amount_cents + tax_amount_cents - discount_amount_cents);
-    const amount_to_pay = amount_to_pay_cents / 100;
+    // const amount_to_pay_cents = Math.floor(total_amount_cents + shipping_amount_cents + tax_amount_cents - discount_amount_cents);
+    // const amount_to_pay = isZeroDecimal ? Math.floor(amount_to_pay_cents / 100) : amount_to_pay_cents / 100;
+
+    const shipping_amount = shipping ? shipping.shipping_cost : 0;
+
+    const total_amount: number = items.reduce((prev: number, item) => prev + Number(item.unit_amount.value) * Number(item.quantity), 0);
+
+    const tax_amount: number = Math.floor(total_amount * TAX_RATE);
+
+    const discount_amount = 0;
+
+    const amount_to_pay = total_amount + shipping_amount + tax_amount - discount_amount;
+    // const amount_to_pay = isZeroDecimal ? Math.floor(amount_to_pay_cents / 100) : amount_to_pay_cents / 100;
 
     const res = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
         method: "POST",
@@ -76,19 +90,18 @@ export async function create_order(): Promise<string> {
                 {
                     reference_id: ref_id,
                     description: "arvell",
-                    // custom_id: ref_id,
                     items,
 
                     amount: {
-                        currency_code: "EUR",
+                        currency_code: currency,
                         value: amount_to_pay,
                         breakdown: {
-                            item_total: { currency_code: "EUR", value: total_amount },
-                            tax_total: { currency_code: "EUR", value: tax_amount },
-                            handling: { currency_code: "EUR", value: "0.00" },
-                            discount: { currency_code: "EUR", value: discount_amount },
+                            item_total: { currency_code: currency, value: total_amount },
+                            tax_total: { currency_code: currency, value: tax_amount },
+                            handling: { currency_code: currency, value: isZeroDecimal ? "0" : "0.00" },
+                            discount: { currency_code: currency, value: discount_amount },
                             shipping: {
-                                currency_code: "EUR",
+                                currency_code: currency,
                                 value: shipping_amount,
                             },
                         },
@@ -133,10 +146,11 @@ export async function create_order(): Promise<string> {
         ).insertOne({
             id: order.id,
             email: payload.email,
+            currency,
             items: cart,
             total: total_amount,
-            discount_amount,
-            amount_to_pay,
+            discount_amount: Number(discount_amount),
+            amount_to_pay: Number(amount_to_pay),
             status: "Pending",
             created_at: new Date(),
             payment_method: "PayPal",

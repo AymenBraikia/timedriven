@@ -5,10 +5,10 @@ import revmove_from_cart from "@/app/server/remove_cart";
 import { Cart_Item } from "@/types/user";
 import Image from "next/image";
 import { format_price } from "../lib/price_format";
-import { get_country } from "../lib/get_country";
+import { get_Currency } from "../lib/get_currency";
 
 export default async function Item_Display({ brand, model, slug, price, quantity, images, reference }: Cart_Item) {
-    const country = await get_country();
+    const country = await get_Currency();
     return (
         <div className="flex flex-wrap md:flex-nowrap justify-between items-center w-full gap-4 border-b-foreground border-b p-4 font-secondary">
             <button type="button" className="hidden md:flex button2 p-0" onClick={() => revmove_from_cart(reference)}>
@@ -51,4 +51,3 @@ export default async function Item_Display({ brand, model, slug, price, quantity
         </div>
     );
 }
-

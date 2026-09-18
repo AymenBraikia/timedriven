@@ -1,11 +1,12 @@
 "use client";
 import { capture_order } from "@/app/paypal/capture_order";
 import { create_order } from "@/app/paypal/create_order";
+import { Supported_Currencies } from "@/currency";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
-export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
+export default function PayPal_Btn({ disabled, currency }: { disabled: boolean; currency: Supported_Currencies }) {
     const router = useRouter();
     const { resolvedTheme } = useTheme();
 
@@ -13,13 +14,13 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
         <PayPalScriptProvider
             options={{
                 clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
-                currency: "EUR",
+                currency,
             }}
         >
             <PayPalButtons
                 disabled={disabled}
                 fundingSource="paypal"
-                forceReRender={[resolvedTheme]}
+                forceReRender={[resolvedTheme, currency]}
                 style={{
                     layout: "vertical", // 'vertical' or 'horizontal'
                     color: resolvedTheme == "dark" ? "black" : "white", // 'gold', 'blue', 'silver', 'white', 'black'
@@ -39,4 +40,7 @@ export default function PayPal_Btn({ disabled }: { disabled: boolean }) {
     );
 }
 
-function handle_error(error: Record<string, unknown>) {}
+function handle_error(error: Record<string, unknown>) {
+    // console.clear();
+    // console.error(error)
+}

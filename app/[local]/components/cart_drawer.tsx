@@ -7,11 +7,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { format_price } from "../(site)/lib/price_format";
 import { useTranslations } from "next-intl";
+import { read_cookie } from "../(site)/lib/read_cookie";
+import { Supported_Currencies } from "@/currency";
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
 export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTMLDivElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isCartOpen: boolean } }) {
     const { cart, subtotal } = useCart();
     const t = useTranslations("cart");
+
+    const currency = read_cookie("Currency") as Supported_Currencies;
 
     return (
         <div
@@ -42,7 +46,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                                         <p className="text-base sm:title6 capitalize">{i.model}</p>
                                     </div>
                                     <p className="title6 sm:title5 md:title-base lg:title6 font-sans">
-                                        {i.quantity} x {format_price(i.price)}
+                                        {i.quantity} x {format_price(i.price, currency)}
                                     </p>
                                 </div>
                             </div>
@@ -51,7 +55,7 @@ export default function Cart_drawer({ dispatch, ui, ref }: { ref: RefObject<HTML
                     <div className="flex flex-wrap justify-between items-center gap-4 w-full h-fit">
                         <div className="flex justify-between items-center w-full font-sans">
                             <p className="sm:title5 title6">{t("subtotal")}</p>
-                            <p className="sm:title5 title6">{format_price(subtotal)}</p>
+                            <p className="sm:title5 title6">{format_price(subtotal, currency)}</p>
                         </div>
                         <Link aria-label={t("viewCart")} onClick={() => dispatch({ type: "CLOSE_CART" })} className="w-full button px-2 py-4 md:p-auto flex-center title6" href="/cart">
                             {t("viewCart")}

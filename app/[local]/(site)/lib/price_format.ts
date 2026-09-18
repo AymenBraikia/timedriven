@@ -1,12 +1,8 @@
-import { eur_value_in_currency, Supported_Countries, Supported_Currencies } from "@/currency";
-import { read_cookie } from "./read_cookie";
+import { Supported_Countries, Supported_Currencies } from "@/currency";
+import { calc_price } from "./calc_price";
 
-export function format_price(n: number, country?: Supported_Countries): string {
-    if (typeof window !== "undefined") country = (read_cookie("Country") as Supported_Countries) || "US";
-    const currency = country_to_currency.get(country || "US") || "USD";
-    const rate = eur_value_in_currency.get(currency)!;
-
-    const converted = rate ? Math.round(rate * n) : n;
+export function format_price(n: number, currency: Supported_Currencies = "USD"): string {
+    const converted = calc_price(n, currency);
 
     const intl = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -15,7 +11,7 @@ export function format_price(n: number, country?: Supported_Countries): string {
     return intl.format(converted);
 }
 
-const country_to_currency: Map<Supported_Countries, Supported_Currencies> = new Map([
+export const country_to_currency: Map<Supported_Countries, Supported_Currencies> = new Map([
     ["US", "USD"],
     ["CA", "CAD"],
     ["AU", "AUD"],

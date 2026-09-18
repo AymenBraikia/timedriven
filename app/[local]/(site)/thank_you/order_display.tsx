@@ -1,10 +1,10 @@
 import { Order } from "@/types/order";
 import Image from "next/image";
 import { format_price } from "../lib/price_format";
-import { get_country } from "../lib/get_country";
+import { get_Currency } from "../lib/get_currency";
 
 export default async function Order_display({ data, last }: { data: Order; last: boolean }) {
-    const country = await get_country();
+    const country = await get_Currency();
 
     const address = typeof data.address == "string" ? data.address : `${data.address.city}, ${data.address.address1 + (data.address.address2 ? `, ${data.address.address2}` : "")}`;
 

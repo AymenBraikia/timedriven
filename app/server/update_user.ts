@@ -18,7 +18,7 @@ export default async function updateUser(data: UpdateUserProps): Promise<boolean
     const operation = await (await users_collection()).updateOne({ email: payload.email }, { $set: data });
 
     if (operation.acknowledged) {
-        revalidatePath("/");
+        revalidatePath("/", "layout");
         return true;
     }
 

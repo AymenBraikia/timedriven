@@ -23,6 +23,8 @@ import Select from "./elements/select";
 import Search_input from "./elements/search_input";
 import { ThemeToggle } from "./theme";
 import { format_price } from "../(site)/lib/price_format";
+import { Supported_Currencies } from "@/currency";
+import setCurrency from "@/app/server/set_currency";
 
 const CartDrawer = dynamic(() => import("./cart_drawer"), {
     ssr: false,
@@ -96,6 +98,52 @@ const locales_map = new Map<string, Locales>([
     ["ar", "ar"],
 ]);
 
+const currencies_options = new Map<string, Supported_Currencies>([
+    ["USD (US Dollar)", "USD"],
+    ["CAD (Canadian Dollar)", "CAD"],
+    ["AUD (Australian Dollar)", "AUD"],
+    ["GBP (British Pound)", "GBP"],
+    ["EUR (Euro)", "EUR"],
+    ["CHF (Swiss Franc)", "CHF"],
+    ["HKD (Hong Kong Dollar)", "HKD"],
+    ["JPY (Japanese Yen)", "JPY"],
+    ["SGD (Singapore Dollar)", "SGD"],
+    ["CNY (Chinese Yuan)", "CNY"],
+]);
+const currencies_map = new Map<string, Supported_Currencies>([
+    ["USD (US Dollar)", "USD"],
+    ["CAD (Canadian Dollar)", "CAD"],
+    ["AUD (Australian Dollar)", "AUD"],
+    ["GBP (British Pound)", "GBP"],
+    ["EUR (Euro)", "EUR"],
+    // ["SAR (Saudi Riyal)", "SAR"],
+    // ["AED (UAE Dirham)", "AED"],
+    // ["QAR (Qatari Riyal)", "QAR"],
+    // ["KWD (Kuwaiti Dinar)", "KWD"],
+    // ["BHD (Bahraini Dinar)", "BHD"],
+    ["CHF (Swiss Franc)", "CHF"],
+    ["HKD (Hong Kong Dollar)", "HKD"],
+    ["JPY (Japanese Yen)", "JPY"],
+    ["SGD (Singapore Dollar)", "SGD"],
+    ["CNY (Chinese Yuan)", "CNY"],
+
+    ["USD", "USD"],
+    ["CAD", "CAD"],
+    ["AUD", "AUD"],
+    ["GBP", "GBP"],
+    ["EUR", "EUR"],
+    // ["SAR", "SAR"],
+    // ["AED", "AED"],
+    // ["QAR", "QAR"],
+    // ["KWD", "KWD"],
+    // ["BHD", "BHD"],
+    ["CHF", "CHF"],
+    ["HKD", "HKD"],
+    ["JPY", "JPY"],
+    ["SGD", "SGD"],
+    ["CNY", "CNY"],
+]);
+
 function headerReducer(state: UIState, action: UIAction): UIState {
     switch (action.type) {
         case "OPEN_NAV":
@@ -118,13 +166,13 @@ function headerReducer(state: UIState, action: UIAction): UIState {
     }
 }
 
-export default function Header() {
+export default function Header({ savedCurrency = "USD" }: { savedCurrency: Supported_Currencies }) {
     const { session } = useAuth();
     const locale = useLocale() as Locales;
     const t = useTranslations("common");
-    
+
     const [lang, set_lang] = useState<Locales>(locale);
-    
+
     const selected_locale = locales_map.get(lang)!.toUpperCase();
 
     const pathname = usePathname();
@@ -133,6 +181,13 @@ export default function Header() {
     useEffect(() => {
         router.replace(pathname, { locale: selected_locale });
     }, [lang]);
+
+    const [currency, set_currency] = useState<Supported_Currencies>(savedCurrency);
+
+    useEffect(() => {
+        setCurrency(currencies_map.get(currency)!);
+    }, [currency]);
+
 
     const [ui, dispatch] = useReducer(headerReducer, initialUIState);
     const cartRef = useRef<HTMLDivElement>(null);
@@ -292,6 +347,8 @@ export default function Header() {
                         )}
 
                         <Select classnames="flex text-sm sm:text-base" options={["English", "Arabic", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
+
+                        <Select classnames="flex text-sm sm:text-base" options={currencies_options.keys().toArray()} value={currencies_map.get(currency)!} set_value={set_currency as Dispatch<SetStateAction<string>>} />
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 p-1 sm:p-2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} classnames="w-5 sm:w-6" />
