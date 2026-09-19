@@ -1,6 +1,6 @@
 "use server";
 
-import { User, UserData } from "@/types/user";
+import { UserData } from "@/types/user";
 import { cookies } from "next/headers";
 import { users_collection } from "../db/collections";
 import { verifyJwt } from "@/app/(auth)/auth/jwt";
@@ -16,7 +16,7 @@ export default async function getUser(): Promise<UserData | undefined> {
 
     const user = await (
         await users_collection()
-    ).findOne<User>(
+    ).findOne(
         { email: payload.email },
         {
             projection: {
@@ -38,7 +38,8 @@ export default async function getUser(): Promise<UserData | undefined> {
         email: user.email,
         local_pickup: user.local_pickup,
         address: user.address,
-        payment_method: user.payment_method || "paypal",
+        payment_method: user.payment_method,
+        current_order: user.current_order,
 
         diff_address: user.diff_address,
     };

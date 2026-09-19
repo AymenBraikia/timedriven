@@ -5,9 +5,9 @@ import { verifyJwt } from "@/app/(auth)/auth/jwt";
 import { getAccessToken } from "./paypal";
 import { orders_collection, users_collection } from "../db/collections";
 
-import shippin_data from "@/app/shipping.json";
 import { get_Currency } from "@/app/(site)/lib/get_currency";
 import { calc_price } from "@/app/(site)/lib/calc_price";
+import shippin_data from "@/app/shipping.json";
 
 const shipping_values = Object.values(shippin_data);
 
@@ -51,21 +51,6 @@ export async function create_order(): Promise<string> {
     }));
 
     const ref_id = `ORDER-${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
-
-    // const shipping_amount_cents = shipping ? Math.floor(shipping.shipping_cost * 100) : 0;
-    // const shipping_amount = isZeroDecimal ? Math.floor(shipping_amount_cents / 100) : shipping_amount_cents / 100;
-
-    // const total_amount: number = items.reduce((prev: number, item) => prev + Number(item.unit_amount.value) * Number(item.quantity), 0);
-    // const total_amount_cents: number = total_amount * 100;
-
-    // const tax_amount_cents: number = Math.floor(total_amount * TAX_RATE * 100);
-    // const tax_amount = isZeroDecimal ? Math.floor(tax_amount_cents / 100) : tax_amount_cents / 100;
-
-    // const discount_amount_cents: number = 0;
-    // const discount_amount = isZeroDecimal ? Math.floor(discount_amount_cents / 100) : discount_amount_cents / 100;
-
-    // const amount_to_pay_cents = Math.floor(total_amount_cents + shipping_amount_cents + tax_amount_cents - discount_amount_cents);
-    // const amount_to_pay = isZeroDecimal ? Math.floor(amount_to_pay_cents / 100) : amount_to_pay_cents / 100;
 
     const shipping_amount = shipping ? shipping.shipping_cost : 0;
 

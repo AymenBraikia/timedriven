@@ -9,11 +9,12 @@ export interface User {
     password: string;
     admin?: boolean;
 
-    payment_method?: "paypal" | "bank" | "card";
+    payment_method?: "PayPal" | "Credit/Debit Card" | "Bank Transfer";
     cart: User_Cart;
     wish_list: User_Cart;
     ongoing_orders: Order[];
     fulfilled_orders: Order[];
+    current_order?: Order;
 
     local_pickup: boolean;
 
@@ -23,11 +24,12 @@ export interface User {
 
 export interface UserData {
     admin?: boolean;
-    payment_method?: "paypal" | "bank" | "card";
+    payment_method?: "PayPal" | "Credit/Debit Card" | "Bank Transfer";
     cart: User_Cart;
     wish_list: User_Cart;
     ongoing_orders: Order[];
     fulfilled_orders: Order[];
+    current_order?: Order;
     first_name: string;
     last_name: string;
     local_pickup: boolean;

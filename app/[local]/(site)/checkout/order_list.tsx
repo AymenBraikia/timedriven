@@ -22,9 +22,9 @@ const Paypal_component = dynamic(() => import("@/app/paypal/component"), {
 const shipping_data = Object.values(shipping_info);
 
 const payments = {
-    paypal: { name: "PayPal", fee: 0.03 },
-    card: { name: "Credit/Debit Card", fee: 0.014 },
-    bank: { name: "Bank Transfer", fee: 0 },
+    PayPal: { name: "PayPal", fee: 0.03 },
+    "Credit/Debit Card": { name: "Credit/Debit Card", fee: 0.014 },
+    "Bank Transfer": { name: "Bank Transfer", fee: 0 },
 };
 
 export default async function Order_list() {
@@ -40,7 +40,7 @@ export default async function Order_list() {
 
     const local_pickup = session.local_pickup;
 
-    const payment_method = session.payment_method || "paypal";
+    const payment_method = session.payment_method || "PayPal";
 
     const currency = (await get_Currency()) as Supported_Currencies;
 
@@ -81,9 +81,11 @@ export default async function Order_list() {
             </div>
             <Payment_Options default_option={payment_method} />
 
-            {payment_method == "bank" && <BankTransfer currency={currency} local_pickup={local_pickup} shipping={shipping} total={total} />}
-            {payment_method == "card" && <Cards session={session} />}
-            {payment_method == "paypal" && <Paypal_component currency={currency} />}
+            {payment_method == "Bank Transfer" && <BankTransfer session={session} currency={currency} />}
+            {payment_method == "Credit/Debit Card" && <Cards />}
+            {payment_method == "PayPal" && <Paypal_component currency={currency} />}
+
+            <p className="text-secondary">{t("agreement")}</p>
         </div>
     );
 }

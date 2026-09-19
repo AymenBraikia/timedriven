@@ -7,7 +7,7 @@ const options = { projection: { _id: 0 } };
 
 async function query_item(slug: string): Promise<Spare | Watch> {
     const data = (await (await watches_collection()).findOne({ slug }, options)) || (await (await spares_collection()).findOne({ slug }, options));
-    return JSON.parse(JSON.stringify(data));
+    return data!;
 }
 
 const get_item = (slug: string) =>

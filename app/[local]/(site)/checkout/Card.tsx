@@ -1,10 +1,11 @@
 "use client";
+import CreateOrderBtn from "@/app/components/buttons/create_order";
 import Input from "@/app/components/elements/input";
 import { UserData } from "@/types/user";
 import { useTranslations } from "next-intl";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-export default function Cards({ session }: { session: UserData }) {
+export default function Cards() {
     const t = useTranslations("checkout");
 
     const [card_number, set_card_numbers] = useState<string>("");
@@ -33,21 +34,9 @@ export default function Cards({ session }: { session: UserData }) {
         set_sec_code(formattedValue);
     }
 
-    function check_address(): boolean {
-        if (!session) return false;
-        const { address1, postCode, city, country, phone } = session.address;
-
-        const is_address_provided =
-            (session.diff_address.active && session.diff_address.address1 && session.diff_address.postCode && session.diff_address.city && session.diff_address.country && session.diff_address.phone) ||
-            (!session.diff_address.active && address1 && postCode && city && country && phone)
-                ? true
-                : false;
-
-        return session.local_pickup || is_address_provided;
-    }
 
     function check_info(): boolean {
-        if (card_number.replaceAll(" ","").length != 16) {
+        if (card_number.replaceAll(" ", "").length != 16) {
             console.clear();
             console.log(16);
             return false;
@@ -66,10 +55,10 @@ export default function Cards({ session }: { session: UserData }) {
         return true;
     }
 
-    const [validated, set_validated] = useState<boolean>(check_address() && check_info());
+    const [enabled, set_enabled] = useState<boolean>(check_info());
 
     useEffect(() => {
-        set_validated(check_address() && check_info());
+        set_enabled(check_info());
     }, [card_number, expire, sec_code]);
 
     return (
@@ -86,9 +75,7 @@ export default function Cards({ session }: { session: UserData }) {
                 <Input label={t("securityCode")} type="text" max={3} placeholder="123" onChange={validate_sec} value={sec_code} />
             </div>
 
-            <button type="button" className={`button w-full mt-4 sm:text-base text-sm ${validated ? "" : "disabled"} `}>
-                {t("placeOrder")}
-            </button>
+            <CreateOrderBtn enabled={enabled} />
         </div>
     );
 }

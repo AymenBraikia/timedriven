@@ -6,7 +6,7 @@ const limit = 8;
 
 async function query_new(): Promise<Watch[]> {
     const data = await (await watches_collection()).find({}, { sort: { _id: -1 }, limit, projection: { _id: 0 } }).toArray();
-    return JSON.parse(JSON.stringify(data));
+    return (data);
 }
 
 const get_new = unstable_cache(query_new, ["watches:new"], {

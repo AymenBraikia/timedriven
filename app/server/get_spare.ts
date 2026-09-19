@@ -4,7 +4,7 @@ import type { Spare } from "../types/spare";
 
 async function query_spares(): Promise<Spare[]> {
     const data = await (await spares_collection()).find({}, { projection: { _id: 0 } }).toArray();
-    return JSON.parse(JSON.stringify(data));
+    return data;
 }
 
 const get_spare_parts = unstable_cache(query_spares, ["spares:all"], {
