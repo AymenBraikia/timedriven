@@ -7,6 +7,8 @@ import { NavThemeToggle } from "./navTheme";
 import Select from "./elements/select";
 import { Locales } from "@/types/locales";
 import { usePathname, useRouter } from "@/i18n/routing";
+import { Supported_Currencies } from "@/currency";
+import setCurrency from "@/app/server/set_currency";
 
 type UIAction = { type: "OPEN_NAV" } | { type: "CLOSE_NAV" } | { type: "OPEN_CART" } | { type: "CLOSE_CART" } | { type: "TOGGLE_LANG" } | { type: "SET_GLASSY"; payload: boolean };
 
@@ -28,7 +30,53 @@ const locales_map = new Map<string, Locales>([
     ["es", "es"],
 ]);
 
-export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isNavOpen: boolean } }) {
+const currencies_options = new Map<string, Supported_Currencies>([
+    ["USD (US Dollar)", "USD"],
+    ["CAD (Canadian Dollar)", "CAD"],
+    ["AUD (Australian Dollar)", "AUD"],
+    ["GBP (British Pound)", "GBP"],
+    ["EUR (Euro)", "EUR"],
+    ["CHF (Swiss Franc)", "CHF"],
+    ["HKD (Hong Kong Dollar)", "HKD"],
+    ["JPY (Japanese Yen)", "JPY"],
+    ["SGD (Singapore Dollar)", "SGD"],
+    ["CNY (Chinese Yuan)", "CNY"],
+]);
+const currencies_map = new Map<string, Supported_Currencies>([
+    ["USD (US Dollar)", "USD"],
+    ["CAD (Canadian Dollar)", "CAD"],
+    ["AUD (Australian Dollar)", "AUD"],
+    ["GBP (British Pound)", "GBP"],
+    ["EUR (Euro)", "EUR"],
+    // ["SAR (Saudi Riyal)", "SAR"],
+    // ["AED (UAE Dirham)", "AED"],
+    // ["QAR (Qatari Riyal)", "QAR"],
+    // ["KWD (Kuwaiti Dinar)", "KWD"],
+    // ["BHD (Bahraini Dinar)", "BHD"],
+    ["CHF (Swiss Franc)", "CHF"],
+    ["HKD (Hong Kong Dollar)", "HKD"],
+    ["JPY (Japanese Yen)", "JPY"],
+    ["SGD (Singapore Dollar)", "SGD"],
+    ["CNY (Chinese Yuan)", "CNY"],
+
+    ["USD", "USD"],
+    ["CAD", "CAD"],
+    ["AUD", "AUD"],
+    ["GBP", "GBP"],
+    ["EUR", "EUR"],
+    // ["SAR", "SAR"],
+    // ["AED", "AED"],
+    // ["QAR", "QAR"],
+    // ["KWD", "KWD"],
+    // ["BHD", "BHD"],
+    ["CHF", "CHF"],
+    ["HKD", "HKD"],
+    ["JPY", "JPY"],
+    ["SGD", "SGD"],
+    ["CNY", "CNY"],
+]);
+
+export default function Nav({ savedCurrency,dispatch, ui, ref }: { savedCurrency: Supported_Currencies;ref: RefObject<HTMLElement | null>; dispatch: ActionDispatch<[action: UIAction]>; ui: { isNavOpen: boolean } }) {
     const nav = useTranslations("common.nav");
     const footer = useTranslations("common.footer");
 
@@ -44,6 +92,12 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
     useEffect(() => {
         router.replace(pathname, { locale: selected_locale });
     }, [lang]);
+
+    const [currency, set_currency] = useState<Supported_Currencies>(savedCurrency);
+
+    useEffect(() => {
+        setCurrency(currencies_map.get(currency)!);
+    }, [currency]);
     return (
         <nav
             ref={ref}
@@ -60,11 +114,18 @@ export default function Nav({ dispatch, ui, ref }: { ref: RefObject<HTMLElement 
                     </div>
 
                     <Select
-                        classnames="flex text-sm sm:text-base w-full"
+                        classnames="z-61 font-sans flex text-sm sm:text-base w-full"
                         label={footer("language")}
                         options={["English", "Spanish", "Deutsch", "French", "Italian", "Turkish"]}
                         value={selected_locale}
                         set_value={set_lang as Dispatch<SetStateAction<string>>}
+                    />
+                    <Select
+                        label={footer("currency")}
+                        classnames="font-sans sm:hidden flex text-sm sm:text-base"
+                        options={currencies_options.keys().toArray()}
+                        value={currencies_map.get(currency)!}
+                        set_value={set_currency as Dispatch<SetStateAction<string>>}
                     />
                 </div>
 

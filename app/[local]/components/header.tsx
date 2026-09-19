@@ -348,7 +348,7 @@ export default function Header({ savedCurrency = "USD" }: { savedCurrency: Suppo
 
                         <Select classnames="flex text-sm sm:text-base" options={["English", "Arabic", "Spanish", "Deutsch", "French", "Italian", "Turkish"]} value={selected_locale} set_value={set_lang as Dispatch<SetStateAction<string>>} />
 
-                        <Select classnames="flex text-sm sm:text-base" options={currencies_options.keys().toArray()} value={currencies_map.get(currency)!} set_value={set_currency as Dispatch<SetStateAction<string>>} />
+                        <Select classnames="hidden sm:flex text-sm sm:text-base" options={currencies_options.keys().toArray()} value={currencies_map.get(currency)!} set_value={set_currency as Dispatch<SetStateAction<string>>} />
 
                         <button aria-label={"cart"} type="button" onClick={() => dispatch({ type: "OPEN_CART" })} className={`button2 p-1 sm:p-2 relative ${ui.isGlassy ? "" : "hover:text-primary"}`}>
                             <Cart clr={"currentColor"} classnames="w-5 sm:w-6" />
@@ -359,7 +359,7 @@ export default function Header({ savedCurrency = "USD" }: { savedCurrency: Suppo
                         </div>
                     </div>
                 </div>
-                <Nav ref={navRef} ui={ui} dispatch={dispatch} />
+                <Nav savedCurrency={savedCurrency} ref={navRef} ui={ui} dispatch={dispatch} />
                 <CartDrawer ref={cartRef} ui={ui} dispatch={dispatch} />
             </header>
         </>
