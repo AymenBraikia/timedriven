@@ -31,15 +31,14 @@ export default async function New() {
                     </Link>
                 </FadeInObserver>
             </div>
-            <FadeInObserver>
-                <div className={`w-full sm-w-fit`}>
-                    <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
-                        {watches.map((data) => (
-                            <NewCardWrapper data={data} key={data.slug} />
-                        ))}
-                    </List>
-                </div>
-            </FadeInObserver>
+
+            <div className={`w-full sm-w-fit`}>
+                <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
+                    {watches.map((data) => (
+                        <NewCardWrapper data={data} key={data.slug} />
+                    ))}
+                </List>
+            </div>
         </section>
     );
 }
