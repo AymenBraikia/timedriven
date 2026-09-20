@@ -26,7 +26,7 @@ export default async function New() {
             </div>
             <div className="w-fit flex justify-center items-start flex-col font-secondary">
                 <FadeInObserver>
-                    <Link aria-label={t_btn("viewAllWatches")} href={"/shop"} className="underline italic">
+                    <Link aria-label={t_btn("viewAllWatches")} href={"/shop"} className="underline italic" prefetch={true}>
                         {t_btn("viewAllWatches")}
                     </Link>
                 </FadeInObserver>

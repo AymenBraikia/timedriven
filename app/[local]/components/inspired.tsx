@@ -13,7 +13,7 @@ export default async function Inspired() {
                 <div className="md:h-full md:w-0.5 w-full h-1 bg-foreground"></div>
                 <div className="text-xl flex flex-col gap-8 h-1/2 font-secondary w-full sm:w-1/2">
                     <p className="sm:max-w-100 w-full wrap-break-word tracking-wide leading-8 text-shine">{t("getInspiredSubtext")}</p>
-                    <Link aria-label="Begin your journey" className="underline text-shine w-full max-w-100 italic" href={"/shop"}>
+                    <Link aria-label="Begin your journey" className="underline text-shine w-full max-w-100 italic" href={"/shop"} prefetch={true}>
                         {t_btn("begin")}
                     </Link>
                 </div>
