@@ -1,4 +1,9 @@
 {
+    "intrest": {
+        "title": "Interessiert?",
+        "subTitle": "Erfahren Sie, warum ich diese Website für Ihr Unternehmen erstellt habe, was sie für Sie tun kann und wie wir sie in etwas verwandeln können, das Ihre Kunden tatsächlich nutzen können.",
+        "cta": "Mehr erfahren"
+    },
     "orders": {
         "thankYou": "Herzlichen Dank",
         "thankYouSuffix": "Ihr Erwerb ist bestätigt",

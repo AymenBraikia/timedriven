@@ -6,7 +6,6 @@ import get_new from "@/app/server/get_new";
 import update_currency_rates from "@/app/server/update_currency_rates";
 import NewCardWrapper from "./wrappers/newCard";
 
-
 export default async function New() {
     await update_currency_rates();
     const t = await getTranslations("home");
@@ -32,13 +31,15 @@ export default async function New() {
                     </Link>
                 </FadeInObserver>
             </div>
-            <div className={`w-full sm-w-fit`}>
-                <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
-                    {watches.map((data) => (
-                        <NewCardWrapper data={data} key={data.slug} />
-                    ))}
-                </List>
-            </div>
+            <FadeInObserver>
+                <div className={`w-full sm-w-fit`}>
+                    <List display={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}>
+                        {watches.map((data) => (
+                            <NewCardWrapper data={data} key={data.slug} />
+                        ))}
+                    </List>
+                </div>
+            </FadeInObserver>
         </section>
     );
 }

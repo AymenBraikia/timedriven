@@ -1,4 +1,9 @@
 {
+    "intrest": {
+        "title": "İlgileniyor musunuz?",
+        "subTitle": "Bu web sitesini işletmeniz için neden kurduğumu, sizin için neler yapabileceğini ve bunu müşterilerinizin gerçekten kullanabileceği bir şeye nasıl dönüştürebileceğimizi görün.",
+        "cta": "Daha Fazla Bilgi"
+    },
     "orders": {
         "thankYou": "Teşekkürlerimizle",
         "thankYouSuffix": "satın alımınız onaylandı",
