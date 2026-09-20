@@ -21,11 +21,9 @@ export function Floating_Cta() {
     }, [active]);
 
     return (
-        <div
-            className={`min-w-fit whitespace-nowrap bg-primary transition-default fixed bottom-5 inset-s-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 hover:bg-background active:scale-95 shine ${active ? "fade-in" : "invisible fade-out"}`}
-        >
-            <Link href="https://www.instagram.com/ayme.n0412/" className="sm:py-4 sm:px-6 py-3 px-4 text-shine font-secondary text-sm lg:title5 tracking-wider" target="_blank" rel="noopener noreferrer">
-                {t("cta.floatingCta")}
+        <div className={`min-w-fit whitespace-nowrap bg-primary transition-default fixed bottom-5 inset-s-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 hover:bg-background active:scale-95 shine ${active ? "fade-in" : "invisible fade-out"}`}>
+            <Link prefetch={true} href="/" className="sm:py-4 sm:px-6 py-3 px-4 text-shine font-secondary text-sm lg:title5 tracking-wider capitalize" rel="noopener noreferrer">
+                {t("hero.openStorefront")}
             </Link>
         </div>
     );

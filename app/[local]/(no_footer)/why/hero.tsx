@@ -16,11 +16,11 @@ export default async function Hero() {
             </p>
             <p className="text-xs sm:text-sm lg:text-base leading-6 sm:leading-8 font-thin text-secondary w-200 max-w-[90dvw] sm:max-w-[70dvw] text-center tracking-wider">{t("hero.description")}</p>
 
-            <div className="flex-center sm:gap-8 gap-2 flex-col sm:flex-row capitalize text-sm">
-                <Link href={"#gap"} className="font-normal button2">
+            <div className="flex-center sm:gap-8 gap-2 flex-col sm:flex-row capitalize text-sm sm:text-xl font-secondary">
+                <Link href={"#gap"} className="button2">
                     {t("hero.seeDifference")}
                 </Link>
-                <Link href={"/"} className="font-normal button2">
+                <Link href={"/"} className="button2">
                     {t("hero.openStorefront")}
                 </Link>
             </div>

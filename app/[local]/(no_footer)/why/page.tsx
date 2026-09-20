@@ -13,12 +13,12 @@ export default function Home() {
             <Hero />
             <hr className="w-dvw text-(--bg-secondary)" />
             <Gap />
-            <hr className="w-dvw text-(--bg-secondary)" />
-            <Buyer />
+            {/* <hr className="w-dvw text-(--bg-secondary)" />
+            <Buyer /> */}
             <hr className="w-dvw text-(--bg-secondary)" />
             <Dealer />
-            <hr className="w-dvw text-(--bg-secondary)" />
-            <Role />
+            {/* <hr className="w-dvw text-(--bg-secondary)" />
+            <Role /> */}
             <hr className="w-dvw text-(--bg-secondary)" />
             <GettingStarted />
             <hr className="w-dvw text-(--bg-secondary)" />
