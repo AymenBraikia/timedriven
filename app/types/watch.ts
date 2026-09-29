@@ -23,6 +23,5 @@ export interface Watch {
     type: "watch";
     date_added: Date | string;
     relevance_score: number;
+    preview?: string
 }
-
-

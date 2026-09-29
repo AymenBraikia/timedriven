@@ -5,6 +5,7 @@
 import { unstable_cache } from "next/cache";
 import { watches_collection } from "../db/collections";
 import type { Watch } from "../types/watch";
+import { cookies } from "next/headers";
 
 // The card grid never reads these, but you're currently shipping them for
 // every watch on every request.
@@ -32,12 +33,17 @@ const CARD_PROJECTION = {
 } as const;
 
 async function query_watches(): Promise<Watch[]> {
+    const cookieStore = await cookies();
+    const ref = cookieStore.get("ref");
+
     const collection = await watches_collection();
     const data = await collection.find({}, { projection: CARD_PROJECTION }).toArray();
 
+    const previewed = data.filter((e) => e.preview == ref);
+
     // Dates and ObjectIds still need flattening for the client boundary,
     // but the payload is now a fraction of the size.
-    return JSON.parse(JSON.stringify(data));
+    return JSON.parse(JSON.stringify(previewed || data));
 }
 
 // Mongo leaves the hot path. One visitor per hour pays for the query;

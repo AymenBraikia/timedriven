@@ -10,6 +10,8 @@ import type { Appointment } from "@/types/appointment";
 import { Visitor } from "@/types/visitor";
 
 export async function db() {
+    console.clear();
+    console.log("Connecting to db...");
     const client = await clientPromise;
     return client.db("timedriven");
 }
@@ -22,6 +24,5 @@ export const sell_collection = async () => (await db()).collection<Sell>("sell")
 export const consignments_collection = async () => (await db()).collection<Consignment>("consignment");
 export const appointments_collection = async () => (await db()).collection<Appointment>("appointment");
 export const visitors_collection = async () => (await db()).collection<Visitor>("visitors");
-
 
 export {};
