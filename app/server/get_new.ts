@@ -36,14 +36,14 @@ async function get_new(): Promise<Watch[]> {
 
     // No ref -> normal new arrivals
     if (!ref) {
-        return JSON.parse(JSON.stringify(data));
+        return JSON.parse(JSON.stringify(data.filter((e) => e.preview == undefined)));
     }
 
     // Ref -> show matching preview watches
     const previewed = data.filter((watch) => watch.preview === ref);
 
     // No matching preview -> fall back to normal new arrivals
-    return JSON.parse(JSON.stringify(previewed.length > 0 ? previewed : data));
+    return JSON.parse(JSON.stringify(previewed.length > 0 ? previewed : data.filter((e) => e.preview == undefined)));
 }
 
 export default get_new;

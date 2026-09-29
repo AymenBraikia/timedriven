@@ -33,9 +33,12 @@ export async function GET(req: NextRequest) {
     const ref = cookieStore.get("ref")?.value;
 
     if (!ref || !watches.find((e: Watch) => e.preview == ref))
-        return NextResponse.json(watches, {
-            headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
-        });
+        return NextResponse.json(
+            watches.filter((e:Watch) => e.preview == undefined),
+            {
+                headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
+            },
+        );
     else
         return NextResponse.json(
             watches.filter((e: Watch) => e.preview == ref),

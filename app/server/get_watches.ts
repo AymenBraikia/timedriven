@@ -64,13 +64,13 @@ async function get_watches(): Promise<Watch[]> {
 
     // No ref cookie => return all watches.
     if (!ref) {
-        return JSON.parse(JSON.stringify(data));
+        return JSON.parse(JSON.stringify(data.filter((e) => e.preview == undefined)));
     }
 
     // Ref cookie => only return watches belonging to that preview.
     const previewed = data.filter((watch) => watch.preview === ref);
 
-    return JSON.parse(JSON.stringify(previewed.length ? previewed : data));
+    return JSON.parse(JSON.stringify(previewed.length ? previewed : data.filter((e) => e.preview == undefined)));
 }
 
 export default get_watches;
