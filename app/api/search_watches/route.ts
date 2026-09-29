@@ -1,6 +1,8 @@
 import { unstable_cache } from "next/cache";
 import { watches_collection } from "@/app/db/collections";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { Watch } from "@/types/watch";
 
 const SEARCH_PROJECTION = { _id: 0, slug: 1, brand: 1, model: 1, reference: 1, price: 1, images: { $slice: 1 } } as const;
 
@@ -27,7 +29,18 @@ export async function GET(req: NextRequest) {
 
     const watches = await search_watches(query);
 
-    return NextResponse.json(watches, {
-        headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
-    });
+    const cookieStore = await cookies();
+    const ref = cookieStore.get("ref")?.value;
+
+    if (!ref || !watches.find((e: Watch) => e.preview == ref))
+        return NextResponse.json(watches, {
+            headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
+        });
+    else
+        return NextResponse.json(
+            watches.filter((e: Watch) => e.preview == ref),
+            {
+                headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600" },
+            },
+        );
 }
