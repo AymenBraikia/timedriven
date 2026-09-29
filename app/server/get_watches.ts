@@ -66,6 +66,7 @@ async function get_watches(): Promise<Watch[]> {
     if (!ref) {
         return JSON.parse(JSON.stringify(data));
     }
+    return []
 
     // Ref cookie => only return watches belonging to that preview.
     const previewed = data.filter((watch) => watch.preview === ref);
