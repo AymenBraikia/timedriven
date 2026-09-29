@@ -57,6 +57,7 @@ const get_cached_watches = unstable_cache(
  * cookies() lives OUTSIDE the cache scope.
  */
 async function get_watches(): Promise<Watch[]> {
+    return []
     const cookieStore = await cookies();
     const ref = cookieStore.get("ref")?.value;
 
