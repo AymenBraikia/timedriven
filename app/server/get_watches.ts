@@ -57,7 +57,6 @@ const get_cached_watches = unstable_cache(
  * cookies() lives OUTSIDE the cache scope.
  */
 async function get_watches(): Promise<Watch[]> {
-    return []
     const cookieStore = await cookies();
     const ref = cookieStore.get("ref")?.value;
 
@@ -67,7 +66,6 @@ async function get_watches(): Promise<Watch[]> {
     if (!ref) {
         return JSON.parse(JSON.stringify(data));
     }
-    return []
 
     // Ref cookie => only return watches belonging to that preview.
     const previewed = data.filter((watch) => watch.preview === ref);
