@@ -1,11 +1,8 @@
-// NOTE: no "use server" here. That directive turns every export into a Server
-// Action (a POST endpoint), which is wrong for a function called directly from
-// a server component — and it blocks caching.
-
 import { unstable_cache } from "next/cache";
+import { cookies } from "next/headers";
+
 import { watches_collection } from "../db/collections";
 import type { Watch } from "../types/watch";
-import { cookies } from "next/headers";
 
 // The card grid never reads these, but you're currently shipping them for
 // every watch on every request.
@@ -30,30 +27,50 @@ const CARD_PROJECTION = {
     date_added: 1,
     relevance_score: 1,
     images: { $slice: 1 },
+
+    // Needed because the result is filtered by preview
+    preview: 1,
 } as const;
 
-async function query_watches(): Promise<Watch[]> {
+/**
+ * Pure database/cache layer.
+ *
+ * IMPORTANT:
+ * No cookies(), headers(), searchParams, etc. inside this function.
+ */
+const get_cached_watches = unstable_cache(
+    async (): Promise<Watch[]> => {
+        const collection = await watches_collection();
+
+        return collection.find({}, { projection: CARD_PROJECTION }).toArray();
+    },
+    ["watches:all"],
+    {
+        revalidate: 3600,
+        tags: ["watches"],
+    },
+);
+
+/**
+ * Request-specific layer.
+ *
+ * cookies() lives OUTSIDE the cache scope.
+ */
+async function get_watches(): Promise<Watch[]> {
     const cookieStore = await cookies();
-    const ref = cookieStore.get("ref");
+    const ref = cookieStore.get("ref")?.value;
 
-    const collection = await watches_collection();
-    const data = await collection.find({}, { projection: CARD_PROJECTION }).toArray();
+    const data = await get_cached_watches();
 
-    const previewed = data.filter((e) => e.preview == ref);
+    // No ref cookie => return all watches.
+    if (!ref) {
+        return JSON.parse(JSON.stringify(data));
+    }
 
-    // Dates and ObjectIds still need flattening for the client boundary,
-    // but the payload is now a fraction of the size.
-    return JSON.parse(JSON.stringify(previewed || data));
+    // Ref cookie => only return watches belonging to that preview.
+    const previewed = data.filter((watch) => watch.preview === ref);
+
+    return JSON.parse(JSON.stringify(previewed));
 }
 
-// Mongo leaves the hot path. One visitor per hour pays for the query;
-// everyone else is served from cache.
-const get_watches = unstable_cache(query_watches, ["watches:all"], {
-    revalidate: 3600,
-    tags: ["watches"],
-});
-
 export default get_watches;
-
-// Then in your admin write actions, call revalidateTag("watches") so edits
-// show up immediately instead of waiting out the hour.
